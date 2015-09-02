@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+// VSee repository credentials setup
+
+repositories {
+    maven {
+        credentials {
+            username 'uweco'
+            password '903fdbf83488be99797a7757429240ca4f3a2619'
+        }
+        url 'http://dl.bintray.com/vsee/android'
+    }
+    maven {
+        url "https://repo.commonsware.com.s3.amazonaws.com"
+    }
+    maven {
+        url "http://dl.bintray.com/populov/maven"
+    }
+    jcenter()
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "23.0.0 rc2"
+
+    defaultConfig {
+        applicationId "com.mdlive.mobile"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+android.packagingOptions {
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/NOTICE'
+    exclude 'version.properties'
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:multidex:1.0.1'
+    compile project(':app')
+    compile('com.vsee:vsee-kit:0.3.20524@aar') {
+        transitive = true
+    }
+}
