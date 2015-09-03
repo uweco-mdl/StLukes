@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MDLIVE</string>
+
+    <string name="username_or_email">Username or E-mail</string>
+    <string name="password">Password</string>
+    <string name="forgot_username">Forgot Username</string>
+    <string name="sign_in">Sign in</string>
+    <string name="or">OR</string>
+    <string name="create_free_account">Create a Free Account</string>
+
+    <string name="enter_your_pin_to_unlock">Enter Your PIN to unlock</string>
+    <string name="sign_in_with_user_name_and_password">Sign in with Username and Password</string>
+
+    <string name="please_create_a_6_digit_pin">Please create a 6 digit PIN</string>
+    <string name="access_your_phone_using_pin">Access your account on this phone using this PIN\ninstead of a username and password.</string>
+    <string name="i_dont_want_to_use_pin">I dont want to use a PIN</string>
+    <string name="you_can_enable_your_screen">(You can enable PIN later in My Account)</string>
+
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_your_pin">Forgot Your Pin?</string>
+</resources>

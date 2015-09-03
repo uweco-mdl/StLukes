@@ -1,0 +1,7 @@
+<resources>
+    <style name="MDLive_Red_Theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/red_theme_primary</item>
+        <item name="colorPrimaryDark">@color/red_theme_primary_dark</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+</resources>
