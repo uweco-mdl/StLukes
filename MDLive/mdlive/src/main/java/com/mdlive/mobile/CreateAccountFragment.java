@@ -29,6 +29,8 @@ import java.util.List;
 public class CreateAccountFragment extends MDLiveBaseFragment {
     private OnSignupSuccess mOnSignupSuccess;
 
+    private WebView mWebView;
+
     public static CreateAccountFragment newInstance() {
         final CreateAccountFragment fragment = new CreateAccountFragment();
         return fragment;
@@ -59,11 +61,11 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final WebView webview = (WebView) view.findViewById(R.id.webView);
-        webview.loadUrl(AppSpecificConfig.URL_SIGN_UP);
-        webview.getSettings().setJavaScriptEnabled(true);
+        mWebView = (WebView) view.findViewById(R.id.webView);
+        mWebView.loadUrl(AppSpecificConfig.URL_SIGN_UP);
+        mWebView.getSettings().setJavaScriptEnabled(true);
 
-        webview.setWebViewClient(new WebViewClient() {
+        mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
@@ -117,6 +119,20 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
         super.onDetach();
 
         mOnSignupSuccess = null;
+    }
+
+    public boolean canGoBack() {
+        if (mWebView != null) {
+            return mWebView.canGoBack();
+        }
+
+        return false;
+    }
+
+    public void goBack() {
+        if (mWebView != null && mWebView.canGoBack()) {
+            mWebView.goBack();
+        }
     }
 
     public static interface OnSignupSuccess {

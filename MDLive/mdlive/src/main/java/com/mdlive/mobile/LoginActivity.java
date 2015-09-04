@@ -70,6 +70,20 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        final Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
+        if (fragment != null && fragment instanceof  CreateAccountFragment) {
+            if (((CreateAccountFragment) fragment).canGoBack()) {
+                ((CreateAccountFragment) fragment).goBack();
+            } else {
+                super.onBackPressed();
+            }
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     public void joinNowAction(View view) {
         getSupportFragmentManager().beginTransaction().addToBackStack(TAG).replace(R.id.container, LoginFragment.newInstance(), TAG).commit();
     }
