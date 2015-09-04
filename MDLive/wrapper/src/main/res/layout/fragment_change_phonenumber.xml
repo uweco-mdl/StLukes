@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/phone_number"
+        android:tag="phone_number"
+        android:textColor="@color/darkblack"
+        android:textSize="17sp" />
+
+    <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/myChangeProfileInfoLayoutStyle"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="4dp">
+
+        <RelativeLayout style="@style/common_style_W_Match_H_Wrap">
+
+            <TextView
+                android:id="@+id/phoneNumberView"
+                style="@style/myChangeProfileInfoTextStyle"
+                android:text="@string/phone_number_caps"
+                android:tag="phone_number_caps"/>
+
+            <EditText
+                android:id="@+id/phoneNumber"
+                style="@style/myChangeProfileInfoValueStyle"
+                android:layout_below="@id/phoneNumberView"
+                android:cursorVisible="true"
+                android:background="@color/white"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/myChangeProfileInfoLayoutStyle"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="4dp">
+
+        <RelativeLayout style="@style/common_style_W_Match_H_Wrap">
+
+            <TextView
+                android:id="@+id/emergencyContactNumberView"
+                style="@style/myChangeProfileInfoTextStyle"
+                android:text="@string/emergency_contact_number_caps"
+                android:tag="emergency_contact_number_caps"/>
+
+            <EditText
+                android:id="@+id/emergencyContactNumber"
+                style="@style/myChangeProfileInfoValueStyle"
+                android:layout_below="@id/emergencyContactNumberView"
+                android:background="@color/white"
+                android:cursorVisible="true"
+                />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

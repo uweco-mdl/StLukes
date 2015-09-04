@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/banner">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/button_height_48_dp"
+            android:orientation="vertical">
+
+            <!--<com.mdlive.unifiedmiddleware.commonclasses.customUi.CircularNetworkImageView-->
+                <!--android:id="@+id/dash_board_circular_image_view"-->
+                <!--android:layout_width="@dimen/dimen_64_dp"-->
+                <!--android:layout_height="@dimen/dimen_64_dp"-->
+                <!--android:src="@null"-->
+                <!--android:scaleType="centerCrop"/>-->
+
+            <Spinner
+                android:id="@+id/dash_board_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <include android:id="@+id/dash_board_notification_layout"
+            layout="@layout/include_dash_board_notification"/>
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/dimen_8_dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+            <include
+                layout="@layout/home_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/dash_board_email_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height_48_dp"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height_48_dp"
+            android:orientation="horizontal"
+            android:background="@color/red_theme_primary"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/email_unconfirmed"
+                android:tag="email_unconfirmed"
+                android:textColor="@color/white"
+                android:clickable="true"
+                android:onClick="onEmailUnconfirmClicked"
+                android:drawableLeft="@drawable/notification_alert_icon"
+                android:drawablePadding="@dimen/dimen_8_dp"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
