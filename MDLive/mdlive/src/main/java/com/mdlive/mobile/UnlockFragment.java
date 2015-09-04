@@ -74,6 +74,13 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        mPassCode7.requestFocus();
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
 
@@ -88,7 +95,6 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
         mPassCode4 = (ToggleButton) changePin.findViewById(R.id.passCode4);
         mPassCode5 = (ToggleButton) changePin.findViewById(R.id.passCode5);
         mPassCode6 = (ToggleButton) changePin.findViewById(R.id.passCode6);
-
         mPassCode7 = (EditText) changePin.findViewById(R.id.etPasscode);
 
         mPassCode7.addTextChangedListener(this);

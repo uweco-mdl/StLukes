@@ -59,7 +59,6 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
         try {
             mOnCreatePinSucessful = (OnCreatePinSucessful) activity;
         } catch (ClassCastException cce) {
@@ -78,6 +77,12 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
         super.onViewCreated(view, savedInstanceState);
 
         init(view);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mPassCode7.requestFocus();
     }
 
     @Override

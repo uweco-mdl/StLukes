@@ -69,6 +69,13 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        mPassCode7.requestFocus();
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
 
