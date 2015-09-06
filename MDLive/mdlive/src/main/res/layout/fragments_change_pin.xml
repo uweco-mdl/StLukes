@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dimen_24_dp"
-        android:text="@string/please_create_a_6_digit_pin"
+        android:text="@string/mdl_please_create_a_6_digit_pin"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
@@ -125,7 +125,7 @@
             android:gravity="center"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dimen_16_dp"
-            android:text="@string/access_your_phone_using_pin"
+            android:text="@string/mdl_access_your_phone_using_pin"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dimen_24_dp"
-            android:text="@string/i_dont_want_to_use_pin"
+            android:text="@string/mdl_i_dont_want_to_use_pin"
             android:textColor="@color/card_details_text_color"
             android:textSize="15sp" />
 
@@ -145,7 +145,7 @@
             android:gravity="center"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dimen_4_dp"
-            android:text="@string/you_can_enable_your_screen"
+            android:text="@string/mdl_you_can_enable_your_screen"
             android:textColor="@color/grey_txt"
             android:textSize="14sp" />
     </LinearLayout>

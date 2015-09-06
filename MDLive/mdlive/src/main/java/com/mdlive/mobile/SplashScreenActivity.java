@@ -117,10 +117,10 @@ public class SplashScreenActivity extends Activity {
      * */
     private void showLaterInstall(final String version) {
         MdliveUtils.showDialog(SplashScreenActivity.this,
-                getString(R.string.app_name),
-                getString(R.string.new_version, version),
-                getString(R.string.install),
-                getString(R.string.later),
+                getString(R.string.mdl_app_name),
+                getString(R.string.mdl_application_new_version, version),
+                getString(R.string.mdl_application_install),
+                getString(R.string.mdl_application_later),
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -139,9 +139,9 @@ public class SplashScreenActivity extends Activity {
      * */
     private void showInstall(final String version) {
         MdliveUtils.showDialog(SplashScreenActivity.this,
-                getString(R.string.app_name),
-                getString(R.string.new_version, version),
-                getString(R.string.install),
+                getString(R.string.mdl_app_name),
+                getString(R.string.mdl_application_new_version, version),
+                getString(R.string.mdl_application_install),
                 null,
                 new DialogInterface.OnClickListener() {
                     @Override

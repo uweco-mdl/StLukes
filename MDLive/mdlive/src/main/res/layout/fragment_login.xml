@@ -34,7 +34,7 @@
                     android:layout_marginRight="@dimen/dimen_4_dp"
                     android:layout_weight="1"
                     android:background="@color/transparent"
-                    android:hint="@string/username_or_email"
+                    android:hint="@string/mdl_username_or_email"
                     android:imeOptions="actionNext"
                     android:singleLine="true"
                     android:tag="username"
@@ -50,7 +50,7 @@
                     android:gravity="right"
                     android:onClick="onForgotUserNameClicked"
                     android:tag="forgot_username"
-                    android:text="@string/forgot_username"
+                    android:text="@string/mdl_forgot_username"
                     android:textColor="@color/card_details_text_color"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -69,7 +69,7 @@
                     android:layout_marginRight="@dimen/dimen_4_dp"
                     android:layout_weight="1"
                     android:background="@color/transparent"
-                    android:hint="@string/password"
+                    android:hint="@string/mdl_password"
                     android:imeOptions="actionDone"
                     android:password="true"
                     android:singleLine="true"
@@ -86,7 +86,7 @@
                     android:gravity="right"
                     android:onClick="onForgotPasswordClicked"
                     android:tag="forgot_password"
-                    android:text="@string/forgot_password"
+                    android:text="@string/mdl_forgot_password"
                     android:textColor="@color/card_details_text_color"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -100,7 +100,7 @@
                 android:gravity="center"
                 android:onClick="onSignInClicked"
                 android:tag="sign_in"
-                android:text="@string/sign_in"
+                android:text="@string/mdl_sign_in"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -127,7 +127,7 @@
                     android:layout_marginLeft="@dimen/dimen_4_dp"
                     android:layout_marginRight="@dimen/dimen_4_dp"
                     android:tag="or"
-                    android:text="@string/or"
+                    android:text="@string/mdl_or_upper"
                     android:textColor="@color/gray_6" />
 
                 <View
@@ -147,7 +147,7 @@
                 android:gravity="center"
                 android:onClick="onCreateFreeAccountClicked"
                 android:tag="create_free_account"
-                android:text="@string/create_free_account"
+                android:text="@string/mdl_create_free_account"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="18sp" />

@@ -31,7 +31,7 @@
                 android:layout_centerVertical="true"
                 android:clickable="true"
                 android:onClick="onSignUpClicked"
-                android:text="@string/sign_up"
+                android:text="@string/mdl_sign_up"
                 android:textColor="@color/blue_text_color"
                 android:textSize="@dimen/toolbar_text_size_menu" />
         </FrameLayout>
@@ -53,7 +53,7 @@
                 android:layout_marginRight="@dimen/dimen_16_dp"
                 android:clickable="true"
                 android:onClick="onForgotPinClicked"
-                android:text="@string/forgot_your_pin"
+                android:text="@string/mdl_forgot_your_pin"
                 android:textColor="@color/blue_text_color"
                 android:textSize="@dimen/toolbar_text_size_menu" />
         </FrameLayout>
