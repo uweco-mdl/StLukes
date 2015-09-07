@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="dash_board_icon_width">60dp</dimen>
-    <dimen name="dash_board_icon_height">60dp</dimen>
-
-    <dimen name="login_container_top_margin">280dp</dimen>
-</resources>
