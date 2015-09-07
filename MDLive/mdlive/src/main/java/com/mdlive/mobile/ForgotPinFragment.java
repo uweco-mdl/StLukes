@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mdlive.embedkit.R;
-
 /**
  * Created by dhiman_da on 8/27/2015.
  */

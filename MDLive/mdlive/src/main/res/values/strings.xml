@@ -10,17 +10,24 @@
 
     <string name="mdl_application_enter_your_pin_to_unlock">Enter Your PIN to unlock</string>
     <string name="mdl_application_sign_in_with_user_name_and_password">Sign in with Username and Password</string>
+    <string name="mdl_application_please_enter_mandetory_fileds">Please enter all mandatory fields.</string>
 
     <string name="mdl_application_please_create_a_6_digit_pin">Please create a 6 digit PIN</string>
+    <string name="mdl_application_please_confirm_your_pin">Please confirm your PIN</string>
+    <string name="mdl_application_pin_mismatch">Create pin and confirm pin must be same</string>
+    <string name="mdl_application_pin_creation_failed">Pin creation failed</string>
     <string name="mdl_application_access_your_phone_using_pin">Access your account on this phone using this PIN\ninstead of a username and password.</string>
     <string name="mdl_application_i_dont_want_to_use_pin">I dont want to use a PIN</string>
     <string name="mdl_application_you_can_enable_your_screen">(You can enable PIN later in My Account)</string>
 
     <string name="mdl_application_sign_up">Sign Up</string>
     <string name="mdl_application_forgot_your_pin">Forgot Your Pin?</string>
+    <string name="mdl_application_forgot_pin">Forgot pin</string>
 
     <string name="mdl_application_install">Install</string>
     <string name="mdl_application_later">Later</string>
 
     <string name="mdl_application_new_version">A new version of MDLive (%1$s) is available. You must install the newer version in order to continue.</string>
+
+    <string name="mdl_application_gcm_project_id"></string>
 </resources>

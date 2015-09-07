@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ToggleButton;
 
 import com.android.volley.VolleyError;
-import com.mdlive.embedkit.R;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
 import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
@@ -27,7 +26,6 @@ import org.json.JSONObject;
  * Created by dhiman_da on 8/22/2015.
  */
 public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, View.OnClickListener {
-    private static final String PIN_TAG = "PIN";
 
     private OnUnlockSucessful mOnUnlockSucessful;
 

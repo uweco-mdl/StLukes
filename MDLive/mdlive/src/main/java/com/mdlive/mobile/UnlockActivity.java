@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.mdlive.embedkit.R;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.mobile.CreateAccountFragment.OnSignupSuccess;
 import com.mdlive.mobile.UnlockFragment.OnUnlockSucessful;
@@ -136,7 +135,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
         findViewById(R.id.sign_up).setVisibility(View.GONE);
         findViewById(R.id.forgot_pin).setVisibility(View.GONE);
         findViewById(R.id.headerTxt).setVisibility(View.VISIBLE);
-        ((TextView) findViewById(R.id.headerTxt)).setText(getString(R.string.mdl_forgot_pin).toUpperCase());
+        ((TextView) findViewById(R.id.headerTxt)).setText(getString(R.string.mdl_application_forgot_pin).toUpperCase());
     }
 
     private void clearMinimizedTime() {

@@ -12,6 +12,11 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <!-- [START gcm_permission] -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- [END gcm_permission] -->
+
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -70,6 +75,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/MDLive_Red_Theme" />
 
+        <!-- [Login Broadcast Receiver will be received from Embed kit layer] -->
         <receiver
             android:name=".LoginBroadcastReceiver"
             android:enabled="true"
@@ -79,6 +85,7 @@
             </intent-filter>
         </receiver>
 
+        <!-- [Unlock Broadcast Receiver will be received from Embed kit layer] -->
         <receiver
             android:name=".UnlockBroadcastReceiver"
             android:enabled="true"
@@ -87,6 +94,41 @@
                 <action android:name="com.mdlive.mobile.UnlockBroadcastReceiver"/>
             </intent-filter>
         </receiver>
+
+        <!-- [START gcm_receiver] -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.mdlive.mobile" />
+            </intent-filter>
+        </receiver>
+        <!-- [END gcm_receiver] -->
+
+        <!-- [START gcm_listener] -->
+        <service
+            android:name="com.mdlive.mobile.MDLiveGCMListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <!-- [END gcm_listener] -->
+        <!-- [START instanceId_listener] -->
+        <service
+            android:name="com.mdlive.mobile.MDLiveInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID"/>
+            </intent-filter>
+        </service>
+        <!-- [END instanceId_listener] -->
+        <service
+            android:name="com.mdlive.mobile.MDLiveRegistrationIntentService"
+            android:exported="false">
+        </service>
     </application>
 
 </manifest>

@@ -2,12 +2,21 @@ package com.mdlive.mobile;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
 import com.android.volley.VolleyError;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.mdlive.embedkit.global.MDLiveConfig;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
@@ -21,7 +30,11 @@ import org.json.JSONObject;
  */
 
 public class SplashScreenActivity extends Activity {
+    private static final String TAG = "SplashScreenActivity";
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+
     private ProgressDialog mProgressDialog;
+    private BroadcastReceiver mRegistrationBroadcastReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,19 +43,36 @@ public class SplashScreenActivity extends Activity {
 
         mProgressDialog = MdliveUtils.getFullScreenProgressDialog(this);
 
+        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                final SharedPreferences sharedPreferences =
+                        PreferenceManager.getDefaultSharedPreferences(context);
+                final boolean sentToken = sharedPreferences
+                        .getBoolean(MDLiveGCMPreference.MDLIVE_SENT_TOKEN_TO_SERVER, false);
+
+                Log.d(TAG, "Token Sent to MDLive : " + sentToken);
+            }
+        };
+
         /* Pass 1 for Dev env,Pass 2 for QA env, Pass 3 for Stage env, Pass 4 for Prod env, 5 for Pluto*/
         MDLiveConfig.setData(3);
 
+        registerGCMForMDLiveApplication();
         makeUpdateAlertCall();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(MDLiveGCMPreference.MDLIVE_REGISTRATION_COMPLETE));
     }
 
     @Override
     public void onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
         super.onPause();
     }
 
@@ -87,7 +117,7 @@ public class SplashScreenActivity extends Activity {
             }
         };
 
-        UpgradeAlert service = new UpgradeAlert(SplashScreenActivity.this, mProgressDialog);
+        UpgradeAlert service = new UpgradeAlert(this, mProgressDialog);
         service.upgradeAlertService(successCallBackListener, errorListener, null);
     }
 
@@ -106,7 +136,7 @@ public class SplashScreenActivity extends Activity {
                 startActivity(intent);
             }
         } else {
-            intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+            intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
         finish();
@@ -116,7 +146,7 @@ public class SplashScreenActivity extends Activity {
      * Shows Install/ Later Alert dialog
      * */
     private void showLaterInstall(final String version) {
-        MdliveUtils.showDialog(SplashScreenActivity.this,
+        MdliveUtils.showDialog(this,
                 getString(R.string.mdl_app_name),
                 getString(R.string.mdl_application_new_version, version),
                 getString(R.string.mdl_application_install),
@@ -138,7 +168,7 @@ public class SplashScreenActivity extends Activity {
      * Shows Install Alert dialog
      * */
     private void showInstall(final String version) {
-        MdliveUtils.showDialog(SplashScreenActivity.this,
+        MdliveUtils.showDialog(this,
                 getString(R.string.mdl_app_name),
                 getString(R.string.mdl_application_new_version, version),
                 getString(R.string.mdl_application_install),
@@ -149,6 +179,37 @@ public class SplashScreenActivity extends Activity {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(UpgradeAlert.APP_PLAY_STORE_URI)));
                     }
                 }, null);
+    }
+
+    /**
+     * Start the GCM registration service
+     * */
+    private void registerGCMForMDLiveApplication() {
+        if (checkPlayServices()) {
+            final Intent intent = new Intent(this, MDLiveRegistrationIntentService.class);
+            startService(intent);
+        }
+    }
+
+    /**
+     * Checks if proper version of google play service is installed or not.
+     * If need to update the google play services, then promts the user with
+     * Google Play services update dialog
+     *
+     * If Google play services is not installed then shuts down the application
+     * */
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            } else {
+                finish();
+            }
+            return false;
+        }
+        return true;
     }
 }
 

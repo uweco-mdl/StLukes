@@ -9,10 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.mdlive.embedkit.R;
-import com.mdlive.mobile.CreatePinFragment.OnCreatePinCompleted;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.mobile.ConfirmPinFragment.OnCreatePinSucessful;
+import com.mdlive.mobile.CreatePinFragment.OnCreatePinCompleted;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 
 /**
@@ -55,13 +54,12 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
 
     @Override
     public void onClickNoPin() {
+        MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_password));
         startDashboard();
     }
 
     @Override
     public void startDashboard() {
-        MdliveUtils.setLockType(getBaseContext(), "password");
-
         final Intent dashboard = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
         startActivity(dashboard);
         finish();

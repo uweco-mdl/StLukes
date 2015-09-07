@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.mdlive.embedkit.R;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 
 /**
@@ -97,7 +96,7 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
         mPassCode7.requestFocus();
 
         mTitleTextView = (TextView) changePin.findViewById(R.id.fragment_change_pin_text_view);
-        mTitleTextView.setText(R.string.mdl_please_create_a_6_digit_pin);
+        mTitleTextView.setText(R.string.mdl_application_please_create_a_6_digit_pin);
 
         changePin.findViewById(R.id.dont_use_pin_text_view).setOnClickListener(new View.OnClickListener() {
             @Override
