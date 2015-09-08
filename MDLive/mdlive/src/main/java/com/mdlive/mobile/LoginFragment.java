@@ -17,6 +17,7 @@ import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
 import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
+import com.mdlive.unifiedmiddleware.services.login.GCMRegisterService;
 import com.mdlive.unifiedmiddleware.services.login.LoginService;
 
 import org.json.JSONException;
@@ -127,7 +128,7 @@ public class LoginFragment extends MDLiveBaseFragment{
             hideProgressDialog();
 
             if(response.getString("msg").equalsIgnoreCase("Success")) {
-                logD("Login", "Login Sucessful : " + response.toString().trim());
+                logD("Login", "Login Successful : " + response.toString().trim());
 
                 // For saving the device token
                 SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
@@ -141,17 +142,73 @@ public class LoginFragment extends MDLiveBaseFragment{
                 editor.putString(PreferenceConstants.USER_UNIQUE_ID, response.getString("uniqueid"));
                 editor.commit();
 
-                if (mOnLoginResponse != null) {
-                    mOnLoginResponse.onLoginSucess();
+                if (MDLiveGCMPreference.MDLIVE_GCM_INSTANCE_ID != null
+                        && MDLiveGCMPreference.MDLIVE_GCM_INSTANCE_ID.length() > 0) {
+                    sendGCMInstanceId();
+                } else {
+                    if (mOnLoginResponse != null) {
+                        mOnLoginResponse.onLoginSucess();
+                    }
                 }
-            }
-
-            else {
-                MdliveUtils.showDialog(getActivity(),getActivity().getString(R.string.mdl_app_name), getActivity().getString(R.string.mdl_please_enter_valid_fileds));
+            } else {
+                MdliveUtils.showDialog(getActivity(),getActivity().getString(R.string.mdl_app_name), response.getString("token"));
             }
 
         } catch (Exception e) {
             logE("Error", e.getMessage());
+            MdliveUtils.showDialog(getActivity(), getActivity().getString(R.string.mdl_app_name), getActivity().getString(R.string.mdl_please_enter_valid_fileds));
+        }
+    }
+
+    private void sendGCMInstanceId() {
+        showProgressDialog();
+
+        try {
+            final SharedPreferences preferences = getActivity().getSharedPreferences(PreferenceConstants.DEVICE_OS, Context.MODE_PRIVATE);
+            final SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(PreferenceConstants.DEVICE_OS_KEY, "Android");
+            editor.commit();
+
+            final JSONObject jsonObject = new JSONObject();
+            jsonObject.put("uuid", MDLiveGCMPreference.MDLIVE_GCM_INSTANCE_ID);
+            jsonObject.put("device_type", "Android");
+
+            NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    editor.clear().apply();
+                    editor.commit();
+
+                    hideProgressDialog();
+                    logD("GCM", response.optString("message"));
+
+
+                    if (mOnLoginResponse != null) {
+                        mOnLoginResponse.onLoginSucess();
+                    }
+                }
+            };
+
+            NetworkErrorListener errorListener = new NetworkErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    editor.clear().apply();
+                    editor.commit();
+
+                    logD("GCM", "Not registered");
+
+                    hideProgressDialog();
+
+                    if (mOnLoginResponse != null) {
+                        mOnLoginResponse.onLoginSucess();
+                    }
+                }
+            };
+
+            GCMRegisterService service = new GCMRegisterService(getActivity(), getProgressDialog());
+            service.register(successCallBackListener, errorListener, jsonObject.toString());
+        } catch (JSONException e) {
+
         }
     }
 

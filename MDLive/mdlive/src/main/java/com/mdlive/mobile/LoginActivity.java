@@ -11,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mdlive.embedkit.global.MDLiveConfig;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.mobile.CreateAccountFragment.OnSignupSuccess;
 import com.mdlive.mobile.LoginFragment.OnLoginResponse;
@@ -47,9 +46,6 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        /* Pass 1 for Dev env,Pass 2 for QA env, Pass 3 for Stage env, Pass 4 for Prod env, 5 for Pluto*/
-        MDLiveConfig.setData(3);
 
         LocalizationSingleton.localiseLayout(this,(ViewGroup) ((ViewGroup) this
                 .findViewById(android.R.id.content)).getChildAt(0));

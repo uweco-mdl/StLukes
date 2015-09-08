@@ -29,5 +29,5 @@
 
     <string name="mdl_application_new_version">A new version of MDLive (%1$s) is available. You must install the newer version in order to continue.</string>
 
-    <string name="mdl_application_gcm_project_id"></string>
+    <string name="mdl_application_gcm_project_id">302862571217</string>
 </resources>
