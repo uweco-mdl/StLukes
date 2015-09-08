@@ -17,10 +17,14 @@ import android.util.Log;
 import com.android.volley.VolleyError;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.gson.Gson;
 import com.mdlive.embedkit.global.MDLiveConfig;
+import com.mdlive.mobile.MDLiveUtils.DeepLinkUtils;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
+import com.mdlive.unifiedmiddleware.parentclasses.bean.response.DeepLink;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
 import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
+import com.mdlive.unifiedmiddleware.services.login.DeeplinkService;
 import com.mdlive.unifiedmiddleware.services.login.UpgradeAlert;
 
 import org.json.JSONObject;
@@ -31,8 +35,9 @@ import org.json.JSONObject;
 
 public class SplashScreenActivity extends Activity {
     private static final String TAG = "SplashScreenActivity";
+    private String upgradeOption="";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-
+    private boolean syncTaskCompleted = false;
     private ProgressDialog mProgressDialog;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
 
@@ -60,6 +65,7 @@ public class SplashScreenActivity extends Activity {
 
         registerGCMForMDLiveApplication();
         makeUpdateAlertCall();
+        makeDeeplinkCall();
     }
 
     @Override
@@ -85,22 +91,24 @@ public class SplashScreenActivity extends Activity {
      *  Making Upgrad alert call
      * */
     private void makeUpdateAlertCall() {
-        mProgressDialog.show();
+//        mProgressDialog.show();
 
         NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                mProgressDialog.dismiss();
+//                mProgressDialog.dismiss();
 
                 try {
                     if (MdliveUtils.isHigherVersionPresent(response.optString("latest_version"), BuildConfig.VERSION_NAME)) {
-                        if (response.optString("upgrade").equalsIgnoreCase("force")) {
-                            showInstall(response.optString("latest_version"));
-                        } else {
-                            showLaterInstall(response.optString("latest_version"));
-                        }
+                        upgradeOption = response.optString("upgrade");
                     } else {
-                        startNexActivity();
+                        upgradeOption = "";
+                    }
+                    // If the deep-link service call also completed in parallel then redirect the user to next step.
+                    if(syncTaskCompleted){
+                        startNextActivity();
+                    }else{
+                        syncTaskCompleted = true;
                     }
                 } catch (Exception e) {
                     startNexActivity();
@@ -112,7 +120,7 @@ public class SplashScreenActivity extends Activity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                mProgressDialog.hide();
+//                mProgressDialog.dismiss();
                 MdliveUtils.handelVolleyErrorResponse(SplashScreenActivity.this, error, mProgressDialog);
             }
         };
@@ -120,7 +128,17 @@ public class SplashScreenActivity extends Activity {
         UpgradeAlert service = new UpgradeAlert(this, mProgressDialog);
         service.upgradeAlertService(successCallBackListener, errorListener, null);
     }
-
+    private void startNextActivity(){
+        if(!upgradeOption.equals("")){
+            if (upgradeOption.equalsIgnoreCase("force")) {
+                showInstall(upgradeOption);
+            } else {
+                showLaterInstall(upgradeOption);
+            }
+        } else {
+            startNexActivity();
+        }
+    }
     /**
      * Start the necessary activity on MDLive Application
      * */
@@ -211,6 +229,44 @@ public class SplashScreenActivity extends Activity {
         }
         return true;
     }
+
+    /**
+     * Call the deeplink service to get the affiliate data if exists
+     *
+     * Check for the other service to finish if it finished already then redirect to next step (syncTaskCompleted)
+     *
+     * No error handling for the deeplink data been captured as this will halt the user being get into application
+     *
+     * Deeplink data stored in static variable since these data cleared when the application process killed.
+     * since the deeplink data should be cleared when the application killed or restarted and behave as normal MDLIVE
+     */
+    private void makeDeeplinkCall() {
+
+        NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                if(syncTaskCompleted){
+                    startNextActivity();
+                }else{
+                    syncTaskCompleted = true;
+                }
+                if(!response.has("error")) {
+                    final Gson gson = new Gson();
+                    DeepLink deepLink = gson.fromJson(response.toString(), DeepLink.class);
+                    DeepLinkUtils.DEEPLINK_DATA = deepLink;
+                }
+            }
+        };
+        NetworkErrorListener errorListener = new NetworkErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                // Do nothing
+            }
+        };
+        DeeplinkService service = new DeeplinkService(this, mProgressDialog);
+        service.deeplinkService(successCallBackListener, errorListener, null, DeepLinkUtils.getDeviceId(getBaseContext()));
+    }
+
 }
 
 
