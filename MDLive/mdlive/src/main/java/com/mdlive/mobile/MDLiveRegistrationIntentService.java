@@ -4,7 +4,6 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -30,19 +29,12 @@ public class MDLiveRegistrationIntentService extends IntentService {
                     GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
 
             Log.d(TAG, "GCM Registration Token: " + token);
-            sendRegistrationToMDLiveServer(token);
+            MDLiveGCMPreference.MDLIVE_GCM_INSTANCE_ID = token;
 
-            sharedPreferences.edit().putBoolean(MDLiveGCMPreference.MDLIVE_SENT_TOKEN_TO_SERVER, true).apply();
+            sharedPreferences.edit().putBoolean(MDLiveGCMPreference.MDLIVE_SENT_TOKEN_TO_SERVER, false).apply();
         } catch (Exception e) {
             Log.d(TAG, "Failed to complete token refresh", e);
             sharedPreferences.edit().putBoolean(MDLiveGCMPreference.MDLIVE_SENT_TOKEN_TO_SERVER, false).apply();
         }
-
-        Intent registrationComplete = new Intent(MDLiveGCMPreference.MDLIVE_REGISTRATION_COMPLETE);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(registrationComplete);
-    }
-
-    private void sendRegistrationToMDLiveServer(final String token) {
-
     }
 }
