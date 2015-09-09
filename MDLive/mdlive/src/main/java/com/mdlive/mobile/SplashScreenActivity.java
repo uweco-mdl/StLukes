@@ -2,24 +2,20 @@ package com.mdlive.mobile;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 
 import com.android.volley.VolleyError;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.gson.Gson;
 import com.mdlive.embedkit.global.MDLiveConfig;
-import com.mdlive.mobile.MDLiveUtils.DeepLinkUtils;
+import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
+import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.parentclasses.bean.response.DeepLink;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
@@ -34,12 +30,9 @@ import org.json.JSONObject;
  */
 
 public class SplashScreenActivity extends Activity {
-    private static final String TAG = "SplashScreenActivity";
     private String upgradeOption="";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    private boolean syncTaskCompleted = false;
     private ProgressDialog mProgressDialog;
-    private BroadcastReceiver mRegistrationBroadcastReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,37 +41,20 @@ public class SplashScreenActivity extends Activity {
 
         mProgressDialog = MdliveUtils.getFullScreenProgressDialog(this);
 
-        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                final SharedPreferences sharedPreferences =
-                        PreferenceManager.getDefaultSharedPreferences(context);
-                final boolean sentToken = sharedPreferences
-                        .getBoolean(MDLiveGCMPreference.MDLIVE_SENT_TOKEN_TO_SERVER, false);
-
-                Log.d(TAG, "Token Sent to MDLive : " + sentToken);
-            }
-        };
-
         /* Pass 1 for Dev env,Pass 2 for QA env, Pass 3 for Stage env, Pass 4 for Prod env, 5 for Pluto*/
         MDLiveConfig.setData(3);
 
         registerGCMForMDLiveApplication();
         makeUpdateAlertCall();
-        makeDeeplinkCall();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
-        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-                new IntentFilter(MDLiveGCMPreference.MDLIVE_REGISTRATION_COMPLETE));
     }
 
     @Override
     public void onPause() {
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
         super.onPause();
     }
 
@@ -88,7 +64,7 @@ public class SplashScreenActivity extends Activity {
     }
 
     /**
-     *  Making Upgrad alert call
+     *  Making Upgrade alert call
      * */
     private void makeUpdateAlertCall() {
 //        mProgressDialog.show();
@@ -97,21 +73,22 @@ public class SplashScreenActivity extends Activity {
             @Override
             public void onResponse(JSONObject response) {
 //                mProgressDialog.dismiss();
-
                 try {
                     if (MdliveUtils.isHigherVersionPresent(response.optString("latest_version"), BuildConfig.VERSION_NAME)) {
                         upgradeOption = response.optString("upgrade");
                     } else {
                         upgradeOption = "";
                     }
-                    // If the deep-link service call also completed in parallel then redirect the user to next step.
-                    if(syncTaskCompleted){
-                        startNextActivity();
-                    }else{
-                        syncTaskCompleted = true;
-                    }
+
+                    /**
+                     * Calls Deeplink service
+                     * */
+                    makeDeeplinkCall();
                 } catch (Exception e) {
-                    startNexActivity();
+                    /**
+                     * Calls Deeplink service
+                     * */
+                    makeDeeplinkCall();
                 }
             }
         };
@@ -120,14 +97,20 @@ public class SplashScreenActivity extends Activity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-//                mProgressDialog.dismiss();
-                MdliveUtils.handelVolleyErrorResponse(SplashScreenActivity.this, error, mProgressDialog);
+                /**
+                 * Calls Deeplink service
+                 * */
+                makeDeeplinkCall();
             }
         };
 
         UpgradeAlert service = new UpgradeAlert(this, mProgressDialog);
         service.upgradeAlertService(successCallBackListener, errorListener, null);
     }
+
+    /**
+     * Show only Install or Install/Later option depending on upgrade options type
+     * */
     private void startNextActivity(){
         if(!upgradeOption.equals("")){
             if (upgradeOption.equalsIgnoreCase("force")) {
@@ -241,30 +224,57 @@ public class SplashScreenActivity extends Activity {
      * since the deeplink data should be cleared when the application killed or restarted and behave as normal MDLIVE
      */
     private void makeDeeplinkCall() {
+        /**
+         * Clears the Deep link data, then loads then tries to load the new deeplink data
+         * */
+        DeepLinkUtils.DEEPLINK_DATA = null;
+
+        /**
+         * Getting the Deeplink id for the running device
+         * */
+        final String deeplinkId = DeepLinkUtils.getDeviceId(getBaseContext());
+
+        /**
+         * Saves the deeplink Id to shared preference, as it is needed as header for deep link url request
+         * */
+        final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.DEVICE_ID, Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PreferenceConstants.DEVICE_ID_KEY, deeplinkId);
+        editor.commit();
 
         NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                if(syncTaskCompleted){
-                    startNextActivity();
-                }else{
-                    syncTaskCompleted = true;
-                }
+                /**
+                 * Clears the deeplink id from shared preference, as this header is not required anymore.
+                 * And saves the deep link data
+                 * */
+                editor.clear().apply();
+                editor.commit();
                 if(!response.has("error")) {
                     final Gson gson = new Gson();
                     DeepLink deepLink = gson.fromJson(response.toString(), DeepLink.class);
                     DeepLinkUtils.DEEPLINK_DATA = deepLink;
                 }
+
+                startNextActivity();
             }
         };
         NetworkErrorListener errorListener = new NetworkErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                // Do nothing
+                /**
+                 * Clears the deeplink id from shared preference, as this header is not required anymore.
+                 * And strats the next activity
+                 * */
+                editor.clear().apply();
+                editor.commit();
+                startNextActivity();
             }
         };
+
         DeeplinkService service = new DeeplinkService(this, mProgressDialog);
-        service.deeplinkService(successCallBackListener, errorListener, null, DeepLinkUtils.getDeviceId(getBaseContext()));
+        service.deeplinkService(successCallBackListener, errorListener, null, deeplinkId);
     }
 
 }

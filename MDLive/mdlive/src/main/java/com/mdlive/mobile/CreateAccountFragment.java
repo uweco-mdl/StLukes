@@ -14,6 +14,7 @@ import android.webkit.WebViewClient;
 
 import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
+import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
@@ -61,7 +62,16 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         mWebView = (WebView) view.findViewById(R.id.webView);
-        mWebView.loadUrl(AppSpecificConfig.URL_SIGN_UP);
+
+        /**
+         * Loads Deeplink url is deeplink is available otherwise
+         * loads the standard  sign up url
+         * */
+        if (DeepLinkUtils.DEEPLINK_DATA != null && !DeepLinkUtils.DEEPLINK_DATA.getRegistrationUrl().isEmpty()) {
+            mWebView.loadUrl(DeepLinkUtils.DEEPLINK_DATA.getRegistrationUrl());
+        } else {
+            mWebView.loadUrl(AppSpecificConfig.URL_SIGN_UP);
+        }
         mWebView.getSettings().setJavaScriptEnabled(true);
 
         mWebView.setWebViewClient(new WebViewClient() {
