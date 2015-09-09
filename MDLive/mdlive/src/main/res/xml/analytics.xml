@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<resources>
+    <!--Replace placeholder ID with your tracking ID old UA-50076077-1 -->
+    <!--   Stage - UA-59678541-1 , Dev - UA-59666445-1 , QA - UA-59663838-1 , Prod - UA-52183043-1    -->
+    <string name="ga_trackingId">UA-52183043-1</string>
+    <!--Enable automatic exception tracking-->
+    <bool name="ga_reportUncaughtExceptions">false</bool>
+    <!--Enable automatic activity tracking-->
+    <bool name="ga_autoActivityTracking">true</bool>
+
+</resources>
