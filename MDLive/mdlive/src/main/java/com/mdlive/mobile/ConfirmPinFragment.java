@@ -81,7 +81,9 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         mPassCode7.requestFocus();
+        MdliveUtils.showSoftKeyboard(getActivity(), mPassCode7);
     }
 
     @Override
