@@ -69,6 +69,7 @@
             android:name=".PinActivity"
             android:screenOrientation="portrait"
             android:noHistory="true"
+            android:windowSoftInputMode="stateVisible"
             android:theme="@style/MDLive_Red_Theme"/>
 
         <activity

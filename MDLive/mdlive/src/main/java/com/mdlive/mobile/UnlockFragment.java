@@ -75,7 +75,9 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        MdliveUtils.showSoftKeyboard(getActivity(), mPassCode7);
         mPassCode7.requestFocus();
+        mPassCode7.requestFocusFromTouch();
     }
 
     @Override
