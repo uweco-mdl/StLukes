@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
@@ -65,6 +68,15 @@ public class LoginFragment extends MDLiveBaseFragment{
 
         mUserNameEditText = (EditText)view.findViewById(R.id.userName);
         mPasswordEditText = (EditText)view.findViewById(R.id.password);
+        mPasswordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    loginService();
+                }
+                return true;
+            }
+        });
     }
 
     @Override
