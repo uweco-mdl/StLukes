@@ -26,6 +26,8 @@ import com.mdlive.unifiedmiddleware.services.login.LoginService;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static android.widget.TextView.OnEditorActionListener;
+
 /**
  * Created by dhiman_da on 7/15/2015.
  */
@@ -68,13 +70,17 @@ public class LoginFragment extends MDLiveBaseFragment{
 
         mUserNameEditText = (EditText)view.findViewById(R.id.userName);
         mPasswordEditText = (EditText)view.findViewById(R.id.password);
-        mPasswordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mPasswordEditText.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                if (actionId == EditorInfo.IME_ACTION_DONE ||
+                        event.getAction() == KeyEvent.ACTION_DOWN &&
+                                event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    MdliveUtils.hideKeyboard(mPasswordEditText.getContext(), mPasswordEditText);
                     loginService();
+                    return true;
                 }
-                return true;
+                return false;
             }
         });
     }
