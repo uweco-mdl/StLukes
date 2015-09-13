@@ -33,6 +33,7 @@
                 android:onClick="onSignUpClicked"
                 android:text="@string/mdl_sign_up"
                 android:textColor="@color/blue_text_color"
+                android:fontFamily="sans-serif-medium"
                 android:textSize="@dimen/toolbar_text_size_menu" />
         </FrameLayout>
 
