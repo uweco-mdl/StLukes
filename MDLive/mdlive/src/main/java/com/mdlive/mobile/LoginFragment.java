@@ -148,11 +148,17 @@ public class LoginFragment extends MDLiveBaseFragment{
             if(response.getString("msg").equalsIgnoreCase("Success")) {
                 logD("Login", "Login Successful : " + response.toString().trim());
 
+                if ("null".equalsIgnoreCase(response.getString("uniqueid")) || response.getString("uniqueid").equalsIgnoreCase(null) || (response.getString("uniqueid") == null)) {
+                    MdliveUtils.showDialog(getActivity(),getActivity().getString(R.string.mdl_app_name), response.getString("token"));
+                    return;
+                }
+
                 // For saving the device token
+                MdliveUtils.saveDeviceToken(getActivity(), response.getString("token"));
                 SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("Device_Token", response.getString("token"));
-                editor.commit();
+//                editor.putString("Device_Token", response.getString("token"));
+//                editor.commit();
 
                 // For saving the REMOTE USER ID
                 sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);

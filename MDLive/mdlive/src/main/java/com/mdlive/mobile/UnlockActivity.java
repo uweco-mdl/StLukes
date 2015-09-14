@@ -160,7 +160,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     }
 
     @Override
-    public void onUnlockUnSiccesful() {
+    public void onUnlockUnSuccesful() {
         MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_pin_mismatch));
     }
 }
