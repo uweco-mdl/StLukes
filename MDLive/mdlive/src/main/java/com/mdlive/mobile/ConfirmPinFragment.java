@@ -1,8 +1,6 @@
 package com.mdlive.mobile;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -180,7 +178,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
             if (pin.equals(getArguments().getString(PIN_TAG))) {
                 loadConfirmPin(pin);
             } else {
-                showToast(R.string.mdl_application_pin_mismatch);
+                MdliveUtils.showDialog(getActivity(), getString(R.string.mdl_application_name), getString(R.string.mdl_application_pin_mismatch));
             }
         }
     }
@@ -205,17 +203,17 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
 
         if (createPin.equals(confirmPin)) {
             try {
-                final SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                //final SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
 
                 final JSONObject jsonObject = new JSONObject();
-                jsonObject.put("device_token", preferences.getString("Device_Token", "0"));
+                jsonObject.put("device_token", MdliveUtils.getDeviceToken(getActivity()));
                 jsonObject.put("passcode", confirmPin);
                 fetachPinWebserviceCall(jsonObject.toString());
             } catch (JSONException e) {
                 logE("Error", e.getMessage());
             }
         } else {
-            showToast(R.string.mdl_application_pin_mismatch);
+            MdliveUtils.showDialog(getActivity(), getString(R.string.mdl_application_name), getString(R.string.mdl_application_pin_mismatch));
         }
     }
 
@@ -258,7 +256,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
                     mOnCreatePinSucessful.startDashboard();
                 }
             } else {
-                showToast(R.string.mdl_application_pin_creation_failed);
+                MdliveUtils.showDialog(getActivity(), getString(R.string.mdl_application_name), getString(R.string.mdl_application_pin_creation_failed));
             }
 
         } catch (Exception e) {

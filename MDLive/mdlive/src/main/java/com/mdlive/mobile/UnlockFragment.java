@@ -1,8 +1,6 @@
 package com.mdlive.mobile;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -17,7 +15,7 @@ import com.android.volley.VolleyError;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
 import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
-import com.mdlive.unifiedmiddleware.services.login.PinCreation;
+import com.mdlive.unifiedmiddleware.services.UnlockService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -186,10 +184,10 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
 
     public void loadConfirmPin(final String confirmPin) {
         try {
-            final SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+            //final SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
 
             final JSONObject jsonObject = new JSONObject();
-            jsonObject.put("device_token", preferences.getString("Device_Token", "0"));
+            jsonObject.put("device_token", MdliveUtils.getDeviceToken(getActivity()));
             jsonObject.put("passcode", confirmPin);
             fetachPinWebserviceCall(jsonObject.toString());
         } catch (JSONException e) {
@@ -200,6 +198,8 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
     private void fetachPinWebserviceCall(String params) {
         MdliveUtils.hideKeyboard(getActivity(), (View) mPassCode7);
         showProgressDialog();
+
+        logD("Unlock screen Request", "Unlock response : " + params);
 
         NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
 
@@ -222,8 +222,8 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             }
         };
 
-        PinCreation service = new PinCreation(getActivity(), null);
-        service.createPin(successCallBackListener, errorListener, params);
+        UnlockService service = new UnlockService(getActivity(), null);
+        service.unlock(successCallBackListener, errorListener, params);
     }
 
     private void handleCreatePinSuccessResponse(JSONObject response) {
@@ -231,14 +231,15 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
         try {
             hideProgressDialog();
 
-            if (response.getString("message").equalsIgnoreCase("Success")) {
+            logD("Unlock screen response", "Unlock response : " + response.toString());
+            if (response.getString("msg").equalsIgnoreCase("Success")) {
                 if (mOnUnlockSucessful != null) {
                     mOnUnlockSucessful.onUnlockSuccesful();
                 }
             } else {
                 if (mOnUnlockSucessful != null) {
                     mPassCode7.setText("");
-                    mOnUnlockSucessful.onUnlockUnSiccesful();
+                    mOnUnlockSucessful.onUnlockUnSuccesful();
                 }
             }
 
@@ -249,6 +250,6 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
 
     public interface OnUnlockSucessful {
         void onUnlockSuccesful();
-        void onUnlockUnSiccesful();
+        void onUnlockUnSuccesful();
     }
 }

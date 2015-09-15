@@ -27,6 +27,8 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
         setContentView(R.layout.activity_pin);
         setTitle("");
 
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
+
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
