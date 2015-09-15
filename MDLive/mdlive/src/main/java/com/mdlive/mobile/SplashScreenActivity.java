@@ -2,18 +2,26 @@ package com.mdlive.mobile;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.gson.Gson;
 import com.mdlive.embedkit.global.MDLiveConfig;
+import com.mdlive.embedkit.global.MDLiveConfig.ENVIRON;
+import com.mdlive.embedkit.global.MDLiveConfig.SIGNALS;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
@@ -33,16 +41,22 @@ public class SplashScreenActivity extends Activity {
     private String upgradeOption="";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private ProgressDialog mProgressDialog;
+    ENVIRON env;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mdlive_splashscreen);
 
+        // listen for EmbedKit exit signal and respond accordingly
+        LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, new IntentFilter(SIGNALS.EXIT_SIGNAL.name()));
+
         mProgressDialog = MdliveUtils.getFullScreenProgressDialog(this);
 
-        /* Pass 1 for Dev env,Pass 2 for QA env, Pass 3 for Stage env, Pass 4 for Prod env, 5 for Pluto*/
-        MDLiveConfig.setData(3);
+        /* Select the environment type here : */
+        env = ENVIRON.STAGE;
+        // ******************************************
+        MDLiveConfig.setData(env);
 
         registerGCMForMDLiveApplication();
         makeUpdateAlertCall();
@@ -62,6 +76,27 @@ public class SplashScreenActivity extends Activity {
     public void onDestroy() {
         super.onDestroy();
     }
+
+
+    /**
+     * Listener for the EmbedKit exit signal (LocalBroadcast).
+     * Simply resume/reload this activity upon EmbedKit termination
+     */
+    private BroadcastReceiver messageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent)
+        {
+            Toast t = Toast.makeText(SplashScreenActivity.this,"< Received 'Finish' signal from EmbedKit >",Toast.LENGTH_SHORT);
+            TextView v = (TextView) t.getView().findViewById(android.R.id.message);
+            v.setTextColor(Color.CYAN);
+            t.show();
+
+            // relaunch current activity
+            Intent intentRestart = new Intent(context, SplashScreenActivity.class);
+            intentRestart.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intentRestart);
+        }
+    };
 
     /**
      *  Making Upgrade alert call
