@@ -1,7 +1,7 @@
 <resources>
     <string name="mdl_application_name">MDLIVE</string>
 
-    <string name="mdl_application_username_or_email">Username or E-mail</string>
+    <string name="mdl_application_username_or_email">Username</string>
     <string name="mdl_application_password">Password</string>
     <string name="mdl_application_forgot_username">Forgot Username</string>
     <string name="mdl_application_sign_in">Sign in</string>
@@ -14,6 +14,7 @@
 
     <string name="mdl_application_please_create_a_6_digit_pin">Please create a 6 digit PIN</string>
     <string name="mdl_application_please_confirm_your_pin">Please confirm your PIN</string>
+
     <string name="mdl_application_pin_mismatch">Confirmation PIN do not match. Please try again.</string>
     <string name="mdl_application_pin_creation_failed">Pin creation failed</string>
     <string name="mdl_application_access_your_phone_using_pin">Access your account on this phone using this PIN\ninstead of a username and password.</string>

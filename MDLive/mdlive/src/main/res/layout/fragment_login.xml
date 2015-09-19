@@ -34,7 +34,7 @@
                     android:layout_marginRight="@dimen/dimen_4_dp"
                     android:layout_weight="1"
                     android:background="@color/transparent"
-                    android:hint="@string/mdl_username_or_email"
+                    android:hint="@string/mdl_application_username_or_email"
                     android:imeOptions="actionNext"
                     android:singleLine="true"
                     android:tag="username"
@@ -53,7 +53,8 @@
                     android:tag="forgot_username"
                     android:text="@string/mdl_forgot_username"
                     android:textColor="@color/card_details_text_color"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif"/>
             </LinearLayout>
 
             <LinearLayout
@@ -90,7 +91,8 @@
                     android:tag="forgot_password"
                     android:text="@string/mdl_forgot_password"
                     android:textColor="@color/card_details_text_color"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif"/>
             </LinearLayout>
 
             <Button

@@ -115,6 +115,16 @@ public class SplashScreenActivity extends Activity {
                         upgradeOption = "";
                     }
 
+                    if(!upgradeOption.equals("")){
+                        if (upgradeOption.equalsIgnoreCase("force")) {
+                            showInstall(upgradeOption);
+                            return;
+                        } else {
+                            showLaterInstall(upgradeOption);
+                            return;
+                        }
+                    }
+
                     /**
                      * Calls Deeplink service
                      * */
