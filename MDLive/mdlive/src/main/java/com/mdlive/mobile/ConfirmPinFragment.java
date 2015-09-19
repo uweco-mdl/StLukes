@@ -1,6 +1,7 @@
 package com.mdlive.mobile;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -178,7 +179,15 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
             if (pin.equals(getArguments().getString(PIN_TAG))) {
                 loadConfirmPin(pin);
             } else {
-                MdliveUtils.showDialog(getActivity(), getString(R.string.mdl_application_name), getString(R.string.mdl_application_pin_mismatch));
+                MdliveUtils.showDialog(getActivity(), getString(R.string.mdl_application_name), getString(R.string.mdl_application_pin_mismatch), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (getActivity() != null && getActivity() instanceof  PinActivity) {
+                            dialog.dismiss();
+                            ((PinActivity) getActivity()).onTwoPasswordMismatch();
+                        }
+                    }
+                });
             }
         }
     }

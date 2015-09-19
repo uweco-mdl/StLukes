@@ -61,7 +61,7 @@
 
         <activity
             android:name=".LoginActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:screenOrientation="portrait"
             android:theme="@style/MDLive_Red_Theme"/>
 

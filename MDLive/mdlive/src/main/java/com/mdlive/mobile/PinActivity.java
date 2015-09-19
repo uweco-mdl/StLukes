@@ -44,6 +44,12 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
     }
 
     @Override
+    public void onDestroy() {
+        MdliveUtils.clearRemoteUserId(getApplicationContext());
+        super.onDestroy();
+    }
+
+    @Override
     public void onCreatePinCompleted(String pin) {
         showConfirmPinToolbar();
 
@@ -63,6 +69,7 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
 
     @Override
     public void startDashboard() {
+        MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_password));
         final Intent dashboard = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
         startActivity(dashboard);
         finish();
@@ -107,6 +114,15 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
                 }
             }
         }
+    }
+
+    public void onTwoPasswordMismatch() {
+        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+        getSupportFragmentManager().
+                beginTransaction().
+                add(R.id.container, CreatePinFragment.newInstance(), TAG).
+                commit();
     }
 
     private void showPinToolbar() {
