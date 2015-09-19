@@ -44,8 +44,13 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
     }
 
     @Override
-    public void onDestroy() {
+    public void onBackPressed() {
         MdliveUtils.clearRemoteUserId(getApplicationContext());
+        super.onBackPressed();
+    }
+
+    @Override
+    public void onDestroy() {
         super.onDestroy();
     }
 
