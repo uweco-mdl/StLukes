@@ -69,8 +69,6 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     public void onSignUpClicked(View view) {
         getSupportActionBar().hide();
 
-        MdliveUtils.hideSoftKeyboard(this);
-
         getSupportFragmentManager().
                 beginTransaction().
                 addToBackStack(TAG).
@@ -80,8 +78,6 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
     public void onForgotPinClicked(View view) {
         showForgotPinToolbar();
-
-        MdliveUtils.hideSoftKeyboard(this);
 
         getSupportFragmentManager().
                 beginTransaction().

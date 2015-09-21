@@ -1,7 +1,6 @@
 package com.mdlive.mobile;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -9,7 +8,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -20,7 +19,7 @@ import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
  * Created by dhiman_da on 7/23/2015.
  */
 
-public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher, View.OnClickListener {
+public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher {
     private OnCreatePinCompleted mOnCreatePinCompleted;
 
     private ToggleButton mPassCode1 = null;
@@ -32,7 +31,20 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
 
     private EditText mPassCode7 = null;
 
+    private Button mButton1;
+    private Button mButton2;
+    private Button mButton3;
+    private Button mButton4;
+    private Button mButton5;
+    private Button mButton6;
+    private Button mButton7;
+    private Button mButton8;
+    private Button mButton9;
+    private Button mButton0;
+    private View mButtonCross;
+
     private TextView mTitleTextView;
+    private StringBuffer mStringBuffer;
 
     public CreatePinFragment() {
         super();
@@ -70,11 +82,6 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        mPassCode7.requestFocusFromTouch();
-        mPassCode7.setFocusableInTouchMode(true);
-        mPassCode7.requestFocus();
-        MdliveUtils.showSoftKeyboard(getActivity(), mPassCode7);
     }
 
     @Override
@@ -85,6 +92,7 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     }
 
     public void init(View changePin) {
+        mStringBuffer = new StringBuffer();
 
         mPassCode1 = (ToggleButton) changePin.findViewById(R.id.passCode1);
         mPassCode2 = (ToggleButton) changePin.findViewById(R.id.passCode2);
@@ -109,6 +117,132 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
                 }
             }
         });
+
+        mButton0 = (Button) changePin.findViewById(R.id.num_pad_0);
+        if (mButton0 != null) {
+            mButton0.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mStringBuffer.append(mButton0.getText().toString().trim());
+                    mPassCode7.setText(mStringBuffer.toString());
+                }
+            });
+        }
+
+        mButton1 = (Button) changePin.findViewById(R.id.num_pad_1);
+        if (mButton1 != null) {
+            mButton1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mStringBuffer.append(mButton1.getText().toString().trim());
+                    mPassCode7.setText(mStringBuffer.toString());
+                }
+            });
+        }
+
+        mButton2 = (Button) changePin.findViewById(R.id.num_pad_2);
+        if (mButton2 != null) {
+            mButton2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mStringBuffer.append(mButton2.getText().toString().trim());
+                    mPassCode7.setText(mStringBuffer.toString());
+                }
+            });
+        }
+
+        mButton3 = (Button) changePin.findViewById(R.id.num_pad_3);
+        if (mButton3 != null) {
+            mButton3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mStringBuffer.append(mButton3.getText().toString().trim());
+                    mPassCode7.setText(mStringBuffer.toString());
+                }
+            });
+        }
+
+        mButton4 = (Button) changePin.findViewById(R.id.num_pad_4);
+        if (mButton4 != null) {
+            mButton4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mStringBuffer.append(mButton4.getText().toString().trim());
+                    mPassCode7.setText(mStringBuffer.toString());
+                }
+            });
+        }
+
+        mButton5 = (Button) changePin.findViewById(R.id.num_pad_5);
+        if (mButton5 != null) {
+            mButton5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mStringBuffer.append(mButton5.getText().toString().trim());
+                    mPassCode7.setText(mStringBuffer.toString());
+                }
+            });
+        }
+
+        mButton6 = (Button) changePin.findViewById(R.id.num_pad_7);
+        if (mButton6 != null) {
+            mButton6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mStringBuffer.append(mButton6.getText().toString().trim());
+                    mPassCode7.setText(mStringBuffer.toString());
+                }
+            });
+        }
+
+        mButton7 = (Button) changePin.findViewById(R.id.num_pad_8);
+        if (mButton7 != null) {
+            mButton7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mStringBuffer.append(mButton7.getText().toString().trim());
+                    mPassCode7.setText(mStringBuffer.toString());
+                }
+            });
+        }
+
+        mButton8 = (Button) changePin.findViewById(R.id.num_pad_8);
+        if (mButton8 != null) {
+            mButton8.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mStringBuffer.append(mButton8.getText().toString().trim());
+                    mPassCode7.setText(mStringBuffer.toString());
+                }
+            });
+        }
+
+        mButton9 = (Button) changePin.findViewById(R.id.num_pad_9);
+        if (mButton9 != null) {
+            mButton9.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mStringBuffer.append(mButton9.getText().toString().trim());
+                    mPassCode7.setText(mStringBuffer.toString());
+                }
+            });
+        }
+
+        mButtonCross = changePin.findViewById(R.id.num_pad_cross);
+        if (mButtonCross != null) {
+            mButtonCross.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    logD("Text", "length :" + mPassCode7.getText().toString().length());
+                    if (mStringBuffer.length() > 0) {
+                        mStringBuffer.deleteCharAt(mStringBuffer.length() - 1);
+                        logD("Text", "After -1 :" + mStringBuffer.toString());
+                    }
+                    mPassCode7.setText(mStringBuffer.toString());
+                    mPassCode7.invalidate();
+                }
+            });
+        }
     }
 
     @Override
@@ -189,13 +323,6 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     @Override
     public void afterTextChanged(Editable editable) {
 
-    }
-
-    @Override
-    public void onClick(View v) {
-        v.requestFocus();
-        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(mPassCode7, InputMethodManager.SHOW_IMPLICIT);
     }
 
     public String getEnteredPin() {

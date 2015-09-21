@@ -69,13 +69,11 @@
             android:name=".PinActivity"
             android:screenOrientation="portrait"
             android:noHistory="true"
-            android:windowSoftInputMode="stateVisible"
             android:theme="@style/MDLive_Red_Theme"/>
 
         <activity
             android:name=".UnlockActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateVisible"
             android:theme="@style/MDLive_Red_Theme" />
 
         <!-- [Login Broadcast Receiver will be received from Embed kit layer] -->
