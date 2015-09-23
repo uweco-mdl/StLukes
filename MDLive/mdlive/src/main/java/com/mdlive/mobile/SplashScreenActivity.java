@@ -38,7 +38,7 @@ import org.json.JSONObject;
  */
 
 public class SplashScreenActivity extends Activity {
-    private String upgradeOption="";
+    private String upgradeOption="", latestVersion = "";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private ProgressDialog mProgressDialog;
     ENVIRON env;
@@ -111,16 +111,18 @@ public class SplashScreenActivity extends Activity {
                 try {
                     if (MdliveUtils.isHigherVersionPresent(response.optString("latest_version"), BuildConfig.VERSION_NAME)) {
                         upgradeOption = response.optString("upgrade");
+                        latestVersion = response.optString("latest_version");
                     } else {
                         upgradeOption = "";
+                        latestVersion = "";
                     }
 
                     if(!upgradeOption.equals("")){
                         if (upgradeOption.equalsIgnoreCase("force")) {
-                            showInstall(upgradeOption);
+                            showInstall(latestVersion);
                             return;
                         } else {
-                            showLaterInstall(upgradeOption);
+                            showLaterInstall(latestVersion);
                             return;
                         }
                     }
@@ -159,9 +161,9 @@ public class SplashScreenActivity extends Activity {
     private void startNextActivity(){
         if(!upgradeOption.equals("")){
             if (upgradeOption.equalsIgnoreCase("force")) {
-                showInstall(upgradeOption);
+                showInstall(latestVersion);
             } else {
-                showLaterInstall(upgradeOption);
+                showLaterInstall(latestVersion);
             }
         } else {
             startNexActivity();
