@@ -49,12 +49,12 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
 
         LocalizationSingleton.localiseLayout(this,(ViewGroup) ((ViewGroup) this
                 .findViewById(android.R.id.content)).getChildAt(0));
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+/*        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             setTitle("");
             getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
+        }*/
 
         getSupportFragmentManager().addOnBackStackChangedListener(this);
         if (savedInstanceState == null) {
