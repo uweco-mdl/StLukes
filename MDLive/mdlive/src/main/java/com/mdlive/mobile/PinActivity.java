@@ -68,11 +68,15 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
     @Override
     public void onClickNoPin() {
         MdliveUtils.hideSoftKeyboard(this);
-        startDashboard();
+        MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_password));
+        final Intent dashboard = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
+        startActivity(dashboard);
+        finish();
     }
 
     @Override
     public void startDashboard() {
+        MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_pin));
         final Intent dashboard = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
         startActivity(dashboard);
         finish();
