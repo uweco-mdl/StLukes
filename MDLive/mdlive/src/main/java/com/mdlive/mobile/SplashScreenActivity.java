@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.mdlive.embedkit.global.MDLiveConfig;
 import com.mdlive.embedkit.global.MDLiveConfig.ENVIRON;
 import com.mdlive.embedkit.global.MDLiveConfig.SIGNALS;
+import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
@@ -175,8 +176,13 @@ public class SplashScreenActivity extends Activity {
 
         if (MdliveUtils.getRemoteUserId(getBaseContext()).length() > 0) {
             if (MdliveUtils.getLockType(getBaseContext()).equalsIgnoreCase("Pin")) {
-                intent = UnlockActivity.getUnlockToDashBoardIntent(getBaseContext(), true);
-                startActivity(intent);
+                if (showPinScreen()) {
+                    intent = UnlockActivity.getUnlockToDashBoardIntent(getBaseContext(), true);
+                    startActivity(intent);
+                } else {
+                    intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
+                    startActivity(intent);
+                }
             } else {
                 intent = LoginActivity.getLoginToDashBoardIntent(getBaseContext(), true);
                 startActivity(intent);
@@ -322,6 +328,20 @@ public class SplashScreenActivity extends Activity {
         service.deeplinkService(successCallBackListener, errorListener, null, deeplinkId);
     }
 
+    /**
+     * Should show Pin screen or Not
+     * */
+    private boolean showPinScreen() {
+        final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
+        final long lastTime = preferences.getLong(PreferenceConstants.TIME_KEY, System.currentTimeMillis());
+
+        final long difference = System.currentTimeMillis() - lastTime;
+        if (difference > 60 * 1000) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 
