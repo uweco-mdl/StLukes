@@ -17,6 +17,8 @@
             android:layout_gravity="top"
             android:layout_marginTop="@dimen/login_container_top_margin"
             android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:paddingLeft="@dimen/dimen_16_dp"
             android:paddingRight="@dimen/dimen_16_dp">
 
@@ -39,6 +41,7 @@
                     android:singleLine="true"
                     android:tag="username"
                     android:textColor="@color/gray_6"
+                    android:textCursorDrawable="@null"
                     android:textSize="16sp"
                     android:fontFamily="sans-serif"/>
 
@@ -77,7 +80,9 @@
                     android:singleLine="true"
                     android:tag="password"
                     android:textColor="@color/gray_6"
+                    android:cursorVisible="true"
                     android:textSize="16sp"
+                    android:textCursorDrawable="@null"
                     android:fontFamily="sans-serif"/>
 
                 <TextView
