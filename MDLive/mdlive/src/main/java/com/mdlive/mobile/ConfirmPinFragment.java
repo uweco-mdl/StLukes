@@ -1,7 +1,9 @@
 package com.mdlive.mobile;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.android.volley.VolleyError;
+import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
 import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
@@ -446,6 +449,9 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
                 hideProgressDialog();
                 Log.d("Response", response.toString());
                 if (response != null) {
+                    SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, response.toString()).commit();
                     if (getActivity() != null && getActivity() instanceof AppCompatActivity) {
                         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
                     }
@@ -483,6 +489,9 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideProgressDialog();
+                SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, "{}").commit();
                 if (mOnCreatePinSucessful != null) {
                     mOnCreatePinSucessful.startDashboard();
                 }

@@ -289,6 +289,9 @@ public class LoginFragment extends MDLiveBaseFragment{
             public void onResponse(JSONObject response) {
                 Log.d("Response", response.toString());
                 if (response != null) {
+                    SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, response.toString()).commit();
                     mWebView.loadUrl(response.optString("screen_image"));
                     healthSystemTv.setText(response.optString("splash_screen_text"));
                     mWebView.getSettings().setLoadWithOverviewMode(true);
@@ -326,6 +329,9 @@ public class LoginFragment extends MDLiveBaseFragment{
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideProgressDialog();
+                SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, "{}").commit();
                 if (mOnLoginResponse != null) {
                     mOnLoginResponse.onLoginSucess();
                 }
