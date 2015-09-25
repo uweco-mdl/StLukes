@@ -3,14 +3,23 @@ package com.mdlive.mobile;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.Formatter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -18,10 +27,16 @@ import com.android.volley.VolleyError;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
 import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
+import com.mdlive.unifiedmiddleware.services.login.HealthSystemServices;
 import com.mdlive.unifiedmiddleware.services.login.PinCreation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 /**
  * Created by dhiman_da on 7/23/2015.
@@ -52,8 +67,12 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
     private Button mButton0;
     private View mButtonCross;
 
-    private TextView mTitleTextView = null;
+    private TextView mTitleTextView = null, healthSystemTv;
     private StringBuffer mStringBuffer;
+    private WebView mWebView;
+    private RelativeLayout healthSystemContainerRl;
+    private ImageView healthSystemIv;
+    private static final int SPLASH_TIME_OUT = 4000;
 
     public static ConfirmPinFragment newInstance(String createPin) {
         final Bundle bundle = new Bundle();
@@ -112,7 +131,10 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
         mPassCode4 = (ToggleButton) changePin.findViewById(R.id.passCode4);
         mPassCode5 = (ToggleButton) changePin.findViewById(R.id.passCode5);
         mPassCode6 = (ToggleButton) changePin.findViewById(R.id.passCode6);
-
+        mWebView = (WebView) changePin.findViewById(R.id.webView);
+        healthSystemContainerRl = (RelativeLayout) changePin.findViewById(R.id.health_system_container_rl);
+        healthSystemIv = (ImageView) changePin.findViewById(R.id.health_system_niv);
+        healthSystemTv = (TextView) changePin.findViewById(R.id.health_system_tv);
         mPassCode7 = (EditText) changePin.findViewById(R.id.etPasscode);
 
         mPassCode7.addTextChangedListener(this);
@@ -320,7 +342,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
                 MdliveUtils.showDialog(getActivity(), getString(R.string.mdl_application_name), getString(R.string.mdl_application_pin_mismatch), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (getActivity() != null && getActivity() instanceof  PinActivity) {
+                        if (getActivity() != null && getActivity() instanceof PinActivity) {
                             dialog.dismiss();
                             ((PinActivity) getActivity()).onTwoPasswordMismatch();
                         }
@@ -396,12 +418,14 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
     private void handleCreatePinSuccessResponse(JSONObject response) {
 
         try {
-            hideProgressDialog();
+//            hideProgressDialog();
 
             if (response.getString("message").equalsIgnoreCase("Success")) {
-                if (mOnCreatePinSucessful != null) {
-                    mOnCreatePinSucessful.startDashboard();
-                }
+
+//                if (mOnCreatePinSucessful != null) {
+//                    mOnCreatePinSucessful.startDashboard();
+//                }
+                checkHealthServices();
             } else {
                 MdliveUtils.showDialog(getActivity(), getString(R.string.mdl_application_name), getString(R.string.mdl_application_pin_creation_failed));
             }
@@ -411,11 +435,92 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
         }
     }
 
+    /**
+     * This function is used to check the health services associated with the user's location.
+     */
+    private void checkHealthServices() {
+        NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                hideProgressDialog();
+                Log.d("Response", response.toString());
+                if (response != null) {
+                    if (getActivity() != null && getActivity() instanceof AppCompatActivity) {
+                        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+                    }
+                    healthSystemContainerRl.setVisibility(View.VISIBLE);
+                    mWebView.setVisibility(View.VISIBLE);
+                    mWebView.loadUrl(response.optString("screen_image"));
+                    healthSystemTv.setText(response.optString("splash_screen_text"));
+                    mWebView.getSettings().setLoadWithOverviewMode(true);
+                    mWebView.getSettings().setUseWideViewPort(true);
+                    mWebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+                    mWebView.getSettings().setBuiltInZoomControls(true);
+                    mWebView.setWebViewClient(new WebViewClient() {
+
+                        public void onPageFinished(WebView view, String url) {
+                            healthSystemIv.setVisibility(View.VISIBLE);
+                            healthSystemTv.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // This method will be executed once the timer is over
+                                    // Start your app main activity
+                                    if (mOnCreatePinSucessful != null) {
+                                        mOnCreatePinSucessful.startDashboard();
+                                    }
+                                }
+                            }, SPLASH_TIME_OUT);
+                        }
+                    });
+                }
+            }
+        };
+
+        NetworkErrorListener errorListener = new NetworkErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hideProgressDialog();
+                if (mOnCreatePinSucessful != null) {
+                    mOnCreatePinSucessful.startDashboard();
+                }
+            }
+        };
+
+        HealthSystemServices service = new HealthSystemServices(getActivity(), getProgressDialog());
+        service.getHealthSystemsData(successCallBackListener, errorListener, getLocalIpAddress());
+    }
+
     public String getEnteredPin() {
         return mPassCode7 == null ? null : mPassCode7.toString().trim();
     }
 
     public interface OnCreatePinSucessful {
         void startDashboard();
+    }
+
+    /**
+     * This function will fetch the Ip Address of the device and send it back as a string value.
+     *
+     * @return
+     */
+    public String getLocalIpAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        String ip = Formatter.formatIpAddress(inetAddress.hashCode());
+                        return ip;
+//                        return "184.73.180.105";  // Test ip address
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+        }
+        return null;
     }
 }

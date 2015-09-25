@@ -4,15 +4,24 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -21,10 +30,16 @@ import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
 import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
 import com.mdlive.unifiedmiddleware.services.login.GCMRegisterService;
+import com.mdlive.unifiedmiddleware.services.login.HealthSystemServices;
 import com.mdlive.unifiedmiddleware.services.login.LoginService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 import static android.widget.TextView.OnEditorActionListener;
 
@@ -37,6 +52,12 @@ public class LoginFragment extends MDLiveBaseFragment{
 
     private EditText mUserNameEditText = null;
     private EditText mPasswordEditText = null;
+    private WebView mWebView;
+    private RelativeLayout healthSystemContainerRl,headerRl;
+    private ImageView healthSystemIv;
+    private  TextView healthSystemTv;
+    private FrameLayout loginContainerFl;
+    private static final int SPLASH_TIME_OUT = 4000;
 
     public static LoginFragment newInstance() {
         final LoginFragment loginFragment = new LoginFragment();
@@ -70,6 +91,12 @@ public class LoginFragment extends MDLiveBaseFragment{
 
         mUserNameEditText = (EditText)view.findViewById(R.id.userName);
         mPasswordEditText = (EditText)view.findViewById(R.id.password);
+        mWebView = (WebView) view.findViewById(R.id.webView);
+        healthSystemContainerRl = (RelativeLayout) view.findViewById(R.id.health_system_container_rl);
+        headerRl = (RelativeLayout) view.findViewById(R.id.login_header_rl);
+        healthSystemIv = (ImageView) view.findViewById(R.id.health_system_niv);
+        healthSystemTv = (TextView) view.findViewById(R.id.health_system_tv);
+        loginContainerFl = (FrameLayout) view.findViewById(R.id.login_container_fl);
         mPasswordEditText.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -143,8 +170,6 @@ public class LoginFragment extends MDLiveBaseFragment{
 
     private void handleLoginSuccessResponse(JSONObject response) {
         try {
-            hideProgressDialog();
-
             if(response.getString("msg").equalsIgnoreCase("Success")) {
                 logD("Login", "Login Successful : " + response.toString().trim());
 
@@ -168,11 +193,20 @@ public class LoginFragment extends MDLiveBaseFragment{
 
                 if (MDLiveGCMPreference.MDLIVE_GCM_INSTANCE_ID != null
                         && MDLiveGCMPreference.MDLIVE_GCM_INSTANCE_ID.length() > 0) {
+                    hideProgressDialog();
                     sendGCMInstanceId();
                 } else {
-                    if (mOnLoginResponse != null) {
-                        mOnLoginResponse.onLoginSucess();
+                    if (MdliveUtils.getLockType(getActivity()).equalsIgnoreCase("password")) {
+                        checkHealthServices();
+                    } else {
+                        hideProgressDialog();
+                        if (mOnLoginResponse != null) {
+                            mOnLoginResponse.onLoginSucess();
+                        }
                     }
+                   /* if (mOnLoginResponse != null) {
+                        mOnLoginResponse.onLoginSucess();
+                    }*/
                 }
             } else {
                 MdliveUtils.showDialog(getActivity(),getActivity().getString(R.string.mdl_app_name), response.getString("token"));
@@ -203,12 +237,16 @@ public class LoginFragment extends MDLiveBaseFragment{
                     editor.clear().apply();
                     editor.commit();
 
-                    hideProgressDialog();
                     logD("GCM", response.optString("message"));
 
 
-                    if (mOnLoginResponse != null) {
-                        mOnLoginResponse.onLoginSucess();
+                    if (MdliveUtils.getLockType(getActivity()).equalsIgnoreCase("password")) {
+                        checkHealthServices();
+                    } else {
+                        hideProgressDialog();
+                        if (mOnLoginResponse != null) {
+                            mOnLoginResponse.onLoginSucess();
+                        }
                     }
                 }
             };
@@ -238,5 +276,85 @@ public class LoginFragment extends MDLiveBaseFragment{
 
     public interface OnLoginResponse {
         void onLoginSucess();
+    }
+
+
+    /**
+     * This function is used to check the health services associated with the user's location.
+     */
+    private void checkHealthServices() {
+        NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("Response", response.toString());
+                if (response != null) {
+                    mWebView.loadUrl(response.optString("screen_image"));
+                    healthSystemTv.setText(response.optString("splash_screen_text"));
+                    mWebView.getSettings().setLoadWithOverviewMode(true);
+                    mWebView.getSettings().setUseWideViewPort(true);
+                    mWebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+                    mWebView.getSettings().setBuiltInZoomControls(true);
+                    mWebView.setWebViewClient(new WebViewClient() {
+
+                        public void onPageFinished(WebView view, String url) {
+                            hideProgressDialog();
+                            headerRl.setVisibility(View.GONE);
+                            loginContainerFl.setVisibility(View.GONE);
+                            healthSystemContainerRl.setVisibility(View.VISIBLE);
+                            mWebView.setVisibility(View.VISIBLE);
+                            healthSystemIv.setVisibility(View.VISIBLE);
+                            healthSystemTv.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // This method will be executed once the timer is over
+                                    // Start your app main activity
+                                    if (mOnLoginResponse != null) {
+                                        mOnLoginResponse.onLoginSucess();
+                                    }
+                                }
+                            }, SPLASH_TIME_OUT);
+                        }
+                    });
+                }
+            }
+        };
+
+        NetworkErrorListener errorListener = new NetworkErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hideProgressDialog();
+                if (mOnLoginResponse != null) {
+                    mOnLoginResponse.onLoginSucess();
+                }
+            }
+        };
+
+        HealthSystemServices service = new HealthSystemServices(getActivity(), getProgressDialog());
+        service.getHealthSystemsData(successCallBackListener, errorListener, getLocalIpAddress());
+    }
+
+    /**
+     * This function will fetch the Ip Address of the device and send it back as a string value.
+     *
+     * @return
+     */
+    public String getLocalIpAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        String ip = Formatter.formatIpAddress(inetAddress.hashCode());
+                        return ip;
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+        }
+        return null;
     }
 }
