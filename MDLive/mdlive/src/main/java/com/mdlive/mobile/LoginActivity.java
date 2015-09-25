@@ -165,14 +165,14 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
         }
     }
 
-    public void onActivateAccount(String activationUrl) {
+    public void onActivateAccount(String activationUrl, String username, String password) {
         if(getSupportActionBar()!=null) {
             getSupportActionBar().hide();
         }
         getSupportFragmentManager().
                 beginTransaction().
                 addToBackStack(TAG).
-                add(R.id.container, CreateAccountFragment.newInstance(activationUrl), TAG).
+                add(R.id.container, CreateAccountFragment.newInstance(activationUrl,username, password), TAG).
                 commit();
     }
 }

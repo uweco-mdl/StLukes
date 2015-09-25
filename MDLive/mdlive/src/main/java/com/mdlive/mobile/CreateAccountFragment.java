@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -32,15 +33,19 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
 
     private WebView mWebView;
     private String loadUrl;
+    private String username;
+    private String password;
 
     public static CreateAccountFragment newInstance() {
         final CreateAccountFragment fragment = new CreateAccountFragment();
         return fragment;
     }
 
-    public static CreateAccountFragment newInstance(String url) {
+    public static CreateAccountFragment newInstance(String url, String username, String password) {
         final CreateAccountFragment fragment = new CreateAccountFragment();
         fragment.setLoadUrl(url);
+        fragment.setUsername(username);
+        fragment.setPassword(password);
         return fragment;
     }
 
@@ -121,9 +126,13 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-
                 hideProgressDialog();
-                mWebView.evaluateJavascript("javascript:getUserCredential('stagingdhl', 'mdlive789');",null);
+
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    mWebView.evaluateJavascript("javascript:getUserCredential('"+ username + "', '"+password+"');",null);
+                } else {
+                    mWebView.loadUrl("javascript:getUserCredential('"+ username + "', '"+password+"');",null);
+                }
             }
 
             @Override
@@ -169,5 +178,13 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
 
     public void setLoadUrl(String loadUrl) {
         this.loadUrl = loadUrl;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

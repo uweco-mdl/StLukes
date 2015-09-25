@@ -480,6 +480,10 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
                             }, SPLASH_TIME_OUT);
                         }
                     });
+                } else {
+                    if (mOnCreatePinSucessful != null) {
+                        mOnCreatePinSucessful.startDashboard();
+                    }
                 }
             }
         };

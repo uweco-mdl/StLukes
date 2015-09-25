@@ -167,7 +167,7 @@ public class LoginFragment extends MDLiveBaseFragment {
                     String responseBody = new String(error.networkResponse.data, "utf-8");
                     JSONObject errorObj = new JSONObject(responseBody);
                     if(errorObj.has("activation_url") && getActivity() instanceof LoginActivity){
-                        ((LoginActivity)getActivity()).onActivateAccount(errorObj.getString("activation_url"));
+                        ((LoginActivity)getActivity()).onActivateAccount(errorObj.getString("activation_url"),mUserNameEditText.getText().toString(),mPasswordEditText.getText().toString());
                     } else {
                         MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
                     }
@@ -332,6 +332,10 @@ public class LoginFragment extends MDLiveBaseFragment {
                             }, SPLASH_TIME_OUT);
                         }
                     });
+                } else {
+                    if (mOnLoginResponse != null) {
+                        mOnLoginResponse.onLoginSucess();
+                    }
                 }
             }
         };
