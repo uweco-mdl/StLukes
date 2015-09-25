@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Log;
@@ -47,15 +46,15 @@ import static android.widget.TextView.OnEditorActionListener;
  * Created by dhiman_da on 7/15/2015.
  */
 
-public class LoginFragment extends MDLiveBaseFragment{
+public class LoginFragment extends MDLiveBaseFragment {
     private OnLoginResponse mOnLoginResponse;
 
     private EditText mUserNameEditText = null;
     private EditText mPasswordEditText = null;
     private WebView mWebView;
-    private RelativeLayout healthSystemContainerRl,headerRl;
+    private RelativeLayout healthSystemContainerRl, headerRl;
     private ImageView healthSystemIv;
-    private  TextView healthSystemTv;
+    private TextView healthSystemTv;
     private FrameLayout loginContainerFl;
     private static final int SPLASH_TIME_OUT = 4000;
 
@@ -89,8 +88,8 @@ public class LoginFragment extends MDLiveBaseFragment{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mUserNameEditText = (EditText)view.findViewById(R.id.userName);
-        mPasswordEditText = (EditText)view.findViewById(R.id.password);
+        mUserNameEditText = (EditText) view.findViewById(R.id.userName);
+        mPasswordEditText = (EditText) view.findViewById(R.id.password);
         mWebView = (WebView) view.findViewById(R.id.webView);
         healthSystemContainerRl = (RelativeLayout) view.findViewById(R.id.health_system_container_rl);
         headerRl = (RelativeLayout) view.findViewById(R.id.login_header_rl);
@@ -136,7 +135,7 @@ public class LoginFragment extends MDLiveBaseFragment{
 
         } else {
             if (getActivity() != null) {
-                MdliveUtils.showDialog(getActivity(),getActivity().getString(R.string.mdl_app_name), getActivity().getString(R.string.mdl_please_enter_login_fileds));
+                MdliveUtils.showDialog(getActivity(), getActivity().getString(R.string.mdl_app_name), getActivity().getString(R.string.mdl_please_enter_login_fileds));
             }
         }
     }
@@ -153,12 +152,18 @@ public class LoginFragment extends MDLiveBaseFragment{
             }
         };
 
+        /**
+         *
+         * The error listener will handle the login failure response. THis will also handle the
+         * multiple user email login failure case as well.
+         *
+         */
         NetworkErrorListener errorListener = new NetworkErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideProgressDialog();
-                MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
+                  hideProgressDialog();
+                  MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
             }
         };
 
@@ -170,11 +175,11 @@ public class LoginFragment extends MDLiveBaseFragment{
 
     private void handleLoginSuccessResponse(JSONObject response) {
         try {
-            if(response.getString("msg").equalsIgnoreCase("Success")) {
+            if (response.getString("msg").equalsIgnoreCase("Success")) {
                 logD("Login", "Login Successful : " + response.toString().trim());
 
                 if ("null".equalsIgnoreCase(response.getString("uniqueid")) || response.getString("uniqueid").equalsIgnoreCase(null) || (response.getString("uniqueid") == null)) {
-                    MdliveUtils.showDialog(getActivity(),getActivity().getString(R.string.mdl_app_name), response.getString("token"));
+                    MdliveUtils.showDialog(getActivity(), getActivity().getString(R.string.mdl_app_name), response.getString("token"));
                     return;
                 }
 
@@ -204,12 +209,9 @@ public class LoginFragment extends MDLiveBaseFragment{
                             mOnLoginResponse.onLoginSucess();
                         }
                     }
-                   /* if (mOnLoginResponse != null) {
-                        mOnLoginResponse.onLoginSucess();
-                    }*/
                 }
             } else {
-                MdliveUtils.showDialog(getActivity(),getActivity().getString(R.string.mdl_app_name), response.getString("token"));
+                MdliveUtils.showDialog(getActivity(), getActivity().getString(R.string.mdl_app_name), response.getString("token"));
             }
 
         } catch (Exception e) {
