@@ -112,7 +112,9 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
     }
 
     public void onCreateFreeAccountClicked(View view) {
-        getSupportActionBar().hide();
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().hide();
+        }
 
         getSupportFragmentManager().
                 beginTransaction().

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_bg"
-    android:scrollbars="none"
     >
 
     <RelativeLayout
@@ -11,8 +10,7 @@
         android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/health_system_container_rl"
+            android:layout_height="50dp"
             android:layout_alignParentTop="true"
             android:visibility="gone"
             >
@@ -68,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_alignParentBottom="true"
             >
 
             <FrameLayout
@@ -79,11 +78,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginTop="@dimen/login_container_top_margin"
-                    android:orientation="vertical"
-                    android:paddingLeft="@dimen/dimen_16_dp"
-                    android:paddingRight="@dimen/dimen_16_dp">
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical">
 
 
                     <LinearLayout
@@ -91,13 +87,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/dimen_8_dp"
                         android:layout_marginTop="@dimen/dimen_8_dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/dimen_16_dp"
+                        android:paddingRight="@dimen/dimen_16_dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginBottom="@dimen/dimen_4_dp"
+                            android:layout_marginBottom="2dp"
                             android:clickable="true"
                             android:gravity="center"
                             android:text="Virtual Care, Anywhere."
@@ -122,7 +120,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/dimen_8_dp"
                         android:layout_marginTop="@dimen/dimen_8_dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/dimen_16_dp"
+                        android:paddingRight="@dimen/dimen_16_dp">
 
                         <EditText
                             android:id="@+id/userName"
@@ -132,7 +132,7 @@
                             android:layout_weight="1"
                             android:background="@color/transparent"
                             android:fontFamily="sans-serif"
-                            android:hint="@string/mdl_username_or_email"
+                            android:hint="@string/mdl_username"
                             android:imeOptions="actionNext"
                             android:singleLine="true"
                             android:tag="username"
@@ -159,7 +159,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/dimen_8_dp"
                         android:layout_marginTop="@dimen/dimen_8_dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/dimen_16_dp"
+                        android:paddingRight="@dimen/dimen_16_dp">
 
                         <EditText
                             android:id="@+id/password"
@@ -194,7 +196,7 @@
 
                     <Button
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="43dp"
                         android:layout_marginBottom="@dimen/dimen_16_dp"
                         android:layout_marginTop="@dimen/dimen_16_dp"
                         android:background="@drawable/white_button_with_black_border"
@@ -204,14 +206,14 @@
                         android:text="@string/mdl_sign_in"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="16sp"
+                        android:layout_marginLeft="@dimen/dimen_8_dp"
+                        android:layout_marginRight="@dimen/dimen_8_dp"/>
 
                     <Button
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginBottom="@dimen/dimen_16_dp"
-                        android:layout_marginTop="@dimen/dimen_14_dp"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="@dimen/dimen_8_dp"
                         android:background="@drawable/blue_button"
                         android:gravity="center"
                         android:onClick="onCreateFreeAccountClicked"
@@ -219,10 +221,12 @@
                         android:text="@string/mdl_create_free_account"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:layout_marginLeft="@dimen/dimen_8_dp"
+                        android:layout_marginRight="@dimen/dimen_8_dp"/>
                 </LinearLayout>
             </FrameLayout>
 
         </LinearLayout>
     </RelativeLayout>
-</ScrollView>
+</RelativeLayout>
