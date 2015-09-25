@@ -448,7 +448,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
             public void onResponse(JSONObject response) {
                 hideProgressDialog();
                 Log.d("Response", response.toString());
-                if (response != null) {
+                if (response != null && response.optBoolean("additional_screen_applicable", false)) {
                     SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, response.toString()).commit();

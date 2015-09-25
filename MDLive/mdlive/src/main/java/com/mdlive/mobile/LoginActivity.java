@@ -159,7 +159,20 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
     @Override
     public void onBackStackChanged() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-            getSupportActionBar().show();
+            if(getSupportActionBar()!=null) {
+                getSupportActionBar().show();
+            }
         }
+    }
+
+    public void onActivateAccount(String activationUrl) {
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().hide();
+        }
+        getSupportFragmentManager().
+                beginTransaction().
+                addToBackStack(TAG).
+                add(R.id.container, CreateAccountFragment.newInstance(activationUrl), TAG).
+                commit();
     }
 }

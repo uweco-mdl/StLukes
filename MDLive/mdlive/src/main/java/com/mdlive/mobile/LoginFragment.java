@@ -162,8 +162,18 @@ public class LoginFragment extends MDLiveBaseFragment {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                  hideProgressDialog();
-                  MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
+                try {
+                    hideProgressDialog();
+                    String responseBody = new String(error.networkResponse.data, "utf-8");
+                    JSONObject errorObj = new JSONObject(responseBody);
+                    if(errorObj.has("activation_url") && getActivity() instanceof LoginActivity){
+                        ((LoginActivity)getActivity()).onActivateAccount(errorObj.getString("activation_url"));
+                    } else {
+                        MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
+                    }
+                }catch(Exception e){
+                    MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
+                }
             }
         };
 
@@ -290,7 +300,7 @@ public class LoginFragment extends MDLiveBaseFragment {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("Response", response.toString());
-                if (response != null) {
+                if (response != null && response.optBoolean("additional_screen_applicable", false)) {
                     SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, response.toString()).commit();

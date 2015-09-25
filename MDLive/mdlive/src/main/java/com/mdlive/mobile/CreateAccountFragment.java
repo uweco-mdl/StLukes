@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -30,9 +31,16 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
     private OnSignupSuccess mOnSignupSuccess;
 
     private WebView mWebView;
+    private String loadUrl;
 
     public static CreateAccountFragment newInstance() {
         final CreateAccountFragment fragment = new CreateAccountFragment();
+        return fragment;
+    }
+
+    public static CreateAccountFragment newInstance(String url) {
+        final CreateAccountFragment fragment = new CreateAccountFragment();
+        fragment.setLoadUrl(url);
         return fragment;
     }
 
@@ -69,6 +77,12 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
          * */
         if (DeepLinkUtils.DEEPLINK_DATA != null && !DeepLinkUtils.DEEPLINK_DATA.getRegistrationUrl().isEmpty()) {
             mWebView.loadUrl(DeepLinkUtils.DEEPLINK_DATA.getRegistrationUrl());
+        } else if(loadUrl !=null && !loadUrl.isEmpty()){
+            mWebView.loadUrl(loadUrl);
+            mWebView.getSettings().setLoadWithOverviewMode(true);
+            mWebView.getSettings().setUseWideViewPort(true);
+            mWebView.getSettings().setBuiltInZoomControls(true);
+            mWebView.getSettings().setJavaScriptEnabled(true);
         } else {
             mWebView.loadUrl(AppSpecificConfig.URL_SIGN_UP);
         }
@@ -109,6 +123,7 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
                 super.onPageFinished(view, url);
 
                 hideProgressDialog();
+                mWebView.evaluateJavascript("javascript:getUserCredential('stagingdhl', 'mdlive789');",null);
             }
 
             @Override
@@ -146,5 +161,13 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
 
     public static interface OnSignupSuccess {
         void onSignUpSucess();
+    }
+
+    public String getLoadUrl() {
+        return loadUrl;
+    }
+
+    public void setLoadUrl(String loadUrl) {
+        this.loadUrl = loadUrl;
     }
 }
