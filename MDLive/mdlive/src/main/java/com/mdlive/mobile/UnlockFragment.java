@@ -351,7 +351,8 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             public void onErrorResponse(VolleyError error) {
                 hideProgressDialog();
                 try {
-                    MdliveUtils.handelVolleyErrorResponse(getActivity(), error, null);
+                    MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
+                    clearPincode();
                 } catch (Exception e) {
                     MdliveUtils.connectionTimeoutError(getProgressDialog(), getActivity());
                 }
@@ -374,7 +375,6 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
                 }
             } else {
                 if (mOnUnlockSucessful != null) {
-                    mPassCode7.setText("");
                     mOnUnlockSucessful.onUnlockUnSuccesful();
                 }
             }
@@ -382,6 +382,11 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
         } catch (Exception e) {
             logE("Error", e.getMessage());
         }
+    }
+
+    public void clearPincode() {
+        mPassCode7.setText("");
+        mStringBuffer.replace(0, mStringBuffer.length() - 1, "");
     }
 
     public interface OnUnlockSucessful {

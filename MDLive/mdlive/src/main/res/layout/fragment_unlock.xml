@@ -124,6 +124,7 @@
             android:layout_marginTop="@dimen/dimen_32_dp"
             android:text="@string/mdl_enter_your_pin_to_unlock"
             android:textColor="@android:color/black"
+            android:fontFamily="sans-serif-light"
             android:textSize="18sp" />
 
         <TextView
@@ -143,8 +144,8 @@
         android:layout_height="0dp"
         android:layout_gravity="bottom"
         android:layout_weight="1"
-        android:paddingLeft="@dimen/dimen_64_dp"
-        android:paddingRight="@dimen/dimen_64_dp">
+        android:paddingLeft="@dimen/dimen_32_dp"
+        android:paddingRight="@dimen/dimen_32_dp">
 
         <include layout="@layout/mdlive_layout_keypad" />
     </FrameLayout>

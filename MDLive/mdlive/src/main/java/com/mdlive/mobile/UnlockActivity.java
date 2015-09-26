@@ -1,9 +1,11 @@
 package com.mdlive.mobile;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -48,7 +50,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
         if (savedInstanceState == null) {
             getSupportFragmentManager().
                     beginTransaction().
-                    add(R.id.main_container, UnlockFragment.newInstance()).
+                    add(R.id.main_container, UnlockFragment.newInstance(), TAG).
                     commit();
         }
     }
@@ -157,6 +159,14 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
     @Override
     public void onUnlockUnSuccesful() {
-        MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_pin_mismatch));
+        MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_pin_mismatch), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                final Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
+                if (fragment != null && fragment instanceof  UnlockFragment) {
+                    ((UnlockFragment) fragment).clearPincode();
+                }
+            }
+        });
     }
 }

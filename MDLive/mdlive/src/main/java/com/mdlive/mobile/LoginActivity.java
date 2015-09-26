@@ -138,12 +138,18 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
             return;
         }
 
-        if (MdliveUtils.getLockType(this).equalsIgnoreCase("password")) {
-            final Intent intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
-            startActivity(intent);
-        } else {
+        if (MdliveUtils.getFirstTime(getBaseContext())) {
+            MdliveUtils.setFirstTime(getBaseContext(), false);
             final Intent intent = new Intent(getBaseContext(), PinActivity.class);
             startActivity(intent);
+        } else {
+            if (MdliveUtils.getLockType(this).equalsIgnoreCase("password")) {
+                final Intent intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
+                startActivity(intent);
+            } else {
+                final Intent intent = new Intent(getBaseContext(), PinActivity.class);
+                startActivity(intent);
+            }
         }
 
         finish();
