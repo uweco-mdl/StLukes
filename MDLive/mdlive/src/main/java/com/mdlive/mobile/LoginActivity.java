@@ -88,7 +88,11 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
         try {
             final Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(AppSpecificConfig.URL_FORGOT_USERNAME));
-            startActivity(intent);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            } else {
+                MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_no_compitable_app));
+            }
         } catch (Exception e) {
             MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_no_compitable_app));
         }
@@ -98,7 +102,11 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
         try {
             final Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(AppSpecificConfig.URL_FORGOT_PASSWORD));
-            startActivity(intent);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            } else {
+                MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_no_compitable_app));
+            }
         } catch (Exception e) {
             MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_no_compitable_app));
         }
