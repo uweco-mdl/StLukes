@@ -448,7 +448,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
             public void onResponse(JSONObject response) {
                 hideProgressDialog();
                 Log.d("Response", response.toString());
-                if (response != null && response.optBoolean("additional_screen_applicable", false)) {
+                if (response != null && response.optBoolean("additional_screen_applicable", false) && getActivity()!=null) {
                     SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, response.toString()).commit();
@@ -493,9 +493,11 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideProgressDialog();
-                SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, "{}").commit();
+                if(getActivity()!=null) {
+                    SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, "{}").commit();
+                }
                 if (mOnCreatePinSucessful != null) {
                     mOnCreatePinSucessful.startDashboard();
                 }
