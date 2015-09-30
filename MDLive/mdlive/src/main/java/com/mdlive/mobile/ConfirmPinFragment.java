@@ -145,7 +145,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
         mTitleTextView = (TextView) changePin.findViewById(R.id.fragment_change_pin_text_view);
         mTitleTextView.setText(R.string.mdl_application_please_confirm_your_pin);
 
-        changePin.findViewById(R.id.linear_layout).setVisibility(View.INVISIBLE);
+        changePin.findViewById(R.id.linear_layout).setVisibility(View.GONE);
 
         mButton0 = (Button) changePin.findViewById(R.id.num_pad_0);
         if (mButton0 != null) {
