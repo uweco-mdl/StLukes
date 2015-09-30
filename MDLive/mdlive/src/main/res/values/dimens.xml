@@ -9,6 +9,7 @@
     <dimen name="logo_height_pin">32dp</dimen>
 
     <dimen name="toolbar_text_left_margin">42dp</dimen>
+    <dimen name="toolbar_text_left_margin_new">58dp</dimen>
 
     <dimen name="toolbar_text_size">18sp</dimen>
     <dimen name="toolbar_text_size_menu">12sp</dimen>

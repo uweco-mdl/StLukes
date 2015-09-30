@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/toolbar_text_left_margin"
+            android:layout_marginLeft="@dimen/toolbar_text_left_margin_new"
             android:layout_toLeftOf="@id/frame_right"
             android:layout_toRightOf="@id/frame_left"
             android:textColor="@color/white"
