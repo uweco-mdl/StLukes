@@ -5,10 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,6 +32,19 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
         return intent;
     }
+
+
+    private Handler mHandler;
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(null);
+        }
+    }
+
+
 
     public static final String TAG = "UNLOCK";
 
@@ -141,11 +156,28 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     }
 
     private void clearMinimizedTime() {
+        if (mHandler == null) {
+            mHandler = new Handler();
+        }
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
+                final SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.commit();
+                Log.d("Timer", "clear called");
+            }
+        }, 100);
+    }
+
+  /*  private void clearMinimizedTime() {
         final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
         final SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.commit();
-    }
+    }*/
 
     @Override
     public void onUnlockSuccesful() {
