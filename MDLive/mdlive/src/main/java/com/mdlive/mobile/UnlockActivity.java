@@ -169,7 +169,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
                 editor.commit();
                 Log.d("Timer", "clear called");
             }
-        }, 1000);
+        }, 100);
     }
 
   /*  private void clearMinimizedTime() {
