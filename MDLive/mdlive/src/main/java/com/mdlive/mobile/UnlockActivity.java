@@ -1,5 +1,6 @@
 package com.mdlive.mobile;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.mobile.CreateAccountFragment.OnSignupSuccess;
 import com.mdlive.mobile.UnlockFragment.OnUnlockSucessful;
+import com.mdlive.unifiedmiddleware.commonclasses.constants.BroadcastConstant;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 
@@ -24,12 +26,13 @@ import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
  * Created by dhiman_da on 8/22/2015.
  */
 public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess, OnBackStackChangedListener, OnUnlockSucessful {
+
     private static final String GO_To_DASHBOARD = "go_to_dash_board";
+    private boolean isForgetPinCalled = false;
 
     public static Intent getUnlockToDashBoardIntent(final Context context, final boolean goToDashboard) {
         final Intent intent = new Intent(context, UnlockActivity.class);
         intent.putExtra(GO_To_DASHBOARD, goToDashboard);
-
         return intent;
     }
 
@@ -53,7 +56,6 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unlock);
         clearMinimizedTime();
-
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -73,11 +75,25 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-            return ;
+            return;
         } else {
-            super.onBackPressed();
+            if(isForgetPinCalled){
+                super.onBackPressed();
+            }else{
+                onSignoutClicked(this);
+            }
         }
     }
+
+    public static void onSignoutClicked(Activity activityInstance) {
+        MdliveUtils.clearNecessarySharedPrefernces(activityInstance);
+        final Intent intent = new Intent();
+        intent.setAction(BroadcastConstant.LOGIN_ACTION);
+        intent.putExtra(BroadcastConstant.UNLOCK_FLAG, BroadcastConstant.SHOW_LOGIN_AFTER_LOGOUT);
+        activityInstance.sendBroadcast(intent);
+        activityInstance.finish();
+    }
+
 
     public void onBackClicked(View view) {
         onBackPressed();
@@ -85,7 +101,6 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
     public void onSignUpClicked(View view) {
         getSupportActionBar().hide();
-
         getSupportFragmentManager().
                 beginTransaction().
                 addToBackStack(TAG).
@@ -95,7 +110,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
     public void onForgotPinClicked(View view) {
         showForgotPinToolbar();
-
+        isForgetPinCalled = true;
         getSupportFragmentManager().
                 beginTransaction().
                 addToBackStack(TAG).
@@ -104,9 +119,10 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     }
 
     public void onSignInClicked(View view) {
-        final Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+        onSignoutClicked(this);
+        /*final Intent intent = new Intent(getBaseContext(), LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     /**
@@ -130,11 +146,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     }
 
     public void onResetPinClicked(View view) {
-        final Intent intent = new Intent(getBaseContext(), LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+        onSignoutClicked(this);
     }
 
     private void showInitialToolbar() {
