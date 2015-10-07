@@ -203,7 +203,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
     @Override
     public void onUnlockUnSuccesful() {
-        MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_pin_mismatch), new DialogInterface.OnClickListener() {
+        DialogInterface.OnClickListener tryAgain = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 final Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
@@ -211,6 +211,19 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
                     ((UnlockFragment) fragment).clearPincode();
                 }
             }
-        });
+        };
+        DialogInterface.OnClickListener reSet = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MdliveUtils.clearNecessarySharedPrefernces(getApplicationContext());
+                final Intent intent = new Intent();
+                intent.setAction(BroadcastConstant.LOGIN_ACTION);
+                intent.putExtra(BroadcastConstant.UNLOCK_FLAG, BroadcastConstant.SHOW_LOGIN_AFTER_LOGOUT);
+                sendBroadcast(intent);
+                finish();
+            }
+        };
+        MdliveUtils.showDialog(this, getString(R.string.mdl_incorrect_pin_title), getString(R.string.mdl_incorrect_pin_message), getString(R.string.mdl_try_again),
+                getString(R.string.mdl_reset), tryAgain, reSet);
     }
 }

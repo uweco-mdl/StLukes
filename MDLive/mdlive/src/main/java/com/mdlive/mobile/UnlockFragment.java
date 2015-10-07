@@ -113,8 +113,10 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             mButton0.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mStringBuffer.append(mButton0.getText().toString().trim());
-                    mPassCode7.setText(mStringBuffer.toString());
+                    if(mPassCode7.getText().length()<6) {
+                        mStringBuffer.append(mButton0.getText().toString().trim());
+                        mPassCode7.setText(mStringBuffer.toString());
+                    }
                 }
             });
         }
@@ -124,8 +126,10 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             mButton1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mStringBuffer.append(mButton1.getText().toString().trim());
-                    mPassCode7.setText(mStringBuffer.toString());
+                    if(mPassCode7.getText().length()<6) {
+                        mStringBuffer.append(mButton1.getText().toString().trim());
+                        mPassCode7.setText(mStringBuffer.toString());
+                    }
                 }
             });
         }
@@ -135,8 +139,10 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             mButton2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mStringBuffer.append(mButton2.getText().toString().trim());
-                    mPassCode7.setText(mStringBuffer.toString());
+                    if(mPassCode7.getText().length()<6) {
+                        mStringBuffer.append(mButton2.getText().toString().trim());
+                        mPassCode7.setText(mStringBuffer.toString());
+                    }
                 }
             });
         }
@@ -157,8 +163,10 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             mButton4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mStringBuffer.append(mButton4.getText().toString().trim());
-                    mPassCode7.setText(mStringBuffer.toString());
+                    if(mPassCode7.getText().length()<6) {
+                        mStringBuffer.append(mButton4.getText().toString().trim());
+                        mPassCode7.setText(mStringBuffer.toString());
+                    }
                 }
             });
         }
@@ -168,8 +176,10 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             mButton5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mStringBuffer.append(mButton5.getText().toString().trim());
-                    mPassCode7.setText(mStringBuffer.toString());
+                    if(mPassCode7.getText().length()<6) {
+                        mStringBuffer.append(mButton5.getText().toString().trim());
+                        mPassCode7.setText(mStringBuffer.toString());
+                    }
                 }
             });
         }
@@ -179,8 +189,10 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             mButton6.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mStringBuffer.append(mButton6.getText().toString().trim());
-                    mPassCode7.setText(mStringBuffer.toString());
+                    if(mPassCode7.getText().length()<6) {
+                        mStringBuffer.append(mButton6.getText().toString().trim());
+                        mPassCode7.setText(mStringBuffer.toString());
+                    }
                 }
             });
         }
@@ -190,8 +202,10 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             mButton7.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mStringBuffer.append(mButton7.getText().toString().trim());
-                    mPassCode7.setText(mStringBuffer.toString());
+                    if(mPassCode7.getText().length()<6) {
+                        mStringBuffer.append(mButton7.getText().toString().trim());
+                        mPassCode7.setText(mStringBuffer.toString());
+                    }
                 }
             });
         }
@@ -201,8 +215,10 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             mButton8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mStringBuffer.append(mButton8.getText().toString().trim());
-                    mPassCode7.setText(mStringBuffer.toString());
+                    if(mPassCode7.getText().length()<6) {
+                        mStringBuffer.append(mButton8.getText().toString().trim());
+                        mPassCode7.setText(mStringBuffer.toString());
+                    }
                 }
             });
         }
@@ -212,8 +228,10 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             mButton9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mStringBuffer.append(mButton9.getText().toString().trim());
-                    mPassCode7.setText(mStringBuffer.toString());
+                    if(mPassCode7.getText().length()<6) {
+                        mStringBuffer.append(mButton9.getText().toString().trim());
+                        mPassCode7.setText(mStringBuffer.toString());
+                    }
                 }
             });
         }
@@ -236,8 +254,8 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
     }
 
     @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        logD("Text", mPassCode7.getText().toString());
+    public void onTextChanged(CharSequence s, int start, int before, int count){
+            logD("Text", mPassCode7.getText().toString());
         int iLength = mPassCode7.getText().length();
         switch (iLength) {
             case 0:
@@ -351,8 +369,12 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     hideProgressDialog();
+                    clearPincode();
                     try {
-                        MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
+//                        MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
+                        if (mOnUnlockSucessful != null) {
+                            mOnUnlockSucessful.onUnlockUnSuccesful();
+                        }
                         clearPincode();
                     } catch (Exception e) {
                         MdliveUtils.connectionTimeoutError(getProgressDialog(), getActivity());
