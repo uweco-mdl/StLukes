@@ -444,7 +444,7 @@ public class SplashScreenActivity extends Activity {
                 finish();
             }
         };
-        MdliveUtils.showDialog(this,getString(com.mdlive.embedkit.R.string.mdl_app_name),getString(com.mdlive.embedkit.R.string.mdl_failed_sso_baylor_login),getString(com.mdlive.embedkit.R.string.mdl_Ok),null,backToBaylor,null);
+        MdliveUtils.showDialog(this,getString(com.mdlive.embedkit.R.string.mdl_app_name),getString(com.mdlive.embedkit.R.string.mdl_failed_baylor_login),getString(com.mdlive.embedkit.R.string.mdl_Ok),null,backToBaylor,null);
     }
 }
 
