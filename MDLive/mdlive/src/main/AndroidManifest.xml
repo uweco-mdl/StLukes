@@ -68,7 +68,7 @@
         <activity
             android:name=".PinActivity"
             android:screenOrientation="portrait"
-            android:noHistory="true"
+            android:noHistory="false"
             android:theme="@style/MDLive_Red_Theme"/>
 
         <activity

@@ -58,6 +58,16 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
     public void onCreatePinCompleted(String pin) {
         showConfirmPinToolbar();
 

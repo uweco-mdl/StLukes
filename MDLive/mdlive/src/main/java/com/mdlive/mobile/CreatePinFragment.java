@@ -60,6 +60,7 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
         super.onAttach(activity);
 
         try {
+            MdliveUtils.setPreferredLockType(getActivity(), getActivity().getString(R.string.mdl_password));
             mOnCreatePinCompleted = (OnCreatePinCompleted) activity;
         } catch (ClassCastException cce) {
             logE("Error", cce.getMessage());
