@@ -97,7 +97,6 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-
                 showProgressDialog();
 
                 List<NameValuePair> params = null;
@@ -127,7 +126,6 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 hideProgressDialog();
-
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     mWebView.evaluateJavascript("javascript:getUserCredential('"+ username + "', '"+password+"');",null);
                 } else {
@@ -156,7 +154,11 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
 
     public boolean canGoBack() {
         if (mWebView != null) {
-            return mWebView.canGoBack();
+            if(mWebView.getUrl().contains("get_eligibilty_details")){
+                return false;
+            } else {
+                return mWebView.canGoBack();
+            }
         }
 
         return false;
