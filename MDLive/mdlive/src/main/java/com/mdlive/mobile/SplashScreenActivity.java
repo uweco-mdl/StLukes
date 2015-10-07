@@ -187,7 +187,6 @@ public class SplashScreenActivity extends Activity {
     private void startNexActivity() {
         Intent intent = null;
         if (MdliveUtils.getRemoteUserId(getBaseContext()).length() > 0) {
-            Log.e("mdlive baylor affiliate", DeepLinkUtils.DEEPLINK_DATA.getAffiliate()+"");
             if(DeepLinkUtils.DEEPLINK_DATA != null && DeepLinkUtils.DEEPLINK_DATA.getAffiliate().equalsIgnoreCase(DeepLinkUtils.DeeplinkAffiliate.BAYLOR.name()))
             {
                 intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
@@ -319,7 +318,6 @@ public class SplashScreenActivity extends Activity {
                  * */
                 editor.clear().apply();
                 editor.commit();
-                Log.e("mdlive baylor", response.toString() + "");
                 if(!response.has("error")) {
                     final Gson gson = new Gson();
                     DeepLink deepLink = gson.fromJson(response.toString(), DeepLink.class);
@@ -332,11 +330,9 @@ public class SplashScreenActivity extends Activity {
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor baylorEditor = sharedPref.edit();
                     String baylor_guid = getIntent().getStringExtra(PreferenceConstants.BAYLOR_GUID);
-                    Log.e("baylor baylor_guid", baylor_guid + "");
                     if(baylor_guid!=null){
                         baylorEditor.putString(PreferenceConstants.BAYLOR_GUID, baylor_guid).commit();
                     }
-                    Log.e("mdlive baylor", " SSO Login in progress");
                     // Call Ruby service to fetch the useruniqueID (i.e. the new RemoteUserID).
                     MakeBaylorSSOLogin();
                     return;     // break out at this point and allow async task to continue
@@ -390,7 +386,6 @@ public class SplashScreenActivity extends Activity {
             @Override
             public void onResponse(JSONObject response) {
                 // success data handing
-                Log.e("mdlive baylor sso", response.toString() + "uniqueid");
                 if(!response.has("error") && response.has("")) {
                     try {
                         // For saving the REMOTE USER ID
@@ -412,8 +407,6 @@ public class SplashScreenActivity extends Activity {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 try {
-                    String responseBody = new String(volleyError.networkResponse.data, "utf-8");
-                    Log.e("responseBody", responseBody+"");
                     BaylorSSOError();
                 }catch (Exception e){
                     e.printStackTrace();

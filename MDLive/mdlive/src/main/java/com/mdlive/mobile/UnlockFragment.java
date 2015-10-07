@@ -333,34 +333,38 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
 
     private void fetachPinWebserviceCall(String params) {
         MdliveUtils.hideKeyboard(getActivity(), (View) mPassCode7);
-        showProgressDialog();
+        if (MdliveUtils.isNetworkAvailable(getActivity())) {
+            showProgressDialog();
 
-        logD("Unlock screen Request", "Unlock response : " + params);
+            logD("Unlock screen Request", "Unlock response : " + params);
 
-        NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
+            NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
 
-            @Override
-            public void onResponse(JSONObject response) {
-                handleCreatePinSuccessResponse(response);
-            }
-        };
-
-        NetworkErrorListener errorListener = new NetworkErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                hideProgressDialog();
-                try {
-                    MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
-                    clearPincode();
-                } catch (Exception e) {
-                    MdliveUtils.connectionTimeoutError(getProgressDialog(), getActivity());
+                @Override
+                public void onResponse(JSONObject response) {
+                    handleCreatePinSuccessResponse(response);
                 }
-            }
-        };
+            };
 
-        UnlockService service = new UnlockService(getActivity(), null);
-        service.unlock(successCallBackListener, errorListener, params);
+            NetworkErrorListener errorListener = new NetworkErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    hideProgressDialog();
+                    try {
+                        MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
+                        clearPincode();
+                    } catch (Exception e) {
+                        MdliveUtils.connectionTimeoutError(getProgressDialog(), getActivity());
+                    }
+                }
+            };
+
+            UnlockService service = new UnlockService(getActivity(), null);
+            service.unlock(successCallBackListener, errorListener, params);
+        }else{
+            MdliveUtils.connectionTimeoutError(getProgressDialog(), getActivity());
+        }
     }
 
     private void handleCreatePinSuccessResponse(JSONObject response) {
