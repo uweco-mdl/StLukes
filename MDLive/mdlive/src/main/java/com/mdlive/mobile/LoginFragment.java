@@ -194,15 +194,9 @@ public class LoginFragment extends MDLiveBaseFragment {
                 }
 
                 // For saving the device token
-                MdliveUtils.saveDeviceToken(getActivity(), response.getString("token"));
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
-//                editor.putString("Device_Token", response.getString("token"));
-//                editor.commit();
 
-                // For saving the REMOTE USER ID
-                sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
-                editor = sharedPref.edit();
                 editor.putString(PreferenceConstants.USER_UNIQUE_ID, response.getString("uniqueid"));
                 editor.commit();
 
