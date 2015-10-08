@@ -386,7 +386,7 @@ public class SplashScreenActivity extends Activity {
             @Override
             public void onResponse(JSONObject response) {
                 // success data handing
-                if(!response.has("error") && response.has("")) {
+                if(!response.has("error")) {
                     try {
                         // For saving the REMOTE USER ID
                         SharedPreferences sharedPref = getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
