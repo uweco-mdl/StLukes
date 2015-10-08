@@ -130,6 +130,10 @@
             android:name="com.mdlive.mobile.MDLiveRegistrationIntentService"
             android:exported="false">
         </service>
+
+        <activity
+            android:name="com.vsee.activity.CallActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
