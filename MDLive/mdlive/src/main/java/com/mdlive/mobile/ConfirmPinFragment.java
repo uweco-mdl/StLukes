@@ -15,9 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,6 +23,8 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.mdlive.unifiedmiddleware.commonclasses.application.ApplicationController;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
@@ -72,10 +71,11 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
 
     private TextView mTitleTextView = null, healthSystemTv;
     private StringBuffer mStringBuffer;
-    private WebView mWebView;
+    private ImageView mWebView;
     private RelativeLayout healthSystemContainerRl;
     private ImageView healthSystemIv;
     private static final int SPLASH_TIME_OUT = 4000;
+    private String screenImageURL, footerImageURL;
 
     public static ConfirmPinFragment newInstance(String createPin) {
         final Bundle bundle = new Bundle();
@@ -134,7 +134,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
         mPassCode4 = (ToggleButton) changePin.findViewById(R.id.passCode4);
         mPassCode5 = (ToggleButton) changePin.findViewById(R.id.passCode5);
         mPassCode6 = (ToggleButton) changePin.findViewById(R.id.passCode6);
-        mWebView = (WebView) changePin.findViewById(R.id.webView);
+        mWebView = (ImageView) changePin.findViewById(R.id.webView);
         healthSystemContainerRl = (RelativeLayout) changePin.findViewById(R.id.health_system_container_rl);
         healthSystemIv = (ImageView) changePin.findViewById(R.id.health_system_niv);
         healthSystemTv = (TextView) changePin.findViewById(R.id.health_system_tv);
@@ -438,6 +438,10 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
         }
     }
 
+
+
+
+
     /**
      * This function is used to check the health services associated with the user's location.
      */
@@ -446,40 +450,77 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
 
             @Override
             public void onResponse(JSONObject response) {
-                hideProgressDialog();
                 Log.d("Response", response.toString());
-                if (response != null && response.optBoolean("additional_screen_applicable", false) && getActivity()!=null) {
+                if (response != null && response.optBoolean("additional_screen_applicable", false)) {
+                    showProgressDialog();
                     SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, response.toString()).commit();
                     if (getActivity() != null && getActivity() instanceof AppCompatActivity) {
                         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
                     }
-                    healthSystemContainerRl.setVisibility(View.VISIBLE);
-                    mWebView.setVisibility(View.VISIBLE);
-                    mWebView.loadUrl(response.optString("screen_image"));
+                    screenImageURL = response.optString("screen_image");
+                    footerImageURL = response.optString("footer_image");
                     healthSystemTv.setText(response.optString("splash_screen_text"));
-                    mWebView.getSettings().setLoadWithOverviewMode(true);
-                    mWebView.getSettings().setUseWideViewPort(true);
-                    mWebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
-                    mWebView.getSettings().setBuiltInZoomControls(true);
-                    mWebView.setWebViewClient(new WebViewClient() {
+                    final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
+                    ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
 
-                        public void onPageFinished(WebView view, String url) {
-                            healthSystemIv.setVisibility(View.VISIBLE);
-                            healthSystemTv.setVisibility(View.VISIBLE);
-                            new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            imageLoader.get(screenImageURL, new ImageLoader.ImageListener() {
+
                                 @Override
-                                public void run() {
-                                    // This method will be executed once the timer is over
-                                    // Start your app main activity
-                                    if (mOnCreatePinSucessful != null) {
-                                        mOnCreatePinSucessful.startDashboard();
+                                public void onErrorResponse(VolleyError error) {
+                                    hideProgressDialog();
+                                }
+
+                                @Override
+                                public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+                                    if (response.getBitmap() != null) {
+                                        // load image into imageview
+                                        hideProgressDialog();
+                                        mWebView.setImageBitmap(response.getBitmap());
+                                        healthSystemContainerRl.setVisibility(View.VISIBLE);
+                                        mWebView.setVisibility(View.VISIBLE);
+                                        healthSystemIv.setVisibility(View.VISIBLE);
+                                        healthSystemTv.setVisibility(View.VISIBLE);
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                if (mOnCreatePinSucessful != null) {
+                                                    mOnCreatePinSucessful.startDashboard();
+                                                }
+                                            }
+                                        }, SPLASH_TIME_OUT);
                                     }
                                 }
-                            }, SPLASH_TIME_OUT);
+                            });
                         }
-                    });
+
+                        @Override
+                        public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+                            if (response.getBitmap() != null) {
+                                mWebView.setImageBitmap(response.getBitmap());
+                                hideProgressDialog();
+                                healthSystemContainerRl.setVisibility(View.VISIBLE);
+                                mWebView.setVisibility(View.VISIBLE);
+                                healthSystemIv.setVisibility(View.VISIBLE);
+                                healthSystemTv.setVisibility(View.VISIBLE);
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (mOnCreatePinSucessful != null) {
+                                            mOnCreatePinSucessful.startDashboard();
+                                        }
+                                    }
+                                }, SPLASH_TIME_OUT);
+                            } else {
+                                Log.d("ARG1 - ", arg1 + "");
+                            }
+                        }
+                    };
+                    imageLoader.get(screenImageURL, iListener);
+
                 } else {
                     if (mOnCreatePinSucessful != null) {
                         mOnCreatePinSucessful.startDashboard();

@@ -7,27 +7,30 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_alignParentTop="true"
-            android:visibility="gone"
+            android:visibility="visible"
+            android:id="@+id/health_system_container_rl"
             >
-            <WebView
+            <ImageView
                 android:id="@+id/webView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/login_bg"
-                android:visibility="gone"></WebView>
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:visibility="gone"></ImageView>
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:id="@+id/health_system_niv"
                 android:src="@drawable/sentara"
                 android:visibility="gone"
-                android:layout_marginTop="71dp"
+                android:layout_marginTop="62dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true" />
 

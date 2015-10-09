@@ -10,12 +10,13 @@
     android:id="@+id/health_system_container_rl"
     android:visibility="gone"
     >
-    <WebView
+    <ImageView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/login_bg"
-        android:visibility="visible"></WebView>
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:visibility="visible"></ImageView>
 
     <ImageView
         android:layout_width="wrap_content"

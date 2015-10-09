@@ -14,9 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -24,6 +21,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.mdlive.unifiedmiddleware.commonclasses.application.ApplicationController;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
@@ -51,12 +50,14 @@ public class LoginFragment extends MDLiveBaseFragment {
 
     private EditText mUserNameEditText = null;
     private EditText mPasswordEditText = null;
-    private WebView mWebView;
+    private ImageView mWebView;
     private RelativeLayout healthSystemContainerRl, headerRl;
     private ImageView healthSystemIv;
     private TextView healthSystemTv;
     private FrameLayout loginContainerFl;
+    private String screenImageURL;
     private static final int SPLASH_TIME_OUT = 4000;
+    private String footerImageURL;
 
     public static LoginFragment newInstance() {
         final LoginFragment loginFragment = new LoginFragment();
@@ -90,7 +91,7 @@ public class LoginFragment extends MDLiveBaseFragment {
 
         mUserNameEditText = (EditText) view.findViewById(R.id.userName);
         mPasswordEditText = (EditText) view.findViewById(R.id.password);
-        mWebView = (WebView) view.findViewById(R.id.webView);
+        mWebView = (ImageView) view.findViewById(R.id.webView);
         healthSystemContainerRl = (RelativeLayout) view.findViewById(R.id.health_system_container_rl);
         headerRl = (RelativeLayout) view.findViewById(R.id.login_header_rl);
         healthSystemIv = (ImageView) view.findViewById(R.id.health_system_niv);
@@ -295,37 +296,76 @@ public class LoginFragment extends MDLiveBaseFragment {
             public void onResponse(JSONObject response) {
                 Log.d("Response", response.toString());
                 if (response != null && response.optBoolean("additional_screen_applicable", false)) {
+                    showProgressDialog();
                     SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, response.toString()).commit();
-                    mWebView.loadUrl(response.optString("screen_image"));
+                    screenImageURL = response.optString("screen_image");
+                    footerImageURL = response.optString("footer_image");
                     healthSystemTv.setText(response.optString("splash_screen_text"));
-                    mWebView.getSettings().setLoadWithOverviewMode(true);
-                    mWebView.getSettings().setUseWideViewPort(true);
-                    mWebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
-                    mWebView.getSettings().setBuiltInZoomControls(true);
-                    mWebView.setWebViewClient(new WebViewClient() {
+                    final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
+                    ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
 
-                        public void onPageFinished(WebView view, String url) {
-                            hideProgressDialog();
-                            headerRl.setVisibility(View.GONE);
-                            loginContainerFl.setVisibility(View.GONE);
-                            healthSystemContainerRl.setVisibility(View.VISIBLE);
-                            mWebView.setVisibility(View.VISIBLE);
-                            healthSystemIv.setVisibility(View.VISIBLE);
-                            healthSystemTv.setVisibility(View.VISIBLE);
-                            new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            imageLoader.get(screenImageURL, new ImageLoader.ImageListener() {
+
                                 @Override
-                                public void run() {
-                                    // This method will be executed once the timer is over
-                                    // Start your app main activity
-                                    if (mOnLoginResponse != null) {
-                                        mOnLoginResponse.onLoginSucess();
+                                public void onErrorResponse(VolleyError error) {
+                                    hideProgressDialog();
+                                }
+
+                                @Override
+                                public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+                                    if (response.getBitmap() != null) {
+                                        // load image into imageview
+                                        hideProgressDialog();
+                                        mWebView.setImageBitmap(response.getBitmap());
+                                        headerRl.setVisibility(View.GONE);
+                                        loginContainerFl.setVisibility(View.GONE);
+                                        healthSystemContainerRl.setVisibility(View.VISIBLE);
+                                        mWebView.setVisibility(View.VISIBLE);
+                                        healthSystemIv.setVisibility(View.VISIBLE);
+                                        healthSystemTv.setVisibility(View.VISIBLE);
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                // This method will be executed once the timer is over
+                                                // Start your app main activity
+                                                if (mOnLoginResponse != null) {
+                                                    mOnLoginResponse.onLoginSucess();
+                                                }
+                                            }
+                                        }, SPLASH_TIME_OUT);
                                     }
                                 }
-                            }, SPLASH_TIME_OUT);
+                            });
                         }
-                    });
+
+                        @Override
+                        public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+                            if (response.getBitmap() != null) {
+                                mWebView.setImageBitmap(response.getBitmap());
+                                hideProgressDialog();
+                                headerRl.setVisibility(View.GONE);
+                                loginContainerFl.setVisibility(View.GONE);
+                                healthSystemContainerRl.setVisibility(View.VISIBLE);
+                                mWebView.setVisibility(View.VISIBLE);
+                                healthSystemIv.setVisibility(View.VISIBLE);
+                                healthSystemTv.setVisibility(View.VISIBLE);
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (mOnLoginResponse != null) {
+                                            mOnLoginResponse.onLoginSucess();
+                                        }
+                                    }
+                                }, SPLASH_TIME_OUT);
+                            }
+                        }
+                    };
+                    imageLoader.get(screenImageURL, iListener);
+
                 } else {
                     if (mOnLoginResponse != null) {
                         mOnLoginResponse.onLoginSucess();
@@ -373,4 +413,5 @@ public class LoginFragment extends MDLiveBaseFragment {
         }
         return null;
     }
+
 }
