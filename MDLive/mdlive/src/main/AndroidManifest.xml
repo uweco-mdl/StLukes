@@ -74,6 +74,7 @@
         <activity
             android:name=".UnlockActivity"
             android:screenOrientation="portrait"
+            android:noHistory="true"
             android:theme="@style/MDLive_Red_Theme" />
 
         <!-- [Login Broadcast Receiver will be received from Embed kit layer] -->
@@ -134,6 +135,15 @@
         <activity
             android:name="com.vsee.activity.CallActivity"
             android:screenOrientation="portrait"></activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
