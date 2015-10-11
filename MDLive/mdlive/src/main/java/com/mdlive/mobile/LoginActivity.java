@@ -1,17 +1,22 @@
 package com.mdlive.mobile;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
+import com.mdlive.embedkit.uilayer.sav.LocationCooridnates;
 import com.mdlive.mobile.CreateAccountFragment.OnSignupSuccess;
 import com.mdlive.mobile.LoginFragment.OnLoginResponse;
 import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
@@ -45,26 +50,52 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        try {
+            setContentView(R.layout.activity_login);
 
-        LocalizationSingleton.localiseLayout(this,(ViewGroup) ((ViewGroup) this
-                .findViewById(android.R.id.content)).getChildAt(0));
-/*        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            setTitle("");
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }*/
+            LocalizationSingleton.localiseLayout(this, (ViewGroup) ((ViewGroup) this
+                    .findViewById(android.R.id.content)).getChildAt(0));
 
-        getSupportFragmentManager().addOnBackStackChangedListener(this);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().
-                    beginTransaction().
-                    add(R.id.container, LoginFragment.newInstance(), TAG).
-                    commit();
+            getSupportFragmentManager().addOnBackStackChangedListener(this);
+            if (savedInstanceState == null) {
+                getSupportFragmentManager().
+                        beginTransaction().
+                        add(R.id.container, LoginFragment.newInstance(), TAG).
+                        commit();
+            }
+            LocationCooridnates locationService = new LocationCooridnates(LoginActivity.this);
+            if (!locationService.checkLocationServiceSettingsEnabled(getApplicationContext())) {
+                showSettingsAlert();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
+    public void showSettingsAlert() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(LoginActivity.this);
+        // Setting Dialog Title
+        alertDialog.setTitle("");
+        // Setting Dialog Message
+        alertDialog.setMessage(getString(R.string.mdl_gps_settings));
+        // On pressing Settings button
+        alertDialog.setPositiveButton(getString(R.string.mdl_settings), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(intent);
+            }
+        });
 
+        // on pressing cancel button
+        alertDialog.setNegativeButton(getString(R.string.mdl_cancel), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alertDialog.setCancelable(true);
+        // Showing Alert Message
+        alertDialog.show();
+    }
     @Override
     public void onBackPressed() {
         final Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
