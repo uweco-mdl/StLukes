@@ -114,12 +114,10 @@ public class SplashScreenActivity extends Activity {
      *  Making Upgrade alert call
      * */
     private void makeUpdateAlertCall() {
-//        mProgressDialog.show();
 
         NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-//                mProgressDialog.dismiss();
                 try {
                     if (MdliveUtils.isHigherVersionPresent(response.optString("latest_version"), BuildConfig.VERSION_NAME)) {
                         upgradeOption = response.optString("upgrade");
@@ -200,7 +198,7 @@ public class SplashScreenActivity extends Activity {
                     startActivity(intent);
                 }
             } else {
-                intent = LoginActivity.getLoginToDashBoardIntent(getBaseContext(), true);
+                intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
             }
         } else {

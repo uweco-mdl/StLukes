@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -31,19 +32,11 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
         OnSignupSuccess, OnBackStackChangedListener {
     public static final String TAG = "LOGIN";
     private static final String UNLOCK_FLAG = "UNLOCK_FLAG";
-    private static final String GO_To_DASHBOARD = "go_to_dash_board";
 
     public static Intent getLockLoginIntnet(final Context context) {
         final Intent intent = new Intent(context, LoginActivity.class);
         intent.putExtra(UNLOCK_FLAG, 1);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        return intent;
-    }
-
-    public static Intent getLoginToDashBoardIntent(final Context context, final boolean goToDashboard) {
-        final Intent intent = new Intent(context, LoginActivity.class);
-        intent.putExtra(GO_To_DASHBOARD, goToDashboard);
-
         return intent;
     }
 
@@ -165,30 +158,14 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
 
     @Override
     public void onLoginSucess() {
-        if (getIntent() != null && getIntent().hasExtra(UNLOCK_FLAG) && getIntent().getExtras().getInt(UNLOCK_FLAG) == 1) {
-            finish();
-            return;
-        }
 
-        if (getIntent() != null && getIntent().hasExtra(GO_To_DASHBOARD) && getIntent().getExtras().getBoolean(GO_To_DASHBOARD)) {
+        Log.e("pin or password" , MdliveUtils.getLockType(this).equalsIgnoreCase(getString(com.mdlive.embedkit.R.string.mdl_password))+"");
+        if (MdliveUtils.getLockType(this).equalsIgnoreCase(getString(com.mdlive.embedkit.R.string.mdl_password))) {
             final Intent intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
             startActivity(intent);
-            finish();
-            return;
-        }
-
-        if (MdliveUtils.getFirstTime(getBaseContext())) {
-            MdliveUtils.setFirstTime(getBaseContext(), false);
+        } else {
             final Intent intent = new Intent(getBaseContext(), PinActivity.class);
             startActivity(intent);
-        } else {
-            if (MdliveUtils.getLockType(this).equalsIgnoreCase("password")) {
-                final Intent intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
-                startActivity(intent);
-            } else {
-                final Intent intent = new Intent(getBaseContext(), PinActivity.class);
-                startActivity(intent);
-            }
         }
 
         finish();
