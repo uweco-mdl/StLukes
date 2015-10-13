@@ -9,6 +9,7 @@
     <string name="mdl_application_or">OR</string>
     <string name="mdl_application_create_free_account">Create a FREE Account</string>
 
+
     <string name="mdl_application_enter_your_pin_to_unlock">Enter Your PIN to unlock</string>
     <string name="mdl_application_sign_in_with_user_name_and_password">Sign in with Username and Password</string>
     <string name="mdl_application_please_enter_mandetory_fileds">Please enter all mandatory fields.</string>
@@ -39,5 +40,10 @@
     <string name="mdl_share_cancelled">Share cancelled</string>
     <string name="mdl_share_failed">Share Failed</string>
     <string name="mdl_loading">Loading</string>
+
+    <!--MDLive header-->
+    <string name="mdl_ada_hamburger">Navigated </string>
+    <string name="mdl_ada_bell">Notification</string>
+    <string name="mdl_ada_back_button">Navigation up</string>
 
 </resources>
