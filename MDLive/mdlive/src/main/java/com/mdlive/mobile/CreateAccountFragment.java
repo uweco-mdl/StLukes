@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -154,7 +155,8 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
 
     public boolean canGoBack() {
         if (mWebView != null) {
-            if(mWebView.getUrl().contains("get_eligibilty_details")){
+            Log.d("URL", mWebView.getUrl());
+            if(mWebView.getUrl().contains("get_eligibilty_details") || mWebView.getUrl().contains("get_non270_details")){
                 return false;
             } else {
                 return mWebView.canGoBack();
