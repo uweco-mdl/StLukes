@@ -61,6 +61,7 @@
             <ImageView
                 android:layout_width="124dp"
                 android:layout_height="24dp"
+                android:id="@+id/headerLogoIv"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"
                 android:src="@drawable/mdlive_logo"

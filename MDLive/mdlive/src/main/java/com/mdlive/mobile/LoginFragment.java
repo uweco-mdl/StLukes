@@ -18,12 +18,14 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.mdlive.unifiedmiddleware.commonclasses.application.ApplicationController;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
+import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
 import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
@@ -58,6 +60,8 @@ public class LoginFragment extends MDLiveBaseFragment {
     private String screenImageURL;
     private static final int SPLASH_TIME_OUT = 4000;
     private String footerImageURL;
+    private ImageView mHeaderIv;
+    public ScrollView mContainer;
 
     public static LoginFragment newInstance() {
         final LoginFragment loginFragment = new LoginFragment();
@@ -92,6 +96,7 @@ public class LoginFragment extends MDLiveBaseFragment {
         mUserNameEditText = (EditText) view.findViewById(R.id.userName);
         mPasswordEditText = (EditText) view.findViewById(R.id.password);
         mWebView = (ImageView) view.findViewById(R.id.webView);
+        mContainer = (ScrollView) view.findViewById(R.id.LoginContainer);
         healthSystemContainerRl = (RelativeLayout) view.findViewById(R.id.health_system_container_rl);
         headerRl = (RelativeLayout) view.findViewById(R.id.login_header_rl);
         healthSystemIv = (ImageView) view.findViewById(R.id.health_system_niv);
@@ -110,6 +115,33 @@ public class LoginFragment extends MDLiveBaseFragment {
                 return false;
             }
         });
+        mHeaderIv = (ImageView) view.findViewById(R.id.headerLogoIv);
+        mHeaderIv.setVisibility(View.GONE);
+        if(DeepLinkUtils.DEEPLINK_DATA!=null && DeepLinkUtils.DEEPLINK_DATA.getAffiliationLogoUrl()!=null) {
+            final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
+            ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    hideProgressDialog();
+                    mHeaderIv.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+                    if (response.getBitmap() != null) {
+                        hideProgressDialog();
+                        mHeaderIv.setImageBitmap(response.getBitmap());
+                        mHeaderIv.setVisibility(View.VISIBLE);
+
+                    }
+                }
+            };
+            imageLoader.get(DeepLinkUtils.DEEPLINK_DATA.getAffiliationLogoUrl(), iListener);
+        } else {
+            mHeaderIv.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override

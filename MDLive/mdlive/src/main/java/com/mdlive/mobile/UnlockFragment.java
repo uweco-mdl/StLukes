@@ -10,10 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ToggleButton;
 
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.mdlive.unifiedmiddleware.commonclasses.application.ApplicationController;
+import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
+import com.mdlive.unifiedmiddleware.parentclasses.bean.response.UserBasicInfo;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
 import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
 import com.mdlive.unifiedmiddleware.services.UnlockService;
@@ -49,6 +55,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
 
     private EditText mPassCode7 = null;
     private StringBuffer mStringBuffer;
+    private ImageView mHeaderIv;
 
     public static UnlockFragment newInstance() {
         final UnlockFragment fragment = new UnlockFragment();
@@ -95,20 +102,50 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
         mOnUnlockSucessful = null;
     }
 
-    public void init(View changePin) {
+    public void init(View view) {
         mStringBuffer = new StringBuffer();
-
-        mPassCode1 = (ToggleButton) changePin.findViewById(R.id.passCode1);
-        mPassCode2 = (ToggleButton) changePin.findViewById(R.id.passCode2);
-        mPassCode3 = (ToggleButton) changePin.findViewById(R.id.passCode3);
-        mPassCode4 = (ToggleButton) changePin.findViewById(R.id.passCode4);
-        mPassCode5 = (ToggleButton) changePin.findViewById(R.id.passCode5);
-        mPassCode6 = (ToggleButton) changePin.findViewById(R.id.passCode6);
-        mPassCode7 = (EditText) changePin.findViewById(R.id.etPasscode);
+        mHeaderIv = (ImageView)view.findViewById(R.id.headerLogoIv);
+        mHeaderIv.setVisibility(View.GONE);
+        final UserBasicInfo userBasicInfo = UserBasicInfo.readFromSharedPreference(getActivity());
+        mPassCode1 = (ToggleButton) view.findViewById(R.id.passCode1);
+        mPassCode2 = (ToggleButton) view.findViewById(R.id.passCode2);
+        mPassCode3 = (ToggleButton) view.findViewById(R.id.passCode3);
+        mPassCode4 = (ToggleButton) view.findViewById(R.id.passCode4);
+        mPassCode5 = (ToggleButton) view.findViewById(R.id.passCode5);
+        mPassCode6 = (ToggleButton) view.findViewById(R.id.passCode6);
+        mPassCode7 = (EditText) view.findViewById(R.id.etPasscode);
 
         mPassCode7.addTextChangedListener(this);
 
-        mButton0 = (Button) changePin.findViewById(R.id.num_pad_0);
+
+        if(userBasicInfo!=null && userBasicInfo.getAffiliationLogo()!=null) {
+            showProgressDialog();
+            final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
+            ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    mHeaderIv.setVisibility(View.VISIBLE);
+                    hideProgressDialog();
+                }
+
+                @Override
+                public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+                    if (response.getBitmap() != null) {
+                        hideProgressDialog();
+                        mHeaderIv.setImageBitmap(response.getBitmap());
+                        mHeaderIv.setVisibility(View.VISIBLE);
+                    }
+                }
+            };
+            imageLoader.get(userBasicInfo.getAffiliationLogo(), iListener);
+        } else {
+            mHeaderIv.setVisibility(View.VISIBLE);
+        }
+
+
+
+        mButton0 = (Button) view.findViewById(R.id.num_pad_0);
         if (mButton0 != null) {
             mButton0.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -121,7 +158,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButton1 = (Button) changePin.findViewById(R.id.num_pad_1);
+        mButton1 = (Button) view.findViewById(R.id.num_pad_1);
         if (mButton1 != null) {
             mButton1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -134,7 +171,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButton2 = (Button) changePin.findViewById(R.id.num_pad_2);
+        mButton2 = (Button) view.findViewById(R.id.num_pad_2);
         if (mButton2 != null) {
             mButton2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -147,7 +184,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButton3 = (Button) changePin.findViewById(R.id.num_pad_3);
+        mButton3 = (Button) view.findViewById(R.id.num_pad_3);
         if (mButton3 != null) {
             mButton3.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -158,7 +195,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButton4 = (Button) changePin.findViewById(R.id.num_pad_4);
+        mButton4 = (Button) view.findViewById(R.id.num_pad_4);
         if (mButton4 != null) {
             mButton4.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -171,7 +208,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButton5 = (Button) changePin.findViewById(R.id.num_pad_5);
+        mButton5 = (Button) view.findViewById(R.id.num_pad_5);
         if (mButton5 != null) {
             mButton5.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -184,7 +221,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButton6 = (Button) changePin.findViewById(R.id.num_pad_6);
+        mButton6 = (Button) view.findViewById(R.id.num_pad_6);
         if (mButton6 != null) {
             mButton6.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -197,7 +234,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButton7 = (Button) changePin.findViewById(R.id.num_pad_7);
+        mButton7 = (Button) view.findViewById(R.id.num_pad_7);
         if (mButton7 != null) {
             mButton7.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -210,7 +247,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButton8 = (Button) changePin.findViewById(R.id.num_pad_8);
+        mButton8 = (Button) view.findViewById(R.id.num_pad_8);
         if (mButton8 != null) {
             mButton8.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -223,7 +260,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButton9 = (Button) changePin.findViewById(R.id.num_pad_9);
+        mButton9 = (Button) view.findViewById(R.id.num_pad_9);
         if (mButton9 != null) {
             mButton9.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -236,7 +273,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButtonCross = changePin.findViewById(R.id.num_pad_cross);
+        mButtonCross = view.findViewById(R.id.num_pad_cross);
         if (mButtonCross != null) {
             mButtonCross.setOnClickListener(new View.OnClickListener() {
                 @Override
