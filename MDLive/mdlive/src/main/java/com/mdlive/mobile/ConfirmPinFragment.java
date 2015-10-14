@@ -472,6 +472,9 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     hideProgressDialog();
+                                    if (mOnCreatePinSucessful != null) {
+                                        mOnCreatePinSucessful.startDashboard();
+                                    }
                                 }
 
                                 @Override
@@ -571,7 +574,6 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
                     if (!inetAddress.isLoopbackAddress()) {
                         String ip = Formatter.formatIpAddress(inetAddress.hashCode());
                         return ip;
-//                        return "184.73.180.105";  // Test ip address
                     }
                 }
             }

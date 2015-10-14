@@ -344,6 +344,9 @@ public class LoginFragment extends MDLiveBaseFragment {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     hideProgressDialog();
+                                    if (mOnLoginResponse != null) {
+                                        mOnLoginResponse.onLoginSucess();
+                                    }
                                 }
 
                                 @Override

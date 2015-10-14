@@ -80,12 +80,23 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
 
     @Override
     public void onClickNoPin() {
-        MdliveUtils.hideSoftKeyboard(this);
-        MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_password));
-        clearMinimisedTime();
-        final Intent dashboard = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
-        startActivity(dashboard);
-        finish();
+        final Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
+        if (fragment != null) {
+            String pin = null;
+
+            if (fragment instanceof CreatePinFragment) {
+                MdliveUtils.hideSoftKeyboard(this);
+                ((CreatePinFragment) fragment).checkHealthServices();
+            } else {
+                MdliveUtils.hideSoftKeyboard(this);
+                MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_password));
+                startDashboard();
+            }
+        } else {
+            MdliveUtils.hideSoftKeyboard(this);
+            MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_password));
+            startDashboard();
+        }
     }
 
     @Override
