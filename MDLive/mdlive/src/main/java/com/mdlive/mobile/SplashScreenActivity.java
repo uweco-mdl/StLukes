@@ -51,7 +51,6 @@ public class SplashScreenActivity extends Activity {
     private String upgradeOption="", latestVersion = "";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private ProgressDialog mProgressDialog;
-
     ENVIRON env;
 
     @Override
@@ -255,7 +254,8 @@ public class SplashScreenActivity extends Activity {
      * Start the GCM registration service
      * */
     private void registerGCMForMDLiveApplication() {
-        if (checkPlayServices()) {
+        SharedPreferences settings = getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, MODE_PRIVATE);
+        if (checkPlayServices() && (settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null) == null)) {
             final Intent intent = new Intent(this, MDLiveRegistrationIntentService.class);
             startService(intent);
         }

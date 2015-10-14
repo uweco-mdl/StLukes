@@ -232,11 +232,11 @@ public class LoginFragment extends MDLiveBaseFragment {
 
                 editor.putString(PreferenceConstants.USER_UNIQUE_ID, response.getString("uniqueid"));
                 editor.commit();
-
-                if (MDLiveGCMPreference.MDLIVE_GCM_INSTANCE_ID != null
-                        && MDLiveGCMPreference.MDLIVE_GCM_INSTANCE_ID.length() > 0) {
+                SharedPreferences settings = getActivity().getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, getActivity().MODE_PRIVATE);
+                String pushRegID = settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null);
+                if (pushRegID != null) {
                     hideProgressDialog();
-                    sendGCMInstanceId();
+                    sendGCMInstanceId(pushRegID);
                 } else {
                     if (MdliveUtils.getLockType(getActivity()).equalsIgnoreCase("password")) {
                         checkHealthServices();
@@ -257,7 +257,7 @@ public class LoginFragment extends MDLiveBaseFragment {
         }
     }
 
-    private void sendGCMInstanceId() {
+    private void sendGCMInstanceId(String pushRegID) {
         showProgressDialog();
 
         try {
@@ -265,9 +265,8 @@ public class LoginFragment extends MDLiveBaseFragment {
             final SharedPreferences.Editor editor = preferences.edit();
             editor.putString(PreferenceConstants.DEVICE_OS_KEY, "Android");
             editor.commit();
-
             final JSONObject jsonObject = new JSONObject();
-            jsonObject.put("uuid", MDLiveGCMPreference.MDLIVE_GCM_INSTANCE_ID);
+            jsonObject.put("uuid", pushRegID);
             jsonObject.put("device_type", "Android");
 
             NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
