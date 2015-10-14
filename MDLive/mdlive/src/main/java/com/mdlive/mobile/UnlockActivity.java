@@ -223,7 +223,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
                 finish();
             }
         };
-        MdliveUtils.showDialog(this, getString(R.string.mdl_incorrect_pin_title), getString(R.string.mdl_incorrect_pin_message), getString(R.string.mdl_try_again),
+        MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_incorrect_pin_message), getString(R.string.mdl_try_again),
                 getString(R.string.mdl_reset), tryAgain, reSet);
     }
 }
