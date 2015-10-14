@@ -13,10 +13,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.gson.Gson;
@@ -47,6 +51,7 @@ public class SplashScreenActivity extends Activity {
     private String upgradeOption="", latestVersion = "";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private ProgressDialog mProgressDialog;
+
     ENVIRON env;
 
     @Override
@@ -57,7 +62,7 @@ public class SplashScreenActivity extends Activity {
 
         // listen for EmbedKit exit signal and respond accordingly
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, new IntentFilter(SIGNALS.EXIT_SIGNAL.name()));
-
+        getTracker();
         mProgressDialog = MdliveUtils.getFullScreenProgressDialog(this);
 
         /* Select the environment type here : */
@@ -435,6 +440,33 @@ public class SplashScreenActivity extends Activity {
             }
         };
         MdliveUtils.showDialog(this,getString(com.mdlive.embedkit.R.string.mdl_app_name),getString(com.mdlive.embedkit.R.string.mdl_failed_baylor_login),getString(com.mdlive.embedkit.R.string.mdl_Ok),null,backToBaylor,null);
+    }
+
+    public static Tracker tracker = null;
+
+    /**
+     *
+     * This function retrieves tracker with the corresponding google analytics config file.
+     *
+     * @return GoogleAnalytics Tracker
+     */
+    synchronized Tracker getTracker() {
+        if (tracker == null) {
+            GoogleAnalytics googleAnalytics = GoogleAnalytics.getInstance(this);
+            googleAnalytics.enableAutoActivityReports(getApplication());
+            tracker = googleAnalytics.newTracker(R.xml.analytics);
+            tracker.enableExceptionReporting(false);
+            final Thread.UncaughtExceptionHandler defaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+            Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+                @Override
+                public void uncaughtException(Thread thread, Throwable throwable) {
+                    String stackTrace = Log.getStackTraceString(throwable);
+                    tracker.send(new HitBuilders.ExceptionBuilder().setDescription("{ " + throwable.getMessage() + " } " + stackTrace).setFatal(true).build());
+                    defaultUncaughtExceptionHandler.uncaughtException(thread, throwable);
+                }
+            });
+        }
+        return tracker;
     }
 }
 
