@@ -145,7 +145,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".gcm.NotificationHandler"
-            android:label="@string/title_activity_notification_handler" >
+             >
         </activity>
         <activity
             android:name=".gcm.GCMNotificationDialog"
