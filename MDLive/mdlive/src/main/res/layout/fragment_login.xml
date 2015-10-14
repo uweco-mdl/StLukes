@@ -105,7 +105,7 @@
                             android:layout_marginBottom="2dp"
                             android:clickable="true"
                             android:gravity="center"
-                            android:text="Virtual Care, Anywhere."
+                            android:text="@string/mdl_virtual_care"
                             android:textColor="@color/white"
                             android:textSize="26sp"
                             android:textStyle="bold"/>
@@ -116,7 +116,7 @@
                             android:layout_gravity="center_vertical"
                             android:clickable="true"
                             android:gravity="center"
-                            android:text="24/7 Access to Board Certified Doctors"
+                            android:text="@string/mdl_access_board"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
