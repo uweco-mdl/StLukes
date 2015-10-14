@@ -3,7 +3,6 @@ package com.mdlive.mobile;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -11,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +43,7 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
         super.onCreate(savedInstanceState);
         try {
             setContentView(R.layout.activity_login);
+            this.setTitle(TAG);
 
             LocalizationSingleton.localiseLayout(this, (ViewGroup) ((ViewGroup) this
                     .findViewById(android.R.id.content)).getChildAt(0));
