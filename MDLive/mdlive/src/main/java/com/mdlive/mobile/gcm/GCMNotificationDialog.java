@@ -7,17 +7,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.mdlive.embedkit.R;
+import com.mdlive.mobile.R;
 
 public class GCMNotificationDialog extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.gcmnotification_dialog);
-        getActionBar().hide();
+        setContentView(R.layout.gcmnotification_dialog);
+        if(getActionBar()!=null) {
+            getActionBar().hide();
+        }
         setTitle(getString(R.string.mdl_app_name));
         String message = getIntent().getStringExtra("Message");
-//        ((TextView)findViewById(R.id.MessageTv)).setText(message);
+        ((TextView)findViewById(R.id.MessageTv)).setText(message);
     }
 }

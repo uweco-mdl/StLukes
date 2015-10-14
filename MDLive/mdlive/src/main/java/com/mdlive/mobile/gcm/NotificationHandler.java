@@ -10,7 +10,9 @@ import android.view.MenuItem;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mdlive.embedkit.uilayer.appointment.AppointmentActivity;
+import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.embedkit.uilayer.messagecenter.MessageCenterInboxDetailsActivity;
+import com.mdlive.mobile.LoginActivity;
 import com.mdlive.mobile.R;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.parentclasses.bean.response.UserBasicInfo;
@@ -29,12 +31,18 @@ public class NotificationHandler extends AppCompatActivity {
             JsonParser parser = new JsonParser();
             JsonObject originalPayload = parser.parse(message).getAsJsonObject();
             final UserBasicInfo userBasicInfo = UserBasicInfo.readFromSharedPreference(this);
-            final Intent messageIntent = new Intent(this,
+            Intent messageIntent = new Intent(this,
                     originalPayload.get("acme").getAsJsonArray().get(0).getAsString().equalsIgnoreCase("message") ?
                             MessageCenterInboxDetailsActivity.class : AppointmentActivity.class);
-            messageIntent.putExtra("notification_id", originalPayload.get("acme").getAsJsonArray().get(1).getAsInt());
+
 
             if (userBasicInfo != null) {
+                messageIntent.putExtra("notification_id", originalPayload.get("acme").getAsJsonArray().get(1).getAsInt());
+                messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(messageIntent);
+            }else{
+                messageIntent = new Intent(this, LoginActivity.class);
                 messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(messageIntent);

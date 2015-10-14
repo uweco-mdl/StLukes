@@ -46,7 +46,7 @@ public class MDLiveGCMListenerService extends GcmListenerService {
         Log.d(TAG, "From: " + from);
         Log.d(TAG, "Message: " + message);
 
-        sendNotification(message);
+//        sendNotification(message);
     }
 
     @Override
@@ -64,14 +64,14 @@ public class MDLiveGCMListenerService extends GcmListenerService {
      * */
     private void sendNotification(final String message) {
         try {
-            if (!MdliveUtils.isAppInForground) {
+            if (MdliveUtils.isAppInForground) {
                 Log.e("Push notification message", message+"");
                     showAlert(message);
             } else {
                 sendAppNotification(message);
+                SharedPreferences settings = getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, 0);
+                settings.edit().putString("has_push_notification", message).commit();
             }
-            SharedPreferences settings = getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, 0);
-            settings.edit().putString("has_push_notification", message).commit();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -120,34 +120,11 @@ public class MDLiveGCMListenerService extends GcmListenerService {
             alert.addProperty("alert", originalPayload.get("aps").getAsJsonObject().get("alert").getAsString());
             notificationPayload.add("aps", alert);
             notificationPayload.add("acme", originalPayload.get("acme").getAsJsonArray());
-            DialogInterface.OnClickListener positive = new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    if (userBasicInfo != null) {
-                        messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        MDLiveGCMListenerService.this.startActivity(messageIntent);
-                    }
-                    dialog.dismiss();
-                }
-            };
-            DialogInterface.OnClickListener negtive = new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            };
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                    this);
-            alertDialogBuilder
-                    .setTitle("MDLIVE")
-                    .setMessage(originalPayload.get("aps").getAsJsonObject().get("alert").getAsString())
-                    .setCancelable(false)
-                    .setPositiveButton(getString(R.string.mdl_Ok), positive);
+            Intent alertintent = new Intent(this, GCMNotificationDialog.class);
 
-            alertDialogBuilder.setNegativeButton(getString(R.string.mdl_cancel), negtive);
-            final AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
+            messageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(alertintent);
         }catch (Exception e){
             e.printStackTrace();
         }

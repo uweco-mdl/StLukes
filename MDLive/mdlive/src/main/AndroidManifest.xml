@@ -109,24 +109,6 @@
         </receiver>
         <!-- [END gcm_receiver] -->
 
-        <!-- [START gcm_listener] -->
-        <service
-            android:name=".gcm.MDLiveGCMListenerService"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            </intent-filter>
-        </service>
-        <!-- [END gcm_listener] -->
-        <!-- [START instanceId_listener] -->
-        <service
-            android:name=".gcm.MDLiveInstanceIDListenerService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
-            </intent-filter>
-        </service>
-        <!-- [END instanceId_listener] -->
         <service
             android:name=".gcm.MDLiveRegistrationIntentService"
             android:exported="false">
@@ -152,7 +134,17 @@
             android:theme="@style/MDLive_Dialog_Theme"
             >
         </activity>
+        <receiver
+            android:name="com.mdlive.mobile.gcm.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
 
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.mdlive.mobile" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
