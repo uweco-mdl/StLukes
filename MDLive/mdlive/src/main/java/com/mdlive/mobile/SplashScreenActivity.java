@@ -28,6 +28,7 @@ import com.mdlive.embedkit.global.MDLiveConfig;
 import com.mdlive.embedkit.global.MDLiveConfig.ENVIRON;
 import com.mdlive.embedkit.global.MDLiveConfig.SIGNALS;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
+import com.mdlive.mobile.gcm.MDLiveRegistrationIntentService;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.IntegerConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
