@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/new_login_bg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/txtApply"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/orange_btn_gradient"
+                android:onClick="rightBtnOnClick"
+                android:text="@string/search_btn_continue_txt"
+                android:tag="@string/search_btn_continue_txt"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/main_content_layout"
+                android:layout_above="@+id/txtApply"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/toolbar"
+                    layout="@layout/mdlive_toolbar" />
+
+                <ScrollView
+                    style="@style/common_style_W_Match_M_Match"
+                    android:layout_marginTop="@dimen/dimen_10_dp"
+                    android:background="@color/new_login_bg">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white">
+
+                        <LinearLayout
+                            style="@style/common_style_W_Match_M_Match"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical">
+                            <!--<RelativeLayout
+                                xmlns:android="http://schemas.android.com/apk/res/android"
+                                style="@style/wagHeaderLinearLayoutStyle"
+                                android:orientation="horizontal">
+                                <ImageView
+                                    style="@style/HeaderBackImgStyle"
+                                    android:background="@drawable/exit_icon"
+                                    android:contentDescription="@string/closeBtn"
+                                    android:id="@+id/backImg"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/headerTxt"
+                                    style = "@style/HeaderTextViewStyle"
+                                    android:layout_toRightOf="@+id/backImg"
+                                    android:text="@string/doctor_filters"
+                                    />
+                                <Button
+                                    android:onClick="doneAction"
+                                    android:id="@+id/doneBtn"
+                                    android:labelFor="@string/done"
+                                    style = "@style/endHeaderTextViewStyle"
+                                    android:textSize="@dimen/textsize_large"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerInParent="true"
+                                    android:background="@null"
+                                    android:text="@string/doneUpperCase"
+                                    />
+                            </RelativeLayout>-->
+
+
+
+                            <LinearLayout
+                                android:id="@+id/provider_name_lyt"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="2dp"
+                                android:weightSum="1"
+
+                                android:layout_marginTop="2dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txtAdvancedSearchOptions"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:text="Provider Name"
+                                    android:layout_weight="0.45"
+                                    android:tag="@string/mdltag_advanced_search_options"
+                                    android:gravity="center_vertical"
+                                    android:textColor="@color/darkgrey_background"
+                                    android:textSize="14sp" />
+
+                                <EditText
+                                    android:id="@+id/edt_searchProvider"
+                                    android:layout_weight="0.55"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/txtAdvancedSearchOptions"
+                                    android:hint="@string/mdl_search_provider_name"
+                                    android:tag="@string/mdltag_search_provider_name"
+                                    android:paddingLeft="5dp"
+                                    android:paddingTop="14dp"
+                                    android:textColor="@color/darkblack"
+                                    android:textColorHint="@color/EditText_HintColor"
+                                    android:textSize="15sp" />
+
+                            </LinearLayout>
+
+                            <View style="@style/advanceSearchProviderDivider" />
+
+                            <LinearLayout
+                                android:id="@+id/AvailableByR1"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_below="@+id/provider_name_lyt"
+                                android:onClick="availbleAction"
+                                android:weightSum="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txtAvailableBy"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.45"
+                                    android:gravity="center_vertical"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/darkgrey_background"
+                                    android:tag="@string/mdl_Available_by"
+                                    android:text="@string/mdl_Available_by" />
+
+                                <TextView
+                                android:id="@+id/AvailableTxtView"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.55"
+                                style="@style/searchProviderValueStyle"
+                                android:layout_below="@+id/txtAvailableBy"
+                                android:drawableRight="@drawable/right_arrow_icon"
+                                android:gravity="center_vertical"
+                                android:tag="@string/mdltag_any"
+                                android:text="@string/mdl_any" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/dividerAvailableBy"
+                                style="@style/advanceSearchProviderDivider" />
+
+                            <LinearLayout
+                                android:id="@+id/AppointmentDateR2"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_below="@+id/provider_name_lyt"
+                                android:clickable="true"
+                                android:onClick="appointmentAction"
+                                android:weightSum="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.45"
+                                    android:gravity="center_vertical"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/darkgrey_background"
+                                    android:id="@+id/txtAppointmentDate"
+                                    android:tag="@string/mdl_txt_appointment_date"
+                                    android:text="@string/mdl_txt_appointment_date" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.55"
+                                    android:id="@+id/DateTxtView"
+                                    style="@style/searchProviderValueStyle"
+                                    android:layout_below="@+id/txtAppointmentDate"
+                                    android:tag="@string/mdltag_any"
+                                    android:text="@string/mdl_any" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/dividerAppointmentDate"
+                                style="@style/advanceSearchProviderDivider" />
+
+                            <LinearLayout
+                                android:id="@+id/ProviderTypeTxtViewR3"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_below="@+id/provider_name_lyt"
+                                android:clickable="true"
+                                android:onClick="providerTypeAction"
+                                android:weightSum="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.45"
+                                    android:gravity="center_vertical"
+                                    android:textSize="14sp"
+                                    android:id="@+id/txtProviderType"
+                                    android:tag="@string/mdl_Provider_type"
+                                    android:text="@string/mdl_Provider_type"
+                                    android:textColor="@color/darkgrey_background" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.55"
+                                    style="@style/searchProviderValueStyle"
+                                    android:id="@+id/ProviderTypeTxtView"
+                                    android:layout_below="@+id/txtProviderType"
+                                    android:tag="@string/mdltag_any"
+                                    android:text="@string/mdl_any" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/dividerProviderType"
+                                style="@style/advanceSearchProviderDivider" />
+
+                            <LinearLayout
+                                android:id="@+id/sorttByR4"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_below="@+id/provider_name_lyt"
+                                android:clickable="true"
+                                android:onClick="sortByAction"
+                                android:weightSum="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.45"
+                                    android:gravity="center_vertical"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/darkgrey_background"
+                                    android:id="@+id/txtSortType"
+                                    android:tag="@string/mdl_sort_by"
+                                    android:text="@string/mdl_sort_by" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.55"
+                                    android:id="@+id/SortbyTxtView"
+                                    style="@style/searchProviderValueStyle"
+                                    android:layout_below="@+id/txtSortType"
+                                    android:tag="@string/mdltag_any"
+                                    android:text="@string/mdl_any" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/dividerSorttBy"
+                                style="@style/advanceSearchProviderDivider" />
+
+                            <LinearLayout
+                                android:id="@+id/SpecialityTxtViewR5"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_below="@+id/provider_name_lyt"
+                                android:clickable="true"
+                                android:onClick="specialityAction"
+                                android:weightSum="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.45"
+                                    android:gravity="center_vertical"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/darkgrey_background"
+                                    android:id="@+id/txtSpecialty"
+                                    android:tag="@string/mdl_speciality"
+                                    android:text="@string/mdl_speciality" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.55"
+                                    style="@style/searchProviderValueStyle"
+                                    android:id="@+id/SpecialityTxtView"
+                                    android:layout_below="@+id/txtSpecialty"
+                                    android:tag="@string/mdltag_any"
+                                    android:text="@string/mdl_any" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/dividerSpecialty"
+                                style="@style/advanceSearchProviderDivider" />
+
+                            <LinearLayout
+                                android:id="@+id/LocatioTxtViewR6"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_below="@+id/provider_name_lyt"
+                                android:clickable="true"
+                                android:onClick="locationAction"
+                                android:weightSum="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.45"
+                                    android:gravity="center_vertical"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/darkgrey_background"
+                                    android:id="@+id/txtLocatedIn"
+                                    android:tag="@string/mdl_located_in"
+                                    android:text="@string/mdl_located_in" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.55"
+                                    android:id="@+id/LocatioTxtView"
+                                    style="@style/searchProviderValueStyle"
+                                    android:layout_below="@+id/txtLocatedIn"
+                                    android:tag="@string/mdltag_any"
+                                    android:text="@string/mdl_any" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/dividerLocatedIn"
+                                style="@style/advanceSearchProviderDivider" />
+
+                            <LinearLayout
+                                android:id="@+id/SpeaksTxtViewR7"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_below="@+id/provider_name_lyt"
+                                android:clickable="true"
+                                android:onClick="speaksAction"
+                                android:weightSum="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.45"
+                                    android:gravity="center_vertical"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/darkgrey_background"
+                                    android:id="@+id/txtSpeaks"
+                                    android:tag="@string/mdl_speaks"
+                                    android:text="@string/mdl_speaks" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.55"
+                                    android:id="@+id/SpeaksTxtView"
+                                    style="@style/searchProviderValueStyle"
+                                    android:layout_below="@+id/txtSpeaks"
+                                    android:tag="@string/mdltag_any"
+                                    android:text="@string/mdl_any" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/dividerSpeaks"
+                                style="@style/advanceSearchProviderDivider" />
+
+                            <LinearLayout
+                                android:id="@+id/GenderTxtViewR8"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_below="@+id/provider_name_lyt"
+                                android:clickable="true"
+                                android:onClick="genderAction"
+                                android:weightSum="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.45"
+                                    android:gravity="center_vertical"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/darkgrey_background"
+                                    android:id="@+id/txtGender"
+                                    android:tag="@string/mdl_gender"
+                                    android:text="@string/mdl_gender" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.55"
+                                    style="@style/searchProviderValueStyle"
+                                    android:id="@+id/GenderTxtView"
+                                    android:tag="@string/mdltag_any"
+                                    android:text="@string/mdl_any" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/dividerGender"
+                                style="@style/advanceSearchProviderDivider" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </ScrollView>
+
+                <FrameLayout
+                    android:id="@+id/dash_board__left_container"
+                    android:layout_width="@dimen/drawer_width"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left|start" />
+
+
+                <FrameLayout
+                    android:id="@+id/dash_board__right_container"
+                    android:layout_width="@dimen/drawer_width"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right|end" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+    <include layout="@layout/custom_progress_dialog" />
+</merge>
