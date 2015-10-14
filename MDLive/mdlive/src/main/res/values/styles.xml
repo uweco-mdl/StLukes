@@ -8,4 +8,9 @@
     <style name="ChatBackground" parent="MDLive_Red_Theme">
         <item name="android:windowBackground">@drawable/login_bg</item>
     </style>
+    <style name="MDLive_Dialog_Theme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/red_theme_primary</item>
+        <item name="colorPrimaryDark">@color/red_theme_primary_dark</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
 </resources>
