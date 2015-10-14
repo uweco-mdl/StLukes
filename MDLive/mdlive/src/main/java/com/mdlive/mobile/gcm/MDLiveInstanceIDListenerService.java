@@ -1,8 +1,9 @@
-package com.mdlive.mobile;
+package com.mdlive.mobile.gcm;
 
 import android.content.Intent;
 
 import com.google.android.gms.iid.InstanceIDListenerService;
+import com.mdlive.mobile.gcm.MDLiveRegistrationIntentService;
 
 /**
  * Created by dhiman_da on 9/7/2015.
