@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
+
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -8,192 +9,250 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/getstarted_background_color"
-            >
+            android:background="@color/getstarted_background_color">
 
-            <LinearLayout
-                style="@style/ContainerStyle"
-                >
+            <LinearLayout style="@style/ContainerStyle">
 
-                <include
-                    android:id="@+id/header"
-                    layout="@layout/mdlive_toolbar" />
+                                <include
+                                    android:id="@+id/header"
+                                    layout="@layout/mdlive_toolbar" />
 
                 <ScrollView
                     style="@style/common_style_W_Match_H_Match_O_Vertical"
                     android:layout_height="match_parent"
                     android:fillViewport="false">
 
+                    <LinearLayout
+                        style="@style/common_style_W_Match_H_Match_O_Vertical"
+                        android:background="@color/white"
+                        android:layout_marginTop="20dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/pharmacyLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="@string/mdl_pharmacy_name"
+                                android:textColor="@color/black"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="20sp" />
+
+                            <AutoCompleteTextView
+                                android:id="@+id/pharmacy_search_name"
+                                style="@style/location_edittext"
+                                android:layout_height="35dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginBottom="0dp"
+                                android:layout_marginLeft="13dp"
+                                android:layout_toRightOf="@+id/pharmacyLabel"
+                                android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                android:dropDownVerticalOffset="10dp"
+                                android:gravity="center_vertical"
+                                android:hint="@string/mdl_pharmacy_opn"
+                                android:imeOptions="actionDone"
+                                android:singleLine="true"
+                                android:tag="@string/mdltag_pharmacy_opn"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:textColorHint="@color/pharmacy_search_hint_color"
+                                android:textCursorDrawable="@drawable/color_cursor" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                            android:layout_marginRight="@dimen/dimen_10_dp"
+                            android:layout_marginTop="@dimen/dimen_10_dp"
+                            android:background="@color/gray_c" />
+
+                        <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            style="@style/Choose_Pharmacy_Search_Field_Card_View"
+                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                            android:layout_marginRight="@dimen/dimen_10_dp"
+                            app:cardCornerRadius="@dimen/dimen_4_dp">
+
+                            <Button
+                                android:id="@+id/getlocationButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/white_color_button_gradient"
+                                android:fontFamily="sans-serif"
+                                android:gravity="center"
+                                android:onClick="getlocationButtonOnClick"
+                                android:tag="@string/mdltag_current_loc_txt"
+                                android:text="@string/mdl_current_loc_txt"
+                                android:textAllCaps="true"
+                                android:textColor="@color/button_top"
+                                android:textSize="17sp" />
+
+                        </android.support.v7.widget.CardView>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                            android:layout_marginRight="@dimen/dimen_10_dp"
+                            android:layout_marginTop="@dimen/dimen_10_dp"
+                            android:background="@color/gray_c" />
+
                         <LinearLayout
-                            style="@style/common_style_W_Match_H_Match_O_Vertical"
-                            android:layout_margin="10dp"
-                            >
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
+                            <LinearLayout
+                                style="@style/Choose_Pharmacy_Search_Field"
+                                android:orientation="horizontal">
 
-                            <RelativeLayout style="@style/pharmacySearchFieldStyle">
+                                <TextView
+                                    android:text="@string/mdl_manual_txt_small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0"
+                                    android:tag="@string/mdltag_zip_code"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <EditText
+                                    android:id="@+id/zipcodeText"
+                                    android:digits="0123456789"
+                                    android:tag="enter_zip"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@android:color/transparent"
+                                    android:layout_marginLeft="10dp"
+                                    android:maxLength="10"
+                                    android:hint="@string/mdl_zip_code"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="5dp"
+                                    android:singleLine="true"
+                                    android:gravity="right|center_vertical"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:paddingRight="5dp"
+                                    android:textSize="20sp" />
 
                                 <ImageView
-                                    android:id="@+id/pharmacy_search_icon"
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:layout_alignParentLeft="true"
-                                    android:layout_alignParentStart="true"
-                                    android:layout_centerVertical="true"
-                                    android:src="@drawable/search_icon" />
-
-                                <AutoCompleteTextView
-                                    android:id="@+id/pharmacy_search_name"
-                                    style="@style/location_edittext"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginBottom="0dp"
-                                    android:layout_marginLeft="13dp"
-                                    android:layout_height="35dp"
-                                    android:gravity="center_vertical"
-                                    android:layout_toEndOf="@+id/pharmacy_search_icon"
-                                    android:layout_toRightOf="@+id/pharmacy_search_icon"
-                                    android:dropDownVerticalOffset="10dp"
-                                    android:hint="@string/mdl_pharmacy_opn"
-                                    android:tag="@string/mdltag_pharmacy_opn"
-                                    android:imeOptions="actionDone"
-                                    android:singleLine="true"
-                                    android:textColor="@color/black"
-                                    android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                                    android:textColorHint="@color/pharmacy_search_hint_color"
-                                    android:textCursorDrawable="@drawable/color_cursor"/>
-
-                            </RelativeLayout>
-
-                            <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
-                                app:cardCornerRadius="@dimen/dimen_4_dp"
-                                android:background="@color/white"
-                                style="@style/Choose_Pharmacy_Search_Field_Card_View">
-
-                                <Button
-                                    android:id="@+id/getlocationButton"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:background="@null"
-                                    android:drawableLeft="@drawable/gps_icon"
-                                    android:drawablePadding="10dp"
-                                    android:gravity="left|center"
-                                    android:onClick="getlocationButtonOnClick"
-                                    android:tag="@string/mdltag_current_loc_txt"
-                                    android:textAllCaps="false"
-                                    android:text="@string/mdl_current_loc_txt"
-                                    android:textColor="@color/blue_text_color"
-                                    android:fontFamily="sans-serif"
-                                    android:paddingLeft="11dp"
-                                    android:paddingRight="11dp"
-                                    android:textSize="17sp"/>
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_weight="0"
+                                    android:src="@drawable/icon_arrow_right">
 
-                            </android.support.v7.widget.CardView>
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    style="@style/common_style_W_Match_M_Match"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
-                                    android:text="@string/mdl_manual_txt_small"
-                                    android:tag="@string/mdltag_manual_txt_small"
-                                    android:textColor="@color/black"
-                                    android:textSize="17sp" />
-
-                                <LinearLayout
-                                    style="@style/Choose_Pharmacy_Search_Field"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        style="@style/searchPharmacyLabelStyle"
-                                        android:textSize="14sp"
-                                        android:tag="@string/mdltag_zip_code"
-                                        android:text="@string/mdl_zip_code" />
-
-                                    <EditText
-                                        android:id="@+id/zipcodeText"
-                                        style="@style/EditFieldCommonStyle"
-                                        android:background="@null"
-                                        android:inputType="number"
-                                        android:maxLength="10"
-                                        android:tag="enter_zip"
-                                        android:textSize="17sp"
-                                        android:digits="0123456789"
-                                        android:textCursorDrawable="@drawable/color_cursor"/>
-
-                                </LinearLayout>
+                                </ImageView>
 
                             </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/textView8"
-                                    style="@style/common_style_W_Match_M_Match"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="20dp"
-                                    android:tag="@string/mdltag_ph_Or_str"
-                                    android:text="@string/mdl_ph_Or_str"
-                                    android:textColor="@color/black"
-                                    android:textSize="17sp" />
-
-                                <LinearLayout
-                                    style="@style/Choose_Pharmacy_Search_Field"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        style="@style/searchPharmacyLabelStyle"
-                                        android:tag="@string/mdltag_city"
-                                        android:text="@string/mdl_city"
-                                        android:textSize="14sp"/>
-
-                                    <EditText
-                                        android:id="@+id/cityText"
-                                        style="@style/EditFieldCommonStyle"
-                                        android:background="@null"
-                                        android:tag="enter_city"
-                                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                                        android:textSize="17sp"
-                                        android:textCursorDrawable="@drawable/color_cursor"/>
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="25dp"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    style="@style/Choose_Pharmacy_Search_Field"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        style="@style/searchPharmacyLabelStyle"
-                                        android:tag="@string/mdltag_state"
-                                        android:text="@string/mdl_state"
-                                        android:textSize="14sp"/>
-
-                                    <TextView
-                                        android:id="@+id/chooseState"
-                                        style="@style/SelectStateCommonStyle"
-                                        android:textSize="17sp"
-                                        android:drawableRight="@drawable/dropdown_icon"
-                                        android:onClick="chooseStateOnClick"
-                                        android:tag="select_stg" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
 
                         </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="@dimen/dimen_10_dp"
+                                android:layout_marginRight="@dimen/dimen_10_dp"
+                                android:layout_marginTop="@dimen/dimen_10_dp"
+                                android:background="@color/gray_c" />
+
+                            <LinearLayout
+                                style="@style/Choose_Pharmacy_Search_Field"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:text="@string/mdl_or_city"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0"
+                                    android:tag="@string/mdltag_zip_code"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp"
+                                     />
+
+                                <EditText
+                                    android:id="@+id/cityText"
+                                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                                    android:tag="enter_city"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@android:color/transparent"
+                                    android:layout_marginLeft="10dp"
+                                    android:maxLength="10"
+                                    android:hint="@string/mdl_city"
+                                    android:paddingBottom="5dp"
+                                    android:paddingTop="5dp"
+                                    android:singleLine="true"
+                                    android:gravity="right|center_vertical"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:paddingRight="5dp"
+                                    android:textSize="20sp"/>
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_weight="0"
+                                    android:src="@drawable/icon_arrow_right"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="25dp"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="@dimen/dimen_10_dp"
+                                android:layout_marginRight="@dimen/dimen_10_dp"
+                                android:layout_marginTop="@dimen/dimen_10_dp"
+                                android:background="@color/gray_c" />
+                            <LinearLayout
+                                style="@style/Choose_Pharmacy_Search_Field"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    android:tag="@string/mdltag_state"
+                                    android:text="@string/mdl_and_state_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/chooseState"
+                                    style="@style/SelectStateCommonStyle"
+                                    android:drawableRight="@drawable/icon_arrow_right"
+                                    android:onClick="chooseStateOnClick"
+                                    android:hint="@string/mdl_state"
+                                    android:gravity="right"
+                                    android:tag="select_stg"
+                                    android:textSize="20sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
 
                 </ScrollView>
             </LinearLayout>

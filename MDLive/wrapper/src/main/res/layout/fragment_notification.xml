@@ -12,6 +12,40 @@
         android:clickable="false">
 
         <LinearLayout
+            android:id="@+id/notification_fragment_upcoming_appoinment_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/new_login_bg"
+            android:paddingTop="@dimen/dimen_8_dp"
+            android:paddingBottom="@dimen/dimen_8_dp"
+            android:paddingLeft="@dimen/dimen_8_dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/nav_drawer_visit_icon"
+                android:paddingTop="@dimen/dimen_8_dp"
+                android:paddingLeft="@dimen/dimen_8_dp"/>
+
+            <TextView
+                android:id="@+id/notification_fragment_upcoming_appoinment_text_view"
+                style="@style/Notification_Text_Default"
+                android:textSize="18sp"
+                android:gravity="bottom"
+                android:paddingTop="@dimen/dimen_8_dp"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/notification_fragment_upcoming_appoinment_list_view"
+            android:layout_width="match_parent"
+            android:background="@color/new_login_bg"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dimen_8_dp"
+            android:paddingBottom="@dimen/dimen_8_dp"/>
+
+
+        <LinearLayout
             android:id="@+id/notification_fragment_messages_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,7 +59,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/notification_icon1"
+                android:src="@drawable/nav_drawer_message"
                 android:paddingTop="@dimen/dimen_6_dp"
                 android:paddingLeft="@dimen/dimen_8_dp"/>
 
@@ -33,8 +67,15 @@
                 android:id="@+id/notification_fragment_messages_text_view"
                 style="@style/Notification_Text_Default"
                 android:textSize="18sp"
-                android:paddingTop="@dimen/dimen_0_dp"/>
+                android:paddingTop="@dimen/dimen_8_dp"/>
         </LinearLayout>
+
+        <View
+            android:layout_below="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/new_login_bg"
+            android:layout_marginLeft="48dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,16 +90,23 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/notification_icon2"
+                android:src="@drawable/nav_drawer_record"
                 android:paddingTop="@dimen/dimen_6_dp"
                 android:paddingLeft="@dimen/dimen_8_dp"/>
 
             <TextView
                 android:id="@+id/notification_fragment_personal_text_view"
                 style="@style/Notification_Text_Default"
-                android:paddingTop="@dimen/dimen_0_dp"
+                android:paddingTop="@dimen/dimen_8_dp"
                 android:textSize="18sp"/>
         </LinearLayout>
+
+        <View
+            android:layout_below="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:background="@color/new_login_bg"
+            android:layout_marginLeft="48dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,6 +116,7 @@
             android:paddingBottom="@dimen/dimen_8_dp"
             android:paddingLeft="@dimen/dimen_8_dp"
             android:clickable="true"
+            android:visibility="gone"
             android:onClick="onPreferedStoreClicked">
 
             <ImageView
@@ -84,35 +133,9 @@
                 android:textSize="18sp"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/notification_fragment_upcoming_appoinment_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/dimen_8_dp"
-            android:paddingBottom="@dimen/dimen_8_dp"
-            android:paddingLeft="@dimen/dimen_8_dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/notification_icon4_no_upcoming"
-                android:paddingTop="@dimen/dimen_8_dp"
-                android:paddingLeft="@dimen/dimen_8_dp"/>
 
-            <TextView
-                android:id="@+id/notification_fragment_upcoming_appoinment_text_view"
-                style="@style/Notification_Text_Default"
-                android:textSize="18sp"
-                android:paddingTop="@dimen/dimen_8_dp"/>
-        </LinearLayout>
 
-        <ListView
-            android:id="@+id/notification_fragment_upcoming_appoinment_list_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dimen_8_dp"
-            android:paddingBottom="@dimen/dimen_8_dp"/>
 
         <Button
             android:id="@+id/notification_button"

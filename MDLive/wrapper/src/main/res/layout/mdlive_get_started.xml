@@ -4,122 +4,255 @@
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <LinearLayout
             style="@style/ContainerStyle"
             android:background="@color/getstarted_background_color"
             android:orientation="vertical">
 
-            <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar_symptom_checker"
-            />
+
+                                    <include
+                                        android:id="@+id/toolbar"
+                                        layout="@layout/toolbar_symptom_checker" />
 
             <ScrollView
                 style="@style/ScrollViewStyle"
-                android:padding="9dp"
                 android:fillViewport="false"
-                >
+                android:paddingTop="9dp">
 
                 <LinearLayout
                     style="@style/LinearLayoutStyle"
-                    android:orientation="vertical"
-                    >
+                    android:background="@color/white"
+                    android:orientation="vertical">
 
-                    <TextView
-                        style="@style/GetStartedHeaderContentStyle"
-                        android:gravity="left|center"
-                        android:layout_marginTop="9dp"
-                        android:text="@string/mdl_get_started_title"
-                        android:textColor="#100c0c"
-                        android:textSize="18sp"
-                        android:tag="@string/mdltag_get_started_title"
-                        android:fontFamily="sans-serif-light"
-                         />
+                    <!--                    <TextView
+                                            style="@style/GetStartedHeaderContentStyle"
+                                            android:gravity="left|center"
+                                            android:layout_marginTop="9dp"
+                                            android:text="@string/mdl_get_started_title"
+                                            android:textSize="18sp"
+                                            android:tag="@string/mdltag_get_started_title"
+                                            android:fontFamily="sans-serif-light"
+                                             />-->
 
-                    <LinearLayout
-                        style="@style/Get_Started_Field_Style"
-                        android:orientation="vertical"
-                        android:id="@+id/patientLl">
+                    <RelativeLayout
+                        android:id="@+id/patientLl"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
 
                         <TextView
-                            style="@style/Get_Started_Label_Style"
-                            android:text="@string/mdl_patientTxt"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dimen_10_dp"
                             android:tag="@string/mdltag_patientTxt"
-                            />
+                            android:text="@string/mdl_patientTxt"
+
+                            android:textColor="@color/black" />
 
                         <Spinner
-                            style="@style/Get_Started_Text_Field_Style"
-                            android:layout_height="wrap_content"
                             android:id="@+id/patientSpinner"
-                            android:dropDownVerticalOffset="@dimen/spinner_drop_down_offset_getstarted"
-                            />
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/dimen_10_dp"
+                            android:dropDownVerticalOffset="@dimen/spinner_drop_down_offset_getstarted" />
 
-                    </LinearLayout>
+                    </RelativeLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/dimen_10_dp"
+                        android:layout_marginRight="@dimen/dimen_10_dp"
+                        android:background="@color/gray_c" />
 
-                    <LinearLayout
-                        style="@style/Get_Started_Field_Style"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
                         android:onClick="goToLocation">
 
                         <TextView
-                            style="@style/Get_Started_Label_Style"
-                            android:text="@string/mdl_my_location"
-                            android:tag="@string/mdltag_my_location"/>
-
-                        <TextView
-                            style="@style/Get_Started_Text_Field_Style"
-                            android:id="@+id/locationTxt"
-                            android:singleLine="true"
-                            android:ellipsize="end"
+                            android:id="@+id/locationLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
-                            android:gravity="center_vertical"
-                            />
+                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                            android:tag="@string/mdltag_my_location"
+                            android:text="@string/mdl_my_location"
+                            android:textColor="@color/black" />
 
-                    </LinearLayout>
+                        <TextView
+                            android:id="@+id/locationTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:ellipsize="end"
+                            android:singleLine="true" />
 
-                    <LinearLayout
-                        style="@style/Get_Started_Field_Style"
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/locationNext"
+                            android:src="@drawable/location" />
+
+                        <ImageView
+                            android:id="@+id/locationNext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_action_next_item" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_c"
+                        android:layout_marginLeft="@dimen/dimen_10_dp"
+                        android:layout_marginRight="@dimen/dimen_10_dp"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
                         android:onClick="goToProviderType">
 
                         <TextView
-                            style="@style/Get_Started_Label_Style"
-                            android:text="@string/mdl_provider_type_caps"
-                            android:tag="@string/mdltag_provider_type_caps"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                            android:tag="@string/mdltag_provider_type_caps"
+                            android:text="@string/mdl_providerTypeTxt"
+                            android:textColor="@color/black" />
 
                         <TextView
-                            style="@style/Get_Started_Text_Field_Style"
                             android:id="@+id/providertypeTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/dimen_10_dp"
                             android:tag="@string/mdltag_provider_category"
-                            android:text="@string/mdl_provider_category"/>
+                            android:text="@string/mdl_provider_category" />
 
-                    </LinearLayout>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_action_next_item" />
 
-                    <LinearLayout
-                        style="@style/Get_Started_Field_Style"
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_c"
+                        android:layout_marginLeft="@dimen/dimen_10_dp"
+                        android:layout_marginRight="@dimen/dimen_10_dp"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
                         android:onClick="goToProviderType">
 
                         <TextView
-                            style="@style/Get_Started_Label_Style"
+                            android:id="@+id/phoneLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                            android:layout_marginTop="13dp"
+                            android:tag="@string/mdltag_phonenumber"
                             android:text="@string/mdl_phonenumber"
-                            android:tag="@string/mdltag_phonenumber"/>
+                            android:textColor="@color/black" />
 
                         <EditText
-                            style="@style/Get_Started_Text_Field_Style"
                             android:id="@+id/telephoneTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_below="@+id/phoneLabel"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                            android:hint="@string/mdl_phone_number_hint"
                             android:inputType="number"
-                            android:maxLength="14"/>
+                            android:textSize ="15sp"
+                            android:maxLength="14" />
 
-                    </LinearLayout>
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/dimen_10_dp"
+                        android:layout_marginRight="@dimen/dimen_10_dp"
+                        android:background="@color/gray_c" />
 
                     <TextView
-                        style="@style/Get_Started_Message_Style"
+                        android:id="@+id/noVisit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_10_dp"
                         android:layout_marginTop="13dp"
-                        android:text="@string/mdl_get_started_message_text"
-                        android:tag="@string/mdltag_get_started_message_text"
-                        android:textColor="#6d6d6d" />
+                        android:tag="@string/mdl_get_started_no_visit"
+                        android:text="@string/mdl_get_started_no_visit"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/noVisitAnswer"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="@dimen/dimen_10_dp"
+                        android:hint="@string/mdl_get_started_no_visit_hint"
+                        android:background = "@color/transparent"
+                        android:inputType="number"
+                        android:textSize ="15sp"
+                        android:maxLength="14" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/dimen_10_dp"
+                        android:layout_marginRight="@dimen/dimen_10_dp"
+                        android:background="@color/gray_c" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                            android:layout_marginTop="13dp"
+                            android:text="@string/mdl_get_started_primary_care_physician"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:id="@+id/circleCross"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/circle_cross" />
+
+                        <ImageView
+                            android:layout_toLeftOf="@+id/circleCross"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/circle" />
+
+                    </RelativeLayout>
+
 
 
                     <LinearLayout
@@ -133,6 +266,14 @@
 
                 </LinearLayout>
             </ScrollView>
+
+            <Button android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background = "@drawable/btn_color_gradient"
+                android:text = "@string/mdl_Continue_caps"
+                android:textColor ="@color/white"
+                android:textSize = "20sp"
+                />
 
         </LinearLayout>
 

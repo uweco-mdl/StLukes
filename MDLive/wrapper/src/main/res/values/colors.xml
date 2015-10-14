@@ -228,4 +228,9 @@
 
     <color name="my_health_screen_txt_color">#858585</color>
 
+    <color name="button_top">#EC7B2D</color>
+    <color name="button_bottom">#D1651C</color>
+
+    <color name="fade_orange">#FFFBF8</color>
+
 </resources>

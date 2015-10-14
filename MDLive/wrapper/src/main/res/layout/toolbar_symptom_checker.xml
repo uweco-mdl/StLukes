@@ -2,13 +2,13 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_toolbar_height"
-    android:background="@color/red_theme_primary">
+    android:background="@drawable/toolbar_color_gradient">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_toolbar_height">
 
-        <FrameLayout
+        <RelativeLayout
             android:id="@+id/frame_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +20,16 @@
                 android:layout_height="wrap_content"
                 android:onClick="onCrossClicked"
                 android:scaleType="centerCrop"
-                android:src="@drawable/exit_icon" />
+                android:src="@drawable/ic_action_previous_item" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/toolbar_cross"
+                android:text="@string/mdl_family_history_back"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                />
 
             <ImageView
                 android:id="@+id/toolbar_hamburger"
@@ -30,7 +39,7 @@
                 android:onClick="onLeftDrawerClicked"
                 android:scaleType="centerCrop"
                 android:src="@drawable/hamburger" />
-        </FrameLayout>
+        </RelativeLayout>
 
         <FrameLayout
             android:id="@+id/frame_right"
@@ -50,6 +59,7 @@
                 android:onClick="onTickClicked"
                 android:padding="10dp"
                 android:scaleType="centerCrop"
+                android:visibility="gone"
                 android:src="@drawable/top_tick_icon" />
 
             <ImageView

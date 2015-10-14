@@ -2,7 +2,7 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_toolbar_height"
-    android:background="@color/transparent">
+    android:background="@drawable/toolbar_color_gradient">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -16,6 +16,14 @@
             android:onClick="onLeftDrawerClicked"
             android:scaleType="centerCrop"
             android:src="@drawable/hamburger" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:src="@drawable/bcbs_logo"/>
 
         <ImageView
             android:layout_width="@dimen/dimen_24_dp"

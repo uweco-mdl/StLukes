@@ -5,7 +5,7 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/mylocation_background_color">
+        android:background="@drawable/white_gradient">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -17,52 +17,64 @@
                 android:id="@+id/header"
                 layout="@layout/mdlive_toolbar" />
 
+            <Button
+                android:id="@+id/continue_btn"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_alignParentBottom="true"
+                android:text="CONTINUE"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:gravity="center"
+                android:background="@drawable/orange_btn_gradient" />
+
             <RelativeLayout
+                android:layout_above="@id/continue_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/header">
 
                 <RelativeLayout
+                    android:id="@+id/container_layout"
                     style="@style/common_style_W_Match_M_Match"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_above="@+id/add_existing_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
 
                     <LinearLayout
                         style="@style/common_style_W_Wrap_H_Wrap_O_Vertical"
                         android:layout_centerInParent="true"
                         android:id="@+id/noConditionsLayout"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:gravity="center">
 
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/camera_gray_icon"
-                            android:id="@+id/statusIcon" />
+                        <!--<ImageView-->
+                        <!--android:layout_width="100dp"-->
+                        <!--android:layout_height="100dp"-->
+                        <!--android:src="@drawable/camera_gray_icon"-->
+                        <!--android:id="@+id/statusIcon" />-->
 
-                        <TextView
-                            android:id="@+id/noConditionTitleTv"
-                            style="@style/common_style_W_Wrap_H_Wrap"
-                            android:gravity="center_horizontal"
-                            android:paddingTop="10dp"
-                            android:text="@string/mdl_empty_conditions_reported"
-                            android:tag="@string/mdltag_empty_conditions_reported"
-                            android:textColor="@color/grey_txt"
-                            android:textSize="25sp" />
+                        <!--<TextView-->
+                        <!--android:id="@+id/noConditionTitleTv"-->
+                        <!--style="@style/common_style_W_Wrap_H_Wrap"-->
+                        <!--android:gravity="center_horizontal"-->
+                        <!--android:paddingTop="10dp"-->
+                        <!--android:text="@string/mdl_empty_conditions_reported"-->
+                        <!--android:tag="@string/mdltag_empty_conditions_reported"-->
+                        <!--android:textColor="@color/grey_txt"-->
+                        <!--android:textSize="25sp" />-->
 
                         <TextView
                             android:id="@+id/noConditionSubTitleTv"
+                            android:layout_width="match_parent"
                             style="@style/common_style_W_Wrap_H_Wrap"
-                            android:gravity="center_horizontal"
+                            android:gravity="center_vertical"
                             android:paddingTop="10dp"
-                            android:text="@string/mdl_empty_conditions_reported_msg"
-                            android:tag="@string/mdltag_empty_conditions_reported_msg"
-                            android:textColor="@color/grey_txt"
+                            android:text="@string/view_health_msg"
+                            android:tag="@string/view_health_msg"
+                            android:textColor="#333333"
                             android:textSize="20sp" />
 
                     </LinearLayout>
@@ -75,6 +87,9 @@
                         android:text="@string/mdl_add_conditions_text"
                         android:tag="@string/mdltag_add_conditions_text"
                         android:visibility="gone" />
+
+
+
 
                 </RelativeLayout>
 
@@ -95,22 +110,66 @@
                     android:id="@+id/add_existing_btn"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_toolbar_height"
-                    android:layout_alignParentBottom="true"
-                    android:background="@color/add_conditions_new_color"
+                    android:layout_below="@+id/container_layout"
+                    android:background="@drawable/white_gradient"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="@dimen/dimen_10_dp"
                     android:onClick="addConditionsClick"
                     android:orientation="vertical">
 
                     <TextView
                         style="@style/common_style_W_Wrap_H_Wrap"
                         android:layout_centerInParent="true"
-                        android:text="@string/mdl_add_conditions_text"
-                        android:tag="@string/mdltag_add_conditions_text"
-                        android:textColor="@color/white"
+                        android:text="@string/add_new_btn_txt"
+                        android:tag="@string/add_new_btn_txt"
+
+                        android:textColor="@color/new_sign_in_btn_bg"
                         android:id="@+id/addItemTv"
                         android:textSize="15sp" />
                 </RelativeLayout>
 
+                <LinearLayout
+                    android:id="@+id/add_remove_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_10_dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
+                    android:visibility="gone"
+                    android:layout_below="@+id/container_layout">
+
+
+                    <Button
+                        android:id="@+id/remove_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="0.5"
+                        android:text="@string/remove_string"
+                        android:tag="@string/remove_string"
+                        android:textColor="@color/new_sign_in_btn_bg"
+                        android:textSize="17sp"
+                        android:onClick="onRemoveClicked"
+                        android:gravity="center"
+                        android:layout_marginRight="@dimen/dimen_10_dp"
+                        android:background="@drawable/orange_border_drawable" />
+
+                    <Button
+                        android:id="@+id/add_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="0.5"
+                        android:text="@string/add_new_btn_txt"
+                        android:textColor="@color/new_sign_in_btn_bg"
+                        android:textSize="17sp"
+                        android:onClick="newaddConditionsClick"
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/dimen_10_dp"
+                        android:background="@drawable/orange_border_drawable" />
+                </LinearLayout>
+
             </RelativeLayout>
+
+
         </RelativeLayout>
 
 

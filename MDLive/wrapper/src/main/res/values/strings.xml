@@ -141,7 +141,7 @@
     <string name="mdl_languages_spoken">Languages Spoken</string>
     <string name="mdl_provider_location">Location</string>
     <string name="mdl_education">Education     </string>
-    <string name="mdl_about_me">About Me     </string>
+    <string name="mdl_about">About Me     </string>
     <string name="mdl_request_appointment">Request Appointment</string>
     <string name="mdl_with_patient">With Patient</string>
     <string name="mdl_date_time_format">yyyy-MM-dd HH:mm:ss</string>
@@ -1384,4 +1384,29 @@
     <string name="search_btn_continue_txt">CONTINUE</string>
     <string name="mdl_add_med">ADD MEDICATIONS</string>
     <string name="health_history_update_msg">\nPlease review and click on any icon below to update.</string>
+    <string name="mdl_pharmacy_name">Pharmacy Name</string>
+    <string name="view_health_msg">You currently do not have any</string>
+    <string name="add_new_btn_txt">ADD NEW</string>
+    <string name="remove_string">REMOVE</string>
+    <string name="mdl_create_pin">Create a Pin</string>
+    <string name="mdl_request_form_heading">If you wish to visit this provider,please complete the form and we will arrange an appointment for you.</string>
+    <string name="mdl_when">When</string>
+    <string name="mdl_ideal_time">Ideal Time</string>
+    <string-array name="ideal_time">
+        <item>morning</item>
+        <item>afternoon</item>
+        <item>evening</item>
+    </string-array>
+    <string name="mdl_practice_in">Practice In</string>
+    <string name="mdl_phone_number_hint">e.g. 123-456-7890</string>
+    <string name="mdl_get_started_no_visit">If you had not this visit today,what would you have done instead?</string>
+    <string name="mdl_get_started_no_visit_hint">Seen my provider in person</string>
+    <string name="mdl_get_started_primary_care_physician">Do you have a primary care physician?</string>
+    <string name="mdl_Continue_caps">CONTINUE</string>
+    <string name="mdl_or_enter">Or Enter</string>
+    <string name="mdl_answer_questions">Please answer the following questions.</string>
+    <string name="mdl_or_city">or City</string>
+    <string name="mdl_and_state_txt">and State</string>
+    <string name="mdl_search_pharmacy">Find Pharmacy</string>
+
 </resources>
