@@ -44,6 +44,6 @@
     <!--MDLive header-->
     <string name="mdl_ada_hamburger">Navigated </string>
     <string name="mdl_ada_bell">Notification</string>
-    <string name="mdl_ada_back_button">Navigation up</string>
+    <string name="mdl_ada_back_button">Back</string>
 
 </resources>
