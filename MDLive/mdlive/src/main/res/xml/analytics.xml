@@ -1,64 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <resources>
-    <!--Replace placeholder ID with your tracking ID old UA-50076077-1 -->
-    <!--   Stage - UA-59678541-1 , Dev - UA-59666445-1 , QA - UA-59663838-1 , Prod - UA-52183043-1    -->
-    <string name="ga_trackingId">UA-59678541-1</string>
+    <string name="ga_trackingId">UA-68908034-1</string>
     <!--Enable automatic exception tracking-->
     <bool name="ga_reportUncaughtExceptions">true</bool>
     <!--Enable automatic activity tracking-->
     <bool name="ga_autoActivityTracking">true</bool>
 
     <screenName name="com.mdlive.mobile.LoginActivity">
-        GA-TRACK-login-screen
+        MDLIVE-login-screen
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity">
-        GA-TRACK-home-page
+        MDLIVE-home-page
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.sav.MDLiveGetStarted">
-        GA-TRACK-SAV-get-started
+        MDLIVE-SAV-get-started
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.sav.MDLiveReasonForVisit">
-        GA-TRACK-SAV-reason-for-visit
+        MDLIVE-SAV-reason-for-visit
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.sav.MDLiveSearchProvider">
-        GA-TRACK-refine-search
+        MDLIVE-refine-search
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.sav.MDLiveChooseProvider">
-        GA-TRACK-SAV-choose-provider
+        MDLIVE-SAV-choose-provider
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.myhealth.MDLiveMedicalHistory">
-        GA-TRACK-SAV-medhistory-question
+        MDLIVE-SAV-medhistory-question
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.pharmacy.MDLivePharmacy">
-        GA-TRACK-SAV-my-pharmacy
+        MDLIVE-SAV-my-pharmacy
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.payment.MDLivePayment">
-        GA-TRACK-SAV-checkout
+        MDLIVE-SAV-checkout
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.payment.MDLiveConfirmappointment">
-        GA-TRACK-SAV-confirm-appointment
+        MDLIVE-SAV-confirm-appointment
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.sav.MDLiveDoctorOnCall">
-        GA-TRACK-SAV-provider-oncall
+        MDLIVE-SAV-provider-oncall
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.myhealth.MDLiveMyHealthVisitsFragment">
-        GA-TRACK-my-visit
+        MDLIVE-my-visit
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.pharmacy.MDLiveMyPharmacyActivity">
-        GA-TRACK-SAV-my-pharmacy
+        MDLIVE-SAV-my-pharmacy
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.messagecenter.MessageCenterActivity">
-        GA-TRACK-message-center
+        MDLIVE-message-center
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.myhealth.MedicalHistoryActivity">
-        GA-TRACK-medhistory
+        MDLIVE-medhistory
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.myaccounts.MyAccountActivity">
-        GA-TRACK-my-account
+        MDLIVE-my-account
     </screenName>
     <screenName name="com.mdlive.embedkit.uilayer.symptomchecker.MDLiveSymptomCheckerActivity">
-        GA-TRACK-symptom-checker
+        MDLIVE-symptom-checker
     </screenName>
 
 </resources>
