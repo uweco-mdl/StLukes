@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.RingtoneManager;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.content.WakefulBroadcastReceiver;
@@ -90,50 +92,11 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 	}
 	private void showAlert(String message, final Context context){
 		try {
-			JsonParser parser = new JsonParser();
-			JsonObject originalPayload = parser.parse(message).getAsJsonObject();
-			final UserBasicInfo userBasicInfo = UserBasicInfo.readFromSharedPreference(context);
-			final Intent messageIntent = new Intent(context,
-					originalPayload.get("acme").getAsJsonArray().get(0).getAsString().equalsIgnoreCase("message") ?
-							MessageCenterInboxDetailsActivity.class : AppointmentActivity.class);
-			messageIntent.putExtra("notification_id", originalPayload.get("acme").getAsJsonArray().get(1).getAsInt());
+			Intent intent = new Intent(context, GCMNotificationDialog.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			intent.putExtra("message", message);
+			context.startActivity(intent);
 
-			// Can start the dialog activity but that clear all the existing activity and shows only the dialog.
-			// Hence this approach dropped
-
-            DialogInterface.OnClickListener positive = new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    if (userBasicInfo != null) {
-						messageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        context.startActivity(messageIntent);
-                    }
-                    dialog.dismiss();
-                }
-            };
-            DialogInterface.OnClickListener negtive = new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            };
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                    context);
-            alertDialogBuilder
-                    .setTitle("MDLIVE")
-                    .setMessage(originalPayload.get("alert").getAsString())
-                    .setCancelable(false)
-                    .setPositiveButton(context.getString(R.string.mdl_Ok), positive);
-
-            alertDialogBuilder.setNegativeButton(context.getString(R.string.mdl_cancel), negtive);
-            final AlertDialog alertDialog = alertDialogBuilder.create();
-
-			alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-
-			alertDialog.getWindow().getAttributes().windowAnimations = R.style.MDLive_Dialog_Theme;
-            alertDialog.show();
 		}catch (Exception e){
 			e.printStackTrace();
 		}

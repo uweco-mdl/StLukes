@@ -12,7 +12,6 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <!-- [START gcm_permission] -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -129,7 +128,11 @@
             android:name=".gcm.NotificationHandler"
              >
         </activity>
-
+        <activity
+            android:name=".gcm.GCMNotificationDialog"
+            android:theme="@style/MDLive_Dialog_Theme"
+            >
+        </activity>
         <receiver
             android:name="com.mdlive.mobile.gcm.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
