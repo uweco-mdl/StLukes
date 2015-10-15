@@ -112,7 +112,7 @@
                                     android:tag="@string/mdltag_search_provider_name"
                                     android:paddingLeft="5dp"
                                     android:paddingTop="14dp"
-                                    android:textColor="@color/darkblack"
+                                    android:textColor="@color/search_provider_txt"
                                     android:textColorHint="@color/EditText_HintColor"
                                     android:textSize="15sp" />
 

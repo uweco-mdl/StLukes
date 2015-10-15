@@ -1386,8 +1386,7 @@
     <string name="health_history_update_msg">\nPlease review and click on any icon below to update.</string>
     <string name="mdl_pharmacy_name">Pharmacy Name</string>
     <string name="view_health_msg">You currently do not have any</string>
-    <string name="add_new_btn_txt">ADD NEW</string>
-    <string name="remove_string">REMOVE</string>
+
     <string name="mdl_create_pin">Create a Pin</string>
     <string name="mdl_request_form_heading">If you wish to visit this provider,please complete the form and we will arrange an appointment for you.</string>
     <string name="mdl_when">When</string>
@@ -1408,5 +1407,18 @@
     <string name="mdl_or_city">or City</string>
     <string name="mdl_and_state_txt">and State</string>
     <string name="mdl_search_pharmacy">Find Pharmacy</string>
+
+    <string name="add_new_btn_txt">ADD NEW</string>
+    <string name="remove_string">REMOVE</string>
+
+    <string name="done_txt">DONE</string>
+    <string name="procedures_txt">" procedures."</string>
+    <string name="conditions_txt">" conditions."</string>
+    <string name="allergies_txt">" allergies."</string>
+    <string name="medications_txt">" medications."</string>
+    <string name="condition_txt">Condition</string>
+    <string name="procedure_txt">Procedure</string>
+    <string name="allergy_txt">Allergy</string>
+    <string name="medication_txt">Medication</string>
 
 </resources>

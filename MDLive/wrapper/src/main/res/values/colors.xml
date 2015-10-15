@@ -219,8 +219,8 @@
 
     <color name="header_color">#004d7b</color>
 
-    <color name="toolbar_top">#014B78</color>
-    <color name="toolbar_bottom">#0076BD</color>
+    <color name="toolbar_top">#004b77</color>
+    <color name="toolbar_bottom">#0079c2</color>
 
     <color name="divider_gray">#38454f</color>
 
@@ -232,5 +232,11 @@
     <color name="button_bottom">#D1651C</color>
 
     <color name="fade_orange">#FFFBF8</color>
+
+    <color name="medicine_name">#616161</color>
+    <color name="medicine_sub_heading_color">#999999</color>
+    <color name="delete_color">#e81313</color>
+
+    <color name="search_provider_txt">#666666</color>
 
 </resources>

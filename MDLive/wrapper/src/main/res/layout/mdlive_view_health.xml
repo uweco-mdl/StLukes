@@ -7,6 +7,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/white_gradient">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -75,20 +76,21 @@
                             android:text="@string/view_health_msg"
                             android:tag="@string/view_health_msg"
                             android:textColor="#333333"
-                            android:textSize="20sp" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
                     <ListView
                         android:id="@+id/conditionsListView"
+                        android:layout_height="wrap_content"
                         style="@style/common_style_W_Match_M_Match"
-                        android:divider="@color/transparent"
-                        android:dividerHeight="10dp"
+                        android:divider="#ebebeb"
+                        android:dividerHeight="1dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/list_background"
                         android:text="@string/mdl_add_conditions_text"
                         android:tag="@string/mdltag_add_conditions_text"
-                        android:visibility="gone" />
-
-
+                        android:visibility="visible" />
 
 
                 </RelativeLayout>
@@ -128,50 +130,49 @@
                         android:textSize="15sp" />
                 </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/add_remove_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen_10_dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1"
-                    android:visibility="gone"
-                    android:layout_below="@+id/container_layout">
+                <!--<LinearLayout-->
+                <!--android:id="@+id/add_remove_layout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/dimen_10_dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:weightSum="1"-->
+                <!--android:visibility="gone"-->
+                <!--android:layout_below="@+id/container_layout">-->
 
 
-                    <Button
-                        android:id="@+id/remove_btn"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_weight="0.5"
-                        android:text="@string/remove_string"
-                        android:tag="@string/remove_string"
-                        android:textColor="@color/new_sign_in_btn_bg"
-                        android:textSize="17sp"
-                        android:onClick="onRemoveClicked"
-                        android:gravity="center"
-                        android:layout_marginRight="@dimen/dimen_10_dp"
-                        android:background="@drawable/orange_border_drawable" />
+                <!--<Button-->
+                <!--android:id="@+id/remove_btn"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_weight="0.5"-->
+                <!--android:text="@string/remove_string"-->
+                <!--android:tag="@string/remove_string"-->
+                <!--android:textColor="@color/new_sign_in_btn_bg"-->
+                <!--android:textSize="17sp"-->
+                <!--android:onClick="onRemoveClicked"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_marginRight="@dimen/dimen_10_dp"-->
+                <!--android:background="@drawable/orange_border_drawable" />-->
 
-                    <Button
-                        android:id="@+id/add_btn"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_weight="0.5"
-                        android:text="@string/add_new_btn_txt"
-                        android:textColor="@color/new_sign_in_btn_bg"
-                        android:textSize="17sp"
-                        android:onClick="newaddConditionsClick"
-                        android:gravity="center"
-                        android:layout_marginLeft="@dimen/dimen_10_dp"
-                        android:background="@drawable/orange_border_drawable" />
-                </LinearLayout>
+                <!--<Button-->
+                <!--android:id="@+id/add_btn"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:layout_weight="0.5"-->
+                <!--android:text="@string/add_new_btn_txt"-->
+                <!--android:textColor="@color/new_sign_in_btn_bg"-->
+                <!--android:textSize="17sp"-->
+                <!--android:onClick="newaddConditionsClick"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_marginLeft="@dimen/dimen_10_dp"-->
+                <!--android:background="@drawable/orange_border_drawable" />-->
+                <!--</LinearLayout>-->
 
             </RelativeLayout>
 
 
         </RelativeLayout>
-
 
         <FrameLayout
             android:id="@+id/dash_board__left_container"

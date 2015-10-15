@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_0_dp"
             android:layout_weight="1"
-            android:background="@color/sign_in_txt_color"
+            android:background="@drawable/dashboard_gradient"
             android:orientation="vertical">
 
             <FrameLayout

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f9f9f9">
+
+    <LinearLayout
+        android:id="@+id/add_remove_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="@dimen/dimen_10_dp"
+        android:layout_marginBottom="@dimen/dimen_10_dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:visibility="gone">
+
+
+        <Button
+            android:id="@+id/remove_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="0.5"
+            android:text="@string/remove_string"
+            android:tag="@string/remove_string"
+            android:textColor="@color/new_sign_in_btn_bg"
+            android:textSize="17sp"
+            android:onClick="onRemoveClicked"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/dimen_10_dp"
+            android:background="@drawable/orange_border_drawable" />
+
+        <Button
+            android:id="@+id/add_btn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="0.5"
+            android:text="@string/add_new_btn_txt"
+            android:textColor="@color/new_sign_in_btn_bg"
+            android:textSize="17sp"
+            android:onClick="newaddConditionsClick"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/dimen_10_dp"
+            android:background="@drawable/orange_border_drawable" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/spinner_triangle"
         android:rotation="180"
-        android:background="@color/sign_in_txt_color"
+        android:background="@drawable/dashboard_gradient"
         android:layout_marginBottom="-16dp"
         android:layout_gravity="center" />
 
