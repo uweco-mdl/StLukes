@@ -36,10 +36,17 @@
                                             android:fontFamily="sans-serif-light"
                                              />-->
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_c" />
+
                     <RelativeLayout
                         android:id="@+id/patientLl"
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
+
+
 
                         <TextView
                             android:layout_width="50dp"
@@ -58,7 +65,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginRight="@dimen/dimen_10_dp"
+                            android:layout_marginRight="@dimen/dimen_20_dp"
                             android:dropDownVerticalOffset="@dimen/spinner_drop_down_offset_getstarted" />
 
                     </RelativeLayout>
@@ -93,6 +100,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:ellipsize="end"
+                            android:paddingRight="16dp"
                             android:singleLine="true" />
 
                         <ImageView
@@ -139,6 +147,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
+                            android:paddingLeft="45dp"
                             android:layout_marginRight="@dimen/dimen_10_dp"
                             android:tag="@string/mdltag_provider_category"
                             android:text="@string/mdl_provider_category" />
@@ -162,7 +171,7 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="80dp"
                         android:onClick="goToProviderType">
 
                         <TextView
@@ -183,13 +192,14 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginLeft="@dimen/dimen_10_dp"
                             android:hint="@string/mdl_phone_number_hint"
+                            android:background="@color/transparent"
                             android:inputType="number"
                             android:textSize ="15sp"
                             android:maxLength="14" />
 
                     </RelativeLayout>
 
-                    <View
+<!--                    <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="@dimen/dimen_10_dp"
@@ -216,13 +226,23 @@
                         android:background = "@color/transparent"
                         android:inputType="number"
                         android:textSize ="15sp"
-                        android:maxLength="14" />
+                        android:maxLength="14" />-->
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginLeft="@dimen/dimen_10_dp"
-                        android:layout_marginRight="@dimen/dimen_10_dp"
                         android:background="@color/gray_c" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dimen_10_dp"
+                        android:paddingTop="@dimen/dimen_10_dp"
+                        android:tag="@string/mdltag_phonenumber"
+                        android:background="@color/getstarted_background_color"
+                        android:text="@string/mdl_phone_number_to_followup"
+                        android:textColor="@color/grey_txt" />
+<!--
+
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -252,6 +272,7 @@
                             android:src="@drawable/circle" />
 
                     </RelativeLayout>
+-->
 
 
 

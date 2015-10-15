@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="onCrossClicked"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_action_previous_item" />
+                android:src="@drawable/whitebackarrow" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

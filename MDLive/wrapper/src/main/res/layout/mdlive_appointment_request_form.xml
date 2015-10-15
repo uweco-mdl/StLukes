@@ -11,9 +11,9 @@
             android:layout_height="match_parent"
             android:background="@color/choose_pharmacy_background">
 
-<!--            <include
+           <include
             android:id="@+id/header"
-            layout="@layout/mdlive_toolbar" />-->
+            layout="@layout/mdlive_toolbar" />
 
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/card_view"
@@ -35,42 +35,12 @@
 
                         <LinearLayout
                             style="@style/common_style_W_Match_H_Wrap_O_Vertical"
-                            android:padding="10dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textColor ="@color/black"
-                                android:text = "@string/mdl_request_form_heading"
-                                android:textSize = "18sp"
-                                />
+                            >
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation ="horizontal"
-                                android:layout_marginTop="18dp"
-                                >
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text ="@string/mdl_when"
-                                    android:layout_weight="1"
-                                    android:textSize = "20sp"
-                                    />
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text ="@string/mdl_ideal_time"
-                                    android:layout_weight="1"
-                                    android:textSize = "20sp"
-                                    />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation ="horizontal"
+                                android:orientation ="vertical"
                                 >
 
                                 <TextView
@@ -78,20 +48,17 @@
                                     style="@style/AppointmentRequestFieldsStyle"
                                     android:clickable="true"
                                     android:drawableRight="@drawable/right_arrow_icon"
+                                    android:padding="@dimen/dimen_10_dp"
                                     android:hint="@string/mdl_ideal_date"
                                     android:onClick="onclickDate"
-                                    android:layout_gravity ="center"
-                                    android:layout_weight="1"
                                     android:layout_marginBottom="10dp"
-                                    android:layout_marginRight="5dp"
                                     android:tag="@string/mdltag_ideal_date" />
+
                                 <Spinner
                                     android:id="@+id/timeSpinner"
-                                    android:layout_weight="1"
                                     android:layout_width ="match_parent"
-                                    android:layout_height="50dp"
-                                    android:layout_gravity ="center"
-                                    android:layout_marginLeft="5dp"
+                                    android:layout_height="60dp"
+                                    android:gravity="center"
                                     android:background="@drawable/round_rect_light_grey_border"
                                     android:textSize="@dimen/appointment_request_form_text_size"
                                     android:textColorHint ="@color/EditText_HintColor"
@@ -100,33 +67,32 @@
                                     />
                             </LinearLayout>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textColor ="@color/search_bgd"
-                                android:text = "@string/mdl_best_number_to_contact"
-                                android:textSize = "18sp"
-                                />
                             <EditText
                                 android:id="@+id/appointmentContactNumber"
                                 style="@style/AppointmentRequestFieldsStyle"
                                 android:inputType="number"
+                                android:padding="@dimen/dimen_10_dp"
+                                android:hint="@string/mdl_best_number_to_contact"
                                 android:maxLength="14"
                                 android:tag="@string/mdltag_best_number_to_contact" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textColor ="@color/search_bgd"
-                                android:text = "@string/mdl_reason_for_visit"
-                                android:layout_marginTop ="10dp"
-                                android:textSize = "18sp"
-                                />
 
                             <EditText
                                 android:id="@+id/appointmentReason"
                                 style="@style/AppointmentRequestFieldsStyle"
-                                android:hint=""
+                                android:hint="@string/mdl_reason_for_visit"
+                                android:paddingLeft="@dimen/dimen_10_dp"
+                                android:singleLine="true"
+                                android:tag="@string/mdltag_reason_for_visit" />
+
+
+                            <EditText
+                                android:id="@+id/additionalComments"
+                                style="@style/AppointmentRequestFieldsStyle"
+                                android:layout_height="120dp"
+                                android:hint="@string/mdl_additional_comments"
+                                android:gravity="top"
+                                android:paddingTop="@dimen/dimen_10_dp"
+                                android:paddingLeft="@dimen/dimen_10_dp"
                                 android:singleLine="true"
                                 android:tag="@string/mdltag_reason_for_visit" />
 
@@ -188,64 +154,15 @@
 
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation ="horizontal"
-                                android:layout_marginTop="18dp"
-                                android:layout_marginBottom="10dp"
+                                android:text="@string/mdl_future_appointment_message"
+                                android:layout_marginTop="@dimen/dimen_20_dp"
+                                android:layout_marginBottom="@dimen/dimen_20_dp"
+                                />
 
-                                >
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text ="@string/mdl_licensed_in"
-                                    android:layout_weight="1"
-                                    android:textSize = "20sp"
-                                    />
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text ="@string/mdl_practice_in"
-                                    android:layout_weight="1"
-                                    android:textSize = "20sp"
-                                    />
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation ="horizontal"
-                                >
-
-                                <Spinner
-                                    android:id="@+id/licencedState"
-                                    android:layout_weight="1"
-                                    android:layout_width ="match_parent"
-                                    android:layout_height="50dp"
-                                    android:layout_gravity ="center"
-                                    android:layout_marginLeft="5dp"
-                                    android:background="@drawable/round_rect_light_grey_border"
-                                    android:textSize="@dimen/appointment_request_form_text_size"
-                                    android:textColorHint ="@color/EditText_HintColor"
-                                    android:textColor ="@color/darkblack"
-                                    android:entries="@array/mdl_stateCode"
-                                    />
-                                <Spinner
-                                    android:id="@+id/practiceState"
-                                    android:layout_weight="1"
-                                    android:layout_width ="match_parent"
-                                    android:layout_height="50dp"
-                                    android:layout_gravity ="center"
-                                    android:layout_marginLeft="5dp"
-                                    android:background="@drawable/round_rect_light_grey_border"
-                                    android:textSize="@dimen/appointment_request_form_text_size"
-                                    android:textColorHint ="@color/EditText_HintColor"
-                                    android:textColor ="@color/darkblack"
-                                    android:entries="@array/mdl_stateCode"
-                                    />
-                            </LinearLayout>
 
 
                             <TextView
@@ -287,7 +204,7 @@
                             <Button android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:background = "@drawable/btn_color_gradient"
-                                android:text = "@string/mdl_request_appointment"
+                                android:text = "@string/mdl_submit_request_form"
                                 android:textAllCaps="true"
                                 android:textColor ="@color/white"
                                 android:textSize = "20sp"
