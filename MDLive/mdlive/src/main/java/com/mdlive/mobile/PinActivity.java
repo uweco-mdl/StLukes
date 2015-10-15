@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -76,6 +77,8 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
                 addToBackStack(TAG).
                 add(R.id.container, ConfirmPinFragment.newInstance(pin), TAG).
                 commit();
+        getWindow().getDecorView()
+                .sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED);
     }
 
     @Override

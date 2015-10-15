@@ -87,6 +87,7 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        getActivity().setTitle(getString(R.string.mdl_create_a_pin));
 
         try {
             MdliveUtils.setPreferredLockType(getActivity(), getActivity().getString(R.string.mdl_password));
