@@ -16,6 +16,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -39,15 +40,15 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 	 * */
 	private void sendNotification(final String message, final Context context) {
 		try {
+			Log.e("Push notification message", message+"");
 			if (MdliveUtils.isAppInForground) {
-				Log.e("Push notification message", message+"");
 				// This needs to be enalbed once we get the solution for alert pop-up from service.
 
-//				showAlert(message, context);
-
-				sendAppNotification(message, context);
-				SharedPreferences settings = context.getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, 0);
-				settings.edit().putString("has_push_notification", message).commit();
+				showAlert(message, context);
+//
+//				sendAppNotification(message, context);
+//				SharedPreferences settings = context.getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, 0);
+//				settings.edit().putString("has_push_notification", message).commit();
 			} else {
 				sendAppNotification(message, context);
 				SharedPreferences settings = context.getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, 0);
@@ -75,9 +76,9 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 							.setSmallIcon(R.drawable.icon)
 							.setContentTitle(context.getResources().getString(R.string.mdl_app_name))
 							.setStyle(new NotificationCompat.BigTextStyle()
-									.bigText(parsedData.get("aps").getAsJsonObject().get("alert").getAsString()))
-							.setContentText(parsedData.get("aps").getAsJsonObject().get("alert").getAsString()).setAutoCancel(true)
-							.setVibrate(new long[] { 500, 500, 500, 500, 500 })
+									.bigText(parsedData.get("alert").getAsString()))
+							.setContentText(parsedData.get("alert").getAsString()).setAutoCancel(true)
+							.setVibrate(new long[]{500, 500, 500, 500, 500})
 							.setLights(Color.RED, 1000, 1000)
 							.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
 
@@ -96,25 +97,15 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 					originalPayload.get("acme").getAsJsonArray().get(0).getAsString().equalsIgnoreCase("message") ?
 							MessageCenterInboxDetailsActivity.class : AppointmentActivity.class);
 			messageIntent.putExtra("notification_id", originalPayload.get("acme").getAsJsonArray().get(1).getAsInt());
-			JsonObject notificationPayload = new JsonObject();
-			JsonObject alert = new JsonObject();
-			alert.addProperty("alert", originalPayload.get("aps").getAsJsonObject().get("alert").getAsString());
-			notificationPayload.add("aps", alert);
-			notificationPayload.add("acme", originalPayload.get("acme").getAsJsonArray());
-			// Can start the dialog activity but that clear all the existing activity and shows only the dialog.
-			// Hence this approach droped
 
-//			Intent alertintent = new Intent(context, GCMNotificationDialog.class);
-//			alertintent.putExtra("message", message);
-//			alertintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//			alertintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//			alertintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//			context.startActivity(alertintent);
+			// Can start the dialog activity but that clear all the existing activity and shows only the dialog.
+			// Hence this approach dropped
 
             DialogInterface.OnClickListener positive = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     if (userBasicInfo != null) {
+						messageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         context.startActivity(messageIntent);
@@ -132,12 +123,16 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
                     context);
             alertDialogBuilder
                     .setTitle("MDLIVE")
-                    .setMessage(originalPayload.get("aps").getAsJsonObject().get("alert").getAsString())
+                    .setMessage(originalPayload.get("alert").getAsString())
                     .setCancelable(false)
                     .setPositiveButton(context.getString(R.string.mdl_Ok), positive);
 
             alertDialogBuilder.setNegativeButton(context.getString(R.string.mdl_cancel), negtive);
             final AlertDialog alertDialog = alertDialogBuilder.create();
+
+			alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+
+			alertDialog.getWindow().getAttributes().windowAnimations = R.style.MDLive_Dialog_Theme;
             alertDialog.show();
 		}catch (Exception e){
 			e.printStackTrace();

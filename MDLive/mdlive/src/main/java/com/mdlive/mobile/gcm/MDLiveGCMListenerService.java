@@ -59,23 +59,6 @@ public class MDLiveGCMListenerService extends GcmListenerService {
         super.onDeletedMessages();
     }
 
-    /**
-     * Notifies the user when message is received.
-     * */
-    private void sendNotification(final String message) {
-        try {
-            if (MdliveUtils.isAppInForground) {
-                Log.e("Push notification message", message+"");
-                    showAlert(message);
-            } else {
-                sendAppNotification(message);
-                SharedPreferences settings = getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, 0);
-                settings.edit().putString("has_push_notification", message).commit();
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
     private void sendAppNotification(String msg) {
         try {
             NotificationManager mNotificationManager = (NotificationManager)
@@ -103,29 +86,6 @@ public class MDLiveGCMListenerService extends GcmListenerService {
             mBuilder.setContentIntent(contentIntent);
             mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    private void showAlert(String message){
-        try {
-            JsonParser parser = new JsonParser();
-            JsonObject originalPayload = parser.parse(message).getAsJsonObject();
-            final UserBasicInfo userBasicInfo = UserBasicInfo.readFromSharedPreference(this);
-            final Intent messageIntent = new Intent(this,
-                    originalPayload.get("acme").getAsJsonArray().get(0).getAsString().equalsIgnoreCase("message") ?
-                            MessageCenterInboxDetailsActivity.class : AppointmentActivity.class);
-            messageIntent.putExtra("notification_id", originalPayload.get("acme").getAsJsonArray().get(1).getAsInt());
-            JsonObject notificationPayload = new JsonObject();
-            JsonObject alert = new JsonObject();
-            alert.addProperty("alert", originalPayload.get("aps").getAsJsonObject().get("alert").getAsString());
-            notificationPayload.add("aps", alert);
-            notificationPayload.add("acme", originalPayload.get("acme").getAsJsonArray());
-            Intent alertintent = new Intent(this, GCMNotificationDialog.class);
-
-            messageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            messageIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(alertintent);
-        }catch (Exception e){
             e.printStackTrace();
         }
     }
