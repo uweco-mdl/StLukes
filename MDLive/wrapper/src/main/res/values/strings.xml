@@ -294,7 +294,7 @@
     <string name="mdl_my_pharmacy">MY PHARMACY</string>
     <string name="mdl_change_pharmacy">Change Pharmacy</string>
     <string name="mdl_choose_pharmacy">CHOOSE A PHARMACY</string>
-    <string name="mdl_pharmacy_opn">Pharmacy Name (optional)</string>
+    <string name="mdl_pharmacy_opn">Pharmacy Name (Optional)</string>
     <string name="mdl_current_loc_txt">Use current location</string>
     <string name="mdl_manual_txt">MANUAL SEARCH</string>
     <string name="mdl_search_pharm_txt">SEARCH PHARMACY</string>
@@ -459,6 +459,7 @@
     <string name="mdl_health_tip_one">Health Tip #1</string>
     <string name="mdl_health_tip_one_title">Get more daily exercise</string>
     <string name="mdl_health_tip_one_content">Start with something simple, like parking in the far corner of the parking lot -- so you get extra steps to the door. Take the stairs one or two flights instead of the elevator. If you take public transportation get off one stop early and walk the rest. Get out at lunch to walk. Or walk with your significant other or your spouce after work. You\'ll get a bonus -- relaxation and stress reduction.</string>
+    <string name="mdl_phone_number_to_followup">Please enter a phone number the provider can call you to follow up.</string>
 
     <!-- Start Visit -->
 
@@ -1388,7 +1389,6 @@
     <string name="view_health_msg">You currently do not have any</string>
 
     <string name="mdl_create_pin">Create a Pin</string>
-    <string name="mdl_request_form_heading">If you wish to visit this provider,please complete the form and we will arrange an appointment for you.</string>
     <string name="mdl_when">When</string>
     <string name="mdl_ideal_time">Ideal Time</string>
     <string-array name="ideal_time">
@@ -1407,6 +1407,8 @@
     <string name="mdl_or_city">or City</string>
     <string name="mdl_and_state_txt">and State</string>
     <string name="mdl_search_pharmacy">Find Pharmacy</string>
+    <string name="mdl_or">Or</string>
+    <string name="mdl_additional_comments">Additional comments or concerns</string>
 
     <string name="add_new_btn_txt">ADD NEW</string>
     <string name="remove_string">REMOVE</string>

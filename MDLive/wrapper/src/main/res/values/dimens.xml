@@ -118,7 +118,7 @@
     <dimen name="medical_history_margin_twelve">12dp</dimen>
 
     <!-- Appointment Request Form Page -->
-    <dimen name="appointment_request_form_text_size">17sp</dimen>
+    <dimen name="appointment_request_form_text_size">19sp</dimen>
     <dimen name="appointment_request_form_padding_left">30dp</dimen>
 
     <dimen name="button_height_48_dp">48dp</dimen>

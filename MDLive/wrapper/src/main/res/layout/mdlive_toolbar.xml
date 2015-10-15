@@ -17,7 +17,7 @@
             android:layout_marginLeft="10dp"
             android:onClick="leftBtnOnClick"
             android:scaleType="centerCrop"
-            android:src="@drawable/exit_icon" />
+            android:src="@drawable/whitebackarrow" />
 
         <TextView
             android:id="@+id/headerTxt"
