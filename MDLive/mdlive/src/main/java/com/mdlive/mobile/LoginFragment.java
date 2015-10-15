@@ -3,6 +3,7 @@ package com.mdlive.mobile;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -109,7 +111,9 @@ public class LoginFragment extends MDLiveBaseFragment {
                         event.getAction() == KeyEvent.ACTION_DOWN &&
                                 event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                     MdliveUtils.hideKeyboard(mPasswordEditText.getContext(), mPasswordEditText);
+                    clearFocus();
                     loginService();
+
                     return true;
                 }
                 return false;
@@ -142,7 +146,61 @@ public class LoginFragment extends MDLiveBaseFragment {
             mHeaderIv.setVisibility(View.VISIBLE);
         }
 
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if(imm.isAcceptingText()){
+            healthSystemContainerRl.setBackgroundColor(Color.BLACK);
+            healthSystemContainerRl.setAlpha(0.7F);
+        }else{
+            healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+            healthSystemContainerRl.setAlpha(0.1F);
+        }
+
+
+        mPasswordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (view.hasFocus()) {
+                    healthSystemContainerRl.setBackgroundColor(Color.BLACK);
+                    healthSystemContainerRl.setAlpha(0.7F);
+// mHeaderIv.setVisibility(View.GONE);
+                } else {
+                    healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+                    healthSystemContainerRl.setAlpha(0.1F);
+//mHeaderIv.setVisibility(View.VISIBLE);
+
+                }
+
+            }
+        });
+        mUserNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (view.hasFocus()) {
+                    healthSystemContainerRl.setBackgroundColor(Color.BLACK);
+                    healthSystemContainerRl.setAlpha(0.7F);
+// mHeaderIv.setVisibility(View.GONE);
+                } else {
+                    healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+                    healthSystemContainerRl.setAlpha(0.1F);
+// mHeaderIv.setVisibility(View.VISIBLE);
+
+                }
+
+            }
+        });
+
     }
+
+    public void clearFocus(){
+        mPasswordEditText.clearFocus();
+        mUserNameEditText.clearFocus();
+    }
+
+
+
+
+
+
 
     @Override
     public void onDetach() {
