@@ -109,6 +109,7 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
     /* Start Of Click listeners for Login Fragment*/
     public void onForgotUserNameClicked(View view) {
         try {
+            MdliveUtils.hideSoftKeyboard(this);
             final Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(AppSpecificConfig.URL_FORGOT_USERNAME));
             if (intent.resolveActivity(getPackageManager()) != null) {
@@ -123,6 +124,7 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
 
     public void onForgotPasswordClicked(View view) {
         try {
+            MdliveUtils.hideSoftKeyboard(this);
             final Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(AppSpecificConfig.URL_FORGOT_PASSWORD));
             if (intent.resolveActivity(getPackageManager()) != null) {
@@ -136,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
     }
 
     public void onSignInClicked(View view) {
+        MdliveUtils.hideSoftKeyboard(this);
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
         if(fragment != null && fragment instanceof LoginFragment) {
             ((LoginFragment)fragment).loginService();
@@ -143,6 +146,7 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
     }
 
     public void onCreateFreeAccountClicked(View view) {
+        MdliveUtils.hideSoftKeyboard(this);
         if(getSupportActionBar()!=null) {
             getSupportActionBar().hide();
         }
