@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_c"
+        android:layout_marginLeft="@dimen/dimen_10_dp"
+        android:layout_marginRight="@dimen/dimen_10_dp"
+        />
     <LinearLayout
         style="@style/MyLifeStyleLinearStyle"
         android:id="@+id/lifestyle_question_linearlayout"
-        android:layout_margin="5dp"
         android:layout_marginRight="@dimen/dimen_10_dp">
 
         <TextView
@@ -31,15 +37,27 @@
 
             <RadioButton
                 android:id="@+id/yesradioButton"
-                android:text="@string/mdl_yes"
                 android:tag="@string/mdltag_yes"
-                style="@style/YesNoRadioButtonStyle" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/circle"
+                android:textColor="@drawable/radio_text_selector"
+                android:button="@null"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:gravity="center" />
 
             <RadioButton
                 android:id="@+id/noradioButton"
-                android:text="@string/mdl_no"
                 android:tag="@string/mdltag_no"
-                style="@style/YesNoRadioButtonStyle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/circle_cross"
+                android:textColor="@drawable/radio_text_selector"
+                android:button="@null"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:gravity="center"
                 android:layout_marginLeft="8dp" />
 
         </RadioGroup>
