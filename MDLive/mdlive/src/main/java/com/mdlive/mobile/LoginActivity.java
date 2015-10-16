@@ -142,6 +142,7 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
         if(fragment != null && fragment instanceof LoginFragment) {
             ((LoginFragment)fragment).loginService();
+            ((LoginFragment)fragment).clearFocus();
         }
     }
 
@@ -151,10 +152,7 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
             getSupportActionBar().hide();
         }
 
-        getSupportFragmentManager().
-                beginTransaction().
-                addToBackStack(TAG).
-                add(R.id.container, CreateAccountFragment.newInstance(), TAG).
+        getSupportFragmentManager().beginTransaction().addToBackStack(TAG).add(R.id.container, CreateAccountFragment.newInstance(), TAG).
                 commit();
     }
     /* End Of Click listeners for Login Fragment*/
