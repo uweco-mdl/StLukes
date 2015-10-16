@@ -239,4 +239,7 @@
 
     <color name="search_provider_txt">#666666</color>
 
+    <color name="behaviour_divider">#c8c7cc</color>
+    <color name="white_darker_bg">#f9f9f9</color>
+
 </resources>

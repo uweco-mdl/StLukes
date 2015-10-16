@@ -698,7 +698,7 @@
     <string name="mdl_behaviouralhealthhistory_smallcaps">Behavioral Health History</string>
     <string name="mdl_behaviouralhealthhistory">BEHAVIORAL HEALTH HISTORY</string>
     <string name="mdl_thankkyou_appoint_txt">Thank you for requesting an appointment.\n\nWe will call you soon to schedule a convenient time for you.</string>
-    <string name="mdl_behaviouralhealth_question_one">Have you ever been diagnosed with any of the following conditions?\n (Check all that apply)</string>
+    <string name="mdl_behaviouralhealth_question_one">Have you ever been diagnosed with any of the following conditions?\n\n(Check all that apply)</string>
     <string name="mdl_behaviouralhealth_question_options_one"> Alcohol Dependence</string>
     <string name="mdl_behaviouralhealth_question_options_two"> Obsessive Compulsive Disorder (OCD)</string>
     <string name="mdl_behaviouralhealth_question_options_three"> Anxiety</string>
@@ -710,7 +710,7 @@
     <string name="mdl_behaviouralhealth_question_two">Have you ever been hospitalized for mental health or substance abuse treatment? *</string>
     <string name="mdl_behaviouralhealth_question_three">When?</string>
     <string name="mdl_behaviouralhealth_question_four">For how long?</string>
-    <string name="mdl_behaviouralhealth_question_five">Has anyone in your family been diagnosed with any of the following?\n (Check all that apply)</string>
+    <string name="mdl_behaviouralhealth_question_five">Has anyone in your family been diagnosed with any of the following?\n\n(Check all that apply)</string>
     <string name="mdl_behaviouralhealth_question_six">Has any family member ever been hospitalized for mental health or substance abuse treatment? *</string>
     <string name="mdl_behaviouralhealth_question_seven">What\'s your preference for a counselor?</string>
     <string name="mdl_behaviouralhealthhistory_dummy_date">2015/05/05</string>

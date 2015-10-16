@@ -55,7 +55,7 @@ public class SplashScreenActivity extends Activity {
         mProgressDialog = MdliveUtils.getFullScreenProgressDialog(this);
 
         /* Select the environment type here : */
-        env = ENVIRON.STAGE;
+        env = ENVIRON.QA;
         // ******************************************
         MDLiveConfig.setData(env);
 
