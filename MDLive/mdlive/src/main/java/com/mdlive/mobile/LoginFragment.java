@@ -416,6 +416,8 @@ public class LoginFragment extends MDLiveBaseFragment {
                                         headerRl.setVisibility(View.GONE);
                                         loginContainerFl.setVisibility(View.GONE);
                                         healthSystemContainerRl.setVisibility(View.VISIBLE);
+                                        healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+                                        healthSystemContainerRl.setAlpha(255);
                                         mWebView.setVisibility(View.VISIBLE);
                                         healthSystemIv.setVisibility(View.VISIBLE);
                                         healthSystemTv.setVisibility(View.VISIBLE);
@@ -442,6 +444,8 @@ public class LoginFragment extends MDLiveBaseFragment {
                                 headerRl.setVisibility(View.GONE);
                                 loginContainerFl.setVisibility(View.GONE);
                                 healthSystemContainerRl.setVisibility(View.VISIBLE);
+                                healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+                                healthSystemContainerRl.setAlpha(255);
                                 mWebView.setVisibility(View.VISIBLE);
                                 healthSystemIv.setVisibility(View.VISIBLE);
                                 healthSystemTv.setVisibility(View.VISIBLE);
