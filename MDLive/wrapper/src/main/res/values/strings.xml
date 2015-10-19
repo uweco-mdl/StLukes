@@ -1423,4 +1423,10 @@
     <string name="allergy_txt">Allergy</string>
     <string name="medication_txt">Medication</string>
 
+    <string name="doctor_e_visit_txt">Doctor E-visit:</string>
+    <string name="enter_new_payment_info_txt">Or enter new payment information</string>
+    <string name="expiry_hint_new">Expiration Date(MM/YYYY)</string>
+    <string name="apply_txt">Apply</string>
+    <string name="confirm_payment_info_txt">CONFIRM PAYMENT INFORMATION</string>
+
 </resources>
