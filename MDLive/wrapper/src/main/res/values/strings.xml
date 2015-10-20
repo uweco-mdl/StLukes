@@ -147,7 +147,7 @@
     <string name="mdl_date_time_format">yyyy-MM-dd HH:mm:ss</string>
     <string name="mdl_make_appointment_txt">Request Appointment</string>
     <string name="mdl_confirm_appointment_txt">Confirm Appointment</string>
-    <string name="mdl_time_for_visit_txt">Time For Visit</string>
+    <string name="mdl_time_for_visit_txt">YOU ARE READY TO GO</string>
     <string name="mdl_other_available_time">Other Available Times</string>
     <string name="mdl_notimeslots_txt">This doctor is not available on date.Please select a different date or make an appointment request.</string>
 
@@ -464,7 +464,7 @@
     <!-- Start Visit -->
 
     <string name="mdl_time_for_visit">It is time for your visit!</string>
-    <string name="mdl_time_for_visit_description">Click the button below to start your appointment.If your call is interrupted or dropped for any reason, the provider will call, you back at the number you entered.</string>
+    <string name="mdl_time_for_visit_description">It is time for your visit. Click the button below to start your appointment.If your call is interrupted or dropped for any reason, the provider will call, you back at the number you entered.</string>
     <string name="mdl_start_visit">Start Visit</string>
 
 
@@ -992,7 +992,7 @@
     <string name="mdl_change_language">Change Language</string>
 
     <!-- Thank you -->
-    <string name="mdl_thankyou_txt">Thank you for scheduling a visit!</string>
+    <string name="mdl_thankyou_txt">Thank you for scheduling a visit with MDLIVE!.</string>
     <string name="mdl_cancellation_information">Cancellation Information</string>
     <string name="mdl_cancellation_instructions">Appointment needs to be canceled within \n24 hours before the time of your consultation time for a refund.</string>
 
@@ -1428,5 +1428,7 @@
     <string name="expiry_hint_new">Expiration Date(MM/YYYY)</string>
     <string name="apply_txt">Apply</string>
     <string name="confirm_payment_info_txt">CONFIRM PAYMENT INFORMATION</string>
+    <string name="hom_txt">HOME</string>
+    <string name="suggestions">Suggestions</string>
 
 </resources>

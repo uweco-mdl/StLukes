@@ -244,5 +244,5 @@
     <color name="payment_txt_color">#8e8e93</color>
     <color name="payment_bottom_txt_color">#464646</color>
     <color name="payment_hint_color">#cccccc</color>
-
+    <color name="thank_you_bg">#f7f7f7</color>
 </resources>
