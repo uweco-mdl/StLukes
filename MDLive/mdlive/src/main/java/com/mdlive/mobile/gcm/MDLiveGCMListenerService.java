@@ -74,7 +74,7 @@ public class MDLiveGCMListenerService extends GcmListenerService {
             int NOTIFICATION_ID = parsedData.get("acme").getAsJsonArray().get(1).getAsInt();
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(this)
-                            .setSmallIcon(R.drawable.icon)
+                            .setSmallIcon(R.drawable.ic_stat_notify_vsee_in_call)
                             .setContentTitle(getResources().getString(R.string.mdl_app_name))
                             .setStyle(new NotificationCompat.BigTextStyle()
                                     .bigText(parsedData.get("aps").getAsJsonObject().get("alert").getAsString()))

@@ -42,7 +42,6 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 	 * */
 	private void sendNotification(final String message, final Context context) {
 		try {
-			Log.e("Push notification message", message+"");
 			if (MdliveUtils.isAppInForground) {
 				// This needs to be enalbed once we get the solution for alert pop-up from service.
 
@@ -75,7 +74,7 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 			int NOTIFICATION_ID = parsedData.get("acme").getAsJsonArray().get(1).getAsInt();
 			NotificationCompat.Builder mBuilder =
 					new NotificationCompat.Builder(context)
-							.setSmallIcon(R.drawable.icon)
+                            .setSmallIcon(R.drawable.ic_stat_notify_vsee_in_call)
 							.setContentTitle(context.getResources().getString(R.string.mdl_app_name))
 							.setStyle(new NotificationCompat.BigTextStyle()
 									.bigText(parsedData.get("alert").getAsString()))
