@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:id="@+id/reasonListItem"
-    android:padding="10dp"
-    >
-<ImageView
-    style = "@style/common_style_W_Wrap_H_Wrap"
-    android:src="@drawable/check_box_tick"
-    android:id="@+id/reasonCheckbox" />
+    android:background="@color/white"
+    android:orientation="horizontal">
 
-<TextView
-    style = "@style/common_style_W_Match_M_Wrap"
-    android:layout_height="wrap_content"
-    android:textSize="15sp"
-    android:textColor="@color/darkblack"
-    android:paddingTop="2dp"
-    android:maxLines="2"
-    android:ellipsize="end"
-    android:paddingLeft="10dp"
-    android:paddingBottom="2dp"
-    android:id="@+id/reasonTxt" />
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/reasonListItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dimen_10_dp"
+        android:paddingBottom="@dimen/dimen_10_dp">
+
+        <ImageView
+            android:id="@+id/reasonCheckbox"
+            style="@style/common_style_W_Wrap_H_Wrap"
+            android:layout_marginLeft="@dimen/dimen_10_dp"
+            android:src="@drawable/radio_default" />
+
+        <TextView
+            android:id="@+id/reasonTxt"
+            style="@style/common_style_W_Match_M_Wrap"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingBottom="2dp"
+            android:paddingLeft="@dimen/dimen_10_dp"
+            android:paddingRight="@dimen/dimen_10_dp"
+            android:paddingTop="2dp"
+            android:textColor="@color/black"
+            android:drawableRight="@drawable/icon_arrow_right"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_below="@+id/reasonListItem"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dimen_10_dp"
+        android:layout_marginRight="@dimen/dimen_10_dp"
+        android:background="@color/gray_c" />
+</RelativeLayout>

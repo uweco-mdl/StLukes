@@ -9,7 +9,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/getstarted_background_color"
             android:orientation="vertical">
 
             <LinearLayout
@@ -19,7 +18,7 @@
                 android:layout_alignParentTop="true"
                 android:orientation="vertical">
 
-                <include
+              <include
                     android:id="@+id/toolbar"
                     layout="@layout/mdlive_toolbar" />
 
@@ -27,7 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:paddingTop="10dp">
+                                        >
 
                     <LinearLayout
                         android:id="@+id/topContentHolder"
@@ -36,7 +35,7 @@
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:visibility="visible"
-                        android:paddingTop="10dp">
+>
 
 
                         <LinearLayout
@@ -96,22 +95,32 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_above="@id/MyHealthAddPhotoL2"
+                            android:background= "@color/white"
                             android:orientation="vertical"
                             android:visibility="gone">
 
                             <TextView
                                 android:id="@+id/txtReasonVisit"
                                 style="@style/common_style_W_Match_M_Wrap"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="0dp"
                                 android:gravity="left"
                                 android:singleLine="true"
                                 android:imeOptions="actionDone"
                                 android:tag="@string/mdltag_subheader_reason_txt"
                                 android:text="@string/mdl_subheader_reason_txt"
                                 android:textColor="@color/ReasonForVisit_TextColor_black"
-                                android:textSize="17sp" />
+                                android:textSize="17sp"
+                                android:paddingTop="10dp"
+                                android:paddingLeft="@dimen/dimen_10_dp"
+                                android:paddingBottom="@dimen/dimen_10_dp"
+                                android:background="@color/getstarted_background_color"
+                                />
+
+                            <View
+                                android:id="@+id/separatorLine"
+                                android:layout_below="@id/txtReasonVisit"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/gray_c" />
 
                             <EditText
                                 android:id="@+id/search_edit"
@@ -121,9 +130,9 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginTop="13dp"
-                                android:background="@drawable/searchpvr_white_rounded_corner"
+                                android:background="@drawable/edtxt_reasonvisit"
                                 android:gravity="center_vertical"
-                                android:hint="@string/mdl_enter_symptom"
+                                android:hint="@string/mdl_searchsymptom_txt"
                                 android:paddingLeft="10dp"
                                 android:tag="@string/mdltag_enter_symptom"
                                 android:singleLine="true"
@@ -132,6 +141,14 @@
                                 android:textCursorDrawable="@null"
                                 android:textSize="15sp" />
 
+                            <View
+                                android:layout_below="@id/txtReasonVisit"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="13dp"
+                                android:layout_marginLeft="@dimen/dimen_10_dp"
+                                android:layout_marginRight="@dimen/dimen_10_dp"
+                                android:background="@color/gray_c" />
 
                             <ListView
                                 android:id="@+id/reasonList"
@@ -139,12 +156,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_above="@id/MyHealthAddPhotoL2"
                                 android:layout_below="@id/search_edit"
-                                android:layout_marginLeft="9dp"
-                                android:layout_marginRight="9dp"
                                 android:layout_marginTop="11dp"
                                 android:choiceMode="singleChoice"
-                                android:divider="@color/grey_txt"
-                                android:dividerHeight="0.5dp" />
+ />
 
 
                         </LinearLayout>

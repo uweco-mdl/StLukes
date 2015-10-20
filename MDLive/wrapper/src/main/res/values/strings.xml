@@ -196,8 +196,8 @@
 
     <string name="mdl_header_reason_txt">Reason for visit</string>
     <string name="mdl_subheader_therapist_txt">What is your reason for seeking behavioral health (Check all that apply)</string>
-    <string name="mdl_subheader_reason_txt">What is the reason for your visit?</string>
-    <string name="mdl_searchsymptom_txt">Search symptoms</string>
+    <string name="mdl_subheader_reason_txt">Hello Mark,what seems to be the problem?</string>
+    <string name="mdl_searchsymptom_txt">Search symptom</string>
     <string name="mdl_searchProvidernmae_txt">Search provider name</string>
     <string name="mdl_acne_txt">Acne</string>
     <string name="mdl_alcohol_txt">Alcohol Dependencies</string>
