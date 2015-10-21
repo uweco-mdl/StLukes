@@ -1431,4 +1431,13 @@
     <string name="hom_txt">HOME</string>
     <string name="suggestions">Suggestions</string>
 
+    <string name="payment_info_txt">Payment Information</string>
+
+    <string name="date_txt">"Date: "</string>
+    <string name="time_txt">"Time: "</string>
+    <string name="provider_name_txt">"Provider: "</string>
+    <string name="provider_type_txt">"Provider Type: "</string>
+    <string name="appointment_type_txt">"Appointment Type: "</string>
+    <string name="patient_name_txt">"Patient Name: "</string>
+
 </resources>

@@ -21,24 +21,30 @@
             <LinearLayout style="@style/common_style_W_Match_H_Match_O_Vertical">
 
                 <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    style="@style/myChangeProfileInfoLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="4dp">
+                    app:cardCornerRadius="0dp">
 
                     <LinearLayout style="@style/common_style_W_Match_H_Wrap_O_Vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:background="@color/darkgrey_background"
-                            android:gravity="center"
-                            android:text="@string/mdl_appointment_details"
-                            android:tag="@string/mdltag_appointment_details"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
+                        <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="60dp"-->
+                        <!--android:background="@color/darkgrey_background"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="@string/mdl_appointment_details"-->
+                        <!--android:tag="@string/mdltag_appointment_details"-->
+                        <!--android:textColor="@color/white"-->
+                        <!--android:textSize="18sp" />-->
 
-                        <RelativeLayout style="@style/common_style_W_Match_H_Wrap_O_Vertical">
+                        <LinearLayout style="@style/common_style_W_Match_H_Wrap_O_Vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/behaviour_divider" />
 
                             <com.mdlive.embedkit.uilayer.sav.CircularNetworkImageView
                                 android:id="@+id/imgProfilePic"
@@ -49,56 +55,92 @@
                                 android:layout_marginRight="10dp"
                                 android:layout_marginTop="20dp"
                                 android:scaleType="centerCrop"
+                                android:visibility="gone"
                                 android:src="@drawable/profilepic" />
 
                             <TextView
+                                android:id="@+id/txtDate"
+                                android:paddingLeft="@dimen/dimen_10_dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="@color/black"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="@dimen/dimen_10_dp" />
+
+                            <TextView
+                                android:id="@+id/txtTime"
+                                android:paddingLeft="@dimen/dimen_10_dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="@color/black"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="@dimen/dimen_10_dp" />
+
+                            <TextView
                                 android:id="@+id/txtProfileName"
-                                style="@style/myProfileTextStyle"
-                                android:layout_marginTop="50dp"
-                                android:layout_toRightOf="@id/imgProfilePic"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="@color/black"
+                                android:layout_marginBottom="5dp"
+                                android:paddingLeft="@dimen/dimen_10_dp" />
 
                             <TextView
                                 android:id="@+id/txtproviderType"
-                                style="@style/myProfileTextStyle"
-                                android:layout_below="@id/txtProfileName"
-                                android:layout_marginTop="0dp"
-                                android:layout_toRightOf="@id/imgProfilePic" />
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="@color/black"
+                                android:layout_marginBottom="5dp"
+                                android:paddingLeft="@dimen/dimen_10_dp" />
 
-                        </RelativeLayout>
+                            <TextView
+                                android:id="@+id/patient_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="@color/black"
+                                android:layout_marginBottom="5dp"
+                                android:paddingLeft="@dimen/dimen_10_dp" />
 
-                        <TextView
-                            android:id="@+id/txtConsultationtype"
-                            style="@style/phone_consultation_text"
-                            android:layout_marginBottom="0dp"
-                            android:text="@string/mdl_phone_consultation"
-                            android:tag="@string/mdltag_phone_consultation" />
+                            <TextView
+                                android:id="@+id/txtConsultationtype"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:layout_marginBottom="5dp"
+                                android:textColor="@color/black"
+                                android:paddingLeft="@dimen/dimen_10_dp" />
 
-                        <TextView
-                            android:id="@+id/txtDate"
-                            style="@style/phone_consultation_text"
-                            android:layout_marginBottom="0dp" />
+                        </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txtTime"
-                            style="@style/phone_consultation_text"
-                            android:layout_marginBottom="0dp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/dimen_10_dp"
+                            android:background="@color/behaviour_divider" />
+
 
                     </LinearLayout>
+
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    style="@style/myChangeProfileInfoLayoutStyle"
-                    android:layout_marginTop="10dp"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="4dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="0dp">
 
                     <FrameLayout style="@style/common_style_W_Match_H_Wrap">
 
                         <TextView
-                            style="@style/appointment_text_style"
-                            android:padding="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="17sp"
+                            android:textColor="@color/black"
+                            android:padding="10dp"
                             android:layout_gravity="left"
                             android:tag="@string/mdltag_phone_to_call"
                             android:text="@string/mdl_phone_to_call" />
@@ -113,28 +155,69 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    style="@style/myChangeProfileInfoLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/white"
-                    android:padding="5dp"
-                    app:cardCornerRadius="4dp">
+                    app:cardCornerRadius="0dp">
 
-                    <FrameLayout style="@style/common_style_W_Match_H_Wrap">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <TextView
-                            style="@style/appointment_text_style"
-                            android:layout_gravity="left"
-                            android:padding="5dp"
-                            android:tag="@string/mdltag_doctor_visit"
-                            android:text="@string/mdl_doctor_visit" />
+                        <RelativeLayout
+                            android:padding="10dp"
+                            style="@style/common_style_W_Match_H_Wrap">
 
-                        <TextView
-                            android:id="@+id/amountInDollar"
-                            android:padding="5dp"
-                            style="@style/appointment_text_style"
-                            android:layout_gravity="right" />
+                            <LinearLayout
+                                android:id="@+id/pay_txt_layout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
-                    </FrameLayout>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:id="@+id/pay_txt"
+                                    android:textSize="24sp"
+                                    android:textColor="@color/black"
+                                    android:paddingTop="@dimen/dimen_10_dp"
+                                    android:tag="@string/payment_info_txt"
+                                    android:text="@string/payment_info_txt" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:textColor="#858585"
+                                    android:paddingTop="@dimen/dimen_10_dp"
+                                    android:tag="@string/mdltag_doctor_visit"
+                                    android:text="@string/mdl_doctor_visit" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/amountInDollar"
+                                android:layout_alignParentRight="true"
+                                android:textSize="30sp"
+                                android:layout_centerVertical="true"
+                                android:textColor="@color/black"
+                                style="@style/appointment_text_style"
+                                android:layout_gravity="right" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/dimen_10_dp"
+                            android:background="@color/behaviour_divider" />
+                    </LinearLayout>
+
+
                 </android.support.v7.widget.CardView>
+
 
                 <RelativeLayout
                     style="@style/common_style_W_Match_H_Wrap"
@@ -164,18 +247,63 @@
                                 style="@style/YesNoRadioButtonStyle"
                                 android:layout_marginRight="9dp"
                                 android:text="@string/mdl_yes"
-                                android:tag="@string/mdltag_yes"/>
+                                android:tag="@string/mdltag_yes" />
 
                             <RadioButton
                                 android:id="@+id/noButton"
                                 style="@style/YesNoRadioButtonStyle"
                                 android:layout_alignParentRight="true"
                                 android:text="@string/mdl_no"
-                                android:tag="@string/mdltag_no"/>
+                                android:tag="@string/mdltag_no" />
 
                         </RadioGroup>
                     </LinearLayout>
 
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:padding="@dimen/dimen_10_dp">
+
+                    <CheckBox
+                        android:id="@+id/terms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/behaviour_checked_selector" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/terms"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="@dimen/dimen_10_dp"
+                        android:text="I certify that I have read and accept the terms of MDLIVE Medical Group's Informed Consent." />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
+                    android:padding="@dimen/dimen_10_dp">
+
+                    <CheckBox
+                        android:id="@+id/policy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/behaviour_checked_selector" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/policy"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="@dimen/dimen_10_dp"
+                        android:text="I have read MDLIVE Medical Group's Privacy Policy and I acknowledge that I have the ability to print a hard copy of the Privacy Policy for my records." />
                 </RelativeLayout>
 
             </LinearLayout>
@@ -187,12 +315,12 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/search_pvr_blue_color"
+            android:background="@drawable/orange_btn_gradient"
             android:clickable="true"
             android:onClick="rightBtnOnClick"
             android:text="@string/mdl_confirm_appointment_txt"
             android:tag="@string/mdltag_confirm_appointment_txt"
-            android:textAllCaps="false"
+            android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="18sp"
 
