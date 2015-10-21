@@ -1404,7 +1404,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">17sp</item>
         <item name="android:gravity">start</item>
-        <item name="android:layout_margin">5dp</item>
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 
@@ -1413,8 +1412,6 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:gravity">start</item>
-        <item name="android:layout_gravity">center_vertical</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textColor">@color/medical_history_sub_text</item>
     </style>
@@ -1520,7 +1517,6 @@
     <style name="YesNoRadioButtonStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">10dp</item>
         <item name="android:textSize">15sp</item>
         <item name="android:gravity">center</item>
     </style>
@@ -1888,11 +1884,7 @@
     <style name="MedicalHistory_BasicLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/medical_history_dimen_eight</item>
-        <item name="android:layout_marginLeft">@dimen/medical_history_margin_ten</item>
-        <item name="android:layout_marginRight">@dimen/medical_history_margin_ten</item>
         <item name="android:layout_marginBottom">0dp</item>
-        <item name="android:background">@drawable/round_rect_white</item>
     </style>
 
     <style name="schedule_visit_button_style">

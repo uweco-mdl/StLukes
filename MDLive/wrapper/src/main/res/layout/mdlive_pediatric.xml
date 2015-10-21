@@ -217,13 +217,13 @@
                                 <RadioButton
                                     android:id="@+id/immunization_yesButton"
                                     style="@style/Pediatric_radio_button_style"
-                                    android:background="@drawable/circle"
+                                    android:background="@drawable/check_active"
                                     android:tag="@string/mdltag_radio_yes_text" />
 
                                 <RadioButton
                                     android:id="@+id/immunization_noButton"
                                     style="@style/Pediatric_radio_button_style"
-                                    android:background="@drawable/circle_cross"
+                                    android:background="@drawable/uncheck_unactive"
                                     android:tag="@string/mdltag_radio_No_text" />
 
                             </RadioGroup>
