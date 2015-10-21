@@ -1428,5 +1428,7 @@
     <string name="expiry_hint_new">Expiration Date(MM/YYYY)</string>
     <string name="apply_txt">Apply</string>
     <string name="confirm_payment_info_txt">CONFIRM PAYMENT INFORMATION</string>
+    <string name="mdl_take_picture">Take Picture</string>
+    <string name="mdl_gallery">Gallery</string>
 
 </resources>

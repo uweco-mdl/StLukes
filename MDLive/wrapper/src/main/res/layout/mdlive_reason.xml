@@ -18,15 +18,14 @@
                 android:layout_alignParentTop="true"
                 android:orientation="vertical">
 
-              <include
+                <include
                     android:id="@+id/toolbar"
                     layout="@layout/mdlive_toolbar" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                                        >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:id="@+id/topContentHolder"
@@ -34,8 +33,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:visibility="visible"
->
+                        android:visibility="visible">
 
 
                         <LinearLayout
@@ -71,20 +69,20 @@
                                 android:id="@+id/behaviour_reason"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:maxLines="10"
-                                android:inputType="textMultiLine"
-                                android:padding="5dp"
-                                android:minHeight="100dp"
-                                android:gravity="top|left"
                                 android:layout_above="@id/MyHealthAddPhotoL2"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginTop="13dp"
                                 android:background="@drawable/searchpvr_white_rounded_corner"
+                                android:gravity="top|left"
                                 android:hint="@string/mdl_enter_symptom"
+                                android:inputType="textMultiLine"
+                                android:maxLines="10"
+                                android:minHeight="100dp"
+                                android:padding="5dp"
                                 android:paddingLeft="10dp"
-                                android:textColor="@color/black"
                                 android:tag="@string/mdltag_enter_symptom"
+                                android:textColor="@color/black"
                                 android:textColorHint="@color/ReasonForVisit_EditText_HintColor"
                                 android:textSize="15sp" />
 
@@ -95,31 +93,30 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_above="@id/MyHealthAddPhotoL2"
-                            android:background= "@color/white"
+                            android:background="@color/white"
                             android:orientation="vertical"
                             android:visibility="gone">
 
                             <TextView
                                 android:id="@+id/txtReasonVisit"
                                 style="@style/common_style_W_Match_M_Wrap"
+                                android:background="@color/getstarted_background_color"
                                 android:gravity="left"
-                                android:singleLine="true"
                                 android:imeOptions="actionDone"
+                                android:paddingBottom="@dimen/dimen_10_dp"
+                                android:paddingLeft="@dimen/dimen_10_dp"
+                                android:paddingTop="10dp"
+                                android:singleLine="true"
                                 android:tag="@string/mdltag_subheader_reason_txt"
                                 android:text="@string/mdl_subheader_reason_txt"
                                 android:textColor="@color/ReasonForVisit_TextColor_black"
-                                android:textSize="17sp"
-                                android:paddingTop="10dp"
-                                android:paddingLeft="@dimen/dimen_10_dp"
-                                android:paddingBottom="@dimen/dimen_10_dp"
-                                android:background="@color/getstarted_background_color"
-                                />
+                                android:textSize="17sp" />
 
                             <View
                                 android:id="@+id/separatorLine"
-                                android:layout_below="@id/txtReasonVisit"
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
+                                android:layout_below="@id/txtReasonVisit"
                                 android:background="@color/gray_c" />
 
                             <EditText
@@ -133,21 +130,21 @@
                                 android:background="@drawable/edtxt_reasonvisit"
                                 android:gravity="center_vertical"
                                 android:hint="@string/mdl_searchsymptom_txt"
-                                android:paddingLeft="10dp"
-                                android:tag="@string/mdltag_enter_symptom"
-                                android:singleLine="true"
                                 android:imeOptions="actionDone"
+                                android:paddingLeft="10dp"
+                                android:singleLine="true"
+                                android:tag="@string/mdltag_enter_symptom"
                                 android:textColorHint="@color/ReasonForVisit_EditText_HintColor"
                                 android:textCursorDrawable="@null"
                                 android:textSize="15sp" />
 
                             <View
-                                android:layout_below="@id/txtReasonVisit"
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:layout_marginTop="13dp"
+                                android:layout_below="@id/txtReasonVisit"
                                 android:layout_marginLeft="@dimen/dimen_10_dp"
                                 android:layout_marginRight="@dimen/dimen_10_dp"
+                                android:layout_marginTop="13dp"
                                 android:background="@color/gray_c" />
 
                             <ListView
@@ -157,8 +154,7 @@
                                 android:layout_above="@id/MyHealthAddPhotoL2"
                                 android:layout_below="@id/search_edit"
                                 android:layout_marginTop="11dp"
-                                android:choiceMode="singleChoice"
- />
+                                android:choiceMode="singleChoice" />
 
 
                         </LinearLayout>
@@ -179,6 +175,7 @@
                             android:layout_marginBottom="20dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginRight="16dp"
+
                             android:layout_marginTop="20dp"
                             android:src="@drawable/camera_icon_white" />
 
@@ -212,6 +209,8 @@
                             android:src="@drawable/arrow_up" />
 
                     </RelativeLayout>
+
+
 
                     <RelativeLayout
                         android:id="@+id/photoLayout"
@@ -262,28 +261,70 @@
                             android:orientation="horizontal"
                             android:paddingBottom="53dp">
 
-                            <ImageView
-                                android:id="@+id/takePicture"
+                            <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingRight="22dp"
-                                android:src="@drawable/camera_icon" />
-                            <!--android:contentDescription="@string/pict_by_camera"-->
+                                android:layout_height="50dp"
+                                android:background="@drawable/searchpvr_orange_new_rounded_corner"
+                                android:padding="@dimen/dimen_10_dp"
+                                android:orientation="horizontal">
 
+                                <ImageView
+                                    android:id="@+id/takePicture"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingRight="10dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/camera_icon_black" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/button_top"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="@string/mdl_take_picture"/>
 
-                            <ImageView
-                                android:id="@+id/takeGallery"
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="22dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/searchpvr_orange_new_rounded_corner"
+                                android:layout_marginLeft="@dimen/dimen_18_dp"
+                                android:padding="@dimen/dimen_10_dp"
+                                android:orientation="horizontal">
 
-                                android:src="@drawable/gallery_icon" />
-                            <!--android:contentDescription="@string/pict_by_gallery"-->
+                                <ImageView
+                                    android:id="@+id/takeGallery"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingRight="10dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/gallery_icon_black" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/button_top"
+                                    android:gravity="center"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="@string/mdl_gallery"/>
+                            </LinearLayout>
+
                         </LinearLayout>
 
                     </RelativeLayout>
+                    <Button android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background = "@drawable/btn_color_gradient"
+                        android:layout_alignParentBottom="true"
+                        android:text = "@string/mdl_continue_text"
+                        android:textAllCaps = "true"
+                        android:textColor ="@color/white"
+                        android:layout_gravity="bottom"
+                        android:textSize = "20sp"
+                        />
                 </LinearLayout>
+
             </LinearLayout>
+
         </RelativeLayout>
 
         <FrameLayout
@@ -299,6 +340,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="right|end" />
     </android.support.v4.widget.DrawerLayout>
+
+
+
 
     <include layout="@layout/custom_progress_dialog" />
 </merge>
