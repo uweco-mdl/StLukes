@@ -12,14 +12,31 @@
             android:id="@+id/toolbar"
             layout="@layout/toolbar_hamburger_bell" />
 
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:background="@drawable/dashboard_gradient"
+            android:layout_below="@+id/toolbar">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+                android:layout_centerInParent="true"
+                android:src="@drawable/thank_you_calender_icon" />
+
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/time_for_visit_txt"
             style="@style/common_style_W_Wrap_H_Wrap"
-            android:layout_below="@id/toolbar"
+            android:layout_below="@id/top_layout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:text="@string/mdl_time_for_visit"
             android:tag="@string/mdltag_time_for_visit"
+            android:visibility="gone"
             android:textColor="@color/darkgreyTextColor"
             android:textSize="20sp" />
 
@@ -33,27 +50,26 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="30dp"
             android:scaleType="centerCrop"
+            android:visibility="gone"
             android:src="@drawable/dash_board_doctor_icon" />
 
         <TextView
             style="@style/common_style_W_Wrap_H_Wrap"
             android:layout_below="@id/doctorPic"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
+            android:padding="@dimen/dimen_20_dp"
             android:text="@string/mdl_time_for_visit_description"
             android:tag="@string/mdltag_time_for_visit_description"
-            android:textColor="@color/darkgreyTextColor"
-            android:textSize="18sp" />
+            android:textColor="@color/black"
+
+            android:textSize="21sp" />
 
         <Button
             android:id="@+id/start_visit"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/search_pvr_blue_color"
+            android:background="@drawable/orange_btn_gradient"
             android:clickable="true"
             android:onClick="rightBtnOnClick"
             android:text="@string/mdl_start_visit"
@@ -68,6 +84,7 @@
         android:layout_width="@dimen/drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="left|start" />
+
     <FrameLayout
         android:id="@+id/dash_board__right_container"
         android:layout_width="@dimen/drawer_width"
