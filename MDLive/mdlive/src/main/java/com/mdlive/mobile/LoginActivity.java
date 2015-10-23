@@ -1,17 +1,21 @@
 package com.mdlive.mobile;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
+import com.mdlive.embedkit.uilayer.sav.LocationCooridnates;
 import com.mdlive.mobile.CreateAccountFragment.OnSignupSuccess;
 import com.mdlive.mobile.LoginFragment.OnLoginResponse;
 import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
@@ -26,7 +30,6 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
         OnSignupSuccess, OnBackStackChangedListener {
     public static final String TAG = "LOGIN";
     private static final String UNLOCK_FLAG = "UNLOCK_FLAG";
-    private static final String GO_To_DASHBOARD = "go_to_dash_board";
 
     public static Intent getLockLoginIntnet(final Context context) {
         final Intent intent = new Intent(context, LoginActivity.class);
@@ -35,36 +38,56 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
         return intent;
     }
 
-    public static Intent getLoginToDashBoardIntent(final Context context, final boolean goToDashboard) {
-        final Intent intent = new Intent(context, LoginActivity.class);
-        intent.putExtra(GO_To_DASHBOARD, goToDashboard);
-
-        return intent;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        try {
+            setContentView(R.layout.activity_login);
+            this.setTitle(TAG);
 
-        LocalizationSingleton.localiseLayout(this,(ViewGroup) ((ViewGroup) this
-                .findViewById(android.R.id.content)).getChildAt(0));
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            setTitle("");
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
+            LocalizationSingleton.localiseLayout(this, (ViewGroup) ((ViewGroup) this
+                    .findViewById(android.R.id.content)).getChildAt(0));
 
-        getSupportFragmentManager().addOnBackStackChangedListener(this);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().
-                    beginTransaction().
-                    add(R.id.container, LoginFragment.newInstance(), TAG).
-                    commit();
+            getSupportFragmentManager().addOnBackStackChangedListener(this);
+            if (savedInstanceState == null) {
+                getSupportFragmentManager().
+                        beginTransaction().
+                        add(R.id.container, LoginFragment.newInstance(), TAG).
+                        commit();
+            }
+            LocationCooridnates locationService = new LocationCooridnates(LoginActivity.this);
+            if (!locationService.checkLocationServiceSettingsEnabled(getApplicationContext())) {
+                showSettingsAlert();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
+    public void showSettingsAlert() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(LoginActivity.this);
+        // Setting Dialog Title
+        alertDialog.setTitle("");
+        // Setting Dialog Message
+        alertDialog.setMessage(getString(R.string.mdl_gps_settings));
+        // On pressing Settings button
+        alertDialog.setPositiveButton(getString(R.string.mdl_settings), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(intent);
+            }
+        });
 
+        // on pressing cancel button
+        alertDialog.setNegativeButton(getString(R.string.mdl_cancel), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alertDialog.setCancelable(true);
+        // Showing Alert Message
+        alertDialog.show();
+    }
     @Override
     public void onBackPressed() {
         final Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
@@ -86,6 +109,7 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
     /* Start Of Click listeners for Login Fragment*/
     public void onForgotUserNameClicked(View view) {
         try {
+            MdliveUtils.hideSoftKeyboard(this);
             final Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(AppSpecificConfig.URL_FORGOT_USERNAME));
             if (intent.resolveActivity(getPackageManager()) != null) {
@@ -100,6 +124,7 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
 
     public void onForgotPasswordClicked(View view) {
         try {
+            MdliveUtils.hideSoftKeyboard(this);
             final Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(AppSpecificConfig.URL_FORGOT_PASSWORD));
             if (intent.resolveActivity(getPackageManager()) != null) {
@@ -113,49 +138,35 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
     }
 
     public void onSignInClicked(View view) {
+        MdliveUtils.hideSoftKeyboard(this);
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
         if(fragment != null && fragment instanceof LoginFragment) {
             ((LoginFragment)fragment).loginService();
+            ((LoginFragment)fragment).clearFocus();
         }
     }
 
     public void onCreateFreeAccountClicked(View view) {
-        getSupportActionBar().hide();
+        MdliveUtils.hideSoftKeyboard(this);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().hide();
+        }
 
-        getSupportFragmentManager().
-                beginTransaction().
-                addToBackStack(TAG).
-                add(R.id.container, CreateAccountFragment.newInstance(), TAG).
+        getSupportFragmentManager().beginTransaction().addToBackStack(TAG).add(R.id.container, CreateAccountFragment.newInstance(), TAG).
                 commit();
     }
     /* End Of Click listeners for Login Fragment*/
 
     @Override
     public void onLoginSucess() {
-        if (getIntent() != null && getIntent().hasExtra(UNLOCK_FLAG) && getIntent().getExtras().getInt(UNLOCK_FLAG) == 1) {
-            finish();
-            return;
-        }
 
-        if (getIntent() != null && getIntent().hasExtra(GO_To_DASHBOARD) && getIntent().getExtras().getBoolean(GO_To_DASHBOARD)) {
+        Log.e("pin or password" , MdliveUtils.getLockType(this).equalsIgnoreCase(getString(com.mdlive.embedkit.R.string.mdl_password))+"");
+        if (MdliveUtils.getLockType(this).equalsIgnoreCase(getString(com.mdlive.embedkit.R.string.mdl_password))) {
             final Intent intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
             startActivity(intent);
-            finish();
-            return;
-        }
-
-        if (MdliveUtils.getFirstTime(getBaseContext())) {
-            MdliveUtils.setFirstTime(getBaseContext(), false);
+        } else {
             final Intent intent = new Intent(getBaseContext(), PinActivity.class);
             startActivity(intent);
-        } else {
-            if (MdliveUtils.getLockType(this).equalsIgnoreCase("password")) {
-                final Intent intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
-                startActivity(intent);
-            } else {
-                final Intent intent = new Intent(getBaseContext(), PinActivity.class);
-                startActivity(intent);
-            }
         }
 
         finish();
@@ -171,7 +182,20 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
     @Override
     public void onBackStackChanged() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-            getSupportActionBar().show();
+            if(getSupportActionBar()!=null) {
+                getSupportActionBar().show();
+            }
         }
+    }
+
+    public void onActivateAccount(String activationUrl, String username, String password) {
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().hide();
+        }
+        getSupportFragmentManager().
+                beginTransaction().
+                addToBackStack(TAG).
+                add(R.id.container, CreateAccountFragment.newInstance(activationUrl,username, password), TAG).
+                commit();
     }
 }

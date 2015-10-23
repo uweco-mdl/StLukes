@@ -1,20 +1,24 @@
 package com.mdlive.mobile;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.mobile.CreateAccountFragment.OnSignupSuccess;
 import com.mdlive.mobile.UnlockFragment.OnUnlockSucessful;
+import com.mdlive.unifiedmiddleware.commonclasses.constants.BroadcastConstant;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 
@@ -22,14 +26,28 @@ import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
  * Created by dhiman_da on 8/22/2015.
  */
 public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess, OnBackStackChangedListener, OnUnlockSucessful {
+
     private static final String GO_To_DASHBOARD = "go_to_dash_board";
+    private boolean isForgetPinCalled = false;
 
     public static Intent getUnlockToDashBoardIntent(final Context context, final boolean goToDashboard) {
         final Intent intent = new Intent(context, UnlockActivity.class);
         intent.putExtra(GO_To_DASHBOARD, goToDashboard);
-
         return intent;
     }
+
+
+    private Handler mHandler;
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(null);
+        }
+    }
+
+
 
     public static final String TAG = "UNLOCK";
 
@@ -38,7 +56,6 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unlock);
         clearMinimizedTime();
-
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -58,11 +75,25 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-            return ;
+            return;
         } else {
-            super.onBackPressed();
+            if(isForgetPinCalled){
+                super.onBackPressed();
+            }else{
+                onSignoutClicked(this);
+            }
         }
     }
+
+    public static void onSignoutClicked(Activity activityInstance) {
+        MdliveUtils.clearNecessarySharedPrefernces(activityInstance);
+        final Intent intent = new Intent();
+        intent.setAction(BroadcastConstant.LOGIN_ACTION);
+        intent.putExtra(BroadcastConstant.UNLOCK_FLAG, BroadcastConstant.SHOW_LOGIN_AFTER_LOGOUT);
+        activityInstance.sendBroadcast(intent);
+        activityInstance.finish();
+    }
+
 
     public void onBackClicked(View view) {
         onBackPressed();
@@ -70,7 +101,6 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
     public void onSignUpClicked(View view) {
         getSupportActionBar().hide();
-
         getSupportFragmentManager().
                 beginTransaction().
                 addToBackStack(TAG).
@@ -80,7 +110,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
     public void onForgotPinClicked(View view) {
         showForgotPinToolbar();
-
+        isForgetPinCalled = true;
         getSupportFragmentManager().
                 beginTransaction().
                 addToBackStack(TAG).
@@ -89,9 +119,10 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     }
 
     public void onSignInClicked(View view) {
-        final Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+        onSignoutClicked(this);
+        /*final Intent intent = new Intent(getBaseContext(), LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     /**
@@ -115,11 +146,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     }
 
     public void onResetPinClicked(View view) {
-        final Intent intent = new Intent(getBaseContext(), LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+        onSignoutClicked(this);
     }
 
     private void showInitialToolbar() {
@@ -141,11 +168,28 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     }
 
     private void clearMinimizedTime() {
+        if (mHandler == null) {
+            mHandler = new Handler();
+        }
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
+                final SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.commit();
+                Log.d("Timer", "clear called");
+            }
+        }, 1000);
+    }
+
+  /*  private void clearMinimizedTime() {
         final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
         final SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.commit();
-    }
+    }*/
 
     @Override
     public void onUnlockSuccesful() {
@@ -159,7 +203,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
     @Override
     public void onUnlockUnSuccesful() {
-        MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_pin_mismatch), new DialogInterface.OnClickListener() {
+        DialogInterface.OnClickListener tryAgain = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 final Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
@@ -167,6 +211,19 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
                     ((UnlockFragment) fragment).clearPincode();
                 }
             }
-        });
+        };
+        DialogInterface.OnClickListener reSet = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MdliveUtils.clearNecessarySharedPrefernces(getApplicationContext());
+                final Intent intent = new Intent();
+                intent.setAction(BroadcastConstant.LOGIN_ACTION);
+                intent.putExtra(BroadcastConstant.UNLOCK_FLAG, BroadcastConstant.SHOW_LOGIN_AFTER_LOGOUT);
+                sendBroadcast(intent);
+                finish();
+            }
+        };
+        MdliveUtils.showDialog(this, getString(R.string.mdl_app_name), getString(R.string.mdl_incorrect_pin_message), getString(R.string.mdl_try_again),
+                getString(R.string.mdl_reset), tryAgain, reSet);
     }
 }

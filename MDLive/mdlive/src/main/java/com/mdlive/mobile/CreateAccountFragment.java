@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -30,9 +33,20 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
     private OnSignupSuccess mOnSignupSuccess;
 
     private WebView mWebView;
+    private String loadUrl;
+    private String username;
+    private String password;
 
     public static CreateAccountFragment newInstance() {
         final CreateAccountFragment fragment = new CreateAccountFragment();
+        return fragment;
+    }
+
+    public static CreateAccountFragment newInstance(String url, String username, String password) {
+        final CreateAccountFragment fragment = new CreateAccountFragment();
+        fragment.setLoadUrl(url);
+        fragment.setUsername(username);
+        fragment.setPassword(password);
         return fragment;
     }
 
@@ -69,6 +83,12 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
          * */
         if (DeepLinkUtils.DEEPLINK_DATA != null && !DeepLinkUtils.DEEPLINK_DATA.getRegistrationUrl().isEmpty()) {
             mWebView.loadUrl(DeepLinkUtils.DEEPLINK_DATA.getRegistrationUrl());
+        } else if(loadUrl !=null && !loadUrl.isEmpty()){
+            mWebView.loadUrl(loadUrl);
+            mWebView.getSettings().setLoadWithOverviewMode(true);
+            mWebView.getSettings().setUseWideViewPort(true);
+            mWebView.getSettings().setBuiltInZoomControls(true);
+            mWebView.getSettings().setJavaScriptEnabled(true);
         } else {
             mWebView.loadUrl(AppSpecificConfig.URL_SIGN_UP);
         }
@@ -78,7 +98,6 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-
                 showProgressDialog();
 
                 List<NameValuePair> params = null;
@@ -107,8 +126,12 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-
                 hideProgressDialog();
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    mWebView.evaluateJavascript("javascript:getUserCredential('"+ username + "', '"+password+"');",null);
+                } else {
+                    mWebView.loadUrl("javascript:getUserCredential('"+ username + "', '"+password+"');",null);
+                }
             }
 
             @Override
@@ -132,7 +155,12 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
 
     public boolean canGoBack() {
         if (mWebView != null) {
-            return mWebView.canGoBack();
+            Log.d("URL", mWebView.getUrl());
+            if(mWebView.getUrl().contains("get_eligibilty_details") || mWebView.getUrl().contains("get_non270_details")){
+                return false;
+            } else {
+                return mWebView.canGoBack();
+            }
         }
 
         return false;
@@ -146,5 +174,21 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
 
     public static interface OnSignupSuccess {
         void onSignUpSucess();
+    }
+
+    public String getLoadUrl() {
+        return loadUrl;
+    }
+
+    public void setLoadUrl(String loadUrl) {
+        this.loadUrl = loadUrl;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

@@ -1,19 +1,43 @@
 package com.mdlive.mobile;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.Formatter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
+import com.mdlive.unifiedmiddleware.commonclasses.application.ApplicationController;
+import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
+import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
+import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
+import com.mdlive.unifiedmiddleware.services.login.HealthSystemServices;
+
+import org.json.JSONObject;
+
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 /**
  * Created by dhiman_da on 7/23/2015.
@@ -43,8 +67,13 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     private Button mButton0;
     private View mButtonCross;
 
-    private TextView mTitleTextView;
+    private TextView mTitleTextView,healthSystemTv;
     private StringBuffer mStringBuffer;
+    private ImageView mWebView;
+    private RelativeLayout healthSystemContainerRl;
+    private ImageView healthSystemIv;
+    private String screenImageURL;
+    private static final int SPLASH_TIME_OUT = 4000;
 
     public CreatePinFragment() {
         super();
@@ -58,8 +87,10 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        getActivity().setTitle(getString(R.string.mdl_create_a_pin));
 
         try {
+            MdliveUtils.setPreferredLockType(getActivity(), getActivity().getString(R.string.mdl_password));
             mOnCreatePinCompleted = (OnCreatePinCompleted) activity;
         } catch (ClassCastException cce) {
             logE("Error", cce.getMessage());
@@ -93,7 +124,10 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
 
     public void init(View changePin) {
         mStringBuffer = new StringBuffer();
-
+        mWebView = (ImageView) changePin.findViewById(R.id.webView);
+        healthSystemContainerRl = (RelativeLayout) changePin.findViewById(R.id.health_system_container_rl);
+        healthSystemIv = (ImageView) changePin.findViewById(R.id.health_system_niv);
+        healthSystemTv = (TextView) changePin.findViewById(R.id.health_system_tv);
         mPassCode1 = (ToggleButton) changePin.findViewById(R.id.passCode1);
         mPassCode2 = (ToggleButton) changePin.findViewById(R.id.passCode2);
         mPassCode3 = (ToggleButton) changePin.findViewById(R.id.passCode3);
@@ -335,5 +369,154 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
         void onCreatePinCompleted(final String pin);
 
         void onClickNoPin();
+    }
+
+    private void clearMinimisedTime(){
+        final SharedPreferences preferences = getActivity().getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, getActivity().MODE_PRIVATE);
+        final SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.commit();
+    }
+
+    /**
+     * This function is used to check the health services associated with the user's location.
+     */
+    public void checkHealthServices() {
+        NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("Response", response.toString());
+                if (response != null && response.optBoolean("additional_screen_applicable", false)) {
+                    showProgressDialog();
+                    SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, response.toString()).commit();
+                    if (getActivity() != null && getActivity() instanceof AppCompatActivity) {
+                        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+                    }
+                    screenImageURL = response.optString("screen_image");
+                    healthSystemTv.setText(response.optString("splash_screen_text"));
+                    final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
+                    ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            imageLoader.get(screenImageURL, new ImageLoader.ImageListener() {
+
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    hideProgressDialog();
+                                    MdliveUtils.setLockType(getActivity(), getString(R.string.mdl_password));
+                                    clearMinimisedTime();
+                                    final Intent dashboard = new Intent(getActivity(), MDLiveDashboardActivity.class);
+                                    startActivity(dashboard);
+                                    getActivity().finish();
+                                }
+
+                                @Override
+                                public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+                                    if (response.getBitmap() != null) {
+                                        // load image into imageview
+                                        hideProgressDialog();
+                                        mWebView.setImageBitmap(response.getBitmap());
+                                        healthSystemContainerRl.setVisibility(View.VISIBLE);
+                                        mWebView.setVisibility(View.VISIBLE);
+                                        healthSystemIv.setVisibility(View.VISIBLE);
+                                        healthSystemTv.setVisibility(View.VISIBLE);
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                MdliveUtils.setLockType(getActivity(), getString(R.string.mdl_password));
+                                                clearMinimisedTime();
+                                                final Intent dashboard = new Intent(getActivity(), MDLiveDashboardActivity.class);
+                                                startActivity(dashboard);
+                                                getActivity().finish();
+                                            }
+                                        }, SPLASH_TIME_OUT);
+                                    }
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+                            if (response.getBitmap() != null) {
+                                mWebView.setImageBitmap(response.getBitmap());
+                                hideProgressDialog();
+                                healthSystemContainerRl.setVisibility(View.VISIBLE);
+                                mWebView.setVisibility(View.VISIBLE);
+                                healthSystemIv.setVisibility(View.VISIBLE);
+                                healthSystemTv.setVisibility(View.VISIBLE);
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        MdliveUtils.setLockType(getActivity(), getString(R.string.mdl_password));
+                                        clearMinimisedTime();
+                                        final Intent dashboard = new Intent(getActivity(), MDLiveDashboardActivity.class);
+                                        startActivity(dashboard);
+                                        getActivity().finish();
+                                    }
+                                }, SPLASH_TIME_OUT);
+                            } else {
+                                Log.d("ARG1 - ", arg1 + "");
+                            }
+                        }
+                    };
+                    imageLoader.get(screenImageURL, iListener);
+
+                } else {
+                    MdliveUtils.setLockType(getActivity(), getString(R.string.mdl_password));
+                    clearMinimisedTime();
+                    final Intent dashboard = new Intent(getActivity(), MDLiveDashboardActivity.class);
+                    startActivity(dashboard);
+                    getActivity().finish();
+                }
+            }
+        };
+
+        NetworkErrorListener errorListener = new NetworkErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                hideProgressDialog();
+                if(getActivity()!=null) {
+                    SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, "{}").commit();
+                }
+                MdliveUtils.setLockType(getActivity(), getString(R.string.mdl_password));
+                clearMinimisedTime();
+                final Intent dashboard = new Intent(getActivity(), MDLiveDashboardActivity.class);
+                startActivity(dashboard);
+                getActivity().finish();
+            }
+        };
+
+        HealthSystemServices service = new HealthSystemServices(getActivity(), getProgressDialog());
+        service.getHealthSystemsData(successCallBackListener, errorListener, getLocalIpAddress());
+    }
+
+    /**
+     * This function will fetch the Ip Address of the device and send it back as a string value.
+     *
+     * @return
+     */
+    public String getLocalIpAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()) {
+                        String ip = Formatter.formatIpAddress(inetAddress.hashCode());
+                        return ip;
+//                        return "184.73.180.105";  // Test ip address
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+        }
+        return null;
     }
 }

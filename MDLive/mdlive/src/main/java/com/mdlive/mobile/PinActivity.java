@@ -1,17 +1,21 @@
 package com.mdlive.mobile;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.mobile.ConfirmPinFragment.OnCreatePinSucessful;
 import com.mdlive.mobile.CreatePinFragment.OnCreatePinCompleted;
+import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 
 /**
@@ -55,6 +59,16 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
     public void onCreatePinCompleted(String pin) {
         showConfirmPinToolbar();
 
@@ -63,23 +77,45 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
                 addToBackStack(TAG).
                 add(R.id.container, ConfirmPinFragment.newInstance(pin), TAG).
                 commit();
+        getWindow().getDecorView()
+                .sendAccessibilityEvent(AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED);
     }
 
     @Override
     public void onClickNoPin() {
-        MdliveUtils.hideSoftKeyboard(this);
-        MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_password));
-        final Intent dashboard = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
-        startActivity(dashboard);
-        finish();
+        final Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG);
+        if (fragment != null) {
+            String pin = null;
+
+            if (fragment instanceof CreatePinFragment) {
+                MdliveUtils.hideSoftKeyboard(this);
+                ((CreatePinFragment) fragment).checkHealthServices();
+            } else {
+                MdliveUtils.hideSoftKeyboard(this);
+                MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_password));
+                startDashboard();
+            }
+        } else {
+            MdliveUtils.hideSoftKeyboard(this);
+            MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_password));
+            startDashboard();
+        }
     }
 
     @Override
     public void startDashboard() {
         MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_pin));
+        clearMinimisedTime();
         final Intent dashboard = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
         startActivity(dashboard);
         finish();
+    }
+
+    private void clearMinimisedTime(){
+        final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
+        final SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.commit();
     }
 
     /**
@@ -134,9 +170,13 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
 
     private void showPinToolbar() {
         ((TextView) findViewById(R.id.headerTxt)).setText(getString(R.string.mdl_create_a_pin).toUpperCase());
+        ((ImageView) findViewById(R.id.leftSideBtn)).setVisibility(View.GONE);
+        ((ImageView) findViewById(R.id.rightSideBtn)).setVisibility(View.GONE);
     }
 
     private void showConfirmPinToolbar() {
         ((TextView) findViewById(R.id.headerTxt)).setText(getString(R.string.mdl_confirm_your_pin).toUpperCase());
+        ((ImageView) findViewById(R.id.leftSideBtn)).setVisibility(View.VISIBLE);
+        ((ImageView) findViewById(R.id.rightSideBtn)).setVisibility(View.GONE);
     }
 }

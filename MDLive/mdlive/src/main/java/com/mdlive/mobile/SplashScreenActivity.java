@@ -11,11 +11,16 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.gson.Gson;
@@ -23,6 +28,8 @@ import com.mdlive.embedkit.global.MDLiveConfig;
 import com.mdlive.embedkit.global.MDLiveConfig.ENVIRON;
 import com.mdlive.embedkit.global.MDLiveConfig.SIGNALS;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
+import com.mdlive.mobile.gcm.MDLiveRegistrationIntentService;
+import com.mdlive.unifiedmiddleware.commonclasses.constants.IntegerConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
@@ -30,16 +37,19 @@ import com.mdlive.unifiedmiddleware.parentclasses.bean.response.DeepLink;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
 import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
 import com.mdlive.unifiedmiddleware.services.login.DeeplinkService;
+import com.mdlive.unifiedmiddleware.services.login.SSOBaylorService;
 import com.mdlive.unifiedmiddleware.services.login.UpgradeAlert;
 
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 /**
  * Created by dhiman_da on 7/7/2015.
  */
 
 public class SplashScreenActivity extends Activity {
-    private String upgradeOption="";
+    private String upgradeOption="", latestVersion = "";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private ProgressDialog mProgressDialog;
     ENVIRON env;
@@ -48,21 +58,26 @@ public class SplashScreenActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mdlive_splashscreen);
+        this.setTitle(getString(R.string.mdl_application_splash_virtual_care));
 
         // listen for EmbedKit exit signal and respond accordingly
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, new IntentFilter(SIGNALS.EXIT_SIGNAL.name()));
-
+        getTracker();
         mProgressDialog = MdliveUtils.getFullScreenProgressDialog(this);
 
         /* Select the environment type here : */
         env = ENVIRON.QA;
         // ******************************************
         MDLiveConfig.setData(env);
-
+        ClearBaylorCache();
         registerGCMForMDLiveApplication();
         makeUpdateAlertCall();
     }
-
+    private void ClearBaylorCache(){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor baylorEditor = sharedPref.edit();
+        baylorEditor.remove(PreferenceConstants.BAYLOR_GUID).commit();
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -103,25 +118,25 @@ public class SplashScreenActivity extends Activity {
      *  Making Upgrade alert call
      * */
     private void makeUpdateAlertCall() {
-//        mProgressDialog.show();
 
         NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-//                mProgressDialog.dismiss();
                 try {
                     if (MdliveUtils.isHigherVersionPresent(response.optString("latest_version"), BuildConfig.VERSION_NAME)) {
                         upgradeOption = response.optString("upgrade");
+                        latestVersion = response.optString("latest_version");
                     } else {
                         upgradeOption = "";
+                        latestVersion = "";
                     }
 
                     if(!upgradeOption.equals("")){
                         if (upgradeOption.equalsIgnoreCase("force")) {
-                            showInstall(upgradeOption);
+                            showInstall(latestVersion);
                             return;
                         } else {
-                            showLaterInstall(upgradeOption);
+                            showLaterInstall(latestVersion);
                             return;
                         }
                     }
@@ -160,9 +175,9 @@ public class SplashScreenActivity extends Activity {
     private void startNextActivity(){
         if(!upgradeOption.equals("")){
             if (upgradeOption.equalsIgnoreCase("force")) {
-                showInstall(upgradeOption);
+                showInstall(latestVersion);
             } else {
-                showLaterInstall(upgradeOption);
+                showLaterInstall(latestVersion);
             }
         } else {
             startNexActivity();
@@ -173,10 +188,13 @@ public class SplashScreenActivity extends Activity {
      * */
     private void startNexActivity() {
         Intent intent = null;
-
         if (MdliveUtils.getRemoteUserId(getBaseContext()).length() > 0) {
-            if (MdliveUtils.getLockType(getBaseContext()).equalsIgnoreCase("Pin")) {
-                if (showPinScreen()) {
+            if(DeepLinkUtils.DEEPLINK_DATA != null && DeepLinkUtils.DEEPLINK_DATA.getAffiliate().equalsIgnoreCase(DeepLinkUtils.DeeplinkAffiliate.BAYLOR.name()))
+            {
+                intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
+                startActivity(intent);
+            } else if (MdliveUtils.getPreferredLockType(getBaseContext()).equalsIgnoreCase("Pin")) {
+                if (ShowPinScreen()) {
                     intent = UnlockActivity.getUnlockToDashBoardIntent(getBaseContext(), true);
                     startActivity(intent);
                 } else {
@@ -184,7 +202,7 @@ public class SplashScreenActivity extends Activity {
                     startActivity(intent);
                 }
             } else {
-                intent = LoginActivity.getLoginToDashBoardIntent(getBaseContext(), true);
+                intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
             }
         } else {
@@ -237,7 +255,8 @@ public class SplashScreenActivity extends Activity {
      * Start the GCM registration service
      * */
     private void registerGCMForMDLiveApplication() {
-        if (checkPlayServices()) {
+        SharedPreferences settings = getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, MODE_PRIVATE);
+        if (checkPlayServices() && (settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null) == null)) {
             final Intent intent = new Intent(this, MDLiveRegistrationIntentService.class);
             startService(intent);
         }
@@ -308,7 +327,23 @@ public class SplashScreenActivity extends Activity {
                     DeepLinkUtils.DEEPLINK_DATA = deepLink;
                 }
 
-                startNextActivity();
+                if(DeepLinkUtils.DEEPLINK_DATA != null && DeepLinkUtils.DEEPLINK_DATA.getAffiliate().equalsIgnoreCase(DeepLinkUtils.DeeplinkAffiliate.BAYLOR.name()))
+                {
+                    // set flag indicating Baylor-affiliated user
+                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor baylorEditor = sharedPref.edit();
+                    String baylor_guid = getIntent().getStringExtra(PreferenceConstants.BAYLOR_GUID);
+                    if(baylor_guid!=null){
+                        baylorEditor.putString(PreferenceConstants.BAYLOR_GUID, baylor_guid).commit();
+                    }
+                    // Call Ruby service to fetch the useruniqueID (i.e. the new RemoteUserID).
+                    MakeBaylorSSOLogin();
+                    return;     // break out at this point and allow async task to continue
+
+                }else{
+                    startNextActivity();
+                }
+                editor.commit();
             }
         };
         NetworkErrorListener errorListener = new NetworkErrorListener() {
@@ -331,16 +366,108 @@ public class SplashScreenActivity extends Activity {
     /**
      * Should show Pin screen or Not
      * */
-    private boolean showPinScreen() {
+    private boolean ShowPinScreen() {
         final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
         final long lastTime = preferences.getLong(PreferenceConstants.TIME_KEY, System.currentTimeMillis());
 
         final long difference = System.currentTimeMillis() - lastTime;
-        if (difference > 60 * 1000) {
+        if (difference > IntegerConstants.SESSION_TIMEOUT) {
             return true;
         } else {
             return false;
         }
+    }
+
+    /**
+     * Call the SSO service to auto login user if they come through baylor application
+     * For baylor user the login and pin creation screens are not applicable
+     * The user will be directed ot destination screen without any interruption
+     */
+    private void MakeBaylorSSOLogin() {
+
+        NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // success data handing
+                if(!response.has("error")) {
+                    try {
+                        // For saving the REMOTE USER ID
+                        SharedPreferences sharedPref = getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString(PreferenceConstants.USER_UNIQUE_ID, response.getString("uniqueid"));
+                        editor.commit();
+                        IntegerConstants.SESSION_TIMEOUT = 30 * 60 * 1000; // 30 minutes timeout session for Baylor user
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    startNextActivity();
+                }else{
+                    BaylorSSOError();
+                }
+            }
+        };
+        NetworkErrorListener errorListener = new NetworkErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                try {
+                    BaylorSSOError();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        SSOBaylorService service = new SSOBaylorService(this, mProgressDialog);
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String guid = sharedPref.getString(PreferenceConstants.BAYLOR_GUID, null);
+        HashMap<String, String> postParam = new HashMap<>();
+        postParam.put("user_guid", guid);
+        postParam.put("affiliation_id", DeepLinkUtils.DEEPLINK_DATA.getAffiliationId()+"");
+
+        service.BaylorSSO(successCallBackListener, errorListener, (new JSONObject(postParam)).toString());
+    }
+
+    /**
+     * When the baylor sso integration fails to login then display this error and ask your to login again from baylor app
+     * This current activity will be closed once the user hits ok button
+     */
+    private void BaylorSSOError(){
+        DialogInterface.OnClickListener backToBaylor = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DeepLinkUtils.openBaylorApp(SplashScreenActivity.this);
+                finish();
+            }
+        };
+        MdliveUtils.showDialog(this,getString(com.mdlive.embedkit.R.string.mdl_app_name),getString(com.mdlive.embedkit.R.string.mdl_failed_baylor_login),getString(com.mdlive.embedkit.R.string.mdl_Ok),null,backToBaylor,null);
+    }
+
+    public static Tracker tracker = null;
+
+    /**
+     *
+     * This function retrieves tracker with the corresponding google analytics config file.
+     *
+     * @return GoogleAnalytics Tracker
+     */
+    synchronized Tracker getTracker() {
+        if (tracker == null) {
+            GoogleAnalytics googleAnalytics = GoogleAnalytics.getInstance(this);
+            googleAnalytics.enableAutoActivityReports(getApplication());
+            tracker = googleAnalytics.newTracker(R.xml.analytics);
+            tracker.enableExceptionReporting(false);
+            final Thread.UncaughtExceptionHandler defaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+            Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+                @Override
+                public void uncaughtException(Thread thread, Throwable throwable) {
+                    String stackTrace = Log.getStackTraceString(throwable);
+                    tracker.send(new HitBuilders.ExceptionBuilder().setDescription("{ " + throwable.getMessage() + " } " + stackTrace).setFatal(true).build());
+                    defaultUncaughtExceptionHandler.uncaughtException(thread, throwable);
+                }
+            });
+        }
+        return tracker;
     }
 }
 

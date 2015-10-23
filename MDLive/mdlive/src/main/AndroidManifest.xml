@@ -12,7 +12,6 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
     <!-- [START gcm_permission] -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -63,17 +62,18 @@
             android:name=".LoginActivity"
             android:windowSoftInputMode="stateHidden|adjustResize"
             android:screenOrientation="portrait"
-            android:theme="@style/MDLive_Red_Theme"/>
+            android:theme="@style/ChatBackground"/>
 
         <activity
             android:name=".PinActivity"
             android:screenOrientation="portrait"
-            android:noHistory="true"
+            android:noHistory="false"
             android:theme="@style/MDLive_Red_Theme"/>
 
         <activity
             android:name=".UnlockActivity"
             android:screenOrientation="portrait"
+            android:noHistory="true"
             android:theme="@style/MDLive_Red_Theme" />
 
         <!-- [Login Broadcast Receiver will be received from Embed kit layer] -->
@@ -108,28 +108,42 @@
         </receiver>
         <!-- [END gcm_receiver] -->
 
-        <!-- [START gcm_listener] -->
         <service
-            android:name="com.mdlive.mobile.MDLiveGCMListenerService"
-            android:exported="false" >
+            android:name=".gcm.MDLiveRegistrationIntentService"
+            android:exported="false">
+        </service>
+
+        <activity
+            android:name="com.vsee.activity.CallActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".gcm.NotificationHandler"
+             >
+        </activity>
+        <activity
+            android:name=".gcm.GCMNotificationDialog"
+            android:theme="@style/MDLive_Dialog_Theme"
+            >
+        </activity>
+        <receiver
+            android:name="com.mdlive.mobile.gcm.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
+
+                <!-- Receives the actual messages. -->
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.mdlive.mobile" />
             </intent-filter>
-        </service>
-        <!-- [END gcm_listener] -->
-        <!-- [START instanceId_listener] -->
-        <service
-            android:name="com.mdlive.mobile.MDLiveInstanceIDListenerService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
-            </intent-filter>
-        </service>
-        <!-- [END instanceId_listener] -->
-        <service
-            android:name="com.mdlive.mobile.MDLiveRegistrationIntentService"
-            android:exported="false">
-        </service>
+        </receiver>
     </application>
 
 </manifest>

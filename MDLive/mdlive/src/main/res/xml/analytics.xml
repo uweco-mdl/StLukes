@@ -1,12 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <resources>
-    <!--Replace placeholder ID with your tracking ID old UA-50076077-1 -->
-    <!--   Stage - UA-59678541-1 , Dev - UA-59666445-1 , QA - UA-59663838-1 , Prod - UA-52183043-1    -->
-    <string name="ga_trackingId">UA-52183043-1</string>
+    <string name="ga_trackingId">UA-68908034-1</string>
     <!--Enable automatic exception tracking-->
     <bool name="ga_reportUncaughtExceptions">true</bool>
     <!--Enable automatic activity tracking-->
     <bool name="ga_autoActivityTracking">true</bool>
+
+    <screenName name="com.mdlive.mobile.LoginActivity">
+        MDLIVE-login-screen
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity">
+        MDLIVE-home-page
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.sav.MDLiveGetStarted">
+        MDLIVE-SAV-get-started
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.sav.MDLiveReasonForVisit">
+        MDLIVE-SAV-reason-for-visit
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.sav.MDLiveSearchProvider">
+        MDLIVE-refine-search
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.sav.MDLiveChooseProvider">
+        MDLIVE-SAV-choose-provider
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.myhealth.MDLiveMedicalHistory">
+        MDLIVE-SAV-medhistory-question
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.pharmacy.MDLivePharmacy">
+        MDLIVE-SAV-my-pharmacy
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.payment.MDLivePayment">
+        MDLIVE-SAV-checkout
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.payment.MDLiveConfirmappointment">
+        MDLIVE-SAV-confirm-appointment
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.sav.MDLiveDoctorOnCall">
+        MDLIVE-SAV-provider-oncall
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.myhealth.MDLiveMyHealthVisitsFragment">
+        MDLIVE-my-visit
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.pharmacy.MDLiveMyPharmacyActivity">
+        MDLIVE-SAV-my-pharmacy
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.messagecenter.MessageCenterActivity">
+        MDLIVE-message-center
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.myhealth.MedicalHistoryActivity">
+        MDLIVE-medhistory
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.myaccounts.MyAccountActivity">
+        MDLIVE-my-account
+    </screenName>
+    <screenName name="com.mdlive.embedkit.uilayer.symptomchecker.MDLiveSymptomCheckerActivity">
+        MDLIVE-symptom-checker
+    </screenName>
 
 </resources>
