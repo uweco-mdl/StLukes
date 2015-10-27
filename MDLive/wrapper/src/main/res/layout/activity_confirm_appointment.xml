@@ -131,6 +131,7 @@
                     app:cardBackgroundColor="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/PhoneToCallNumberLayout"
                     app:cardCornerRadius="0dp">
 
                     <FrameLayout style="@style/common_style_W_Match_H_Wrap">
@@ -269,15 +270,16 @@
                     android:padding="@dimen/dimen_10_dp">
 
                     <CheckBox
-                        android:id="@+id/terms"
+                        android:id="@+id/mdl_terms_consent_checkbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:button="@drawable/behaviour_checked_selector" />
 
                     <TextView
+                        android:id="@+id/mdl_terms_consent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/terms"
+                        android:layout_toRightOf="@+id/mdl_terms_consent_checkbox"
                         android:textColor="@color/black"
                         android:textSize="17sp"
                         android:layout_marginLeft="@dimen/dimen_10_dp"
@@ -291,15 +293,16 @@
                     android:padding="@dimen/dimen_10_dp">
 
                     <CheckBox
-                        android:id="@+id/policy"
+                        android:id="@+id/mdl_privacy_policy_checkbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:button="@drawable/behaviour_checked_selector" />
 
                     <TextView
+                        android:id="@+id/mdl_privacy_policy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/policy"
+                        android:layout_toRightOf="@+id/mdl_privacy_policy_checkbox"
                         android:textColor="@color/black"
                         android:textSize="17sp"
                         android:layout_marginLeft="@dimen/dimen_10_dp"

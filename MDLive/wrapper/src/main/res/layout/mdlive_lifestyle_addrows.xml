@@ -9,60 +9,54 @@
         android:layout_height="1dp"
         android:background="@color/gray_c"
         android:layout_marginLeft="@dimen/dimen_10_dp"
-        android:layout_marginRight="@dimen/dimen_10_dp"
-        />
-    <LinearLayout
+        android:layout_marginRight="@dimen/dimen_10_dp" />
+
+    <RelativeLayout
         style="@style/MyLifeStyleLinearStyle"
+        android:layout_height="?actionBarSize"
         android:id="@+id/lifestyle_question_linearlayout"
         android:layout_marginRight="@dimen/dimen_10_dp">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/life_style_question_text"
-            android:text="@string/mdl_life_style_question_text"
-            android:tag="@string/mdltag_life_style_question_text"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginLeft="@dimen/dimen_10_dp"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="2" />
-
         <RadioGroup
             android:id="@+id/rootradiogroup"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true">
 
             <RadioButton
                 android:id="@+id/yesradioButton"
-                android:tag="@string/mdltag_yes"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/circle"
-                android:textColor="@drawable/radio_text_selector"
-                android:button="@null"
-                android:padding="10dp"
-                android:textSize="15sp"
-                android:gravity="center" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:button="@drawable/behaviour_checked_selector" />
 
             <RadioButton
                 android:id="@+id/noradioButton"
-                android:tag="@string/mdltag_no"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/circle_cross"
-                android:textColor="@drawable/radio_text_selector"
-                android:button="@null"
-                android:padding="10dp"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:layout_marginLeft="8dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:button="@drawable/behaviour_uncheked_selector" />
 
         </RadioGroup>
 
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/life_style_question_text"
+            android:text="@string/mdl_life_style_question_text"
+            android:tag="@string/mdltag_life_style_question_text"
+            android:layout_toLeftOf="@+id/rootradiogroup"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dimen_10_dp"
+            android:layout_gravity="center_vertical|start"
+             />
+
+
+    </RelativeLayout>
 
 </LinearLayout>

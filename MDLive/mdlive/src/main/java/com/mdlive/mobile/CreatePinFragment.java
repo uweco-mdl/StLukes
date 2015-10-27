@@ -67,11 +67,11 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     private Button mButton0;
     private View mButtonCross;
 
-    private TextView mTitleTextView,healthSystemTv;
+    private TextView mTitleTextView;//healthSystemTv;
     private StringBuffer mStringBuffer;
     private ImageView mWebView;
-    private RelativeLayout healthSystemContainerRl;
-    private ImageView healthSystemIv;
+//    private RelativeLayout healthSystemContainerRl;
+//    private ImageView healthSystemIv;
     private String screenImageURL;
     private static final int SPLASH_TIME_OUT = 4000;
 
@@ -125,9 +125,9 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     public void init(View changePin) {
         mStringBuffer = new StringBuffer();
         mWebView = (ImageView) changePin.findViewById(R.id.webView);
-        healthSystemContainerRl = (RelativeLayout) changePin.findViewById(R.id.health_system_container_rl);
-        healthSystemIv = (ImageView) changePin.findViewById(R.id.health_system_niv);
-        healthSystemTv = (TextView) changePin.findViewById(R.id.health_system_tv);
+//        healthSystemContainerRl = (RelativeLayout) changePin.findViewById(R.id.health_system_container_rl);
+//        healthSystemIv = (ImageView) changePin.findViewById(R.id.health_system_niv);
+//        healthSystemTv = (TextView) changePin.findViewById(R.id.health_system_tv);
         mPassCode1 = (ToggleButton) changePin.findViewById(R.id.passCode1);
         mPassCode2 = (ToggleButton) changePin.findViewById(R.id.passCode2);
         mPassCode3 = (ToggleButton) changePin.findViewById(R.id.passCode3);
@@ -396,7 +396,7 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
                         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
                     }
                     screenImageURL = response.optString("screen_image");
-                    healthSystemTv.setText(response.optString("splash_screen_text"));
+//                    healthSystemTv.setText(response.optString("splash_screen_text"));
                     final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
                     ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
 
@@ -420,10 +420,10 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
                                         // load image into imageview
                                         hideProgressDialog();
                                         mWebView.setImageBitmap(response.getBitmap());
-                                        healthSystemContainerRl.setVisibility(View.VISIBLE);
+//                                        healthSystemContainerRl.setVisibility(View.VISIBLE);
                                         mWebView.setVisibility(View.VISIBLE);
-                                        healthSystemIv.setVisibility(View.VISIBLE);
-                                        healthSystemTv.setVisibility(View.VISIBLE);
+//                                        healthSystemIv.setVisibility(View.VISIBLE);
+//                                        healthSystemTv.setVisibility(View.VISIBLE);
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
@@ -444,10 +444,10 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
                             if (response.getBitmap() != null) {
                                 mWebView.setImageBitmap(response.getBitmap());
                                 hideProgressDialog();
-                                healthSystemContainerRl.setVisibility(View.VISIBLE);
+//                                healthSystemContainerRl.setVisibility(View.VISIBLE);
                                 mWebView.setVisibility(View.VISIBLE);
-                                healthSystemIv.setVisibility(View.VISIBLE);
-                                healthSystemTv.setVisibility(View.VISIBLE);
+//                                healthSystemIv.setVisibility(View.VISIBLE);
+//                                healthSystemTv.setVisibility(View.VISIBLE);
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {

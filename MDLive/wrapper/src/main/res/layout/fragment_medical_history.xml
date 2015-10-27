@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/ContainerStyle"
     android:background="#EEF2F7">
+
+    <RelativeLayout
+        android:id="@+id/HealthSyncContainer"
+        style="@style/ContainerStyle"
+        android:background="#EEF2F7"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mdl_sync_with_fit_question_txt"
+            android:textColor="@color/darkblack"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:id="@+id/display_txt"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="12dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/google_fit_sync"
+            android:layout_margin="20dp"
+            android:layout_below="@+id/display_txt"
+            android:layout_above="@+id/button_container" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_container"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:background="#EEF2F7">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginBottom="@dimen/dimen_8_dp"
+                android:background="@drawable/blue_button"
+                android:gravity="center"
+                android:onClick="SyncAction"
+                android:tag="mdl_sync_btn_txt"
+                android:text="@string/mdl_sync_btn_txt"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:clickable="true"
+                android:textSize="18sp"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:layout_marginLeft="@dimen/dimen_8_dp"
+                android:layout_marginRight="@dimen/dimen_8_dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mdl_not_now"
+                android:textColor="@color/chooseProvider_TextColor"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:layout_margin="20dp"
+                android:onClick="SyncNotNowAction"
+                android:clickable="true" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/ContainerScrollView"
@@ -172,7 +238,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#c8c7cc"/>
+                android:background="#c8c7cc" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -186,8 +252,8 @@
                     android:id="@+id/pediatric_cardview"
                     android:visibility="gone"
                     android:layout_margin="-10dp"
-                    app:cardElevation="0dp"
-                    app:cardUseCompatPadding="true">
+                    cardElevation="0dp"
+                    cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:id="@+id/PediatricLayoutLl"
@@ -266,22 +332,18 @@
                             style="@style/advanceSearchProviderDivider" />
 
 
-
                     </RelativeLayout>
 
 
                 </android.support.v7.widget.CardView>
 
 
-
-
-
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="-10dp"
-                    app:cardElevation="0dp"
-                    app:cardUseCompatPadding="false">
+                    cardElevation="0dp"
+                    cardUseCompatPadding="false">
 
                     <RelativeLayout
                         android:id="@+id/MyHealthConditionsLl"
@@ -413,14 +475,12 @@
                 </LinearLayout>
 
 
-
-
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="-10dp"
-                    app:cardElevation="0dp"
-                    app:cardUseCompatPadding="true">
+                    cardElevation="0dp"
+                    cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:id="@+id/MedicationsLl"
@@ -505,8 +565,6 @@
                 </android.support.v7.widget.CardView>
 
 
-
-
                 <LinearLayout
                     android:id="@+id/MyHealthAllergiesLl"
                     style="@style/common_style_W_Match_H_Wrap_O_Horizontal"
@@ -550,8 +608,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="-10dp"
-                    app:cardElevation="0dp"
-                    app:cardUseCompatPadding="true">
+                    cardElevation="0dp"
+                    cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:id="@+id/AllergiesLl"
@@ -637,8 +695,6 @@
                 </android.support.v7.widget.CardView>
 
 
-
-
                 <LinearLayout
                     android:id="@+id/MyHealthProceduresLl"
                     style="@style/common_style_W_Match_H_Wrap_O_Horizontal"
@@ -683,8 +739,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="-10dp"
-                    app:cardElevation="0dp"
-                    app:cardUseCompatPadding="true">
+                    cardElevation="0dp"
+                    cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:id="@+id/ProceduresLl"
@@ -767,14 +823,12 @@
                 </android.support.v7.widget.CardView>
 
 
-
-
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="-10dp"
-                    app:cardElevation="0dp"
-                    app:cardUseCompatPadding="true"
+                    cardElevation="0dp"
+                    cardUseCompatPadding="true"
                     android:visibility="gone"
                     android:id="@+id/BehaviouralHealthCardView">
 
@@ -858,14 +912,13 @@
                 </android.support.v7.widget.CardView>
 
 
-
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/LifestyleCardView"
                     android:layout_margin="-10dp"
-                    app:cardElevation="0dp"
-                    app:cardUseCompatPadding="true">
+                    cardElevation="0dp"
+                    cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:id="@+id/LifestyleLl"
@@ -950,14 +1003,12 @@
                 </android.support.v7.widget.CardView>
 
 
-
-
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="-10dp"
-                    app:cardElevation="0dp"
-                    app:cardUseCompatPadding="true">
+                    cardElevation="0dp"
+                    cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:id="@+id/FamilyHistoryLl"
@@ -1043,14 +1094,12 @@
                 </android.support.v7.widget.CardView>
 
 
-
-
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="-10dp"
-                    app:cardElevation="0dp"
-                    app:cardUseCompatPadding="true">
+                    cardElevation="0dp"
+                    cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:id="@+id/MyRecordsLl"
@@ -1110,7 +1159,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#c8c7cc"/>
+                android:background="#c8c7cc" />
 
 
             <Button

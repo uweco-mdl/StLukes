@@ -209,7 +209,6 @@
 
     <color name="dashboard_menu_color">#556370</color>
 
-
     <!--<new design colors>-->
 
     <color name="new_login_bg">#f7f7f7</color>
@@ -226,8 +225,7 @@
 
     <color name="new_divider_gray">#c8c7cc</color>
 
-    <color name="my_health_screen_txt_color">#858585</color>
-
+    <color name="my_health_screen_txt_color">#858585</color>   <color name="doctor_on_call_background">#29abe2</color>
     <color name="button_top">#EC7B2D</color>
     <color name="button_bottom">#D1651C</color>
 
@@ -245,4 +243,7 @@
     <color name="payment_bottom_txt_color">#464646</color>
     <color name="payment_hint_color">#cccccc</color>
     <color name="thank_you_bg">#f7f7f7</color>
+	<color name="startappmt_btn_blue">#0288d1</color>
+	<color name="change_password_medium_text_color_yellow">#D2B224</color>
+	<color name="disableBtn">#E6E6E6</color>
 </resources>

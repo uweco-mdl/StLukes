@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_0_dp"
             android:layout_weight="1"
-            android:background="@drawable/dashboard_gradient"
+            android:background="@color/sign_in_txt_color"
             android:orientation="vertical">
 
             <FrameLayout
@@ -52,7 +52,7 @@
                 <LinearLayout
                     android:id="@+id/notification_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:visibility="gone"
                     android:layout_marginTop="35dp"
@@ -93,6 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height_38_dp"
             android:orientation="horizontal"
+            android:id="@+id/dash_board_email_ll"
             android:background="@color/red_theme_primary"
             android:gravity="center">
 
@@ -100,6 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:id="@+id/email_confirmation_tv"
                 android:layout_gravity="center"
                 android:text="@string/mdl_email_unconfirmed"
                 android:tag="@string/mdltag_email_unconfirmed"

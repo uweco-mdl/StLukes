@@ -30,6 +30,7 @@
     <dimen name="navigation_drawer_width">320dp</dimen>
 
     <dimen name="toolbar_elevation">4dp</dimen>
+<dimen name="dimen_space_toolbar_new">58dp</dimen>
 
     <!-- Global Header values -->
     <dimen name="headerbackimg_leftmargin">16dp</dimen>

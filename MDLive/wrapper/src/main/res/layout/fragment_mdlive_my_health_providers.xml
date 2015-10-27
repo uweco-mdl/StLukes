@@ -58,10 +58,8 @@
         <ListView
             android:id="@+id/chooseProviderList"
             style="@style/common_style_W_Match_M_Match"
-            android:padding="@dimen/dimen_16_dp"
             android:clipToPadding="false"
             android:divider="@color/transparent"
-            android:dividerHeight="@dimen/dimen_8_dp"
             android:scrollbars="none" />
     </LinearLayout>
 

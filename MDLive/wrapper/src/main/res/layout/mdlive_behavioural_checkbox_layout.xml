@@ -2,8 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="@dimen/dimen_10_dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/gray_c" />
 
 
     <RelativeLayout
@@ -17,14 +26,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:layout_marginLeft="@dimen/dimen_10_dp"
-            android:gravity="center"
             android:layout_centerVertical="true"
             android:theme="@style/RadioButtonTheme"
             android:textColor="@android:color/black"
             android:text="@string/mdl_my_family_history_checkbox_text"
             android:tag="@string/mdltag_my_family_history_checkbox_text"
-            android:textSize="15sp" />
+            android:paddingLeft="15dp"
+            android:textSize="17sp" />
 
 
         <!--<LinearLayout-->
@@ -53,7 +61,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true">
 
             <RadioButton
@@ -72,13 +79,4 @@
         </RadioGroup>
 
     </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="@dimen/dimen_10_dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/gray_c" />
 </LinearLayout>

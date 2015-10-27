@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="mdl_app_name">MDLIVE</string>
+    <string name="mdl_application_splash_virtual_care">MDLIVE Virtual care, Anywhere.</string>
     <string name="mdl_doctor_list">DoctorList</string>
     <string name="mdl_settings">Settings</string>
     <string name="mdl_login">LOGIN</string>
     <string name="mdl_forgot_username">Forgot Username?</string>
+    <string name="mdl_virtual_care">Virtual Care, Anywhere.</string>
+    <string name="mdl_access_board">24/7 Access to Board Certified Doctors</string>
     <string name="mdl_username">Username</string>
     <string name="mdl_password">Password</string>
     <string name="mdl_title_activity_home">HomeActivity</string>
@@ -28,6 +31,35 @@
     <string name="mdl_please_wait">Please wait</string>
 
 
+    <!--MDLive Header-->
+    <string name="mdl_thankkyou_phone_appoint_txt">Thank you for requesting a visit with %1$s! The doctor will call you shortly.</string>
+    <string name="mdl_ada_hamburger">Navigated </string>
+    <string name="mdl_ada_bell">Notification</string>
+    <string name="mdl_ada_back_button">Back</string>
+    <string name="mdl_ada_profile_button">Profile Image</string>
+    <string name="mdl_ada_pin_one">one</string>
+    <string name="mdl_ada_pin_two">Two</string>
+    <string name="mdl_ada_pin_three">Three</string>
+    <string name="mdl_ada_pin_four">Four</string>
+    <string name="mdl_ada_pin_five">Five</string>
+    <string name="mdl_ada_pin_six">Six</string>
+    <string name="mdl_ada_tick_button">Done</string>
+    <string name="mdl_ada_close_button">Close</string>
+    <string name="mdl_ada_filter_button">Filter</string>
+    <string name="mdl_ada_dropdown">Dropdown list</string>
+    <string name="mdl_ada_seethisdoctor_button">See this doctor now button</string>
+    <string name="mdl_ada_talktodoctor_button">Talk to this doctor now button</string>
+    <string name="mdl_ada_datepicker_providerprofile_button">Date Picker to edit or change the date</string>
+    <string name="mdl_ada_right_arrow_button">Next</string>
+    <string name="mdl_ada_reply_button">Reply</string>
+    <string name="mdl_ada_takepic_button">Take a Picture</string>
+    <string name="mdl_ada_gallery_button">Gallery</string>
+    <string name="mdl_ada_video_btn_forward">by Video Button </string>
+    <string name="mdl_ada_phone_btn_forward">by phone Button </string>
+    <string name="mdl_ada_edit"> Edit </string>
+    <string name="mdl_ada_delete"> Delete </string>
+    <string name="mdl_ada_arrowup_photo_button">Double Tap to add a photo</string>
+    <string name="mdl_ada_arrowdown_photo_button">Double Tap to collapse the add a photo option</string>
     <!--MDLive summary-->
     <string name="mdl_your_consultation">Your Consultation</string>
     <string name="mdl_summary">SUMMARY</string>
@@ -104,7 +136,7 @@
     <string name="mdl_choosen_pharmacy_upper">CHOSEN PHARMACY</string>
     <string name="mdl_resume_consultation_txt">Resume Consultation</string>
 
-<!-- Pharmacy search strings -->
+    <!-- Pharmacy search strings -->
     <string name="mdl_ph_manual_search">MANUAL SEARCH</string>
     <string name="mdl_ph_zipcode">ZIP Code</string>
     <string name="mdl_ph_or_str">OR</string>
@@ -468,6 +500,29 @@
     <string name="mdl_start_visit">Start Visit</string>
 
 
+    <string name="mdl_terms_check_text_desc">Terms and Conditions</string>
+    <string name="mdl_privacy_check_text_desc">Privacy Policy</string>
+
+
+    <!-- Radio Button Desc text for ada complaints-->
+    <string name="mdl_my_health_preexisting_radio_desc_yes">Do you have any pre-existing medical conditions? (ex Diabetes) yes</string>
+    <string name="mdl_my_health_preexisting_radio_desc_No">Do you have any pre-existing medical conditions? (ex Diabetes) No</string>
+    <string name="mdl_my_health_medications_radio_desc_Yes">Are you taking any medications? Yes</string>
+    <string name="mdl_my_health_medications_radio_desc_No">Are you taking any medications? No</string>
+    <string name="mdl_my_health_allergies_radio_desc_Yes">Do you have any allergies? Yes</string>
+    <string name="mdl_my_health_allergies_radio_desc_No">Do you have any allergies? No</string>
+    <string name="mdl_my_health_procedures_radio_desc_Yes">Do you have any procedure? Yes</string>
+    <string name="mdl_my_health_procedures_radio_desc_No">Do you have any procedure? No</string>
+    <string name="mdl_primary_txt_radio_desc_Yes"> Do you have a primary care provider? Yes</string>
+    <string name="mdl_primary_txt_radio_desc_No"> Do you have a primary care provider? No</string>
+
+
+    <string name="mdl_age_check1_radio_desc_Yes">Are you currently or could you possibly be pregnant? Yes</string>
+    <string name="mdl_age_check1_radio_desc_No">Are you currently or could you possibly be pregnant? No</string>
+    <string name="mdl_age_check2_radio_desc_Yes">Are you currently breastfeeding? Yes</string>
+    <string name="mdl_age_check2_radio_desc_No">Are you currently breastfeeding? No</string>
+
+
     <!-- State Name List-->
     <string-array name="mdl_stateName">
         <item>Alabama</item>
@@ -591,8 +646,8 @@
     </string-array>
 
     <string-array name="mdl_dietlist">
-        <item>Bottle feed</item>
-        <item>Breast feed</item>
+        <item>Bottle fed</item>
+        <item>Breast fed</item>
         <item>Full diet</item>
     </string-array>
 
@@ -622,7 +677,6 @@
     <string name="mdl_last_name">Last Name</string>
     <string name="mdl_date_of_birth">Date of Birth</string>
     <string name="mdl_date_of_birth_hint">mm/dd/yyyy</string>
-    <string name="mdl_i_michelle_text">I,Michelle Marino confirm that I\'m the legal parent / guardian of the minor above.</string>
     <string name="mdl_please_enter_mandetory_fileds">Please enter all mandatory fields.</string>
     <string name="mdl_please_enter_login_fileds"> Please enter a valid Username or Email, and a password to continue.</string>
     <string name="mdl_please_enter_valid_fileds">Please enter valid credentials.</string>
@@ -929,7 +983,7 @@
     <string name="mdl_call_customer_service">Call Customer Service</string>
     <string name="mdl_ask_a_question">Ask a Question</string>
     <string name="mdl_new_question">New Question</string>
-    
+
     <string name="mdl_email_confirmation_required">Email Confirmation Required</string>
     <string name="mdl_resend_email_confirmation">Resend E-mail Confirmation</string>
 
@@ -965,7 +1019,6 @@
     <string name="mdl_to_appint_call_txt">Your appointment is about to begin. The provider will call you soon. If you don’t receive any phone call, please call MDLIVE </string>
 
 
-
     <string name="mdl_call_customer_service_small"> call customer service.</string>
     <string name="mdl_mdlive_call_center_text">call center</string>
 
@@ -979,7 +1032,7 @@
     <string name="mdl_forgot_your_pin">Forgot Your Pin?</string>
     <string name="mdl_enter_your_pin_to_unlock">Enter Your PIN to unlock</string>
     <string name="mdl_sign_in_with_user_name_and_password">Sign in with Username and Password</string>
-    
+
     <string name="mdl_your_appointmant_has_started">Your appointment has started.</string>
     <string name="mdl_tap_here_to_enter">Tap here to enter.</string>
 
@@ -1375,7 +1428,6 @@
         <item>Zimbabwe</item>
     </string-array>
 
-
     <!--<new deigns txt>-->
 
     <string name="login_sign_up_txt">Activate your account</string>
@@ -1442,4 +1494,83 @@
     <string name="appointment_type_txt">"Appointment Type: "</string>
     <string name="patient_name_txt">"Patient Name: "</string>
 
+    <string name="mdl_sync_btn_txt">Sync with Google Fit</string>
+    <string name="mdl_sync_with_fit_question_txt">Would you like to sync your Google Fit data with MDLIVE?</string>
+    <string name="mdl_sync_google_fit_txt">Sync to Google Fit</string>
+    <string name="mdl_backto_healcare">Back to HealthSource</string>
+    <string name="mdl_baylor_session_expired">Session timeout. Please use the HealthSource app to sign in to MDLIVE.</string>
+    <string name="mdl_failed_baylor_login">Session not confirmed. Please retry from the HealthSource app to sign in to MDLIVE.</string>
+    <string name="mdl_failed_sso_baylor_login">Session not confirmed.\nPlease press OK to return to the HealthSource app to sign in to MDLIVE.</string>
+    <string name="mdl_ad_alert_title">Alert</string>
+    <string name="mdl_try_again">Try Again</string>
+    <string name="mdl_reset">Reset</string>
+    <string name="mdl_incorrect_pin_message">Confirmation PIN do not match. Please try again.</string>
+    <string name="mdl_incorrect_pin_title">Incorrect PIN</string>
+    <string name="mdl_doc_on_call_msg">Would you like this appointment by video or phone?</string>
+    <string name="mdl_cancel_appointment_error">Unable to cancel your appointment, please try again later.</string>
+    <string name="mdl_share">Share</string>
+    <string name="mdl_share_success">Share successful</string>
+    <string name="mdl_share_cancelled">Share cancelled</string>
+    <string name="mdl_share_failed">Share Failed</string>
+    <string name="mdl_loading">Loading</string>
+    <string name="mdl_primary">Primary</string>
+    <string name="mdl_gps_settings">Turn On Location Service to Allow \"MDLIVE\" to Determine Your Location</string>
+    <string name="mdl_Cancel_apt_title">Cancel Appointment</string>
+    <string name="mdl_Cancel_apt_msg">Are you sure you want to cancel this appointment?</string>
+    <string name="mdl_terms_consent">I certify that I have read and accept the terms of MDLIVE Medical Group\'s Informed Consent.</string>
+    <string name="mdl_privacy_policy">I have read MDLIVE Medical Group\'s Privacy Policy and I acknowledge that I have the ability to print a hard copy of the Privacy Policy for my records.</string>
+    <string name="mdl_make_appt">Make an appointment request</string>
+    <string name="mdl_see_doc_now">See this doctor now</string>
+    <string name="mdl_currently_unavail">Currently not available</string>
+    <string name="mdl_next_appt">Your next appointment is  </string>
+    <string name="mdl_click_to_detail">Click here for details.</string>
+    <string name="mdl_click_to_start">Click here to start Appointment.</string>
+    <string name="mdl_appt_notification">Your next appointment less than %1$s minute(s)</string>
+    <string name="mdl_appt_error">Sorry, the message you are trying to open is not on your message list.</string>
+    <string name="mdl_gcm_msg_error">Sorry, the message you are trying to open is not on your message list.</string>
+
+
+    <string name="mdl_affliation_caps">AFFILIATION</string>
+    <string name="mdl_number_four">4</string>
+    <string name="mdl_number_five">5</string>
+    <string name="mdl_number_six">6</string>
+    <string name="mdl_number_seven">7</string>
+    <string name="mdl_number_eight">8</string>
+    <string name="mdl_number_nine">9</string>
+    <string name="mdl_number_zero">0</string>
+    <string name="mdl_not_now">Not Now</string>
+    <string name="mdl_our_mission">Our Mission</string>
+    <string name="mdl_our_providers">Our Providers</string>
+    <string name="mdl_weak_caps">WEAK</string>
+    <string name="mdl_provider">Provider:</string>
+    <string name="mdl_date">Date:</string>
+    <string name="mdl_link">Links</string>
+    <string name="mdl_time">Time:</string>
+    <string name="mdl_request_future_appointment">Request future appointment</string>
+    <string name="mdl_sync_with_health">Sync with Health</string>
+    <string name="mdl_sync_google_fit">Sync to Google Fit</string>
+    <string name="mdl_i_michelle_text">I,Michelle Marino confirm that I\'m the legal parent / guardian of the minor above.</string>
+    <string name="mdl_summary_txt">I,Michelle Marino confirm that I\'m the legal parent / guardian of the minor above.</string>
+    <string name="mdl_add_other_procedure_text">Add Custom Procedure</string>
+    <string name="mdl_preferred_language">PREFERRED LANGUAGE</string>
+    <string name="mdl_refine_search">SEARCH OPTIONS</string>
+    <string name="mdl_gps_error_message">We are not able to detect your current location, please try again later.</string>
+
+    <!--OnCallSummary Screen-->
+    <string name="mdl_NXT_STEPS">Next Steps</string>
+    <string name="mdl_Follow">Following Your Visit</string>
+    <string name="mdl_Oncall_Summary">You don’t need to wait in the app.\n\nThe doctor will call you shortly at %1$s</string>
+    <string name="mdl_escalate_header">Thank you for requesting customer support.</string>
+    <string name="mdl_on_call_header">Thank you for requesting a visit with the doctor on call. Your phone consultation has been placed in the queue.</string>
+    <string name="mdl_escalate_summary">You don’t need to wait in the app.</string>
+    <string name="mdl_escalate_phone_text">The next available representative will call you shortly at %1$s.</string>
+    <string name="mdl_oncall_dashboard_phone_text">The provider will call you shortly at %1$s</string>
+    <string name="mdl_condition_not_found_txt">Condition name not found. Check spelling or tap Add Condition to add.</string>
+    <string name="mdl_medication_not_found_txt">Medication name not found. Check spelling or tap Add Medication to add.</string>
+    <string name="mdl_allergy_not_found_txt">Allergy name not found. Check spelling or tap Add Allergy to add.</string>
+    <string name="mdl_procedure_other_txt">Other</string>
+    <string name="mdl_provider_access_to_med_records_empty">You currently do not have any providers.</string>
+    <string name="mdl_first_available_doc">FIRST AVAILABLE DOCTOR</string>
+    <string name="mdl_loading_information_error_message">There seems to be an issue loading your information. Please try again in a moment or call the MDLIVE Helpdesk at %1$s.</string>
+    <string name="mdl_reply_message_caps">REPLY</string>
 </resources>

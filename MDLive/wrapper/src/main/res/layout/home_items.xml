@@ -13,6 +13,7 @@
 
             <ImageView
                 style="@style/HomeImageviewIconStyle"
+                android:contentDescription="@string/mdl_see_a_doctor_now"
                 android:background="@drawable/see_a_doctor" />
 
             <TextView
@@ -29,7 +30,9 @@
 
             <ImageView
                 style="@style/HomeImageviewIconStyle"
-                android:background="@drawable/my_health" />
+                android:background="@drawable/my_health"
+                android:contentDescription="@string/mdl_my_health"
+                />
 
             <TextView
                 style="@style/HomeTextViewStyleLeft"
@@ -49,7 +52,9 @@
 
             <ImageView
                 style="@style/HomeImageviewIconStyle"
-                android:background="@drawable/mdlive_assist" />
+                android:background="@drawable/mdlive_assist"
+                android:contentDescription="@string/mdl_mdlive_assist"
+                />
 
             <TextView
                 style="@style/HomeTextViewStyleLeft"
@@ -67,6 +72,8 @@
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
+                >
 
                 <ImageView
                     style="@style/HomeImageviewIconStyle"
@@ -103,7 +110,9 @@
 
             <ImageView
                 style="@style/HomeImageviewIconStyle"
-                android:background="@drawable/symptom_checker" />
+                android:background="@drawable/symptom_checker"
+                android:contentDescription="@string/mdl_symptom_checker"
+                 />
 
             <TextView
                 style="@style/HomeTextViewStyleRight"
@@ -118,7 +127,9 @@
 
             <ImageView
                 style="@style/HomeImageviewIconStyle"
-                android:background="@drawable/my_account" />
+                android:background="@drawable/my_account"
+                android:contentDescription="@string/mdl_my_accounts"
+                 />
 
             <TextView
                 style="@style/HomeTextViewStyleRight"

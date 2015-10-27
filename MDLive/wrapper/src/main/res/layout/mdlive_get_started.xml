@@ -12,9 +12,9 @@
             android:orientation="vertical">
 
 
-                                    <include
-                                        android:id="@+id/toolbar"
-                                        layout="@layout/toolbar_symptom_checker" />
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar_symptom_checker" />
 
             <ScrollView
                 style="@style/ScrollViewStyle"
@@ -31,7 +31,7 @@
                                             android:gravity="left|center"
                                             android:layout_marginTop="9dp"
                                             android:text="@string/mdl_get_started_title"
-                                            android:textSize="18sp"
+                                            android:textSize="18sp"e
                                             android:tag="@string/mdltag_get_started_title"
                                             android:fontFamily="sans-serif-light"
                                              />-->
@@ -289,7 +289,7 @@
             </ScrollView>
 
             <Button android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="?actionBarSize"
                 android:background = "@drawable/btn_color_gradient"
                 android:text = "@string/mdl_Continue_caps"
                 android:textColor ="@color/white"
