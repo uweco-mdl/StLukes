@@ -1573,4 +1573,6 @@
     <string name="mdl_first_available_doc">FIRST AVAILABLE DOCTOR</string>
     <string name="mdl_loading_information_error_message">There seems to be an issue loading your information. Please try again in a moment or call the MDLIVE Helpdesk at %1$s.</string>
     <string name="mdl_reply_message_caps">REPLY</string>
+
+    <string name="find_pharmacy_txt">FIND PHARMACY</string>
 </resources>

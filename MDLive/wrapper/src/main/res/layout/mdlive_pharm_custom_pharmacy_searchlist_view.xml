@@ -3,17 +3,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/getstarted_background_color"
-    android:paddingLeft="12dp"
-    android:paddingRight="12dp"
-    android:paddingTop="6dp"
-    android:paddingBottom="6dp">
+    android:background="@drawable/pharmacy_list_gradient">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/searchpvr_white_rounded_corner"
-        >
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:background="@drawable/pharmacy_list_gradient">
 
         <LinearLayout
             android:id="@+id/relative_layout"
@@ -23,8 +22,6 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:layout_toLeftOf="@+id/milesText"
-            android:layout_toStartOf="@+id/milesText"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -33,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:singleLine="true"
+                android:singleLine="false"
                 android:text="@string/mdl_testing"
                 android:tag="@string/mdltag_testing"
                 android:textColor="@color/darkgrey_background"
@@ -75,10 +72,10 @@
             android:id="@+id/milesText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/relative_layout"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="11dp"
-            android:textColor="@color/darkgrey_background"
+            android:textColor="#818181"
             android:textSize="14sp" />
 
         <LinearLayout
@@ -138,6 +135,15 @@
                 android:textSize="12sp" />
 
         </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="@dimen/dimen_20_dp"
+            android:layout_height="@dimen/dimen_20_dp"
+            android:src="@drawable/icon_arrow_right"
+            android:scaleType="centerCrop"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
 
 
     </RelativeLayout>
