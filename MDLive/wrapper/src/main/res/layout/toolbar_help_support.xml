@@ -2,7 +2,7 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimen_toolbar_height"
-    android:background="@color/red_theme_primary">
+    android:background="@drawable/toolbar_color_gradient">
 
     <RelativeLayout
         android:layout_width="match_parent"
