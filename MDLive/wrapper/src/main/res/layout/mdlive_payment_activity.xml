@@ -120,7 +120,8 @@
                                     android:layout_width="57dp"
                                     android:layout_height="36dp"
                                     android:src="@drawable/master_card"
-
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="5dp"
                                     android:id="@+id/card_logo" />
 
                                 <TextView
@@ -132,6 +133,7 @@
                                     android:gravity="center_vertical"
                                     android:layout_centerVertical="true"
                                     android:paddingLeft="11dp"
+                                    android:layout_toRightOf="@+id/card_logo"
                                     android:drawableRight="@drawable/icon_arrow_right"
                                     android:textColor="@color/black"
                                     android:textSize="17sp" />

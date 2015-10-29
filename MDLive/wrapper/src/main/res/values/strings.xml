@@ -1575,4 +1575,8 @@
     <string name="mdl_reply_message_caps">REPLY</string>
 
     <string name="find_pharmacy_txt">FIND PHARMACY</string>
+    <string name="medical_history_txt">MEDICAL HISTORY</string>
+    <string name="pharmacy_txt">PHARMACY</string>
+    <string name="providers_txt">PROVIDERS</string>
+    <string name="visits_txt">VISITS</string>
 </resources>

@@ -16,6 +16,7 @@
                 android:id="@+id/toolbar"
                 layout="@layout/toolbar_symptom_checker" />
 
+
             <ScrollView
                 style="@style/ScrollViewStyle"
                 android:fillViewport="false"
@@ -45,7 +46,6 @@
                         android:id="@+id/patientLl"
                         android:layout_width="match_parent"
                         android:layout_height="50dp">
-
 
 
                         <TextView
@@ -124,8 +124,7 @@
                         android:layout_height="1dp"
                         android:background="@color/gray_c"
                         android:layout_marginLeft="@dimen/dimen_10_dp"
-                        android:layout_marginRight="@dimen/dimen_10_dp"
-                        />
+                        android:layout_marginRight="@dimen/dimen_10_dp" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -166,8 +165,7 @@
                         android:layout_height="1dp"
                         android:background="@color/gray_c"
                         android:layout_marginLeft="@dimen/dimen_10_dp"
-                        android:layout_marginRight="@dimen/dimen_10_dp"
-                        />
+                        android:layout_marginRight="@dimen/dimen_10_dp" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -194,39 +192,39 @@
                             android:hint="@string/mdl_phone_number_hint"
                             android:background="@color/transparent"
                             android:inputType="number"
-                            android:textSize ="15sp"
+                            android:textSize="15sp"
                             android:maxLength="14" />
 
                     </RelativeLayout>
 
-<!--                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="@dimen/dimen_10_dp"
-                        android:layout_marginRight="@dimen/dimen_10_dp"
-                        android:background="@color/gray_c" />
+                    <!--                    <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                                            android:layout_marginRight="@dimen/dimen_10_dp"
+                                            android:background="@color/gray_c" />
 
-                    <TextView
-                        android:id="@+id/noVisit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dimen_10_dp"
-                        android:layout_marginTop="13dp"
-                        android:tag="@string/mdl_get_started_no_visit"
-                        android:text="@string/mdl_get_started_no_visit"
-                        android:textColor="@color/black" />
+                                        <TextView
+                                            android:id="@+id/noVisit"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                                            android:layout_marginTop="13dp"
+                                            android:tag="@string/mdl_get_started_no_visit"
+                                            android:text="@string/mdl_get_started_no_visit"
+                                            android:textColor="@color/black" />
 
-                    <EditText
-                        android:id="@+id/noVisitAnswer"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="@dimen/dimen_10_dp"
-                        android:hint="@string/mdl_get_started_no_visit_hint"
-                        android:background = "@color/transparent"
-                        android:inputType="number"
-                        android:textSize ="15sp"
-                        android:maxLength="14" />-->
+                                        <EditText
+                                            android:id="@+id/noVisitAnswer"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginLeft="@dimen/dimen_10_dp"
+                                            android:hint="@string/mdl_get_started_no_visit_hint"
+                                            android:background = "@color/transparent"
+                                            android:inputType="number"
+                                            android:textSize ="15sp"
+                                            android:maxLength="14" />-->
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -241,39 +239,38 @@
                         android:background="@color/getstarted_background_color"
                         android:text="@string/mdl_phone_number_to_followup"
                         android:textColor="@color/grey_txt" />
-<!--
+                    <!--
 
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp">
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="50dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dimen_10_dp"
-                            android:layout_marginTop="13dp"
-                            android:text="@string/mdl_get_started_primary_care_physician"
-                            android:textColor="@color/black" />
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="@dimen/dimen_10_dp"
+                                                android:layout_marginTop="13dp"
+                                                android:text="@string/mdl_get_started_primary_care_physician"
+                                                android:textColor="@color/black" />
 
-                        <ImageView
-                            android:id="@+id/circleCross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/circle_cross" />
+                                            <ImageView
+                                                android:id="@+id/circleCross"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/circle_cross" />
 
-                        <ImageView
-                            android:layout_toLeftOf="@+id/circleCross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/circle" />
+                                            <ImageView
+                                                android:layout_toLeftOf="@+id/circleCross"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                                android:src="@drawable/circle" />
 
-                    </RelativeLayout>
--->
-
+                                        </RelativeLayout>
+                    -->
 
 
                     <LinearLayout
@@ -288,13 +285,14 @@
                 </LinearLayout>
             </ScrollView>
 
-            <Button android:layout_width="match_parent"
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:background = "@drawable/btn_color_gradient"
-                android:text = "@string/mdl_Continue_caps"
-                android:textColor ="@color/white"
-                android:textSize = "20sp"
-                />
+                android:background="@drawable/btn_color_gradient"
+                android:text="@string/mdl_Continue_caps"
+                android:onClick="onTickClicked"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
