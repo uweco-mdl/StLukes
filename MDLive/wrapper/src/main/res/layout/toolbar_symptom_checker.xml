@@ -20,15 +20,18 @@
                 android:layout_height="wrap_content"
                 android:onClick="onCrossClicked"
                 android:scaleType="centerCrop"
+                android:visibility="gone"
                 android:src="@drawable/whitebackarrow" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/toolbar_cross"
                 android:text="@string/mdl_family_history_back"
-                android:layout_marginLeft="5dp"
+                android:drawableLeft="@drawable/whitebackarrow"
                 android:textColor="@color/white"
+                android:gravity="center"
                 android:layout_centerVertical="true"
+                android:id="@+id/back_txv"
                 />
 
             <ImageView

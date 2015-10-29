@@ -13,13 +13,13 @@
         android:background="@color/window_background_color"
         android:padding="@dimen/dimen_10_dp"
         android:textColor="@color/black"
-        android:text="@string/mdl_answer_questions" />
+        android:text="@string/mdl_answer_questions"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray_c" />
-
+        android:background="@color/gray_c"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,6 +47,7 @@
                 android:paddingRight="6dp" />
 
 
+
             <EditText
                 android:layout_toRightOf="@+id/heightLabel"
                 android:id="@+id/life_style_heighteditTextone"
@@ -65,7 +66,7 @@
                 android:textSize="18sp"
                 android:textCursorDrawable="@null"
                 android:layout_marginRight="2dp"
-                android:maxHeight="2dp" />
+                android:maxHeight="2dp"/>
 
             <TextView
                 android:id="@+id/feetLabel"
@@ -122,12 +123,14 @@
             android:background="@color/gray_c"
             android:layout_marginTop="@dimen/dimen_10_dp"
             android:layout_marginLeft="@dimen/dimen_10_dp"
-            android:layout_marginRight="@dimen/dimen_10_dp" />
+            android:layout_marginRight="@dimen/dimen_10_dp"
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            >
 
             <TextView
                 android:id="@+id/weightLabel"
@@ -181,13 +184,15 @@
             android:background="@color/gray_c"
             android:layout_marginTop="@dimen/dimen_10_dp"
             android:layout_marginLeft="@dimen/dimen_10_dp"
-            android:layout_marginRight="@dimen/dimen_10_dp" />
+            android:layout_marginRight="@dimen/dimen_10_dp"
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            >
 
             <TextView
                 android:id="@+id/bmiLabel"
@@ -199,7 +204,7 @@
                 android:paddingLeft="5dp"
                 android:textSize="18sp"
                 android:textColor="@color/black"
-                android:layout_marginRight="6dp" />
+                android:layout_marginRight="6dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -212,7 +217,8 @@
                 android:maxLength="3"
                 android:gravity="left"
                 android:id="@+id/life_style_bmi_value_text"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                />
         </RelativeLayout>
 
 
@@ -230,29 +236,27 @@
             android:layout_centerInParent="true"
             android:visibility="gone" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:id="@+id/savebutton"
-            android:layout_height="?actionBarSize"
-            android:background="@drawable/btn_color_gradient"
-            android:layout_alignParentBottom="true"
-            android:text="@string/mdl_save"
-            android:textAllCaps="true"
-            android:onClick="saveAction"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
         <ListView
             android:id="@+id/lifestyle_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@null"
-            android:layout_above="@+id/savebutton"
+            android:layout_above="@+id/footer_relativelayout"
             android:layout_below="@+id/header_relativelayout">
 
         </ListView>
 
-
+        <Button android:layout_width="match_parent"
+            android:id="@+id/savebutton"
+            android:layout_height="?actionBarSize"
+            android:background = "@drawable/btn_color_gradient"
+            android:layout_alignParentBottom="true"
+            android:text = "@string/mdl_save"
+            android:textAllCaps = "true"
+            android:onClick="onTickClicked"
+            android:textColor ="@color/white"
+            android:textSize = "20sp"
+            />
     </RelativeLayout>
 
 </LinearLayout>

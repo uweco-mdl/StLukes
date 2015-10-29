@@ -57,4 +57,19 @@
         <item>@string/mdl_waiting_room_text_29</item>
         <item>@string/mdl_waiting_room_text_01</item>
     </string-array>
+
+
+    <string-array name="mdl_timezone">
+        <item>Set Automatically</item>
+        <item>Central Standard Time (CST)</item>
+        <item>Eastern Standard Time (EST)</item>
+        <item>Mountain Standard Time (MST)</item>
+        <item>Pacific Standard Time (PST)</item>
+        <item>Alaska Standard Time (AKST)</item>
+        <item>Hawaii Standard Time (HST)</item>
+        <item>American Samoa Time (AMS)</item>
+        <item>Marshall Islands Time (MIT)</item>
+        <item>Guam (GST)</item>
+        <item>Palau (PAT)</item>
+    </string-array>
 </resources>
