@@ -315,6 +315,7 @@
                         android:layout_height="50dp"
                         android:background = "@drawable/btn_color_gradient"
                         android:layout_alignParentBottom="true"
+                        android:onClick="rightBtnOnClick"
                         android:text = "@string/mdl_continue_text"
                         android:textAllCaps = "true"
                         android:textColor ="@color/white"

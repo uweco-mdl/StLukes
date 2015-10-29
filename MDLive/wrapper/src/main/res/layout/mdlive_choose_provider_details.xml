@@ -51,7 +51,7 @@
                             android:layout_marginLeft="@dimen/manualsearch_margintop"
                             android:layout_marginTop="@dimen/margin_top"
                             android:gravity="center"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/providerdetails_qualificationtxt" />
 
                         <LinearLayout
@@ -65,7 +65,7 @@
                                 android:gravity="center"
                                 android:tag="@string/mdltag_general_practise"
                                 android:text=""
-                                android:textColor="@color/white"
+                                android:textColor="@color/black"
                                 android:textSize="@dimen/providerdetails_designtxt" />
 
 
