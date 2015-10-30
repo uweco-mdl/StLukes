@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="@drawable/toolbar_color_gradient"
             tabTextAppearance="@style/MyTabLayoutTextAppearance"
             tabTextColor="@color/tab_text_color"
             tabSelectedTextColor="@color/selected_tab_text_color"

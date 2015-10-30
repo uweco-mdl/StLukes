@@ -211,7 +211,6 @@
                     </RelativeLayout>
 
 
-
                     <RelativeLayout
                         android:id="@+id/photoLayout"
                         android:layout_width="match_parent"
@@ -275,12 +274,13 @@
                                     android:paddingRight="10dp"
                                     android:layout_gravity="center_vertical"
                                     android:src="@drawable/camera_icon_black" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/button_top"
                                     android:layout_gravity="center_vertical"
-                                    android:text="@string/mdl_take_picture"/>
+                                    android:text="@string/mdl_take_picture" />
 
                             </LinearLayout>
 
@@ -299,29 +299,31 @@
                                     android:paddingRight="10dp"
                                     android:layout_gravity="center_vertical"
                                     android:src="@drawable/gallery_icon_black" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/button_top"
                                     android:gravity="center"
                                     android:layout_gravity="center_vertical"
-                                    android:text="@string/mdl_gallery"/>
+                                    android:text="@string/mdl_gallery" />
                             </LinearLayout>
 
                         </LinearLayout>
 
                     </RelativeLayout>
-                    <Button android:layout_width="match_parent"
+
+                    <Button
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background = "@drawable/btn_color_gradient"
+                        android:background="@drawable/btn_color_gradient"
                         android:layout_alignParentBottom="true"
                         android:onClick="rightBtnOnClick"
-                        android:text = "@string/mdl_continue_text"
-                        android:textAllCaps = "true"
-                        android:textColor ="@color/white"
+                        android:text="@string/mdl_continue_text"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
                         android:layout_gravity="bottom"
-                        android:textSize = "20sp"
-                        />
+                        android:textSize="20sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -341,8 +343,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="right|end" />
     </android.support.v4.widget.DrawerLayout>
-
-
 
 
     <include layout="@layout/custom_progress_dialog" />

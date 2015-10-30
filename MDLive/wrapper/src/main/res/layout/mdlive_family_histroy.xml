@@ -33,7 +33,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
 
@@ -46,21 +46,14 @@
                 android:orientation="vertical" />
         </ScrollView>
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/my_family_history_checkBox_spinnerCv"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="6dp"
-            android:layout_marginLeft="@dimen/txtProvider_marginLeft"
-            android:layout_marginRight="@dimen/txtProvider_marginLeft"
-            android:layout_marginTop="6dp"
-            android:foreground="?android:attr/selectableItemBackground">
+>
 
             <RelativeLayout
-                android:id="@+id/my_family_history_other_relativelayout"
-                android:layout_width="wrap_content"
+                android:id="@+id/my_family_history_checkBox_spinnerCv"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp">
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp">
 
                 <TextView
                     android:id="@+id/my_family_history_other_textview"
@@ -68,38 +61,56 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
                     android:tag="@string/mdltag_my_family_history_other"
                     android:text="@string/mdl_my_family_history_other"
-                    android:textColor="@color/darkgreyTextColor" />
+                    android:layout_marginLeft = "@dimen/dimen_20_dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/grey_txt" />
 
-                <EditText
-                    android:id="@+id/my_family_history_other_editText"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/my_family_history_other_textview"
-                    android:background="@drawable/grey_square_border"
-                android:textColor="@color/ReasonForVisit_TextColor_black"
-                    android:textCursorDrawable="@null"
-                android:singleLine="true"
-                android:textSize="14sp" />
-
-                <Button
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/my_family_history_other_editText"
-                    android:onClick="addAction"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft = "@dimen/dimen_20_dp"
+                    android:layout_marginRight="@dimen/dimen_20_dp"
+                    android:layout_below="@+id/my_family_history_other_textview"
+                    >
+                    <EditText
+                        android:id="@+id/my_family_history_other_editText"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/my_family_history_other_textview"
+                        android:background="@drawable/grey_square_border"
+                        android:textColor="@color/ReasonForVisit_TextColor_black"
+                        android:textCursorDrawable="@null"
+                        android:singleLine="true"
+                        android:textSize="14sp" />
 
-                    android:tag="@string/mdltag_my_family_history_other_add"
-                    android:text="@string/mdl_my_family_history_other_add"
-                    android:textColor="@color/white"
-                    android:id="@+id/my_family_history_other_btn" />
-
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:layout_toRightOf="@+id/my_family_history_other_editText"
+                        android:onClick="addAction"
+                        android:tag="@string/mdltag_my_family_history_other_add"
+                        android:background="@drawable/add_family_condition"
+                        android:id="@+id/my_family_history_other_btn" />
+                </LinearLayout>
 
             </RelativeLayout>
-        </android.support.v7.widget.CardView>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@drawable/btn_color_gradient"
+            android:textAllCaps="true"
+            android:text="@string/mdl_save"
+            android:textColor="@color/white"
+            android:onClick="saveAction"
+            android:textSize="20sp" />
     </LinearLayout>
 
 
