@@ -1579,4 +1579,5 @@
     <string name="pharmacy_txt">PHARMACY</string>
     <string name="providers_txt">PROVIDERS</string>
     <string name="visits_txt">VISITS</string>
+    <string name="mdl_add_condition">Add Condition</string>
 </resources>
