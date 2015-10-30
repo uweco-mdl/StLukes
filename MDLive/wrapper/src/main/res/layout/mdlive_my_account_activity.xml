@@ -4,48 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/main_content"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbar"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/toolbar_color_gradient"
+            tabTextAppearance="@style/MyTabLayoutTextAppearance"
+            tabTextColor="@color/tab_text_color"
+            tabSelectedTextColor="@color/selected_tab_text_color"
+            tabIndicatorHeight="@dimen/dimen_4_dp" />
 
-            <include android:id="@+id/toolbar" layout="@layout/toolbar_hamburger_bell"/>
+        <LinearLayout
+            android:id="@+id/main_content"
+            android:layout_above="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tabs"
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-                app:tabTextColor="@color/tab_text_color"
-                app:tabSelectedTextColor="@color/selected_tab_text_color"
-                app:tabIndicatorHeight="@dimen/dimen_4_dp"
-                />
+                android:layout_height="wrap_content">
 
-        </android.support.design.widget.AppBarLayout>
+                <include
+                    android:id="@+id/toolbar"
+                    layout="@layout/toolbar_hamburger_bell" />
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/dash_board__left_container"
         android:layout_width="@dimen/drawer_width"
         android:layout_height="match_parent"
-        android:layout_gravity="left|start"/>
+        android:layout_gravity="left|start" />
 
 
     <FrameLayout
         android:id="@+id/dash_board__right_container"
         android:layout_width="@dimen/drawer_width"
         android:layout_height="match_parent"
-        android:layout_gravity="right|end"/>
+        android:layout_gravity="right|end" />
 </android.support.v4.widget.DrawerLayout>
