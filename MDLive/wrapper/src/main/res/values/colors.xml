@@ -246,4 +246,5 @@
 	<color name="startappmt_btn_blue">#0288d1</color>
 	<color name="change_password_medium_text_color_yellow">#D2B224</color>
 	<color name="disableBtn">#E6E6E6</color>
+    <color name="change_pass_hint">#999999</color>
 </resources>

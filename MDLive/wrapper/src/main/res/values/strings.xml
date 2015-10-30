@@ -913,7 +913,7 @@
     <string name="mdl_current_password">CURRENT PASSWORD</string>
     <string name="mdl_new_password">NEW PASSWORD</string>
     <string name="mdl_confirm_password">CONFIRM PASSWORD</string>
-    <string name="mdl_confirmationTxt">Please enter a new password. All fields are mandatory.</string>
+    <string name="mdl_confirmationTxt">Please enter a new password.\nAll fields are mandatory.</string>
     <string name="mdl_address">ADDRESS</string>
     <string name="mdl_phone_number_caps">PHONE NUMBER</string>
     <string name="mdl_timezone">TIME ZONE</string>
