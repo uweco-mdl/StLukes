@@ -726,7 +726,7 @@
     <string name="mdl_my_family_history">MY FAMILY HISTORY</string>
     <string name="mdl_my_family_history_question">Does anyone in your family have a history of the following? (Check all that apply)</string>
     <string name="mdl_my_family_history_checkbox_text">Diabetes</string>
-    <string name="mdl_my_family_history_other"> ADD OTHER</string>
+    <string name="mdl_my_family_history_other">Other</string>
     <string name="mdl_my_family_history_other_add">Add</string>
     <string name="mdl_family_history_txt">Family History</string>
 
@@ -913,7 +913,7 @@
     <string name="mdl_current_password">CURRENT PASSWORD</string>
     <string name="mdl_new_password">NEW PASSWORD</string>
     <string name="mdl_confirm_password">CONFIRM PASSWORD</string>
-    <string name="mdl_confirmationTxt">Please enter a new password. All fields are mandatory.</string>
+    <string name="mdl_confirmationTxt">Please enter a new password.\nAll fields are mandatory.</string>
     <string name="mdl_address">ADDRESS</string>
     <string name="mdl_phone_number_caps">PHONE NUMBER</string>
     <string name="mdl_timezone">TIME ZONE</string>
