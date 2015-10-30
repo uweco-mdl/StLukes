@@ -22,6 +22,7 @@
                 android:scaleType="centerCrop"
                 android:visibility="gone"
                 android:src="@drawable/whitebackarrow" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,9 +31,9 @@
                 android:drawableLeft="@drawable/whitebackarrow"
                 android:textColor="@color/white"
                 android:gravity="center"
+                android:onClick="onCrossClicked"
                 android:layout_centerVertical="true"
-                android:id="@+id/back_txv"
-                />
+                android:id="@+id/back_txv" />
 
             <ImageView
                 android:id="@+id/toolbar_hamburger"
