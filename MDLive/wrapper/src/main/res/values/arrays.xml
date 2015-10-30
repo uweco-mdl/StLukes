@@ -58,10 +58,6 @@
         <item>@string/mdl_waiting_room_text_01</item>
     </string-array>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ccc12f92d0b4dbf8e71b49b60a36b52a60dca2fe
     <string-array name="mdl_timezone">
         <item>Set Automatically</item>
         <item>Central Standard Time (CST)</item>
