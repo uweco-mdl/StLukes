@@ -289,6 +289,7 @@ public class LoginFragment extends MDLiveBaseFragment {
                 SharedPreferences.Editor editor = sharedPref.edit();
 
                 editor.putString(PreferenceConstants.USER_UNIQUE_ID, response.getString("uniqueid"));
+                editor.putString(PreferenceConstants.SESSION_ID, response.getString("token"));
                 editor.commit();
                 SharedPreferences settings = getActivity().getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, getActivity().MODE_PRIVATE);
                 String pushRegID = settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null);

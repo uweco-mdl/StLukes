@@ -89,7 +89,7 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
 
             if (fragment instanceof CreatePinFragment) {
                 MdliveUtils.hideSoftKeyboard(this);
-                ((CreatePinFragment) fragment).checkHealthServices();
+                ((CreatePinFragment) fragment).checkHealthServices(this);
             } else {
                 MdliveUtils.hideSoftKeyboard(this);
                 MdliveUtils.setLockType(getBaseContext(), getString(R.string.mdl_password));

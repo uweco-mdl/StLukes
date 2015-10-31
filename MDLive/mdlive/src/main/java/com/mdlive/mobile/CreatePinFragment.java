@@ -67,7 +67,7 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     private Button mButton0;
     private View mButtonCross;
 
-    private TextView mTitleTextView,healthSystemTv;
+    private TextView mTitleTextView, healthSystemTv;
     private StringBuffer mStringBuffer;
     private ImageView mWebView;
     private RelativeLayout healthSystemContainerRl;
@@ -369,7 +369,7 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
         void onClickNoPin();
     }
 
-    private void clearMinimisedTime(){
+    private void clearMinimisedTime() {
         final SharedPreferences preferences = getActivity().getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, getActivity().MODE_PRIVATE);
         final SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
@@ -379,7 +379,7 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     /**
      * This function is used to check the health services associated with the user's location.
      */
-    public void checkHealthServices() {
+    public void checkHealthServices(final Activity activity) {
         NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
 
             @Override
@@ -387,15 +387,15 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
                 Log.d("Response", response.toString());
                 if (response != null && response.optBoolean("additional_screen_applicable", false)) {
                     showProgressDialog();
-                    SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences sharedPref = activity.getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, response.toString()).commit();
-                    if (getActivity() != null && getActivity() instanceof AppCompatActivity) {
-                        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+                    if (activity != null && activity instanceof AppCompatActivity) {
+                        ((AppCompatActivity) activity).getSupportActionBar().hide();
                     }
                     screenImageURL = response.optString("screen_image");
                     healthSystemTv.setText(response.optString("splash_screen_text"));
-                    final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
+                    final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(activity);
                     ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
 
                         @Override
@@ -405,11 +405,11 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     hideProgressDialog();
-                                    MdliveUtils.setLockType(getActivity(), getString(R.string.mdl_password));
+                                    MdliveUtils.setLockType(activity, getString(R.string.mdl_password));
                                     clearMinimisedTime();
-                                    final Intent dashboard = new Intent(getActivity(), MDLiveDashboardActivity.class);
+                                    final Intent dashboard = new Intent(activity, MDLiveDashboardActivity.class);
                                     startActivity(dashboard);
-                                    getActivity().finish();
+                                    activity.finish();
                                 }
 
                                 @Override
@@ -425,11 +425,11 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                MdliveUtils.setLockType(getActivity(), getString(R.string.mdl_password));
+                                                MdliveUtils.setLockType(activity, getString(R.string.mdl_password));
                                                 clearMinimisedTime();
-                                                final Intent dashboard = new Intent(getActivity(), MDLiveDashboardActivity.class);
+                                                final Intent dashboard = new Intent(activity, MDLiveDashboardActivity.class);
                                                 startActivity(dashboard);
-                                                getActivity().finish();
+                                                activity.finish();
                                             }
                                         }, SPLASH_TIME_OUT);
                                     }
@@ -449,11 +449,11 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        MdliveUtils.setLockType(getActivity(), getString(R.string.mdl_password));
+                                        MdliveUtils.setLockType(activity, getString(R.string.mdl_password));
                                         clearMinimisedTime();
-                                        final Intent dashboard = new Intent(getActivity(), MDLiveDashboardActivity.class);
+                                        final Intent dashboard = new Intent(activity, MDLiveDashboardActivity.class);
                                         startActivity(dashboard);
-                                        getActivity().finish();
+                                        activity.finish();
                                     }
                                 }, SPLASH_TIME_OUT);
                             } else {
@@ -464,11 +464,17 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
                     imageLoader.get(screenImageURL, iListener);
 
                 } else {
-                    MdliveUtils.setLockType(getActivity(), getString(R.string.mdl_password));
-                    clearMinimisedTime();
-                    final Intent dashboard = new Intent(getActivity(), MDLiveDashboardActivity.class);
-                    startActivity(dashboard);
-                    getActivity().finish();
+                    try {
+                        if (activity != null) {
+                            MdliveUtils.setLockType(activity, getString(R.string.mdl_password));
+                            clearMinimisedTime();
+                            final Intent dashboard = new Intent(activity, MDLiveDashboardActivity.class);
+                            startActivity(dashboard);
+                            activity.finish();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         };
@@ -478,20 +484,20 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideProgressDialog();
-                if(getActivity()!=null) {
-                    SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                if (activity != null) {
+                    SharedPreferences sharedPref = activity.getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, "{}").commit();
                 }
-                MdliveUtils.setLockType(getActivity(), getString(R.string.mdl_password));
+                MdliveUtils.setLockType(activity, getString(R.string.mdl_password));
                 clearMinimisedTime();
-                final Intent dashboard = new Intent(getActivity(), MDLiveDashboardActivity.class);
+                final Intent dashboard = new Intent(activity, MDLiveDashboardActivity.class);
                 startActivity(dashboard);
-                getActivity().finish();
+                activity.finish();
             }
         };
 
-        HealthSystemServices service = new HealthSystemServices(getActivity(), getProgressDialog());
+        HealthSystemServices service = new HealthSystemServices(activity, getProgressDialog());
         service.getHealthSystemsData(successCallBackListener, errorListener, getLocalIpAddress());
     }
 
