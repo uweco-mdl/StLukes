@@ -1,1 +1,1 @@
-include ':mdlive', ':app', ':wrapper'
+include ':mdlive', ':wrapper'
