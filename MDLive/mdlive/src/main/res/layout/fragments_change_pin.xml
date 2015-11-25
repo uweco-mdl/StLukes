@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:layout_marginTop="@dimen/dimen_14_dp"
+        android:layout_marginTop="@dimen/dimen_10_dp"
         android:fontFamily="sans-serif-light"
         android:paddingLeft="@dimen/dimen_16_dp"
         android:paddingRight="@dimen/dimen_16_dp"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:layout_marginTop="@dimen/dimen_16_dp">
+        android:layout_marginTop="@dimen/dimen_10_dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -140,14 +140,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dimen_16_dp"
+            android:layout_marginTop="@dimen/dimen_10_dp"
             android:fontFamily="sans-serif-light"
             android:gravity="left"
             android:paddingLeft="@dimen/dimen_16_dp"
             android:paddingRight="@dimen/dimen_16_dp"
             android:text="@string/mdl_access_your_phone_using_pin"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/dimen_16_dp" />
+             />
 
         <TextView
             android:id="@+id/dont_use_pin_text_view"
@@ -159,7 +159,7 @@
             android:paddingRight="@dimen/dimen_16_dp"
             android:text="@string/mdl_i_dont_want_to_use_pin"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            />
 
         <TextView
             android:layout_width="match_parent"
@@ -171,7 +171,7 @@
             android:paddingRight="@dimen/dimen_16_dp"
             android:text="@string/mdl_you_can_enable_your_screen"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            />
     </LinearLayout>
 
     <LinearLayout
