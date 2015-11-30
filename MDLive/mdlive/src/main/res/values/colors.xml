@@ -7,4 +7,6 @@
     <color name="white">#ffffff</color>
 
     <color name="blue_text_color">#257cfc</color>
+
+    <color name="status_bottom">#0079c2</color>
 </resources>
