@@ -6,16 +6,17 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/top_blue"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@drawable/toolbar_color_gradient">
 
-        <ImageView
-            android:id="@+id/headerLogoIv"
-            android:layout_width="@dimen/logo_width_pin"
-            android:layout_height="@dimen/logo_height_pin"
-            android:layout_centerInParent="true"
-            android:src="@drawable/bcbs_logo" />
+        <!--<ImageView-->
+            <!--android:id="@+id/headerLogoIv"-->
+            <!--android:layout_width="@dimen/logo_width_pin"-->
+            <!--android:layout_height="@dimen/logo_height_pin"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:src="@drawable/bcbs_logo" />-->
 
     </RelativeLayout>
 

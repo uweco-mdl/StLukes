@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/window_background_color">
 
+    <include android:id="@+id/toolbar" layout="@layout/toolbar_unlock"/>
+
     <FrameLayout
         android:id="@+id/key_pad_container"
         android:layout_width="match_parent"
