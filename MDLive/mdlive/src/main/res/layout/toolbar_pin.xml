@@ -2,7 +2,7 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_height"
-    android:background="?attr/colorPrimary">
+    android:background="@drawable/toolbar_color_gradient">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,8 +14,8 @@
             android:layout_height="wrap_content"
             android:onClick="onBackClicked"
             android:scaleType="centerCrop"
-            android:layout_centerVertical="true"
-            android:src="@drawable/back_arrow_hdpi" />
+            android:layout_centerInParent="true"
+            android:src="@drawable/bcbs_logo" />
 
         <ImageView
             android:id="@+id/rightSideBtn"
@@ -27,6 +27,7 @@
             android:layout_marginRight="@dimen/dimen_16_dp"
             android:onClick="onTickClicked"
             android:scaleType="centerCrop"
+            android:visibility="gone"
             android:src="@drawable/top_tick_icon" />
 
         <TextView
@@ -39,6 +40,7 @@
             android:layout_toRightOf="@id/frame_left"
             android:textColor="@color/white"
             android:fontFamily="sans-serif-medium"
+            android:visibility="gone"
             android:textSize="@dimen/toolbar_text_size" />
     </RelativeLayout>
 </android.support.v7.widget.Toolbar>

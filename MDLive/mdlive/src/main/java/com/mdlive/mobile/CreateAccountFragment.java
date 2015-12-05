@@ -2,8 +2,10 @@ package com.mdlive.mobile;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -141,7 +143,15 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return super.shouldOverrideUrlLoading(view, url);
+                if (url.startsWith(WebView.SCHEME_TEL)) {
+                    // Otherwise allow the OS to handle things like tel, mailto, etc.
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity( intent );
+                    return true;
+                }
+                else
+                    return super.shouldOverrideUrlLoading(view, url);
+
             }
         });
     }
