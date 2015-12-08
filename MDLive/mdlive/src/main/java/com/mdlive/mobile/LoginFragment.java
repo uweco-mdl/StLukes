@@ -55,14 +55,14 @@ public class LoginFragment extends MDLiveBaseFragment {
     private EditText mUserNameEditText = null;
     private EditText mPasswordEditText = null;
     private ImageView mWebView;
-//    private RelativeLayout healthSystemContainerRl, headerRl;
-//    private ImageView healthSystemIv;
-//    private TextView healthSystemTv;
-//    private FrameLayout loginContainerFl;
+    private RelativeLayout healthSystemContainerRl, headerRl;
+    private ImageView healthSystemIv;
+    private TextView healthSystemTv;
+    private FrameLayout loginContainerFl;
     private String screenImageURL;
     private static final int SPLASH_TIME_OUT = 4000;
     private String footerImageURL;
-//    private ImageView mHeaderIv;
+    private ImageView mHeaderIv;
     public ScrollView mContainer;
 
     public static LoginFragment newInstance() {
@@ -99,11 +99,11 @@ public class LoginFragment extends MDLiveBaseFragment {
         mPasswordEditText = (EditText) view.findViewById(R.id.password);
         mWebView = (ImageView) view.findViewById(R.id.webView);
         mContainer = (ScrollView) view.findViewById(R.id.LoginContainer);
-//        healthSystemContainerRl = (RelativeLayout) view.findViewById(R.id.health_system_container_rl);
-//        headerRl = (RelativeLayout) view.findViewById(R.id.login_header_rl);
-//        healthSystemIv = (ImageView) view.findViewById(R.id.health_system_niv);
-//        healthSystemTv = (TextView) view.findViewById(R.id.health_system_tv);
-//        loginContainerFl = (FrameLayout) view.findViewById(R.id.login_container_fl);
+        healthSystemContainerRl = (RelativeLayout) view.findViewById(R.id.health_system_container_rl);
+        headerRl = (RelativeLayout) view.findViewById(R.id.login_header_rl);
+        healthSystemIv = (ImageView) view.findViewById(R.id.health_system_niv);
+        healthSystemTv = (TextView) view.findViewById(R.id.health_system_tv);
+        loginContainerFl = (FrameLayout) view.findViewById(R.id.login_container_fl);
         mPasswordEditText.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -119,8 +119,8 @@ public class LoginFragment extends MDLiveBaseFragment {
                 return false;
             }
         });
-//        mHeaderIv = (ImageView) view.findViewById(R.id.headerLogoIv);
-//        mHeaderIv.setVisibility(View.GONE);
+        mHeaderIv = (ImageView) view.findViewById(R.id.headerLogoIv);
+        mHeaderIv.setVisibility(View.GONE);
         if(DeepLinkUtils.DEEPLINK_DATA!=null && DeepLinkUtils.DEEPLINK_DATA.getAffiliationLogoUrl()!=null) {
             final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
             ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
@@ -128,66 +128,66 @@ public class LoginFragment extends MDLiveBaseFragment {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     hideProgressDialog();
-//                    mHeaderIv.setVisibility(View.VISIBLE);
+                    mHeaderIv.setVisibility(View.VISIBLE);
                 }
 
                 @Override
                 public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
                     if (response.getBitmap() != null) {
                         hideProgressDialog();
-//                        mHeaderIv.setImageBitmap(response.getBitmap());
-//                        mHeaderIv.setVisibility(View.VISIBLE);
+                        mHeaderIv.setImageBitmap(response.getBitmap());
+                        mHeaderIv.setVisibility(View.VISIBLE);
 
                     }
                 }
             };
             imageLoader.get(DeepLinkUtils.DEEPLINK_DATA.getAffiliationLogoUrl(), iListener);
         } else {
-//            mHeaderIv.setVisibility(View.VISIBLE);
+            mHeaderIv.setVisibility(View.VISIBLE);
         }
 
-//        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-//        if(imm.isAcceptingText()){
-//            healthSystemContainerRl.setBackgroundColor(Color.BLACK);
-//            healthSystemContainerRl.setAlpha(0.7F);
-//        }else{
-//            healthSystemContainerRl.setBackgroundColor(Color.WHITE);
-//            healthSystemContainerRl.setAlpha(0.1F);
-//        }
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if(imm.isAcceptingText()){
+            healthSystemContainerRl.setBackgroundColor(Color.BLACK);
+            healthSystemContainerRl.setAlpha(0.7F);
+        }else{
+            healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+            healthSystemContainerRl.setAlpha(0.1F);
+        }
 
 
-//        mPasswordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View view, boolean b) {
-//                if (view.hasFocus()) {
-//                    healthSystemContainerRl.setBackgroundColor(Color.BLACK);
-//                    healthSystemContainerRl.setAlpha(0.7F);
-//// mHeaderIv.setVisibility(View.GONE);
-//                } else {
-//                    healthSystemContainerRl.setBackgroundColor(Color.WHITE);
-//                    healthSystemContainerRl.setAlpha(0.1F);
-////mHeaderIv.setVisibility(View.VISIBLE);
-//
-//                }
-//
-//            }
-//        });
-//        mUserNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View view, boolean b) {
-//                if (view.hasFocus()) {
-//                    healthSystemContainerRl.setBackgroundColor(Color.BLACK);
-//                    healthSystemContainerRl.setAlpha(0.7F);
-//// mHeaderIv.setVisibility(View.GONE);
-//                } else {
-//                    healthSystemContainerRl.setBackgroundColor(Color.WHITE);
-//                    healthSystemContainerRl.setAlpha(0.1F);
-//// mHeaderIv.setVisibility(View.VISIBLE);
-//
-//                }
-//
-//            }
-//        });
+        mPasswordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (view.hasFocus()) {
+                    healthSystemContainerRl.setBackgroundColor(Color.BLACK);
+                    healthSystemContainerRl.setAlpha(0.7F);
+// mHeaderIv.setVisibility(View.GONE);
+                } else {
+                    healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+                    healthSystemContainerRl.setAlpha(0.1F);
+//mHeaderIv.setVisibility(View.VISIBLE);
+
+                }
+
+            }
+        });
+        mUserNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (view.hasFocus()) {
+                    healthSystemContainerRl.setBackgroundColor(Color.BLACK);
+                    healthSystemContainerRl.setAlpha(0.7F);
+// mHeaderIv.setVisibility(View.GONE);
+                } else {
+                    healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+                    healthSystemContainerRl.setAlpha(0.1F);
+// mHeaderIv.setVisibility(View.VISIBLE);
+
+                }
+
+            }
+        });
 
     }
 
@@ -392,7 +392,7 @@ public class LoginFragment extends MDLiveBaseFragment {
                     editor.putString(PreferenceConstants.HEALTH_SYSTEM_PREFERENCES, response.toString()).commit();
                     screenImageURL = response.optString("screen_image");
                     footerImageURL = response.optString("footer_image");
-//                    healthSystemTv.setText(response.optString("splash_screen_text"));
+                    healthSystemTv.setText(response.optString("splash_screen_text"));
                     final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
                     ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
 
@@ -414,14 +414,14 @@ public class LoginFragment extends MDLiveBaseFragment {
                                         // load image into imageview
                                         hideProgressDialog();
                                         mWebView.setImageBitmap(response.getBitmap());
-//                                        headerRl.setVisibility(View.GONE);
-//                                        loginContainerFl.setVisibility(View.GONE);
-//                                        healthSystemContainerRl.setVisibility(View.VISIBLE);
-//                                        healthSystemContainerRl.setBackgroundColor(Color.WHITE);
-//                                        healthSystemContainerRl.setAlpha(255);
+                                        headerRl.setVisibility(View.GONE);
+                                        loginContainerFl.setVisibility(View.GONE);
+                                        healthSystemContainerRl.setVisibility(View.VISIBLE);
+                                        healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+                                        healthSystemContainerRl.setAlpha(255);
                                         mWebView.setVisibility(View.VISIBLE);
-//                                        healthSystemIv.setVisibility(View.VISIBLE);
-//                                        healthSystemTv.setVisibility(View.VISIBLE);
+                                        healthSystemIv.setVisibility(View.VISIBLE);
+                                        healthSystemTv.setVisibility(View.VISIBLE);
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
@@ -442,14 +442,14 @@ public class LoginFragment extends MDLiveBaseFragment {
                             if (response.getBitmap() != null) {
                                 mWebView.setImageBitmap(response.getBitmap());
                                 hideProgressDialog();
-//                                headerRl.setVisibility(View.GONE);
-//                                loginContainerFl.setVisibility(View.GONE);
-//                                healthSystemContainerRl.setVisibility(View.VISIBLE);
-//                                healthSystemContainerRl.setBackgroundColor(Color.WHITE);
-//                                healthSystemContainerRl.setAlpha(255);
+                                headerRl.setVisibility(View.GONE);
+                                loginContainerFl.setVisibility(View.GONE);
+                                healthSystemContainerRl.setVisibility(View.VISIBLE);
+                                healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+                                healthSystemContainerRl.setAlpha(255);
                                 mWebView.setVisibility(View.VISIBLE);
-//                                healthSystemIv.setVisibility(View.VISIBLE);
-//                                healthSystemTv.setVisibility(View.VISIBLE);
+                                healthSystemIv.setVisibility(View.VISIBLE);
+                                healthSystemTv.setVisibility(View.VISIBLE);
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {

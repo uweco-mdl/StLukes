@@ -170,13 +170,13 @@ public class PinActivity extends AppCompatActivity implements OnCreatePinComplet
 
     private void showPinToolbar() {
         ((TextView) findViewById(R.id.headerTxt)).setText(getString(R.string.mdl_create_a_pin).toUpperCase());
-        //((ImageView) findViewById(R.id.leftSideBtn)).setVisibility(View.GONE);
+        ((ImageView) findViewById(R.id.leftSideBtn)).setVisibility(View.GONE);
         ((ImageView) findViewById(R.id.rightSideBtn)).setVisibility(View.GONE);
     }
 
     private void showConfirmPinToolbar() {
         ((TextView) findViewById(R.id.headerTxt)).setText(getString(R.string.mdl_confirm_your_pin).toUpperCase());
-        //((ImageView) findViewById(R.id.leftSideBtn)).setVisibility(View.VISIBLE);
+        ((ImageView) findViewById(R.id.leftSideBtn)).setVisibility(View.VISIBLE);
         ((ImageView) findViewById(R.id.rightSideBtn)).setVisibility(View.GONE);
     }
 }

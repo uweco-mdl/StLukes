@@ -3,174 +3,239 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/LoginContainer"
-    android:background="@color/new_login_bg"
-    android:scrollbars="none">
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:isScrollContainer="false"
+    >
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:visibility="visible"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:id="@+id/health_system_container_rl"
+            >
+            <ImageView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:visibility="gone"></ImageView>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:id="@+id/health_system_niv"
+                android:src="@drawable/sentara"
+                android:visibility="gone"
+                android:layout_marginTop="62dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:id="@+id/health_system_tv"
+                android:layout_below="@+id/health_system_niv"
+                android:layout_centerHorizontal="true"
+                android:textSize="17sp"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:textColor="@color/myTextPrimaryColor"
+                android:layout_marginTop="56dp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/login_header_rl"
+            >
+            <ImageView
+                android:layout_width="124dp"
+                android:layout_height="24dp"
+                android:id="@+id/headerLogoIv"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mdlive_logo"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
             android:orientation="vertical"
-            android:focusable="true"
-            android:id="@+id/health_system_container_rl"
-            android:focusableInTouchMode="true"
-            android:paddingLeft="@dimen/dimen_16_dp"
-            android:paddingRight="@dimen/dimen_16_dp">
+            android:layout_alignParentBottom="true"
+            >
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="?actionBarSize"
-                android:text="@string/mdl_sign_in"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:textColor="@color/sign_in_txt_color" />
-
-
-            <EditText
-                android:id="@+id/userName"
+            <FrameLayout
+                android:id="@+id/login_container_fl"
                 android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:layout_marginRight="@dimen/dimen_4_dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:hint="@string/mdl_application_username_or_email"
-                android:imeOptions="actionNext"
-                android:singleLine="true"
-                android:tag="username"
-                android:padding="5dp"
-                android:layout_marginBottom="2dp"
-                android:textColor="@color/gray_6"
-                android:textCursorDrawable="@null"
-                android:textSize="16sp"
-                android:fontFamily="sans-serif" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:layout_marginRight="@dimen/dimen_4_dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:hint="@string/mdl_password"
-                android:imeOptions="actionDone"
-                android:password="true"
-                android:padding="5dp"
-                android:singleLine="true"
-                android:tag="password"
-                android:textColor="@color/gray_6"
-                android:cursorVisible="true"
-                android:textSize="16sp"
-                android:textCursorDrawable="@null"
-                android:fontFamily="sans-serif" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="@dimen/dimen_16_dp"
-                android:layout_marginTop="@dimen/dimen_16_dp"
-                android:background="@drawable/orange_button"
-                android:gravity="center"
-                android:onClick="onSignInClicked"
-                android:tag="sign_in"
-                android:text="@string/mdl_sign_in"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight=".5"
-                    android:clickable="true"
-                    android:gravity="start"
-                    android:padding="3dp"
-                    android:onClick="onForgotUserNameClicked"
-                    android:tag="forgot_username"
-                    android:text="@string/mdl_forgot_username"
-                    android:textColor="@color/new_login_txt_color"
-                    android:textSize="14sp"
-                    android:fontFamily="sans-serif" />
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight=".5"
-                    android:clickable="true"
-                    android:gravity="end"
-                    android:padding="3dp"
-                    android:onClick="onForgotPasswordClicked"
-                    android:tag="forgot_password"
-                    android:text="@string/mdl_forgot_password"
-                    android:textColor="@color/new_login_txt_color"
-                    android:textSize="14sp"
-                    android:fontFamily="sans-serif" />
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dimen_8_dp"
+                        android:layout_marginTop="@dimen/dimen_8_dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/dimen_16_dp"
+                        android:paddingRight="@dimen/dimen_16_dp">
 
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/dimen_4_dp"-->
-            <!--android:layout_marginTop="@dimen/dimen_8_dp"-->
-            <!--android:orientation="horizontal">-->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginBottom="2dp"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:text="@string/mdl_virtual_care"
+                            android:textColor="@color/white"
+                            android:textSize="26sp"
+                            android:textStyle="bold"/>
 
-            <!--<View-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="1dp"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="#ff555555" />-->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:text="@string/mdl_access_board"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
 
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:layout_marginLeft="@dimen/dimen_4_dp"-->
-            <!--android:layout_marginRight="@dimen/dimen_4_dp"-->
-            <!--android:tag="or"-->
-            <!--android:text="@string/mdl_or_upper"-->
-            <!--android:textColor="@color/gray_6" />-->
+                    </LinearLayout>
 
-            <!--<View-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="1dp"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="#ff555555" />-->
-            <!--</LinearLayout>-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dimen_8_dp"
+                        android:layout_marginTop="@dimen/dimen_8_dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/dimen_16_dp"
+                        android:paddingRight="@dimen/dimen_16_dp">
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="@dimen/dimen_16_dp"
-                android:layout_marginTop="@dimen/sign_up_top_padding"
-                android:background="@drawable/orange_button"
-                android:gravity="center"
-                android:onClick="onCreateFreeAccountClicked"
-                android:tag="create_free_account"
-                android:text="@string/login_sign_up_txt"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                        <EditText
+                            android:id="@+id/userName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/dimen_4_dp"
+                            android:layout_weight="1"
+                            android:background="@color/transparent"
+                            android:fontFamily="sans-serif"
+                            android:hint="@string/mdl_username"
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:tag="username"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight=".5"
+                            android:clickable="true"
+                            android:gravity="right"
+                            android:onClick="onForgotUserNameClicked"
+                            android:tag="forgot_username"
+                            android:text="@string/mdl_forgot_username"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dimen_8_dp"
+                        android:layout_marginTop="@dimen/dimen_8_dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/dimen_16_dp"
+                        android:paddingRight="@dimen/dimen_16_dp">
+
+                        <EditText
+                            android:id="@+id/password"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/dimen_4_dp"
+                            android:layout_weight="1"
+                            android:background="@color/transparent"
+                            android:fontFamily="sans-serif"
+                            android:hint="@string/mdl_password"
+                            android:imeOptions="actionDone"
+                            android:password="true"
+                            android:singleLine="true"
+                            android:tag="password"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight=".5"
+                            android:clickable="true"
+                            android:gravity="right"
+                            android:onClick="onForgotPasswordClicked"
+                            android:tag="forgot_password"
+                            android:text="@string/mdl_forgot_password"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="@dimen/dimen_16_dp"
+                        android:layout_marginTop="@dimen/dimen_16_dp"
+                        android:background="@drawable/white_button_with_black_border"
+                        android:gravity="center"
+                        android:onClick="onSignInClicked"
+                        android:tag="sign_in"
+                        android:text="@string/mdl_sign_in"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="@dimen/dimen_8_dp"
+                        android:layout_marginRight="@dimen/dimen_8_dp"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="@dimen/dimen_8_dp"
+                        android:background="@drawable/blue_button"
+                        android:gravity="center"
+                        android:onClick="onCreateFreeAccountClicked"
+                        android:tag="create_free_account"
+                        android:text="@string/mdl_create_free_account"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="@dimen/dimen_8_dp"
+                        android:layout_marginRight="@dimen/dimen_8_dp"/>
+                </LinearLayout>
+            </FrameLayout>
+
         </LinearLayout>
-
-
-    </FrameLayout>
-
+    </RelativeLayout>
 </ScrollView>

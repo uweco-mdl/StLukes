@@ -1,7 +1,7 @@
 <resources>
     <style name="MDLive_Red_Theme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/status_bottom</item>
-        <item name="colorPrimaryDark">@color/status_bottom</item>
+        <item name="colorPrimary">@color/red_theme_primary</item>
+        <item name="colorPrimaryDark">@color/red_theme_primary_dark</item>
         <item name="colorAccent">@color/white</item>
     </style>
 
@@ -9,8 +9,8 @@
         <item name="android:windowBackground">@drawable/login_bg</item>
     </style>
     <style name="MDLive_Dialog_Theme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorPrimary">@color/status_bottom</item>
-        <item name="colorPrimaryDark">@color/status_bottom</item>
+        <item name="colorPrimary">@color/red_theme_primary</item>
+        <item name="colorPrimaryDark">@color/red_theme_primary_dark</item>
         <item name="colorAccent">@color/white</item>
     </style>
 </resources>
