@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -19,12 +18,8 @@ import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * Created by dhiman_da on 8/12/2015.
@@ -100,27 +95,48 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
                 super.onPageStarted(view, url, favicon);
                 showProgressDialog();
 
-                List<NameValuePair> params = null;
+                //List<NameValuePair> params = null;
+                //Replaced Deprecated classes with new class.
                 try {
-                    params = URLEncodedUtils.parse(new URI(url), "UTF-8");
-                } catch (URISyntaxException e) {
+                    URL activationUrl = new URL(url);
+                    String query = activationUrl.getQuery();
+                    String[] pairs = query.split("&");
+                    for (String pair : pairs) {
+                        if (pair.startsWith("remoteUserId=")) {
+                            String desiredString = pair.replace("remoteUserId=","");
+                            if (getActivity() != null) {
+                                SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putString(PreferenceConstants.USER_UNIQUE_ID, desiredString);
+                                editor.commit();
+
+                                if (mOnSignupSuccess != null) {
+                                    mOnSignupSuccess.onSignUpSucess();
+                                }
+
+                            }
+                            break;
+                        }
+                        //params = URLEncodedUtils.parse(new URI(url), "UTF-8");
+                    }
+                }catch (IOException e) {
                     e.printStackTrace();
                 }
 
-                for (NameValuePair param : params) {
-                    if (param.getName().equals("remoteUserId")) {
-                        if (getActivity() != null) {
-                            SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sharedPref.edit();
-                            editor.putString(PreferenceConstants.USER_UNIQUE_ID, param.getValue());
-                            editor.commit();
-
-                            if (mOnSignupSuccess != null) {
-                                mOnSignupSuccess.onSignUpSucess();
-                            }
-                        }
-                    }
-                }
+//                for (NameValuePair param : params) {
+//                    if (param.getName().equals("remoteUserId")) {
+//                        if (getActivity() != null) {
+//                            SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+//                            SharedPreferences.Editor editor = sharedPref.edit();
+//                            editor.putString(PreferenceConstants.USER_UNIQUE_ID, param.getValue());
+//                            editor.commit();
+//
+//                            if (mOnSignupSuccess != null) {
+//                                mOnSignupSuccess.onSignUpSucess();
+//                            }
+//                        }
+//                    }
+//                }
             }
 
             @Override
