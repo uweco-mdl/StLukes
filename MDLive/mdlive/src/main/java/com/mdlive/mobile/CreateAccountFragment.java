@@ -103,24 +103,26 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
                 try {
                     URL activationUrl = new URL(url);
                     String query = activationUrl.getQuery();
-                    String[] pairs = query.split("&");
-                    for (String pair : pairs) {
-                        if (pair.startsWith("remoteUserId=")) {
-                            String desiredString = pair.replace("remoteUserId=","");
-                            if (getActivity() != null) {
-                                SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPref.edit();
-                                editor.putString(PreferenceConstants.USER_UNIQUE_ID, desiredString);
-                                editor.commit();
+                    if (null != query) {
+                        String[] pairs = query.split("&");
+                        for (String pair : pairs) {
+                            if (pair.startsWith("remoteUserId=")) {
+                                String desiredString = pair.replace("remoteUserId=", "");
+                                if (getActivity() != null) {
+                                    SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPref.edit();
+                                    editor.putString(PreferenceConstants.USER_UNIQUE_ID, desiredString);
+                                    editor.commit();
 
-                                if (mOnSignupSuccess != null) {
-                                    mOnSignupSuccess.onSignUpSucess();
+                                    if (mOnSignupSuccess != null) {
+                                        mOnSignupSuccess.onSignUpSucess();
+                                    }
+
                                 }
-
+                                break;
                             }
-                            break;
+                            //params = URLEncodedUtils.parse(new URI(url), "UTF-8");
                         }
-                        //params = URLEncodedUtils.parse(new URI(url), "UTF-8");
                     }
                 }catch (IOException e) {
                     e.printStackTrace();
