@@ -73,7 +73,7 @@ dependencies {
         exclude module: 'com.google.android.gms'
     }
 
-    compile('com.vsee:vsee-kit:0.3.20524@aar') {
+    compile('com.vsee:vsee-kit:0.4.22021@aar') {
         transitive = true
     }
 
