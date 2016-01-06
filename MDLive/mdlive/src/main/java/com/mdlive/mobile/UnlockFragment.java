@@ -118,26 +118,27 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
 
 
         if(userBasicInfo!=null && userBasicInfo.getAffiliationLogo()!=null) {
-            showProgressDialog();
-            final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
-            ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    mHeaderIv.setVisibility(View.VISIBLE);
-                    hideProgressDialog();
-                }
-
-                @Override
-                public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
-                    if (response.getBitmap() != null) {
-                        hideProgressDialog();
-                        mHeaderIv.setImageBitmap(response.getBitmap());
-                        mHeaderIv.setVisibility(View.VISIBLE);
-                    }
-                }
-            };
-            imageLoader.get(userBasicInfo.getAffiliationLogo(), iListener);
+            mHeaderIv.setVisibility(View.VISIBLE);
+//            showProgressDialog();
+//            final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
+//            ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
+//
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//                    mHeaderIv.setVisibility(View.VISIBLE);
+//                    hideProgressDialog();
+//                }
+//
+//                @Override
+//                public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+//                    if (response.getBitmap() != null) {
+//                        hideProgressDialog();
+//                        mHeaderIv.setImageBitmap(response.getBitmap());
+//                        mHeaderIv.setVisibility(View.VISIBLE);
+//                    }
+//                }
+//            };
+//            imageLoader.get(userBasicInfo.getAffiliationLogo(), iListener);
         } else {
             mHeaderIv.setVisibility(View.VISIBLE);
         }
