@@ -45,5 +45,7 @@
     <string name="mdl_ada_hamburger">Navigated </string>
     <string name="mdl_ada_bell">Notification</string>
     <string name="mdl_ada_back_button">Back</string>
+    <string name="mdl_user_profile_state">State</string>
+
 
 </resources>
