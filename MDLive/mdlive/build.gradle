@@ -65,6 +65,8 @@ dependencies {
     compile 'com.google.android.gms:play-services-location:8.4.0'
     compile 'com.google.android.gms:play-services-identity:8.4.0'
 
+    compile 'com.google.android.gms:play-services-fitness:8.4.0'
+
     compile 'com.google.code.gson:gson:2.3.1'
 
     compile(name: 'embedkit', ext: 'aar') {
