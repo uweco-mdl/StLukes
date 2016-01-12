@@ -28,6 +28,12 @@ android {
         versionCode 1
         versionName "3.0"
         multiDexEnabled true
+
+        // force 32-bit emulation for 64-bit devices
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+
     }
     buildTypes {
         release {
