@@ -213,7 +213,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dimen_16_dp"
                     android:fontFamily="sans-serif-light"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:text="@string/mdl_access_your_phone_using_pin"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
