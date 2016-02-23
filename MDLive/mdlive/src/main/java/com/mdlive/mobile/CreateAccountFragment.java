@@ -115,7 +115,9 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
                                     editor.commit();
 
                                     if (mOnSignupSuccess != null) {
-                                        mOnSignupSuccess.onSignUpSucess();
+                                        // This change fixes issues reported in MM-2549.
+                                        UnlockActivity.onSignoutClicked(getActivity());
+                                        //mOnSignupSuccess.onSignUpSucess();
                                     }
 
                                 }
