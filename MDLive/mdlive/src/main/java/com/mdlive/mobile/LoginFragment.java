@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.PixelFormat;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -19,9 +23,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -63,7 +69,8 @@ public class LoginFragment extends MDLiveBaseFragment {
     private static final int SPLASH_TIME_OUT = 4000;
     private String footerImageURL;
     private ImageView mHeaderIv;
-    public ScrollView mContainer;
+    //public ScrollView mContainer;
+    private VideoView mVideo ;
 
     public static LoginFragment newInstance() {
         final LoginFragment loginFragment = new LoginFragment();
@@ -94,16 +101,19 @@ public class LoginFragment extends MDLiveBaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().getWindow().setFormat(PixelFormat.UNKNOWN);
 
         mUserNameEditText = (EditText) view.findViewById(R.id.userName);
         mPasswordEditText = (EditText) view.findViewById(R.id.password);
         mWebView = (ImageView) view.findViewById(R.id.webView);
-        mContainer = (ScrollView) view.findViewById(R.id.LoginContainer);
+        //mContainer = (ScrollView) view.findViewById(R.id.LoginContainer);
         healthSystemContainerRl = (RelativeLayout) view.findViewById(R.id.health_system_container_rl);
         headerRl = (RelativeLayout) view.findViewById(R.id.login_header_rl);
         healthSystemIv = (ImageView) view.findViewById(R.id.health_system_niv);
         healthSystemTv = (TextView) view.findViewById(R.id.health_system_tv);
         loginContainerFl = (FrameLayout) view.findViewById(R.id.login_container_fl);
+        mVideo = (VideoView) view.findViewById(R.id.welcomeVideo);
+        startVideo();
         mPasswordEditText.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -121,6 +131,7 @@ public class LoginFragment extends MDLiveBaseFragment {
         });
         mHeaderIv = (ImageView) view.findViewById(R.id.headerLogoIv);
         mHeaderIv.setVisibility(View.GONE);
+
         if(DeepLinkUtils.DEEPLINK_DATA!=null && DeepLinkUtils.DEEPLINK_DATA.getAffiliationLogoUrl()!=null) {
             final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
             ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
@@ -146,51 +157,77 @@ public class LoginFragment extends MDLiveBaseFragment {
             mHeaderIv.setVisibility(View.VISIBLE);
         }
 
-        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if(imm.isAcceptingText()){
-            healthSystemContainerRl.setBackgroundColor(Color.BLACK);
-            healthSystemContainerRl.setAlpha(0.7F);
-        }else{
-            healthSystemContainerRl.setBackgroundColor(Color.WHITE);
-            healthSystemContainerRl.setAlpha(0.1F);
-        }
+//        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+//        if(imm.isAcceptingText()){
+//            healthSystemContainerRl.setBackgroundColor(Color.BLACK);
+//            healthSystemContainerRl.setAlpha(0.7F);
+//        }else{
+//            healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+//            healthSystemContainerRl.setAlpha(0.1F);
+//        }
 
 
-        mPasswordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (view.hasFocus()) {
-                    healthSystemContainerRl.setBackgroundColor(Color.BLACK);
-                    healthSystemContainerRl.setAlpha(0.7F);
-// mHeaderIv.setVisibility(View.GONE);
-                } else {
-                    healthSystemContainerRl.setBackgroundColor(Color.WHITE);
-                    healthSystemContainerRl.setAlpha(0.1F);
-//mHeaderIv.setVisibility(View.VISIBLE);
+//        mPasswordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View view, boolean b) {
+//                if (view.hasFocus()) {
+//                    healthSystemContainerRl.setBackgroundColor(Color.BLACK);
+//                    healthSystemContainerRl.setAlpha(0.7F);
+//// mHeaderIv.setVisibility(View.GONE);
+//                } else {
+//                    healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+//                    healthSystemContainerRl.setAlpha(0.1F);
+////mHeaderIv.setVisibility(View.VISIBLE);
+//
+//                }
+//
+//            }
+//        });
+//        mUserNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View view, boolean b) {
+//                if (view.hasFocus()) {
+//                    healthSystemContainerRl.setBackgroundColor(Color.BLACK);
+//                    healthSystemContainerRl.setAlpha(0.7F);
+//// mHeaderIv.setVisibility(View.GONE);
+//                } else {
+//                    healthSystemContainerRl.setBackgroundColor(Color.WHITE);
+//                    healthSystemContainerRl.setAlpha(0.1F);
+//// mHeaderIv.setVisibility(View.VISIBLE);
+//
+//                }
+//
+//            }
+//        });
 
-                }
 
-            }
-        });
-        mUserNameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (view.hasFocus()) {
-                    healthSystemContainerRl.setBackgroundColor(Color.BLACK);
-                    healthSystemContainerRl.setAlpha(0.7F);
-// mHeaderIv.setVisibility(View.GONE);
-                } else {
-                    healthSystemContainerRl.setBackgroundColor(Color.WHITE);
-                    healthSystemContainerRl.setAlpha(0.1F);
-// mHeaderIv.setVisibility(View.VISIBLE);
-
-                }
-
-            }
-        });
 
     }
 
+    public void startVideo()
+    {
+        //Creating MediaController
+        MediaController mediaController= new MediaController(getActivity());
+        mediaController.setAnchorView(mVideo);
+        mediaController.setVisibility(View.GONE);
+        mVideo.setOnPreparedListener (new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setLooping(true);
+            }
+        });
+
+
+        //specify the location of media file
+        String uriPath = "android.resource://com.mdlive.mobile/"+R.raw.welcome;
+        Uri uri=Uri.parse(uriPath);
+
+        //Setting MediaController and URI, then starting the videoView
+        mVideo.setMediaController(mediaController);
+        mVideo.setVideoURI(uri);
+        mVideo.requestFocus();
+        mVideo.start();
+    }
     public void clearFocus(){
         mPasswordEditText.clearFocus();
         mUserNameEditText.clearFocus();
@@ -370,10 +407,10 @@ public class LoginFragment extends MDLiveBaseFragment {
 
         }
     }
-
-    public interface OnLoginResponse {
+//
+   public interface OnLoginResponse {
         void onLoginSucess();
-    }
+   }
 
 
     /**

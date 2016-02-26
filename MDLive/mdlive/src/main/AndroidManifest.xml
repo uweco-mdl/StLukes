@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- [START gcm_permission] -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -31,12 +31,12 @@
         android:required="false" />
 
     <application
+        android:name="com.mdlive.unifiedmiddleware.commonclasses.application.ApplicationController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/mdl_app_name"
         android:theme="@style/MDLive_Red_Theme"
-        tools:replace="android:theme"
-        android:name="com.mdlive.unifiedmiddleware.commonclasses.application.ApplicationController">
+        tools:replace="android:theme" >
 
         <!-- Google Api Key -->
         <meta-data
@@ -57,23 +57,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".LoginActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             android:screenOrientation="portrait"
-            android:theme="@style/ChatBackground"/>
-
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
             android:name=".PinActivity"
-            android:screenOrientation="portrait"
             android:noHistory="false"
-            android:theme="@style/MDLive_Red_Theme"/>
-
+            android:screenOrientation="portrait"
+            android:theme="@style/MDLive_Red_Theme" />
         <activity
             android:name=".UnlockActivity"
-            android:screenOrientation="portrait"
             android:noHistory="true"
+            android:screenOrientation="portrait"
             android:theme="@style/MDLive_Red_Theme" />
 
         <!-- [Login Broadcast Receiver will be received from Embed kit layer] -->
@@ -82,7 +78,7 @@
             android:enabled="true"
             android:exported="false" >
             <intent-filter>
-                <action android:name="com.mdlive.mobile.LoginBroadcastReceiver"/>
+                <action android:name="com.mdlive.mobile.LoginBroadcastReceiver" />
             </intent-filter>
         </receiver>
 
@@ -92,7 +88,7 @@
             android:enabled="true"
             android:exported="false" >
             <intent-filter>
-                <action android:name="com.mdlive.mobile.UnlockBroadcastReceiver"/>
+                <action android:name="com.mdlive.mobile.UnlockBroadcastReceiver" />
             </intent-filter>
         </receiver>
 
@@ -103,6 +99,7 @@
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="com.mdlive.mobile" />
             </intent-filter>
         </receiver>
@@ -110,12 +107,12 @@
 
         <service
             android:name=".gcm.MDLiveRegistrationIntentService"
-            android:exported="false">
+            android:exported="false" >
         </service>
 
         <activity
             android:name="com.vsee.activity.CallActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -124,17 +121,15 @@
         <activity
             android:name="com.facebook.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".gcm.NotificationHandler"
-             >
+        <activity android:name=".gcm.NotificationHandler" >
         </activity>
         <activity
             android:name=".gcm.GCMNotificationDialog"
-            android:theme="@style/MDLive_Dialog_Theme"
-            >
+            android:theme="@style/MDLive_Dialog_Theme" >
         </activity>
+
         <receiver
-            android:name="com.mdlive.mobile.gcm.GcmBroadcastReceiver"
+            android:name=".gcm.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
 
@@ -144,6 +139,7 @@
                 <category android:name="com.mdlive.mobile" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>

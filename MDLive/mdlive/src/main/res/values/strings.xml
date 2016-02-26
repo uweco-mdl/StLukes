@@ -47,6 +47,7 @@
     <string name="mdl_ada_back_button">Back</string>
     <string name="mdl_user_profile_state">State</string>
     <string name="mdl_user_address_state">Address State</string>
+    <string name="title_activity_temporary">temporary</string>
 
 
 
