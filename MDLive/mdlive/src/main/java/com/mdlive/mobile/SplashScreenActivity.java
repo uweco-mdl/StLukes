@@ -29,6 +29,7 @@ import com.mdlive.embedkit.global.MDLiveConfig.ENVIRON;
 import com.mdlive.embedkit.global.MDLiveConfig.SIGNALS;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.mobile.gcm.MDLiveRegistrationIntentService;
+import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.IntegerConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
@@ -62,13 +63,14 @@ public class SplashScreenActivity extends Activity {
 
         // listen for EmbedKit exit signal and respond accordingly
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, new IntentFilter(SIGNALS.EXIT_SIGNAL.name()));
-        getTracker();
+
         mProgressDialog = MdliveUtils.getFullScreenProgressDialog(this);
 
         /* Select the environment type here : */
         env = ENVIRON.STAGE;
         // ******************************************
         MDLiveConfig.setData(env);
+        getTracker();
         ClearBaylorCache();
         registerGCMForMDLiveApplication();
         makeUpdateAlertCall();
@@ -457,6 +459,7 @@ public class SplashScreenActivity extends Activity {
         if (tracker == null) {
             GoogleAnalytics googleAnalytics = GoogleAnalytics.getInstance(this);
             googleAnalytics.enableAutoActivityReports(getApplication());
+            googleAnalytics.newTracker(AppSpecificConfig.GOOGLE_ANALYTICS_SECRET_KEY);
             tracker = googleAnalytics.newTracker(R.xml.analytics);
             tracker.enableExceptionReporting(false);
             final Thread.UncaughtExceptionHandler defaultUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
