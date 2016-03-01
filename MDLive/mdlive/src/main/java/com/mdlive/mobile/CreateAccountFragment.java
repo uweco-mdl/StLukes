@@ -95,8 +95,7 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                showProgressDialog();
+                super.onPageStarted(view, url, favicon);;
 
                 //List<NameValuePair> params = null;
                 //Replaced Deprecated classes with new class.
@@ -149,7 +148,6 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                hideProgressDialog();
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     mWebView.evaluateJavascript("javascript:getUserCredential('"+ username + "', '"+password+"');",null);
                 } else {
