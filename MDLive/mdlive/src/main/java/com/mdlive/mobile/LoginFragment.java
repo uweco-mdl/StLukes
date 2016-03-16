@@ -113,7 +113,6 @@ public class LoginFragment extends MDLiveBaseFragment {
         healthSystemTv = (TextView) view.findViewById(R.id.health_system_tv);
         loginContainerFl = (FrameLayout) view.findViewById(R.id.login_container_fl);
         mVideo = (VideoView) view.findViewById(R.id.welcomeVideo);
-        startVideo();
         mPasswordEditText.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -204,6 +203,11 @@ public class LoginFragment extends MDLiveBaseFragment {
 
     }
 
+    public void onResume()
+    {
+        super.onResume();
+        startVideo();
+    }
     public void startVideo()
     {
         //Creating MediaController

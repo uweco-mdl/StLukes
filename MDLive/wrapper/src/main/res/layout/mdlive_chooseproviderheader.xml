@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mylocation_background_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/docOnCalLinLay2"
+        style="@style/Get_Started_Field_Style">
+
+        <com.mdlive.embedkit.uilayer.sav.CircularNetworkImageView
+            android:id="@+id/ProfileImg"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dash_board_doctor_icon"
+            android:stateListAnimator="@null" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/PatientName"-->
+        <!--style="@style/chooseProviderTextStyle"-->
+        <!--android:layout_below="@+id/ProfileImg"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:tag="@string/mdltag_doctor_on_call"-->
+        <!--android:text="@string/mdl_doctor_on_call"-->
+        <!--android:textSize="24sp" />-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/ProfileImg"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white">
+
+            <Button
+                android:id="@+id/btn_see_first_available_doctor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/first_available_rounded_corner"
+                android:clickable="true"
+                android:stateListAnimator="@null"
+                android:tag="@string/mdltag_confirm_appointment_txt"
+                android:text="@string/mdl_see_doctor_on_call"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        style="@style/common_style_W_Match_M_Wrap"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="@dimen/dimen_10_dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/chatCoachHeaderTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:tag="@string/mdltag_coach_chat_intro"
+            android:text="@string/mdl_coach_chat_intro"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtFilter"
+            style="@style/chooseProviderTextStyle"
+            android:gravity="center"
+            android:tag="@string/mdltag_select_provider"
+            android:text="@string/mdl_select_provider"
+            android:textColor="@color/darkblack"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/filterTxt"
+            style="@style/chooseProviderTextStyle"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:tag="@string/mdltag_filter_txt"
+            android:text="@string/mdl_ada_filter_button"
+            android:textColor="@color/blue_text"
+            android:textSize="16sp" />
+    </FrameLayout>
+</LinearLayout>

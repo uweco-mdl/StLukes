@@ -1,0 +1,1560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mdl_app_name">MDLIVE</string>
+    <string name="mdl_application_splash_virtual_care">MDLIVE Atención virtual, dondequiera.</string>
+    <string name="mdl_doctor_list">DoctorList</string>
+    <string name="mdl_settings">Ajustes</string>
+    <string name="mdl_login">INICIAR SESIÓN</string>
+    <string name="mdl_virtual_care">Atención virtual, dondequiera.</string>
+    <string name="mdl_access_board">Acceso a médicos acreditados a cualquier hora todos los días</string>
+    <string name="mdl_forgot_username">¿Olvidó su nombre de usuario?</string>
+    <string name="mdl_username">Nombre de usuario</string>
+    <string name="mdl_password">Contraseña</string>
+    <string name="mdl_title_activity_home">HomeActivity</string>
+    <string name="mdl_title_video_home">Consulta por video</string>
+    <string name="mdl_invalid_credentials">Nombre de usuario o contraseña no válidos</string>
+    <string name="mdl_empty_credentials">Los campos de nombre de usuario y contraseña no deben estar vacíos</string>
+    <string name="mdl_home">Inicio</string>
+    <string name="mdl_welcome">Bienvenido</string>
+    <string name="mdl_sav">Programe una consulta</string>
+    <string name="mdl_mdlive_assist">MDLIVE Assist</string>
+    <string name="mdl_my_health">Mi salud</string>
+    <string name="mdl_message_center">Centro de mensajes</string>
+    <string name="mdl_symptom_checker">Verificador de síntomas</string>
+    <string name="mdl_my_account">Mi cuenta</string>
+    <string name="mdl_ok_upper">Aceptar</string>
+    <string name="mdl_Ok">Aceptar</string>
+    <string name="mdl_true_txt">verdadero</string>
+    <string name="mdl_binary_true">1</string>
+    <string name="mdl_binary_false">0</string>
+    <string name="mdl_delete">Borrar</string>
+    <string name="mdl_please_wait">Espere</string>
+
+
+    <!--MDLive Header-->
+    <string name="mdl_thankkyou_phone_appoint_txt">Gracias por solicitar una consulta con %1$s! El médico se comunicará con usted a la brevedad.</string>
+    <string name="mdl_ada_hamburger">Navegado </string>
+    <string name="mdl_ada_bell">Notificación</string>
+    <string name="mdl_ada_back_button">Atrás</string>
+    <string name="mdl_ada_profile_button">Imagen del perfil</string>
+    <string name="mdl_ada_pin_one">uno</string>
+    <string name="mdl_ada_pin_two">Dos</string>
+    <string name="mdl_ada_pin_three">Tres</string>
+    <string name="mdl_ada_pin_four">Cuatro</string>
+    <string name="mdl_ada_pin_five">Cinco</string>
+    <string name="mdl_ada_pin_six">Seis</string>
+    <string name="mdl_ada_tick_button">Listo</string>
+    <string name="mdl_ada_close_button">Cerrar</string>
+    <string name="mdl_ada_filter_button">Filtrar</string>
+    <string name="mdl_ada_dropdown">Lista desplegable</string>
+    <string name="mdl_ada_seethisdoctor_button">Botón Ver a un médico ahora</string>
+    <string name="mdl_ada_talktodoctor_button">Botón Hablar con este médico ahora</string>
+    <string name="mdl_ada_datepicker_providerprofile_button">Selector de fecha para editar o cambiar la fecha</string>
+    <string name="mdl_ada_right_arrow_button">Siguiente</string>
+    <string name="mdl_ada_reply_button">Responder</string>
+    <string name="mdl_ada_takepic_button">Tomar una fotografía</string>
+    <string name="mdl_ada_gallery_button">Galería</string>
+    <string name="mdl_ada_video_btn_forward">con el botón de video </string>
+    <string name="mdl_ada_phone_btn_forward">con el botón de teléfono </string>
+    <string name="mdl_ada_edit"> Editar </string>
+    <string name="mdl_ada_delete"> Borrar </string>
+    <string name="mdl_ada_arrowup_photo_button">Tocar dos veces para agregar una foto</string>
+    <string name="mdl_ada_arrowdown_photo_button">Tocar dos veces para contraer la opción agregar una fotografía</string>
+    <!--MDLive summary-->
+    <string name="mdl_your_consultation">Su consulta</string>
+    <string name="mdl_summary">RESUMEN</string>
+    <string name="mdl_test">Prueba</string>
+    <string name="mdl_dollar_Amount49">49,00 USD</string>
+    <string name="mdl_rate_consulatation">TARIFA DE LA CONSULTA</string>
+    <string name="mdl_done">Listo</string>
+    <string name="mdl_dollar">USD</string>
+
+    <!-- sso activity-->
+    <string name="mdl_dollar_symbol">USD</string>
+    <string name="mdl_amount_zero">0,00</string>
+    <string name="mdl_error">Error</string>
+
+    <!--image gallery-->
+    <string name="mdl_image_name_upper">NOMBRE DE LA IMAGEN</string>
+    <string name="mdl_upload_upper">CARGAR</string>
+    <string name="mdl_delete_customer_successfully">Los documentos del cliente se eliminaron con éxito</string>
+
+
+    <!--Medical history-->
+    <string name="mdl_medical_history">Historia clínica</string>
+    <string name="mdl_last_update">Última actualización </string>
+    <string name="mdl_yes">Sí</string>
+    <string name="mdl_no">No</string>
+    <string name="mdl_pre_existing_conditions">Afecciones preexistentes</string>
+    <string name="mdl_no_conditions_reported">No se informaron \nafecciones preexistentes</string>
+    <string name="mdl_no_condition_reported">No se informaron afecciones</string>
+    <string name="mdl_pediatric_completed_txt">Finalizado</string>
+    <string name="mdl_pediatric_notcompleted_txt">Sin finalizar</string>
+    <string name="mdl_edit_upper">EDITAR</string>
+    <string name="mdl_medications">Medicamentos</string>
+    <string name="mdl_allergies">Alergias</string>
+    <string name="mdl_photos_upper">FOTOGRAFÍAS</string>
+    <string name="mdl_helpful_for_rashes">Útil para urticarias, cortes, etc.</string>
+    <string name="mdl_take_photo">Tomar una fotografía</string>
+    <string name="mdl_add_conditions">Agregar afecciones</string>
+    <string name="mdl_procedures">Procedimientos</string>
+    <string name="mdl_behaviour">Conducta</string>
+    <string name="mdl_health_conditions">Afecciones médicas</string>
+    <string name="mdl_behavioural_health_history">Historia clínica conductual</string>
+
+    <!-- payment -->
+    <string name="mdl_billing_info">Información de facturación</string>
+    <string name="mdl_payment_credit_card">Su tarjeta de crédito se usará solo para cubrir el costo de la \nconsulta, que se cobrará luego de que usted realice la consulta.</string>
+    <string name="mdl_expiration_date">Fecha de vencimiento</string>
+    <string name="mdl_mm_yy">00/00</string>
+    <string name="mdl_zip_code">Código postal</string>
+    <string name="mdl_payment_zipcode_hint">12345–7890</string>
+    <string name="mdl_card_type">¿Es una tarjeta FSA/HSA?</string>
+    <string name="mdl_apply_offer_code">Aplicar código de oferta</string>
+    <string name="mdl_payment_total">Total: 49,00 USD</string>
+    <string name="mdl_total_amount_in_doller">Total: USD</string>
+    <string name="mdl_HostedPCI_webview_loadurl">file:///android_asset/htdocs/index.html</string>
+    <string name="mdl_expiration_month_year">Mes/año de vencimiento</string>
+    <string name="mdl_Month_year">MM/aa</string>
+    <string name="mdl_MM_yyyy">MM/aaaa</string>
+    <string name="mdl_please_enter_valid_zipcode">Introduzca un código postal válido.</string>
+    <string name="mdl_please_fill_required_fields">Complete todos los campos obligatorios</string>
+    <string name="mdl_exception_in_thread">Excepción en el proceso</string>
+    <string name="mdl_cancel_upper">CANCELAR</string>
+    <string name="mdl_pharmacy_details_updated">Detalles de la farmacia actualizados</string>
+    <string name="mdl_credit_header">Tarjeta de crédito</string>
+
+
+    <!--pending visits-->
+    <string name="mdl_consultation_header">Su consulta</string>
+    <string name="mdl_welcome_back">¡Bienvenido de nuevo!</string>
+    <string name="mdl_resume_saved_consultation">Continúe con la consulta guardada para hablar con su médico</string>
+    <string name="mdl_consultation_info">INFORMACIÓN SOBRE LA CONSULTA</string>
+    <string name="mdl_patient">Paciente:</string>
+    <string name="mdl_reason">Motivo:</string>
+    <string name="mdl_doctor">Médico:</string>
+    <string name="mdl_choosen_pharmacy_upper">FARMACIA ELEGIDA</string>
+    <string name="mdl_resume_consultation_txt">Continuar con la consulta</string>
+
+    <!-- Pharmacy search strings -->
+    <string name="mdl_ph_manual_search">BÚSQUEDA MANUAL</string>
+    <string name="mdl_ph_zipcode">código postal</string>
+    <string name="mdl_ph_or_str">O BIEN</string>
+    <string name="mdl_ph_Or_str">O bien</string>
+    <string name="mdl_empty_string"></string>
+    <string name="mdl_preferred">Preferido</string>
+
+    <!--choose provider-->
+    <string name="mdl_doctor_on_call">Médico de guardia</string>
+    <string name="mdl_average_wait">Tiempo de espera promedio: 6 min</string>
+    <string name="mdl_average_wait_dots">Espera promedio: …</string>
+    <string name="mdl_see_doctor_on_call">Ver un médico de guardia</string>
+    <string name="mdl_see_first_available_doctor">Elegir el primero disponible</string>
+    <string name="mdl_choose_other_doctor">Elegir otro disponible</string>
+    <string name="mdl_filter_upper">FILTRAR</string>
+    <string name="mdl_weight">Peso</string>
+    <string name="mdl_lbs">libras</string>
+    <string name="mdl_locating_available_doctors">buscar médicos disponibles</string>
+    <string name="mdl_telephone_number">Número de teléfono</string>
+    <string name="mdl_doctoroncall_txt">Médico de guardia es un servicio disponible las 24 horas por medio del cual\n puede hacer una consulta telefónica en el momento con el médico disponible.</string>
+    <string name="mdl_reason_txt">Hola, Prueba, ¿cuál parece ser el mejor problema\n del día del hoy?</string>
+    <string name="mdl_card_txt">Complete la información de su tarjeta de crédito a continuación:</string>
+    <string name="mdl_choose_provider">ELEGIR UN MÉDICO</string>
+    <string name="mdl_chat_with_coach">CHATEAR CON UN INSTRUCTOR</string>
+    <string name="mdl_available_txt"> Disponible las 24 horas por teléfono</string>
+    <string name="mdl_doctorOnCall_txt">Médico de guardia</string>
+    <string name="mdl_video_or_phone">Por video o teléfono</string>
+    <string name="mdl_phone">teléfono</string>
+    <string name="mdl_doctor_details">Perfil del proveedor</string>
+    <string name="mdl_general_practise">Medicina General</string>
+    <string name="mdl_capital_regional">Capital Regional\nMedical Center</string>
+    <string name="mdl_qualifications">Certificaciones</string>
+    <string name="mdl_specialties">Especialidades</string>
+    <string name="mdl_licensed_in">Colegiado en</string>
+    <string name="mdl_languages_spoken">Idiomas que habla</string>
+    <string name="mdl_provider_location">Ubicación</string>
+    <string name="mdl_education">Formación     </string>
+    <string name="mdl_about_me">Sobre mí     </string>
+    <string name="mdl_request_appointment">Solicitar una cita</string>
+    <string name="mdl_with_patient">Con un paciente</string>
+    <string name="mdl_date_time_format">aaaa-MM-dd HH:mm:ss</string>
+    <string name="mdl_make_appointment_txt">Solicitar una cita</string>
+    <string name="mdl_confirm_appointment_txt">Confirmar una cita</string>
+    <string name="mdl_time_for_visit_txt">Hora de la consulta</string>
+    <string name="mdl_other_available_time">Otros horarios disponibles</string>
+    <string name="mdl_notimeslots_txt">Este médico no está disponible en esa fecha. Seleccione otra fecha o solicite una cita.</string>
+
+    <string name="mdl_currently_with_patient">Con un paciente en este momento</string>
+    <string name="mdl_not_available">no disponible</string>
+    <string name="mdl_choose">Elegir </string>
+    <string name="mdl_select_provider">O elegir un proveedor específico a continuación</string>
+    <string name="mdl_select_provider_olyfilter">Elegir un proveedor específico a continuación</string>
+    <string name="mdl_coach_chat_intro">¿Necesita bajar de peso, dejar de fumar, bajar su nivel de estrés o controlar una afección crónica, como asma o diabetes? Busque un instructor médico y llame para programar una sesión de chat por video.</string>
+    <string name="mdl_health_coach">Instructor médico</string>
+    <string name="mdl_coach_details">DETALLES DEL INSTRUCTOR</string>
+    <string name="mdl_cignacoach_phonenumber">Llamada gratuita: %1$s</string>
+    <string name="mdl_cignacoach_data_error">No se pudo recuperar información sobre el instructor médico</string>
+
+    <!--Get Started-->
+    <string name="mdl_get_started">Información del paciente</string>
+    <string name="mdl_get_started_txt">EMPEZAR</string>
+    <string name="mdl_patientTxt">Paciente</string>
+    <string name="mdl_dateOfBirth">Fecha de nacimiento</string>
+    <string name="mdl_dateformat">mm/dd/aaaa</string>
+    <string name="mdl_plscalAlert_txt">Llame al %1$s  para agregar otro hijo.</string>
+    <string name="mdl_phonenumber">Número de teléfono</string>
+    <string name="mdl_disclaimertxt">Su número telefónico solo se utilizará si se requiere atención al cliente.</string>
+    <string name="mdl_nextBtn">Su número telefónico solo se utilizará si se requiere atención al cliente.</string>
+    <string name="mdl_gender">Sexo</string>
+    <!--Add Child-->
+    <string name="mdl_addChildBtn">Agregar hijo</string>
+    <string name="mdl_location">Ubicación actual</string>
+    <string name="mdl_next_btn">Siguiente</string>
+    <string name="mdl_arTxt">AR</string>
+    <string name="mdl_providerTypeTxt">Tipo de proveedor</string>
+    <string name="mdl_pediatricianTxt">Pediatra</string>
+    <string name="mdl_locationTxt">Mi ubicación</string>
+    <string name="mdl_markMarinoTxt">Mark Marino</string>
+    <string name="mdl_please_choose">Elija uno</string>
+    <string name="mdl_gone_to_emergency">Asistió a una sala de emergencias</string>
+    <string name="mdl_used_urgent_care">Utilizó atención de urgencia/clínica en local comercial</string>
+    <string name="mdl_seen_my_provider">Ver al proveedor en persona</string>
+    <string name="mdl_done_nothing">No hacer nada</string>
+    <string name="mdl_administrative_level1">área_administrativa_nivel_1</string>
+    <string name="mdl_provider_txt">Ingrese el número telefónico \nal que debemos comunicarnos:</string>
+    <string name="mdl_visit_txt"> Si no hubiera obtenido esta consulta el día de hoy,\n¿qué hubiera hecho?</string>
+    <string name="mdl_primary_txt"> ¿Tiene un proveedor de atención primaria?</string>
+    <string name="mdl_valid_phone_number">Ingrese un número telefónico válido.</string>
+    <string name="mdl_call_to_add_another_child">Llame al 1–888–818–0978 para \nagregar otro hijo.</string>
+    <string name="mdl_check_false">falso</string>
+    <string name="mdl_adult_share_account">El dependiente adulto prefiere no compartir esta cuenta</string>
+    <string name="mdl_getstarted">empezar</string>
+
+    <!--REASON-->
+
+    <string name="mdl_header_reason_txt">Motivo de la consulta</string>
+    <string name="mdl_subheader_therapist_txt">¿Cuál es el motivo por el que busca atención conductual? (Marque todas las respuestas que correspondan)</string>
+    <string name="mdl_subheader_reason_txt">¿Cuál es el motivo de la consulta?</string>
+    <string name="mdl_searchsymptom_txt">Buscar síntomas</string>
+    <string name="mdl_searchProvidernmae_txt">Buscar por nombre de proveedor</string>
+    <string name="mdl_acne_txt">Acné</string>
+    <string name="mdl_alcohol_txt">Abuso de alcohol</string>
+    <string name="mdl_allergy_txt">Conjuntivitis alérgica</string>
+    <string name="mdl_rihinits_txt">Rinitis alérgica</string>
+
+    <string name="mdl_anal_txt">Prurito anal</string>
+    <string name="mdl_anxiety_txt">Ansiedad</string>
+    <string name="mdl_arthritis_txt">Artritis</string>
+    <string name="mdl_asthma_txt">Asma</string>
+
+    <string name="mdl_atheletesfoot_txt">Pie de atleta</string>
+    <string name="mdl_bloodsputum_txt">Sangre en el esputo</string>
+    <string name="mdl_bloodstool_txt">Sangre en las heces</string>
+    <string name="mdl_bloodurine_txt">Sangre en la orina</string>
+    <string name="mdl_invalid_name">Nombre no válido</string>
+    <string name="mdl_invalid_symptom">Síntoma no válido</string>
+    <string name="mdl_no_results_found_txt">No se encontraron resultados para</string>
+    <string name="mdl_no_results_found_as_symptom_txt">enviar %1$s como su síntoma</string>
+    <string name="mdl_month">Mes</string>
+    <string name="mdl_days">Días</string>
+    <string name="mdl_enter_symptom">Introducir el síntoma</string>
+    <string name="mdl_Continue">Continuar</string>
+
+    <!--Location-->
+    <string name="mdl_locationHeader_txt">ACTUALIZAR UBICACIÓN</string>
+    <string name="mdl_locationSubHeader_txt">Actualice su ubicación a continuación.</string>
+    <string name="mdl_UseCurrentLocation_txt">Utilizar la ubicación actual</string>
+    <string name="mdl_zipCode_txt">Introducir un código postal</string>
+    <string name="mdl_state_txt">Estado</string>
+    <string name="mdl_update_location">ACTUALIZAR UBICACIÓN</string>
+    <string name="mdl_or_upper">O</string>
+    <string name="mdl_valid_zip">Introduzca un código postal válido.</string>
+    <string name="mdl_valid_zip_state">Introduzca un código postal válido o seleccione un estado.</string>
+    <string name="mdl_find_location_zipcode">No se pudo encontrar la ubicación por código postal.</string>
+    <string name="mdl_unable_get_location">¡No se pudo obtener su ubicación!</string>
+    <string name="mdl_administrative_area_level">área_administrativa_nivel_1</string>
+
+    <!--search provider-->
+    <string name="mdl_doctor_filters">Filtrar médicos</string>
+    <string name="mdl_provider_name">Nombre del proveedor</string>
+    <string name="mdl_any">Cualquiera</string>
+    <string name="mdl_sort_by">Ordenar por</string>
+    <string name="mdl_speciality">Especialidad</string>
+    <string name="mdl_located_in">Ubicado en</string>
+    <string name="mdl_florida">Florida</string>
+    <string name="mdl_fl">FL</string>
+    <string name="mdl_speaks">Idioma que habla</string>
+    <string name="mdl_txt_appointment_date">Fecha de la cita</string>
+    <string name="mdl_appointment_date">13 de mayo de 2015</string>
+    <string name="mdl_search">Buscar</string>
+    <string name="mdl_available_by">disponible_por</string>
+    <string name="mdl_provider_type">tipo_de_proveedor</string>
+    <string name="mdl_Sort_by">ordenar_por</string>
+    <string name="mdl_Speciality">especialidad</string>
+    <string name="mdl_searchprovider">buscarproveedor</string>
+    <string name="mdl_makeAppmtRequest">hacerAppmtRequest</string>
+    <string name="mdl_Speaks">idioma que habla</string>
+    <string name="mdl_Gender">sexo</string>
+    <string name="mdl_Key">Clave = </string>
+    <string name="mdl_value">, Valor = </string>
+    <string name="mdl_advanced_search_options">Opciones de búsqueda avanzada</string>
+    <string name="mdl_search_provider_name">Buscar por nombre de proveedor</string>
+    <string name="mdl_provider_type_caps">TIPO DE PROVEEDOR</string>
+    <string name="mdl_appointment_date_caps">FECHA DE LA CITA</string>
+    <string name="mdl_sort_by_caps">ORDENAR POR</string>
+    <string name="mdl_specialty_caps">ESPECIALIDAD</string>
+    <string name="mdl_located_in_caps">UBICADO EN</string>
+    <string name="mdl_speaks_caps">IDIOMA QUE HABLA</string>
+    <string name="mdl_gender_caps">SEXO</string>
+    <string name="mdl_available_by_caps">DISPONIBLE POR</string>
+    <string name="mdl_search_hint_hc">Buscar por nombre</string>
+    <string name="mdl_coach_type_hc">TIPO DE INSTRUCTOR</string>
+
+    <!--Family member-->
+    <string name="mdl_child_added">Hijo añadido</string>
+    <string name="mdl_legalparent_guardian">Yo,%1$s,  confirmo que soy el padre/tutor legal del menor antes mencionado.</string>
+    <string name="mdl_legalparent_guardian_formated">Yo,%1$s, confirmo que soy el padre/tutor legal del menor antes mencionado.</string>
+
+    <!-- VSee video consult -->
+    <string name="mdl_waiting_room_title">Sala de espera</string>
+    <string name="mdl_waiting_room_sit_relax">Siéntese y relájese.</string>
+    <string name="mdl_waiting_room_doctor_shortly">El médico lo atenderá a la brevedad.</string>
+    <string name="mdl_waiting_room_status_wait">Estado: Está esperando a que llegue el médico.</string>
+    <string name="mdl_waiting_room_estimated_time">El tiempo de espera promedio es de...</string>
+    <string name="mdl_temporary_placeholder">&quot;[reemplace esto]&quot;</string>
+    <string name="mdl_vsee_password">contraseña</string>
+    <string name="mdl_vsee_invalid_credentials">¡ERROR!\n\nCREDENCIALES DE VSEE NO VÁLIDAS</string>
+    <string name="mdl_wait_call_connect">Está esperando a que se conecte la llamada...</string>
+
+
+    <!--Pharmacy Package-->
+
+    <string name="mdl_my_pharmacy">MI FARMACIA</string>
+    <string name="mdl_change_pharmacy">Cambiar de farmacia</string>
+    <string name="mdl_choose_pharmacy">ELEGIR UNA FARMACIA</string>
+    <string name="mdl_pharmacy_opn">Nombre de la farmacia (opcional)</string>
+    <string name="mdl_current_loc_txt">Utilizar la ubicación actual</string>
+    <string name="mdl_manual_txt">BÚSQUEDA MANUAL</string>
+    <string name="mdl_search_pharm_txt">BUSCAR UNA FARMACIA</string>
+    <string name="mdl_manual_txt_small">Búsqueda manual</string>
+    <string name="mdl_enter_zip">Introducir un código postal</string>
+    <string name="mdl_enter_city">Introducir una ciudad</string>
+    <string name="mdl_select_stg">Seleccionar un estado</string>
+    <string name="mdl_find_pharmacy">Buscar una farmacia</string>
+    <string name="mdl_pharm_details">DETALLES DE LA FARMACIA</string>
+    <string name="mdl_addr_text">Dirección</string>
+    <string name="mdl_phone_txt">Teléfono</string>
+    <string name="mdl_distance_txt">Distancia</string>
+    <string name="mdl_getdir_text">Obtener dirección</string>
+    <string name="mdl_choose_phr_txt">Elegir una farmacia</string>
+    <string name="mdl_use_pharm_txt">Utilizar esta farmacia</string>
+    <string name="mdl_choose_pharm_txt">Elegir una farmacia diferente</string>
+    <string name="mdl_my_pharm_txt">Mi farmacia</string>
+    <string name="mdl_pharm_near_txt">FARMACIAS CERCANAS</string>
+    <string name="mdl_select_pharmcity">Seleccionar ciudad de la farmacia</string>
+    <string name="mdl_maps">Mapa</string>
+    <string name="mdl_previous_pharm_txt">Farmacia anterior</string>
+    <string name="mdl_default_pharm_text">Seleccione una farmacia en caso de que el médico le recete un medicamento.</string>
+    <string name="mdl_resume_consultation">Continuar con la consulta</string>
+    <string name="mdl_preferred_store">Tienda preferida</string>
+    <string name="mdl_Pharmacy_list_time">24 horas</string>
+    <string name="mdl_pharmacy_filters">Filtrar farmacias</string>
+    <string name="mdl_apply">APLICAR</string>
+    <string name="mdl_hint_pharmacy_name">Nombre de la farmacia</string>
+    <string name="mdl_Or">O bien</string>
+    <string name="mdl_city">Ciudad</string>
+    <string name="mdl_state">Estado</string>
+    <string name="mdl_select_state">Seleccionar un estado</string>
+    <string name="mdl_choosepharmacy">Elegir una farmacia</string>
+    <string name="mdl_no_results_found">No se encontraron resultados.</string>
+    <string name="mdl_list_results">Enumerar resultados</string>
+    <string name="mdl_no_pharmacies_listed">No hay farmacias que mostrar en su ubicación</string>
+    <string name="mdl_alert">Alerta</string>
+    <string name="mdl_input_city">Ingrese una ciudad</string>
+    <string name="mdl_input_state">Seleccione un estado</string>
+    <string name="mdl_input_state_zip">Elija cualquier estado/código postal para proceder a la búsqueda.</string>
+    <string name="mdl_not_find_pharmacy_zip">Lamentablemente, no pudimos encontrar %1$s en el %2$s código postal. Verifique el código postal de la farmacia o realice una búsqueda por ciudad y estado.</string>
+    <string name="mdl_not_find_pharmacy_state">&quot;Lamentablemente, no pudimos encontrar %1$s cerca %2$s, %3$s</string>
+    <string name="mdl_input_state_city">Introduzca un código postal o una ciudad y un estado.</string>
+    <string name="mdl_my_pharmacy_addressline_one">Walgreens Pharmacy</string>
+    <string name="mdl_my_pharmacy_addressline_two">1800 Anywhere Road</string>
+    <string name="mdl_my_pharmacy_addressline_three">Sunrise, FL 33325</string>
+    <string name="mdl_my_pharmacy_addressline_four">(555) 555 3165</string>
+    <string name="mdl_my_pharmacy_opening_time">Horario de atención de 7:00 a.m. a 12:00 a.m.</string>
+
+    <!-- My Health -->
+    <string name="mdl_my_health_txt">Historia clínica</string>
+    <string name="mdl_my_health_preexisting">¿Tiene alguna afección médica preexistente? (p. ej., diabetes)</string>
+    <string name="mdl_my_health_medications">¿Toma algún medicamento?</string>
+    <string name="mdl_my_health_allergies">¿Tiene algún tipo de alergia?</string>
+    <string name="mdl_my_health_procedures">¿Se sometió a algún procedimiento?</string>
+    <string name="mdl_my_health_add_photo">Agregar una fotografía\n(útil para urticarias, cortes, etc.)</string>
+    <string name="mdl_add_photo">Agregar una fotografía</string>
+    <string name="mdl_my_health_helpful">Útil para urticarias, cortes, etc.</string>
+
+    <string name="mdl_add_medical_condition">AFECCIONES PREEXISTENTES</string>
+    <string name="mdl_add_condition_with_eg_hint">Agregar afección, p. ej., diabetes</string>
+    <string name="mdl_add_condition_hint">Agregar afecciones</string>
+    <string name="mdl_title_activity_add_conditions">Agregar afecciones</string>
+    <string name="mdl_add_allergy">MIS ALERGIAS</string>
+    <string name="mdl_add_allergies_with_eg_hint">Agregar alergia, p. ej., penicilina</string>
+    <string name="mdl_add_allergies_hint">Agregar alergias</string>
+    <string name="mdl_add_meidations_with_eg_hint">Agregar medicamentos</string>
+    <string name="mdl_medication_already_exist">El medicamento que introdujo ya se encuentra en su historia clínica.</string>
+    <string name="mdl_allergy_already_exist">La alergia que introdujo ya se encuentra en su historia clínica.</string>
+    <string name="mdl_add_medications_hint">Agregar medicamentos</string>
+    <string name="mdl_add_medication">MIS MEDICAMENTOS</string>
+    <string name="mdl_add_new_medication">Agregar nuevos medicamentos</string>
+    <string name="mdl_add_procedure">MIS PROCEDIMIENTOS</string>
+    <string name="mdl_last_update_txt">Última actualización:  </string>
+    <string name="mdl_add_medication_hint">Agregar medicamento, p. ej., ibuprofeno</string>
+    <string name="mdl_dosage">Dosis</string>
+    <string name="mdl_once">Una vez</string>
+    <string name="mdl_hourly">Cada hora</string>
+    <string name="mdl_myrecords_add_photo">Agregar una fotografía</string>
+    <string name="mdl_norecords_added">No se agregaron registros</string>
+    <string name="mdl_add_records_txt_1">Cuando agregue registros médicos,</string>
+    <string name="mdl_add_records_txt_2">los podrá ver aquí.</string>
+
+    <string name="mdl_age_check1">¿Está embarazada o existe la posibilidad de que lo estuviera?</string>
+    <string name="mdl_age_check2">¿Está amamantando?</string>
+    <string name="mdl_condition_already_exist">La afección que introdujo ya se encuentra en su historia clínica.</string>
+    <string name="mdl_patient_name">Nombre del paciente</string>
+    <string name="mdl_save">Guardar</string>
+    <string name="mdl_existing_condition">La afección que introdujo ya existe</string>
+    <string name="mdl_existing_medication">El medicamento que introdujo ya existe</string>
+    <string name="mdl_existing_allergy">La alergia que introdujo ya existe</string>
+    <string name="mdl_condition">afección</string>
+    <string name="mdl_medication">medicamento</string>
+    <string name="mdl_allergy">alergia</string>
+    <string name="mdl_conditions">afecciones</string>
+    <string name="mdl_allergies_hint">alergias</string>
+    <string name="mdl_medications_hint">medicamentos</string>
+    <string name="mdl_no_internet_connection">No hay conexión a Internet</string>
+    <string name="mdl_internal_server_error">Error interno del servidor</string>
+    <string name="mdl_unprocessable_entity_error">Error no manipulable de la entidad</string>
+    <string name="mdl_page_not_found">Página no encontrada</string>
+    <string name="mdl_status_code">Código de estado: </string>
+    <string name="mdl_server_response">Respuesta del servidor: </string>
+    <string name="mdl_no_medications_reported">No se informaron medicamentos</string>
+    <string name="mdl_no_allergies_reported">No se informaron alergias</string>
+    <string name="mdl_no_procedures_reported">No se informaron procedimientos</string>
+    <string name="mdl_my_record">Mis registros</string>
+
+    <!-- Pediatric -->
+    <string name="mdl_pediatric_header_text">PERFIL PEDIÁTRICO</string>
+    <string name="mdl_pediatric_please_text">Complete el perfil pediátrico a continuación:</string>
+    <string name="mdl_pediatric_Birth_Weight_text">PESO AL NACIMIENTO</string>
+    <string name="mdl_pediatric_current_Weight_text">PESO ACTUAL EN LIBRAS</string>
+    <string name="mdl_pediatric_lbs_text">libras</string>
+    <string name="mdl_pediatric_delivery_text">TIPO DE NACIMIENTO</string>
+    <string name="mdl_pediatric_diet_text">ALIMENTACIÓN ACTUAL</string>
+    <string name="mdl_pediatric_premature_text">Parto prematuro</string>
+    <string name="mdl_pediatric_select_hint">Seleccionar</string>
+    <string name="mdl_pediatric_birth_describe">Ofrezca una descripción</string>
+    <string name="mdl_pediatric_edt_last_shot">Ofrezca una explicación breve</string>
+    <string name="mdl_pediatric_smoking_text">Exposición al tabaco</string>
+    <string name="mdl_pediatric_childcare_text">Cuidado infantil fuera del hogar</string>
+    <string name="mdl_pediatric_mandatory_text">Todos los campos son obligatorios</string>
+    <string name="mdl_pediatric_siblings_text">Hermanos</string>
+    <string name="mdl_pediatric_last_shot">Última oportunidad</string>
+    <string name="mdl_pediatric_birthComplications_text">Complicaciones durante el nacimiento</string>
+    <string name="mdl_pediatric_newBornComplications_text">Complicaciones de recién nacido</string>
+    <string name="mdl_pediatric_jaundice_text">Ictericia</string>
+    <string name="mdl_pediatric_breathing_text">Problemas respiratorios</string>
+    <string name="mdl_pediatric_infections_text">Infecciones</string>
+    <string name="mdl_pediatric_colic_text">Cólicos</string>
+    <string name="mdl_pediatric_feeding_text">Problemas alimenticios</string>
+    <string name="mdl_pediatric_immunization_text">¿Tiene todas las vacunas?</string>
+    <string name="mdl_radio_yes_text">Sí</string>
+    <string name="mdl_radio_No_text">No</string>
+    <string name="mdl_pediatric_profile">Perfil pediátrico</string>
+    <string name="mdl_patient_under_age">El paciente tiene menos de 2 años</string>
+    <string name="mdl_patient_under_age_13">El paciente tiene menos de 12 años</string>
+    <string name="mdl_current_diet">Alimentación actual</string>
+    <string name="mdl_birth_complications_explanation">Explicación sobre las complicaciones durante el nacimiento</string>
+    <string name="mdl_last_shot">Última oportunidad</string>
+    <string name="mdl_immunization_upto_date">¿Tiene todas las vacunas?</string>
+    <string name="mdl_siblings">Hermanos</string>
+    <string name="mdl_Coming">Próximo</string>
+    <string name="mdl_AgeUnder2">El paciente tiene menos de 2 años</string>
+    <string name="mdl_AgeUnder13">El paciente tiene menos de 12 años</string>
+    <string name="mdl_pediatric_exercise_question">¿Hace ejercicios?</string>
+
+    <!-- Waiting Room -->
+
+    <string name="mdl_waiting_header">Sala de espera</string>
+    <string name="mdl_waiting_text">Siéntese y relájese,\n su consulta comenzará a la brevedad</string>
+    <string name="mdl_waiting_warn_text">No abandone esta pantalla</string>
+    <string name="mdl_waiting_warn_complete">No abandone esta pantalla</string>
+    <string name="mdl_waiting_provider_text">La consulta está por comenzar…</string>
+    <string name="mdl_number_one">1</string>
+    <string name="mdl_number_two">2</string>
+    <string name="mdl_number_three">3</string>
+    <string name="mdl_doctor_arrived">El médico ha llegado…</string>
+    <string name="mdl_waiting_doctor">Está esperando al médico...</string>
+    <string name="mdl_waiting_doctor_new">Está esperando al proveedor</string>
+    <string name="mdl_health_tip_one">Consejo sobre salud nº 1</string>
+    <string name="mdl_health_tip_one_title">Haga más ejercicio todos los días</string>
+    <string name="mdl_health_tip_one_content">Empiece con algo simple, como estacionarse en el rincón más lejano del estacionamiento para que tenga que caminar más hasta la puerta. Suba uno o dos pisos por las escaleras en lugar de utilizar el ascensor. Si utiliza transporte público, bájese en la parada anterior y camine hasta su destino. Salga a caminar durante el almuerzo. O camine con su pareja después del trabajo. Esto ofrece otra ventaja: relajación y reducción del estrés.</string>
+
+    <!-- Start Visit -->
+
+    <string name="mdl_time_for_visit">¡Ya es hora de su consulta!</string>
+    <string name="mdl_time_for_visit_description">Haga clic en el botón de abajo para empezar su cita. Si por algún motivo se interrumpe la llamada, el proveedor le llamará al número que dejó registrado.</string>
+    <string name="mdl_start_visit">Comenzar la consulta</string>
+
+
+    <string name="mdl_terms_check_text_desc">Términos y condiciones</string>
+    <string name="mdl_privacy_check_text_desc">Política de privacidad</string>
+
+
+    <!-- Radio Button Desc text for ada complaints-->
+    <string name="mdl_my_health_preexisting_radio_desc_yes">¿Tiene alguna afección médica preexistente? (p. ej., diabetes) Sí</string>
+    <string name="mdl_my_health_preexisting_radio_desc_No">¿Tiene alguna afección médica preexistente? (p. ej., diabetes) No</string>
+    <string name="mdl_my_health_medications_radio_desc_Yes">¿Toma algún medicamento? Sí</string>
+    <string name="mdl_my_health_medications_radio_desc_No">¿Toma algún medicamento? No</string>
+    <string name="mdl_my_health_allergies_radio_desc_Yes">¿Tiene algún tipo de alergia? Sí</string>
+    <string name="mdl_my_health_allergies_radio_desc_No">¿Tiene algún tipo de alergia? No</string>
+    <string name="mdl_my_health_procedures_radio_desc_Yes">¿Se sometió a algún procedimiento? Sí</string>
+    <string name="mdl_my_health_procedures_radio_desc_No">¿Se sometió a algún procedimiento? No</string>
+    <string name="mdl_primary_txt_radio_desc_Yes"> ¿Tiene un proveedor de atención primaria? Sí</string>
+    <string name="mdl_primary_txt_radio_desc_No"> ¿Tiene un proveedor de atención primaria? No</string>
+
+
+    <string name="mdl_age_check1_radio_desc_Yes">¿Está embarazada o existe la posibilidad de que lo esté? Sí</string>
+    <string name="mdl_age_check1_radio_desc_No">¿Está embarazada o existe la posibilidad de que lo esté? No</string>
+    <string name="mdl_age_check2_radio_desc_Yes">¿Está amamantando? Sí</string>
+    <string name="mdl_age_check2_radio_desc_No">¿Está amamantando? No</string>
+
+
+    <!-- State Name List-->
+    <string-array name="mdl_stateName">
+        <item>Alabama</item>
+        <item>Alaska</item>
+        <item>Samoa Americana</item>
+        <item>Arizona</item>
+        <item>Arkansas</item>
+        <item>California</item>
+        <item>Colorado</item>
+        <item>Connecticut</item>
+        <item>Delaware</item>
+        <item>Distrito de Columbia</item>
+        <item>Estados Federados de Micronesia</item>
+        <item>Florida</item>
+        <item>Georgia</item>
+        <item>Guam</item>
+        <item>Hawaii</item>
+        <item>Idaho</item>
+        <item>Illinois</item>
+        <item>Indiana</item>
+        <item>Iowa</item>
+        <item>Kansas</item>
+        <item>Kentucky</item>
+        <item>Louisiana</item>
+        <item>Maine</item>
+        <item>Maryland</item>
+        <item>Islas Marshall</item>
+        <item>Massachusetts</item>
+        <item>Michigan</item>
+        <item>Minnesota</item>
+        <item>Mississippi</item>
+        <item>Missouri</item>
+        <item>Montana</item>
+        <item>Nebraska</item>
+        <item>Nevada</item>
+        <item>New Hampshire</item>
+        <item>New Jersey</item>
+        <item>New Mexico</item>
+        <item>New York</item>
+        <item>North Carolina</item>
+        <item>North Dakota</item>
+        <item>Ohio</item>
+        <item>Oklahoma</item>
+        <item>Oregon</item>
+        <item>Palaos</item>
+        <item>Pennsylvania</item>
+        <item>Puerto Rico</item>
+        <item>Rhode Island</item>
+        <item>South Carolina</item>
+        <item>South Dakota</item>
+        <item>Tennessee</item>
+        <item>Texas</item>
+        <item>Utah</item>
+        <item>Vermont</item>
+        <item>Virginia</item>
+        <item>Washington</item>
+        <item>West Virginia</item>
+        <item>Wisconsin</item>
+        <item>Wyoming</item>
+    </string-array>
+
+    <!-- State Code List -->
+    <string-array name="mdl_stateCode">
+        <item>AL</item>
+        <item>AK</item>
+        <item>AM</item>
+        <item>AZ</item>
+        <item>AR</item>
+        <item>CA</item>
+        <item>CO</item>
+        <item>CT</item>
+        <item>DE</item>
+        <item>DC</item>
+        <item>FM</item>
+        <item>FL</item>
+        <item>GA</item>
+        <item>GU</item>
+        <item>HI</item>
+        <item>ID</item>
+        <item>IL</item>
+        <item>IN</item>
+        <item>IA</item>
+        <item>KS</item>
+        <item>KY</item>
+        <item>LA</item>
+        <item>ME</item>
+        <item>MD</item>
+        <item>MA</item>
+        <item>MH</item>
+        <item>MI</item>
+        <item>MN</item>
+        <item>MS</item>
+        <item>MO</item>
+        <item>MT</item>
+        <item>NE</item>
+        <item>NV</item>
+        <item>NH</item>
+        <item>NJ</item>
+        <item>NM</item>
+        <item>NY</item>
+        <item>NC</item>
+        <item>ND</item>
+        <item>OH</item>
+        <item>OK</item>
+        <item>O</item>
+        <item>PW</item>
+        <item>PA</item>
+        <item>PR</item>
+        <item>RI</item>
+        <item>SC</item>
+        <item>SD</item>
+        <item>TN</item>
+        <item>TX</item>
+        <item>UT</item>
+        <item>VT</item>
+        <item>VA</item>
+        <item>WA</item>
+        <item>WV</item>
+        <item>WI</item>
+        <item>WY</item>
+    </string-array>
+
+    <string-array name="mdl_dietlist">
+        <item>Alimentado con biberón</item>
+        <item>Amamantado</item>
+        <item>Alimentación completa</item>
+    </string-array>
+
+    <!--Drawer-->
+    <string name="mdl_drawer_open">Menú abierto</string>
+
+    <string name="mdl_drawer_close">Menú cerrado</string>
+
+    <string name="mdl_dashboard">Tablero</string>
+
+    <string name="mdl_appointments">Citas</string>
+
+    <string name="mdl_schedule_a_visit">Programe una consulta</string>
+
+    <string name="mdl_messages">Mensajes</string>
+
+    <string name="mdl_providers">Proveedores</string>
+
+    <string name="mdl_support">Ayuda y asistencia</string>
+    <string name="mdl_service_provided_by">Servicio proporcionado por</string>
+
+    <!-- Strings for Add Family Screen -->
+    <string name="mdl_age_error_message">El niño debe ser menor de 18 años.</string>
+    <string name="mdl_add_child">Agregar hijo</string>
+    <string name="mdl_child_must_be_younger_than">El niño debe ser menor de 18 años.</string>
+    <string name="mdl_first_name">Nombre</string>
+    <string name="mdl_last_name">Apellido</string>
+    <string name="mdl_date_of_birth">Fecha de nacimiento</string>
+    <string name="mdl_date_of_birth_hint">mm/dd/aaaa</string>
+    <string name="mdl_summary_txt">Yo, Michelle Marino, confirmo que soy la madre/tutor legal del menor antes mencionado.</string>
+    <string name="mdl_please_enter_mandetory_fileds">Complete todos los campos obligatorios.</string>
+    <string name="mdl_please_enter_login_fileds"> Para continuar, introduzca un usuario o correo electrónico válidos y una contraseña.</string>
+    <string name="mdl_please_enter_valid_fileds">Introduzca acreditaciones válidas.</string>
+    <string name="mdl_fileds">Deberá aparecer: Para continuar, introduzca un usuario o correo electrónico válidos y una contraseña.</string>
+    <string name="mdl_add_family_text">Agregar un miembro de la familia</string>
+    <string name="mdl_add_family_member_txt">Miembro de la familia</string>
+
+    <string name="mdl_summary_thankyou_txt">Gracias por elegir MDLIVE.</string>
+    <string name="mdl_thankyou_string">Gracias</string>
+
+    <string name="mdl_summary_string">Resumen</string>
+
+    <string name="mdl_next_steps_txt">PRÓXIMOS PASOS</string>
+    <string name="mdl_next_steps_content_txt">De ser necesario, recibirá un correo electrónico con la factura, la información de contacto y los detalles de los medicamentos recetados.</string>
+    <string name="mdl_reason_visit_no_result">No se encontraron resultados para %1$s\nsubmit %2$s como su síntoma</string>
+
+    <!-- Used in SSO Screen -->
+    <string name="mdl_user_details_missing">Lamentablemente, no pudimos procesar su información, inténtelo de nuevo.</string>
+    <string name="mdl_home_dialog_text">Su progreso no se guardará si abandona esta página.</string>
+    <string name="mdl_home_dialog_title">¿Abandonar [consulta médica]?</string>
+
+    <!--Choose Provider-->
+    <string name="mdl_choose_doctor">Elegir un médico</string>
+    <string name="mdl_averagewait">Espera promedio: …</string>
+    <string name="mdl_seedoctoroncall_btn">Ver un médico de guardia</string>
+    <string name="mdl_chooseotherdoctor">Elegir otro disponible</string>
+    <string name="mdl_filter_txt">FILTROS</string>
+
+    <string name="mdl_email_confirmation_text">Se requiere la confirmación del correo electrónico</string>
+    <string name="mdl_email_confirmation_detail_text">
+    MDLIVE requiere que los usuarios confirmen su dirección de correo electrónico antes de poder usar las características de correo electrónico. Esto ayuda a prevenir problemas con direcciones erróneas o correo basura.\n<br></br>Confirme su correo electrónico con estos fines:\n<br></br><br></br>\n<li>Recibir confirmaciones y recordatorios de citas</li>\n<li>Utilizar la herramienta Hacer una pregunta</li>\n<li>Solicitar el restablecimiento de la contraseña</li>
+   </string>
+    <string name="mdl_dismiss">Descartar</string>
+    <string name="mdl_email_unconfirmed">No se ha confirmado su correo electrónico</string>
+    <string name="mdl_username_email">Nombre de usuario o correo electrónico</string>
+    <string name="mdl_remember_me">Recordar mis datos</string>
+    <string name="mdl_pin_creation">Crear un NIP</string>
+    <string name="mdl_talk_to_doctor">Hablar con este médico ahora</string>
+
+    <string name="mdl_fragmentone">Este es el fragmento nº 1</string>
+    <string name="mdl_fragmenttwo">Este es el fragmento nº 2</string>
+    <string name="mdl_fragmentthree">Este es el fragmento nº 3</string>
+
+    <string name="mdl_family_history_back">Atrás</string>
+    <string name="mdl_family_history_title">MDLIVE</string>
+    <string name="mdl_family_history_save">Guardar</string>
+    <string name="mdl_my_family_history">HISTORIA CLÍNICA DE MI FAMILIA</string>
+    <string name="mdl_my_family_history_question">¿Algún miembro de su familia padece alguna de las siguientes afecciones? (Marque todas las que correspondan)</string>
+    <string name="mdl_my_family_history_checkbox_text">Diabetes</string>
+    <string name="mdl_my_family_history_other"> AGREGAR OTRAS</string>
+    <string name="mdl_my_family_history_other_add">Agregar</string>
+    <string name="mdl_family_history_txt">Historia clínica familiar</string>
+
+    <string name="mdl_my_family_history_relationship">Seleccionar</string>
+    <string-array name="mdl_my_family_history_relationship_arrays">
+        <item>Parentesco</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="mdl_life_style_save">Guardar</string>
+    <string name="mdl_life_style_title">MDLIVE</string>
+    <string name="mdl_mylifestyle">MI ESTILO DE VIDA</string>
+    <string name="mdl_life_style_height_text">Altura</string>
+    <string name="mdl_life_style_ft_text">pies</string>
+    <string name="mdl_life_style_in_text">pulgadas</string>
+    <string name="mdl_life_style_weight_text">Peso</string>
+    <string name="mdl_life_style_lbs_text">libras</string>
+    <string name="mdl_life_style_bmi_text">IMC</string>
+    <string name="mdl_life_style_bmi_value_text">4</string>
+    <string name="mdl_life_style_question_text">¿Duerme al menos 7 horas diarias?</string>
+
+    <string name="mdl_to_appint_call_txt">Está por comenzar su cita. El médico lo llamará a la brevedad. Si no recibe ninguna comunicación, llame a MDLIVE </string>
+
+
+    <string name="mdl_call_customer_service_small"> llame a atención al cliente.</string>
+    <string name="mdl_mdlive_call_center_text">centro de información telefónica</string>
+
+    <string name="mdl_behaviouralhealthhistory_smallcaps">Historia clínica conductual</string>
+    <string name="mdl_behaviouralhealthhistory">HISTORIA CLÍNICA CONDUCTUAL</string>
+    <string name="mdl_thankkyou_appoint_txt">Gracias por solicitar una cita.\n\nNos comunicaremos pronto con usted para establecer una hora que le convenga.</string>
+    <string name="mdl_behaviouralhealth_question_one">¿Alguna vez recibió un diagnóstico de alguna de las siguientes afecciones? (Marque todas las que correspondan)</string>
+    <string name="mdl_behaviouralhealth_question_options_one"> Abuso de alcohol</string>
+    <string name="mdl_behaviouralhealth_question_options_two"> Trastorno obsesivo-compulsivo (TOC)</string>
+    <string name="mdl_behaviouralhealth_question_options_three"> Ansiedad</string>
+    <string name="mdl_behaviouralhealth_question_options_four"> Ataques de pánico</string>
+    <string name="mdl_behaviouralhealth_question_options_five"> Trastorno bipolar</string>
+    <string name="mdl_behaviouralhealth_question_options_six"> Esquizofrenia</string>
+    <string name="mdl_behaviouralhealth_question_options_seven"> Depresión</string>
+    <string name="mdl_behaviouralhealth_question_options_eight"> Abuso de sustancias</string>
+    <string name="mdl_behaviouralhealth_question_two">¿Alguna vez fue hospitalizado para recibir un tratamiento de salud mental o abuso de sustancias? *</string>
+    <string name="mdl_behaviouralhealth_question_three">¿Cuándo?</string>
+    <string name="mdl_behaviouralhealth_question_four">¿Por cuánto tiempo?</string>
+    <string name="mdl_behaviouralhealth_question_five">¿Algún miembro de su familia recibió un diagnóstico de alguna de las siguientes afecciones? (Marque todas las que correspondan)</string>
+    <string name="mdl_behaviouralhealth_question_six">¿Algún miembro de su familia fue hospitalizado para recibir un tratamiento de salud mental o abuso de sustancias? *</string>
+    <string name="mdl_behaviouralhealth_question_seven">¿Cuál es su preferencia en cuanto a terapeutas?</string>
+    <string name="mdl_behaviouralhealthhistory_dummy_date">05/05/2015</string>
+    <string name="mdl_behaviouralhealthhistory_dummy_duration">p. ej., 1 semana/mes/año</string>
+
+    <string name="mdl_helpandsupport">AYUDA Y ASISTENCIA</string>
+    <string name="mdl_cancel">Cancelar</string>
+    <string name="mdl_submit">Enviar</string>
+    <string name="mdl_help_and_support_title">Ayuda y asistencia</string>
+    <string name="mdl_enter_your_question">Escriba su pregunta aquí…</string>
+    <string name="mdl_question_hint">P:</string>
+
+    <string name="mdl_imgdesc">imgdesc</string>
+
+    <string-array name="mdl_titles">
+        <item>Inicio</item>
+        <item>Tutoriales</item>
+        <item>Mis aplicaciones</item>
+        <item>Versiones de SO</item>
+        <item>Herramientas</item>
+        <item>Quiénes somos</item>
+    </string-array>
+    <string name="mdl_call_text">“Conéctese con un Especialista en servicios médicos de MDLIVE”.</string>
+    <string name="mdl_toolbar">Barra de herramientas</string>
+    <string name="mdl_toolbarback">Atrás</string>
+    <string name="mdl_call">Llamar</string>
+
+    <string name="mdl_relationship">PARENTESCO</string>
+    <string-array name="mdl_Relationship">
+        <item>Padre</item>
+        <item>Abuelo</item>
+        <item>Hermano</item>
+        <item>Hijo</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="mdl_counseling_preference">
+        <item>Masculino</item>
+        <item>Femenino</item>
+        <item>Sin preferencia</item>
+    </string-array>
+
+    <string name="mdl_family_history">Familia</string>
+
+    <string name="mdl_doneUpperCase">LISTO</string>
+    <string name="mdl_family_member">Miembros de la familia</string>
+    <string name="mdl_change_password">Cambiar contraseña</string>
+    <string name="mdl_card_number">NÚMERO DE TARJETA</string>
+    <string name="mdl_expiration_date_caps">FECHA DE VENCIMIENTO</string>
+    <string name="mdl_security_code_caps">CÓDIGO DE SEGURIDAD</string>
+    <string name="mdl_name_on_card_caps">NOMBRE EN LA TARJETA</string>
+
+
+    <string name="mdl_change_security_questions">Cambiar las preguntas de seguridad</string>
+    <string name="mdl_profile_info">Mi perfil</string>
+    <string name="mdl_change_pin">Cambiar el NIP</string>
+    <string name="mdl_billing_title">Información de facturación</string>
+    <string name="mdl_email_confirmation">Se requiere la confirmación del correo electrónico</string>
+    <string name="mdl_join_now">Unirse ahora</string>
+    <string name="mdl_sign_up">Inscribirse</string>
+    <string name="mdl_my_accounts">Mi cuenta</string>
+    <string name="mdl_account_details">Detalles de la cuenta</string>
+
+    <string name="mdl_create_free_account">Crear una cuenta GRATUITA</string>
+
+    <string name="mdl_please_confirm_pin">Confirmar el NIP</string>
+    <string name="mdl_pin_mismatch">Crear un NIP y confirmar el NIP deben ser iguales</string>
+    <string name="mdl_pin_creation_failed">Falló la creación de NIP</string>
+
+    <plurals name="mdl_messages">
+        <item quantity="zero">No hay mensajes</item>
+        <item quantity="one">% de mensaje nuevo</item>
+        <item quantity="other">% de mensajes nuevos</item>
+    </plurals>
+
+    <string name="mdl_no_upcoming_appoinments">No hay próximas citas</string>
+    <string name="mdl_personal_record_updated_today">Su Registro médico personal se actualizó hoy</string>
+    <string name="mdl_personal_record_updated_yesterday">Su Registro médico personal se actualizó ayer</string>
+    <string name="mdl_personal_record_updated_days_ago">Su Registro médico personal se actualizó hace %d días</string>
+
+    <!--Provider Details-->
+    <string name="mdl_providerDeatils_choose_doctor">Elegir %1$s</string>
+
+    <string name="mdl_forgot_password">Olvidé la contraseña</string>
+    <string name="mdl_sign_in">Registrarse</string>
+    <string name="mdl_closeBtn">Botón Cerrar</string>
+    <string name="mdl_hospital_affilations">Afiliaciones a hospitales</string>
+    <string name="mdl_prof_statement">Declaración del profesional</string>
+    <string name="mdl_pcp_title_text">Su proveedor de atención primaria es el médico al que consulta para los exámenes físicos anuales. Este no es un médico de telesalud.</string>
+    <string name="mdl_pcp_title">MÉDICO DE ATENCIÓN PRIMARIA</string>
+
+    <!-- Summary Screen -->
+    <string name="mdl_summary_qus_txt">¿Cómo calificaría su experiencia hoy?</string>
+    <string name="mdl_summary_qus_improve"> ¿De qué manera podemos mejorar?</string>
+    <string name="mdl_summary_feedback_txt">Introducir comentarios</string>
+    <string name="mdl_summary_need_assistance_txt"> ¿Necesita ayuda?</string>
+    <string name="mdl_see_a_doctor_now">Ver a un médico</string>
+    <string name="mdl_sign_out">Cerrar sesión</string>
+    <string name="mdl_share_app">Compartir esta aplicación</string>
+    <string name="mdl_summary_michelle_txt">%1$s, indicó que no tiene un proveedor de atención primaria.</string>
+    <string name="mdl_summary_comment_txt">¿Le gustaría recibir ayuda de nuestra red local para buscar un 
+médico que tenga su consultorio cerca?</string>
+    <string name="mdl_do_you_have_primary_care">¿Tiene un médico de atención \n primaria?</string>
+    <string name="mdl_doctor_visit">Consulta médica electrónica</string>
+    <string name="mdl_phone_to_call">Teléfono para llamar</string>
+    <string name="mdl_phone_consultation">Consulta telefónica</string>
+
+    <string name="mdl_continue_text">Continuar</string>
+
+
+    <string name="mdl_inbox">Bandeja de entrada</string>
+    <string name="mdl_sent">Enviado</string>
+    <string name="mdl_compose">Redactar</string>
+    <string name="mdl_gps_error_message">No podemos detectar su ubicación actual, inténtelo de nuevo más tarde.</string>
+
+
+    <string name="mdl_account">Cuenta</string>
+    <string name="mdl_billing">Factura</string>
+    <string name="mdl_family">Familia</string>
+
+    <string name="mdl_refine_search">OPCIONES DE BÚSQUEDA</string>
+    <string name="mdl_choose_provider_caps">ELEGIR PROVEEDOR</string>
+    <string name="mdl_no_messages_inbox_header">No hay mensajes</string>
+    <string name="mdl_no_messages_inbox_details">Cuando haya mensajes, los podrá ver aquí.</string>
+    <string name="mdl_no_messages_sent_header">No se enviaron mensajes</string>
+    <string name="mdl_no_messages_sent_details">Cuando envíe mensajes, los podrá ver aquí.</string>
+    <string name="mdl_no_messages_compose_details">Después de que haya terminado la consulta con un proveedor podrá redactar un mensaje.</string>
+    <string name="mdl_select_the_provider">Seleccione el proveedor al que desea enviar un mensaje</string>
+    <string name="mdl_last_visit">Última consulta: </string>
+
+    <!-- For Appointment Request Form Page -->
+    <string name="mdl_ideal_date">MEJOR FECHA</string>
+    <string name="mdl_next_available">MEJOR HORARIO</string>
+    <string name="mdl_best_number_to_contact">NÚMERO DE CONTACTO PREFERIDO</string>
+    <string name="mdl_submit_request_form">Enviar formulario de solicitud</string>
+    <string name="mdl_reason_for_visit">¿MOTIVO DE LA VISITA?</string>
+    <string name="mdl_additional_text">Comentarios o preocupaciones adicionales</string>
+    <string name="mdl_by_video">A través de video</string>
+    <string name="mdl_by_phone">A través de teléfono</string>
+    <string name="mdl_future_appointment_message"><b>Importante:</b> Cuando solicite una cita, trataremos de ponernos en contacto con el proveedor en su nombre para concertarla. Esta solicitud no garantiza una cita, y el horario estará sujeto a la disponibilidad del proveedor.</string>
+
+
+    <string name="mdl_no_prefered_store">Debe elegir una farmacia</string>
+    <string name="mdl_no_health_record">Debe actualizar su historia clínica</string>
+
+    <!-- My Accounts -->
+    <string name="mdl_email">CORREO ELECTRÓNICO</string>
+    <string name="mdl_current_password">CONTRASEÑA ACTUAL</string>
+    <string name="mdl_new_password">CONTRASEÑA NUEVA</string>
+    <string name="mdl_confirm_password">CONFIRMAR CONTRASEÑA</string>
+    <string name="mdl_confirmationTxt">Introduzca una contraseña nueva. Todos los campos son obligatorios.</string>
+    <string name="mdl_address">DIRECCIÓN</string>
+    <string name="mdl_phone_number_caps">NÚMERO DE TELÉFONO</string>
+    <string name="mdl_timezone">HUSO HORARIO</string>
+    <string name="mdl_preferred_signin">INICIO DE SESIÓN PREFERIDO</string>
+    <string name="mdl_preferred_language">IDIOMA PREFERIDO</string>
+    <string name="mdl_password_diffname">Debe ser distinto a su nombre de usuario.</string>
+    <string name="mdl_password_length">Debe contener entre 8 y 15 caracteres.</string>
+    <string name="mdl_username_length">Debe contener 6 caracteres como mínimo.</string>
+    <string name="mdl_password_alphanumeric_check">Debe contener por lo menos 1 letra</string>
+    <string name="mdl_password_confirmation_check">Debe ser igual que la confirmación.</string>
+    <string name="mdl_password_two_more_chars_check">No puede contener más de dos caracteres repetidos.</string>
+    <string name="mdl_password_special_chars">Se admiten caracteres especiales (&amp;,%,*,etc.).</string>
+    <string name="mdl_password_alpha_check">Debe contener por lo menos 1 letra</string>
+    <string name="mdl_username_specialcharacters_check">No debe contener caracteres especiales</string>
+    <string name="mdl_password_mandatory_fields">Todos los campos son obligatorios</string>
+    <string name="mdl_edit_caps">EDITAR</string>
+    <string name="mdl_credit_card_info">Información sobre la tarjeta de crédito</string>
+    <string name="mdl_address_toggle_txt">Misma dirección de facturación que la archivada:</string>
+    <string name="mdl_add_new_card">Agregar una nueva tarjeta de crédito</string>
+    <string name="mdl_add_card">Agregar tarjeta de crédito</string>
+    <string name="mdl_add_a_card">Agregar una tarjeta de crédito</string>
+    <string name="mdl_replace_card">Agregar una nueva tarjeta de crédito</string>
+    <string name="mdl_view_card">Ver tarjeta de crédito</string>
+    <string name="mdl_current_family_member">Miembros de la familia actuales</string>
+    <string name="mdl_add_new_family_member">Agregar un nuevo miembro de la familia</string>
+    <string name="mdl_security_question_1">PREGUNTA DE SEGURIDAD 1</string>
+    <string name="mdl_security_question_2">PREGUNTA DE SEGURIDAD 2</string>
+    <string name="mdl_answer_question_1">RESPUESTA A LA PREGUNTA 1</string>
+    <string name="mdl_answer_question_2">RESPUESTA A LA PREGUNTA 2</string>
+    <string name="mdl_address_line_1">LÍNEA DE DIRECCIÓN 1</string>
+    <string name="mdl_address_line_2">LÍNEA DE DIRECCIÓN 2</string>
+    <string name="mdl_city_caps">CIUDAD</string>
+    <string name="mdl_state_caps">ESTADO</string>
+    <string name="mdl_state_caps_mandatory">ESTADO*</string>
+    <string name="mdl_zip_caps">CÓDIGO POSTAL</string>
+    <string name="mdl_country_caps">PAÍS*</string>
+    <string name="mdl_current_address_caps">DIRECCIÓN ACTUAL</string>
+    <string name="mdl_emergency_contact_number_caps">NÚMERO DE CONTACTO DE EMERGENCIA</string>
+    <string name="mdl_phone_number">Número de teléfono</string>
+    <string name="mdl_first_name_caps">NOMBRE</string>
+    <string name="mdl_first_name_caps_mandatory">NOMBRE*</string>
+    <string name="mdl_middle_name_caps">SEGUNDO NOMBRE</string>
+    <string name="mdl_last_name_caps">APELLIDO</string>
+    <string name="mdl_last_name_caps_mandatory">APELLIDO*</string>
+    <string name="mdl_practice_name_caps">NOMBRE DE LA PRÁCTICA</string>
+    <string name="mdl_email_caps">CORREO ELECTRÓNICO</string>
+    <string name="mdl_email_address_caps">DIRECCIÓN CORREO ELECTRÓNICO</string>
+    <string name="mdl_user_name_caps">NOMBRE DE USUARIO</string>
+    <string name="mdl_relationship_caps">PARENTESCO</string>
+    <string name="mdl_phone_caps">TELÉFONO</string>
+    <string name="mdl_phone_caps_mandatory">TELÉFONO*</string>
+    <string name="mdl_street_address_caps">DIRECCIÓN</string>
+    <string name="mdl_address_line1_caps">LÍNEA DE DIRECCIÓN 1</string>
+    <string name="mdl_dob_caps">FECHA DE NACIMIENTO</string>
+    <string name="mdl_valid_emailtext">Utilice un correo electrónico válido</string>
+    <string name="mdl_please_call_customer">Llame a servicio al cliente para agregar a otros miembros de la familia.</string>
+    <string name="mdl_validation_email">Debe confirmar su correo electrónico en estos casos: \n\u2022 Cuando reciba confirmaciones de citas \n\u2022 Cuando solicite restablecer una contraseña \n\u2022 Cuando envíe mensajes seguros a los proveedores</string>
+    <string name="mdl_billing_info_txt">INFORMACIÓN DE FACTURACIÓN</string>
+    <string name="mdl_family_info_txt">MIEMBROS DE LA FAMILIA</string>
+
+    <!-- For Get started Page -->
+    <string name="mdl_my_location">Mi ubicación</string>
+    <string name="mdl_get_started_title">¿Para quién es esta consulta?</string>
+    <string name="mdl_provider_category">Médico familiar</string>
+    <string name="mdl_get_started_message_text">Ingrese un número telefónico donde el proveedor pueda llamarlo para realizar el seguimiento.</string>
+
+    <string name="mdl_to">Para:</string>
+    <string name="mdl_subject">Asunto:</string>
+    <string name="mdl_message">Mensaje</string>
+    <string name="mdl_compose_message">Redactar mensaje</string>
+
+    <string name="mdl_call_customer_service">Llamar a servicio al cliente</string>
+    <string name="mdl_ask_a_question">Hacer una pregunta</string>
+    <string name="mdl_new_question">Nueva pregunta</string>
+
+    <string name="mdl_email_confirmation_required">Se requiere confirmación del correo electrónico</string>
+    <string name="mdl_resend_email_confirmation">Volver a enviar confirmación del correo electrónico</string>
+
+    <string name="mdl_pict_by_camera">Elegir una fotografía de la cámara</string>
+    <string name="mdl_pict_by_gallery">Elegir una fotografía de la galería</string>
+
+    <string name="mdl_please_create_a_6_digit_pin">Cree un NIP de 6 dígitos</string>
+    <string name="mdl_access_your_phone_using_pin">Acceda a su cuenta en este teléfono con este\nNIP\nen lugar del nombre de usuario y de la contraseña.</string>
+
+    <string name="mdl_i_dont_want_to_use_pin">No quiero usar un NIP</string>
+    <string name="mdl_you_can_enable_your_screen">(Puede activar el NIP en otro momento a través de Mi cuenta)</string>
+
+    <string name="mdl_create_a_pin">Crear un NIP</string>
+    <string name="mdl_confirm_your_pin">Confirme su NIP</string>
+
+    <!-- For Billing Info Page -->
+    <string name="mdl_doctor_visit_total">Cantidad de consultas al médico:</string>
+    <string name="mdl_use_card_text">Utilizar la tarjeta archivada</string>
+    <string name="mdl_payment_instructions">Introduzca su información de pago</string>
+    <string name="mdl_security_code">Código de seguridad</string>
+    <string name="mdl_name_on_card">Nombre en la tarjeta</string>
+    <string name="mdl_ziptxt">Código postal</string>
+    <string name="mdl_ziptxtTitle">CÓDIGO POSTAL DE FACTURACIÓN</string>
+    <string name="mdl_payment_txt">PAGO</string>
+    <string name="mdl_hsa_card">Esta es una tarjeta HSA</string>
+    <string name="mdl_card_details">Últimos números de la tarjeta Mastercard</string>
+    <string name="mdl_visa_card_details">Últimos números de la tarjeta Visa</string>
+    <string name="mdl_discover_card_details">Últimos números de la tarjeta Discover</string>
+    <string name="mdl_amex_card_details">Últimos números de la tarjeta AMEX</string>
+    <string name="mdl_card_usage_message">Los servicios figurarán como MDLIVE Medical Group PA en su tarjeta de crédito.</string>
+
+    <string name="mdl_appointment_details">Detalles de la cita</string>
+    <string name="mdl_schedule_appoinment">Concertar una cita</string>
+    <string name="mdl_to_cancel_your_appointment">Para cancelar su cita</string>
+    <string name="mdl_cancelation_fee_may_apply">Se pueden aplicar tarifas de cancelación.</string>
+    <string name="mdl_start_appointment">Comenzar la cita</string>
+    <string name="mdl_cancel_appointment">Cancelar la cita</string>
+
+    <string name="mdl_consultation">Consulta</string>
+    <string name="mdl_gmt">GMT</string>
+
+    <string name="mdl_forgot_your_pin">¿Olvidó su NIP?</string>
+    <string name="mdl_enter_your_pin_to_unlock">Introduzca su NIP para desbloquear</string>
+    <string name="mdl_sign_in_with_user_name_and_password">Iniciar sesión con nombre de usuario y contraseña</string>
+
+    <string name="mdl_your_appointmant_has_started">Su cita ha comenzado.</string>
+    <string name="mdl_tap_here_to_enter">Toque aquí para entrar.</string>
+
+    <!-- My Health  -->
+
+    <string name="mdl_pharmacy">Farmacia</string>
+    <string name="mdl_visits">Visitas</string>
+    <string name="mdl_add_pcp_physician">Agregar un médico de atención primaria</string>
+    <string name="mdl_my_provider">Mi proveedor</string>
+    <string name="mdl_change_language">Cambiar el idioma</string>
+
+    <string name="mdl_medical_history_txt">HISTORIA CLÍNICA</string>
+    <string name="mdl_pharmacy_txt">FARMACIA</string>
+    <string name="mdl_providers_txt">PROVEEDORES</string>
+    <string name="mdl_visits_txt">CONSULTAS</string>
+
+    <!-- Thank you -->
+    <string name="mdl_thankyou_txt">¡Gracias por concertar una consulta!</string>
+    <string name="mdl_cancellation_information">Información de cancelación</string>
+    <string name="mdl_cancellation_instructions">Las citas se deben cancelar en las 24 horas previas a la hora de la cita para recibir reembolso.</string>
+
+    <!-- First Available -->
+    <string name="mdl_first_available">Primero disponible</string>
+    <string name="mdl_first_available_doctor">Primer médico disponible</string>
+    <string name="mdl_appointment_type_text">¿Desea que esta cita se realice por video o teléfono?</string>
+
+    <string name="mdl_add_family_member">Agregar miembro de la familia</string>
+
+
+    <string name="mdl_condition_not_found_txt">Nombre de la afección no encontrado. Verifique la ortografía o toque Agregar afección para agregarla.</string>
+    <string name="mdl_medication_not_found_txt">Nombre del medicamento no encontrado. Verifique la ortografía o toque Agregar medicamento para agregarlo.</string>
+    <string name="mdl_allergy_not_found_txt">Nombre de la alergia no encontrado. Verifique la ortografía o toque Agregar alergia para agregarla.</string>
+
+
+    <string name="mdl_add_procedures_text">Agregar procedimientos</string>
+    <string name="mdl_add_conditions_text">Agregar afecciones preexistentes</string>
+    <string name="mdl_add_other_procedure_text">Agregar procedimientos personalizados</string>
+    <string name="mdl_empty_conditions_reported">No se informaron\nafecciones preexistentes</string>
+    <string name="mdl_dosageTxt">Dosis</string>
+    <string name="mdl_select_surgery_txt">Seleccionar nombre de la cirugía</string>
+    <string name="mdl_procedure_other_txt">Otro</string>
+    <string name="mdl_year_txt">Año</string>
+
+    <string name="mdl_empty_conditions_reported_msg">Cuando agregue afecciones preexistentes, las podrá ver aquí.</string>
+    <string name="mdl_empty_medications_reported_msg">Cuando agregue medicamentos preexistentes, los podrá ver aquí.</string>
+    <string name="mdl_empty_allergies_reported_msg">Cuando agregue alergias preexistentes, las podrá ver aquí.</string>
+    <string name="mdl_empty_procedure_reported_msg">Cuando agregue procedimientos preexistentes, los podrá ver aquí.</string>
+
+    <string name="mdl_username_or_email">Nombre de usuario o correo electrónico</string>
+    <string name="mdl_please_confirm_your_pin">Confirme su NIP</string>
+    <string name="mdl_forgot_your_pin_lower">¿Olvidó su NIP?</string>
+    <string name="mdl_tap_below_to_reset_it">Toque a continuación para restablecerlo.</string>
+    <string name="mdl_reset_pin">Restablecer NIP</string>
+    <string name="mdl_forgot_pin">Olvidé el NIP</string>
+
+    <string name="mdl_male">Masculino</string>
+    <string name="mdl_female">Femenino</string>
+
+    <string name="mdl_connection_timeout_error_message">Se agotó el tiempo de espera. Verifique su conexión a la red o vuelva a intentarlo más tarde. Si el problema continúa, llame a la Mesa de Ayuda de MDLIVE al %1$s.</string>
+
+    <!-- Waiting Room Texts -->
+    <string name="mdl_did_you_know">¿Sabía que...?</string>
+
+    <string name="mdl_waiting_room_text_01">La razón de que los enemigos en el juego Angry Birds sean cerdos es que el juego se creó en la época de la epidemia de gripe porcina.</string>
+    <string name="mdl_waiting_room_text_02">El motivo por el que caminar por un bosque de pinos produce una sensación de frescura en los pulmones es un compuesto antiinflamatorio llamado α-Pineno, presente en las coníferas (árboles de pino).  Este compuesto también se utiliza como broncodilatador para tratar el asma.</string>
+    <string name="mdl_waiting_room_text_03">El cuerpo humano produce un promedio de 25 millones de células nuevas cada segundo. Es un poco menos que la población de Canadá... ¡cada segundo!</string>
+    <string name="mdl_waiting_room_text_04">En un área de 6,45 centímetros cuadrados (1 pulgada cuadrada) de nuestras manos, tenemos 2,74 metros (9 pies) de vasos sanguíneos, 600 sensores del dolor, 9.000 terminaciones nerviosas, 36 sensores de calor y 75 sensores de presión.</string>
+    <string name="mdl_waiting_room_text_05">Una persona adulta tiene un promedio de 5,6 litros (6 cuartos) de sangre.  Estos 5,6 litros de sangre circulan por todo el cuerpo tres veces cada minuto.</string>
+    <string name="mdl_waiting_room_text_06">Su corazón bombeará alrededor de 1 millón de barriles de sangre durante toda su vida. Eso es suficiente para llenar 2 grandes barcos cisterna.</string>
+    <string name="mdl_waiting_room_text_07">En la boca hay más bacterias que la población humana de los Estados Unidos y Canadá juntos.</string>
+    <string name="mdl_waiting_room_text_08">Las mujeres parpadean casi el doble de la cantidad de veces que los hombres.</string>
+    <string name="mdl_waiting_room_text_09">Su pulmón izquierdo es más pequeño que el derecho, para dejarle lugar al corazón.</string>
+    <string name="mdl_waiting_room_text_10">Un adulto tiene menos huesos que un bebé. Comenzamos nuestra vida con 350 huesos, pero debido a que los huesos se fusionan durante el crecimiento, terminamos con solo 206 ya de adultos.</string>
+    <string name="mdl_waiting_room_text_11">Los virus por lo general son 100 veces más pequeños que las bacterias.</string>
+    <string name="mdl_waiting_room_text_12">El fémur, o hueso del muslo, es el hueso más largo y fuerte del esqueleto humano.</string>
+    <string name="mdl_waiting_room_text_13">El estribo, en el oído medio, es el hueso más pequeño y ligero del esqueleto humano.</string>
+    <string name="mdl_waiting_room_text_14">El único hueso del cuerpo que no está conectado a otro es el hioides, un hueso en forma de V ubicado en la base de la lengua.</string>
+    <string name="mdl_waiting_room_text_15">Los primeros marcapasos cardíacos se conectaban a un tomacorriente</string>
+    <string name="mdl_waiting_room_text_16">Su corazón tiene el tamaño de las dos manos entrelazadas.</string>
+    <string name="mdl_waiting_room_text_17">El ritmo cardíaco promedio es unos 8 latidos por minuto más rápido en la mujer que en el hombre.</string>
+    <string name="mdl_waiting_room_text_18">Durante su vida, producirá suficiente saliva para llenar dos piscinas.</string>
+    <string name="mdl_waiting_room_text_19">Los ojos siempre tienen el mismo tamaño desde el nacimiento pero la nariz y las orejas nunca dejan de crecer.</string>
+    <string name="mdl_waiting_room_text_20">La nariz tiene la capacidad de recordar 50.000 aromas diferentes.</string>
+    <string name="mdl_waiting_room_text_21">El aire de un estornudo puede alcanzar velocidades de 161 km/h (100 mph) o más.</string>
+    <string name="mdl_waiting_room_text_22">Los ojos siempre tienen el mismo tamaño desde el nacimiento (pero la nariz y orejas nunca dejan de crecer).</string>
+    <string name="mdl_waiting_room_text_23">El ketchup (salsa catsup) se utilizó como medicamento en la década de 1800 para tratar la diarrea, entre otras cosas.</string>
+    <string name="mdl_waiting_room_text_24">La ortorexia nerviosa es un trastorno alimentario en el que la persona se obsesiona por consumir alimentos sanos.</string>
+    <string name="mdl_waiting_room_text_25">Una zanahoria de tamaño mediano tiene 25 calorías, 6 gramos de carbohidratos, 2 gramos de fibra y cero contenido de grasa.</string>
+    <string name="mdl_waiting_room_text_26">La palabra “salud” proviene del término latino “salus”, que significa “salvación”.</string>
+    <string name="mdl_waiting_room_text_27">Los minerales, como el calcio, el hierro y el sodio, constituyen 4 %  del peso corporal. A diferencia de los carbohidratos, las grasas y las proteínas, no proporcionan energía.</string>
+    <string name="mdl_waiting_room_text_28">Los huevos contienen las proteínas alimentarias de mayor calidad que se conocen. Todas las partes del huevo son comestibles, incluso la cáscara, que tiene un elevado contenido de calcio.</string>
+    <string name="mdl_waiting_room_text_29">Los humanos olemos “en estéreo”. Las señales aromáticas viajan desde cada fosa nasal a diferentes regiones del cerebro. Esto puede ayudar a la persona a determinar la dirección de donde proviene el aroma.</string>
+    <string name="mdl_see_your_visit">Podrá ver su historial de consultas aquí.</string>
+    <string name="mdl_no_prev_visits">No hay consultas anteriores</string>
+    <string name="mdl_provider_access_to_med_records">Los siguientes proveedores tienen acceso a sus registros médicos.</string>
+    <string name="mdl_consultation_starting">Inicio de la consulta</string>
+
+    <string name="mdl_provider_access_to_med_records_empty">Actualmente no tiene proveedores.</string>
+
+    <string name="mdl_no_compitable_app">No se encontraron aplicaciones compatibles para gestionar la característica.</string>
+
+    <string name="mdl_share_using">Compartir a través de</string>
+    <string name="mdl_share_details_text">La Aplicación MDLIVE le permite realizar una cita virtual con su médico desde su teléfono inteligente, las 24 horas del día, los 7 días de la semana, los 365 días del año. <href>mdlive.com/getapp</href></string>
+
+    <!-- Join now page -->
+
+    <string name="mdl_mdlive_text">Atención excepcional, dondequiera.</string>
+    <string name="mdl_already_a_member">¿Ya es miembro?</string>
+    <string name="mdl_signin_here">Inicie sesión aquí</string>
+
+    <!-- Medication page -->
+    <string name="mdl_remove">Quitar</string>
+    <string name="mdl_add_new">Agregar nuevo</string>
+
+    <string name="mdl_testing">probar</string>
+
+    <!-- Popup texts -->
+    <string name="mdl_enter_code">Introduzca su código de oferta</string>
+
+    <!-- Provider Affiliation page -->
+    <string name="mdl_affiliations">Afiliaciones</string>
+
+    <string name="mdl_email_confirmation_first_text">MDLIVE pide a los usuarios confirmar su dirección de correo electrónico antes que puedan usar las funciones del correo electrónico. Esto ayuda a evitar problemas por direcciones erróneas o correo no deseado.</string>
+    <string name="mdl_email_confirmation_second_text">Confirme su correo electrónico con estos fines:</string>
+    <string name="mdl_email_confirmation_third_text">• Recibir confirmaciones y recordatorios de citas</string>
+    <string name="mdl_email_confirmation_fourth_text">• Utilizar la herramienta Hacer una pregunta</string>
+    <string name="mdl_email_confirmation_fifth_text">Solicitar el restablecimiento de la contraseña</string>
+
+    <string name="mdl_LifeStyle">Estilo de vida</string>
+    <string name="mdl_spinnerdisplay">SpinnerDisplay</string>
+    <string name="mdl_pin">NIP</string>
+
+    <string-array name="mdl_lock_types">
+        <item>@string/mdl_pin</item>
+        <item>@string/mdl_password</item>
+    </string-array>
+    <string name="mdl_callnumber">18004006354</string>
+
+    <string name="mdl_large_text">Texto más grande</string>
+    <string name="mdl_small_text">Texto más chico</string>
+
+    <string name="mdl_update_credit_message">Actualice la información de su tarjeta de crédito a continuación:</string>
+
+    <string name="mdl_provider_arrived">El médico ha llegado</string>
+    <string name="mdl_required_params_missing">Faltan los parámetros requeridos</string>
+    <string name="mdl_primary_diagonsis">Diagnóstico primario</string>
+    <string name="mdl_loding_messages">Se están cargando los mensajes</string>
+    <string name="mdl_please_enter_your_old_pin">Introduzca su NIP anterior</string>
+    <string name="mdl_your_email_confirmation">No se ha confirmado su correo electrónico</string>
+    <string name="mdl_request_future_appointments">Solicitar citas futuras</string>
+    <string name="mdl_no_pharmacies_found">No se encontraron farmacias</string>
+
+    <string name="mdl_pcp_physician">Médico de atención primaria</string>
+    <string name="mdl_reason_for_visit_colon_text">Motivo de la consulta: </string>
+    <string name="mdl_primary_diagnosis">Diagnóstico primario: </string>
+    <string name="mdl_not_sure">No está seguro</string>
+    <string name="mdl_send_message_caps">ENVIAR MENSAJE</string>
+    <string name="mdl_reply_message_caps">RESPONDER</string>
+
+    <string name="mdl_aftercase_instructions_caps">INSTRUCCIONES PARA CUIDADOS POSTRATAMIENTO</string>
+    <string name="mdl_view_claim_form_caps">VER EL FORMARIO DE RECLAMACIÓN</string>
+    <string name="mdl_no_diagnosis">No se informaron diagnósticos</string>
+
+    <string name="mdl_pcp_added_succesfully">El médico de atención primaria se actualizó con éxito</string>
+    <string name="mdl_language_english">Inglés</string>
+
+    <string name="mdl_visit">Visita</string>
+    <string name="mdl_close">Cerrar</string>
+
+    <string name="mdli_ask_a_question_validation">No puede mandar un mensaje vacío.</string>
+    <string name="mdli_provider_since">Proveedor desde: </string>
+    <string name="mdl_help_number_if_assist_not_present">18889952183</string>
+
+
+    <!--OnCallSummary Screen-->
+    <string name="mdl_NXT_STEPS">Pasos siguientes</string>
+    <string name="mdl_Follow">Luego de su consulta</string>
+    <string name="mdl_Oncall_Summary">No es necesario que espere con la aplicación abierta.\n\nEl médico se comunicará con usted a la brevedad al %1$s</string>
+    <string name="mdl_escalate_header">Gracias por solicitar la atención al cliente.</string>
+    <string name="mdl_on_call_header">Gracias por solicitar una consulta con el médico de guardia. Su consulta telefónica está ahora en lista de espera.</string>
+    <string name="mdl_escalate_summary">No es necesario que espere con la aplicación abierta.</string>
+    <string name="mdl_escalate_phone_text">El próximo representante disponible se comunicará con usted a la brevedad al %1$s.</string>
+    <string name="mdl_oncall_dashboard_phone_text">El proveedor se comunicará con usted a la brevedad al \n%1$s</string>
+
+
+    <string name="mdl_first_available_doc">PRIMER MÉDICO DISPONIBLE</string>
+    <string-array name="mdl_countries_array">
+        <item>Estados Unidos</item>
+        <item>Andorra</item>
+        <item>Afganistán</item>
+        <item>Antigua y Barbuda</item>
+        <item>Anguila</item>
+        <item>Albania</item>
+        <item>Algeria</item>
+        <item>Samoa Estadounidense</item>
+        <item>Angola</item>
+        <item>Argentina</item>
+        <item>Armenia</item>
+        <item>Austria</item>
+        <item>Australia</item>
+        <item>Aruba</item>
+        <item>Azerbaiyán</item>
+        <item>Bahamas</item>
+        <item>Bahréin</item>
+        <item>Bangladés</item>
+        <item>Barbados</item>
+        <item>Bielorrusia</item>
+        <item>Bélgica</item>
+        <item>Benín</item>
+        <item>Bermuda</item>
+        <item>Bután</item>
+        <item>Isla Bouvet</item>
+        <item>Bolivia</item>
+        <item>Bosnia-Herzegovina</item>
+        <item>Botsuana</item>
+        <item>Brasil</item>
+        <item>Territorio Oceánico Indio Británico</item>
+        <item>Brunéi Darussalam</item>
+        <item>Bulgaria</item>
+        <item>Burkina Faso</item>
+        <item>Burundi</item>
+        <item>Camboya</item>
+        <item>Camerún</item>
+        <item>Canadá</item>
+        <item>Cabo Verde</item>
+        <item>Islas Caimán</item>
+        <item>República Centroafricana</item>
+        <item>Chad</item>
+        <item>Chile</item>
+        <item>China</item>
+        <item>Isla de Navidad</item>
+        <item>Islas Cocos (Keeling)</item>
+        <item>Colombia</item>
+        <item>Comoras</item>
+        <item>Congo</item>
+        <item>Islas Cook</item>
+        <item>Costa Rica</item>
+        <item>Croacia</item>
+        <item>Cuba</item>
+        <item>Chipre</item>
+        <item>República Checa</item>
+        <item>Dinamarca</item>
+        <item>Yibuti</item>
+        <item>Dominica</item>
+        <item>República Dominicana</item>
+        <item>Timor del Este</item>
+        <item>Ecuador</item>
+        <item>Egipto</item>
+        <item>El Salvador</item>
+        <item>Guinea Ecuatoriana</item>
+        <item>Estonia</item>
+        <item>Etiopía</item>
+        <item>Islas Malvinas</item>
+        <item>Islas Feroé</item>
+        <item>Fiyi</item>
+        <item>Finlandia</item>
+        <item>Antigua Unión Soviética</item>
+        <item>Francia</item>
+        <item>Francia (Territorio Europeo)</item>
+        <item>Guinea Francesa</item>
+        <item>Territorios Franceses del Sur</item>
+        <item>Gabón</item>
+        <item>Gambia</item>
+        <item>Georgia</item>
+        <item>Islas Georgias del Sur y Sándwich del Sur</item>
+        <item>Alemania</item>
+        <item>Ghana</item>
+        <item>Gibraltar</item>
+        <item>Gran Bretaña/Reino Unido</item>
+        <item>Grecia</item>
+        <item>Groenlandia</item>
+        <item>Granada</item>
+        <item>Guadalupe (Francia)</item>
+        <item>Guatemala</item>
+        <item>Guam (EE. UU.)</item>
+        <item>Guinea</item>
+        <item>Guinea-Bissau</item>
+        <item>Guyana</item>
+        <item>Islas Heard y McDonald</item>
+        <item>Haití</item>
+        <item>Honduras</item>
+        <item>Hong Kong</item>
+        <item>Hungría</item>
+        <item>Islandia</item>
+        <item>India</item>
+        <item>Indonesia</item>
+        <item>Irak</item>
+        <item>Irán</item>
+        <item>Irak</item>
+        <item>Irlanda</item>
+        <item>Israel</item>
+        <item>Italia</item>
+        <item>Costa de Marfil (Cote D\'lvoire)</item>
+        <item>Jamaica</item>
+        <item>Japón</item>
+        <item>Jordania</item>
+        <item>Kazajistán</item>
+        <item>Kenia</item>
+        <item>Kiribati</item>
+        <item>Kuwait</item>
+        <item>Kirguistán</item>
+        <item>Laos</item>
+        <item>Letonia</item>
+        <item>Líbano</item>
+        <item>Lesoto</item>
+        <item>Liberia</item>
+        <item>Libia</item>
+        <item>Liechtenstein</item>
+        <item>Lituania</item>
+        <item>Luxemburgo</item>
+        <item>Macao</item>
+        <item>Macedonia</item>
+        <item>Madagascar</item>
+        <item>Malaui</item>
+        <item>Malasia</item>
+        <item>Maldivas</item>
+        <item>Mali</item>
+        <item>Malta</item>
+        <item>Islas Marshall</item>
+        <item>Martinica (Francia)</item>
+        <item>Mauritania</item>
+        <item>Mauricio</item>
+        <item>Mayotte</item>
+        <item>México</item>
+        <item>Micronesia</item>
+        <item>Moldavia</item>
+        <item>Mónaco</item>
+        <item>Mongolia</item>
+        <item>Mozambique</item>
+        <item>Birmania</item>
+        <item>Namibia</item>
+        <item>Nepal</item>
+        <item>Nauru</item>
+        <item>Países Bajos</item>
+        <item>Antillas Holandesas</item>
+        <item>Nueva Caledonia (Francia)</item>
+        <item>Nueva Zelanda</item>
+        <item>Zona Neutral</item>
+        <item>Nicaragua</item>
+        <item>Níger</item>
+        <item>Nigeria</item>
+        <item>Niue</item>
+        <item>Isla Norfolk</item>
+        <item>Corea del Norte</item>
+        <item>Islas Marianas del Norte</item>
+        <item>Noruega</item>
+        <item>Omán</item>
+        <item>Pakistán</item>
+        <item>Palaos</item>
+        <item>Panamá</item>
+        <item>Papúa-Nueva Guinea</item>
+        <item>Paraguay</item>
+        <item>Perú</item>
+        <item>Filipinas</item>
+        <item>Isla Pitcairn</item>
+        <item>Polonia</item>
+        <item>Portugal</item>
+        <item>Puerto Rico</item>
+        <item>Qatar</item>
+        <item>Reunión (Francia)</item>
+        <item>Rumania</item>
+        <item>Federación Rusa</item>
+        <item>Ruanda</item>
+        <item>Santa Helena</item>
+        <item>San Cristóbal y Nieves</item>
+        <item>Santa Lucía</item>
+        <item>San Pedro y Miquelón</item>
+        <item>Santo Tomé y Príncipe</item>
+        <item>San Vicente y las Granadinas</item>
+        <item>Samoa</item>
+        <item>San Marino</item>
+        <item>Arabia Saudita</item>
+        <item>Senegal</item>
+        <item>Sierra Leona</item>
+        <item>Singapur</item>
+        <item>Eslovaquia</item>
+        <item>Eslovenia</item>
+        <item>Islas Salomón</item>
+        <item>Somalia</item>
+        <item>Sudáfrica</item>
+        <item>Corea del Sur</item>
+        <item>España</item>
+        <item>Sri Lanka</item>
+        <item>Sudán</item>
+        <item>Surinam</item>
+        <item>Suazilandia</item>
+        <item>Suecia</item>
+        <item>Suiza</item>
+        <item>Siria</item>
+        <item>Tayikistán</item>
+        <item>Taiwán</item>
+        <item>Tanzania</item>
+        <item>Tailandia</item>
+        <item>Togo</item>
+        <item>Tokelau</item>
+        <item>Tonga</item>
+        <item>Trinidad y Tobago</item>
+        <item>Túnez</item>
+        <item>Turquía</item>
+        <item>Turkmenistán</item>
+        <item>Islas Turcas y Caicos</item>
+        <item>Tuvalu</item>
+        <item>Uganda</item>
+        <item>Ucrania</item>
+        <item>Emiratos Árabes Unidos</item>
+        <item>Reino Unido</item>
+        <item>Uruguay</item>
+        <item>Territorio Militar de EE. UU.</item>
+        <item>Islas Periféricas Menores de EE. UU.</item>
+        <item>Uzbekistán</item>
+        <item>Vanuatu</item>
+        <item>Ciudad del Vaticano</item>
+        <item>Venezuela</item>
+        <item>Vietnam</item>
+        <item>Islas Vírgenes (Británicas)</item>
+        <item>Islas Vírgenes de EE. UU. (EE. UU.)</item>
+        <item>Islas Wallis y Futuna</item>
+        <item>Sahara Oriental</item>
+        <item>Yemen</item>
+        <item>Yugoslavia</item>
+        <item>Zambia</item>
+        <item>Zaire</item>
+        <item>Zimbabue</item>
+    </string-array>
+
+    <string name="mdl_loading_information_error_message">Parece que hay un problema en la carga de su información. Vuelva a intentarlo en un momento o llame a la Mesa de Ayuda de MDLIVE al %1$s.</string>
+
+    <string-array name="mdl_timezone">
+        <item>Ajustar de manera automática</item>
+        <item>Zona Horaria Central (CST)</item>
+        <item>Zona Horaria del Este (EST)</item>
+        <item>Zona Horaria de la Montaña (MST)</item>
+        <item>Zona Horaria del Pacífico (PST)</item>
+        <item>Zona Horaria de Alaska (AKST)</item>
+        <item>Zona Horaria de Hawaii (HKST)</item>
+        <item>Zona Horaria de Samoa Americana (AMS)</item>
+        <item>Zona Horaria de las Islas Marshall (MIT)</item>
+        <item>Zona Horaria de Guam (GST)</item>
+        <item>Zona Horaria de Palao (PAT)</item>
+    </string-array>
+
+    <string name="mdl_sync_btn_txt">Sincronizar con Google Fit</string>
+    <string name="mdl_sync_with_fit_question_txt">¿Le gustaría sincronizar sus datos de Google Fit con MDLIVE?</string>
+    <string name="mdl_sync_google_fit_txt">Sincronizar a Google Fit</string>
+    <string name="mdl_backto_healcare">Volver a HealthSource</string>
+    <string name="mdl_baylor_session_expired">Caducó la sesión. Utilice la aplicación HealthSource para registrarse en MDLIVE.</string>
+    <string name="mdl_failed_baylor_login">No se confirmó la sesión. Vuelva a intentar con la aplicación HealthSource para registrarse en MDLIVE.</string>
+    <string name="mdl_failed_sso_baylor_login">No se confirmó la sesión.\n Presione Aceptar para volver a la aplicación HealthSource para registrarse en MDLIVE.</string>
+    <string name="mdl_ad_alert_title">Alerta</string>
+    <string name="mdl_try_again">Volver a intentarlo</string>
+    <string name="mdl_reset">Restablecer</string>
+    <string name="mdl_incorrect_pin_message">El NIP de confirmación es distinto. Vuelva a intentarlo.</string>
+    <string name="mdl_incorrect_pin_title">NIP incorrecto</string>
+    <string name="mdl_doc_on_call_msg">¿Desea que esta cita se realice por video o teléfono?</string>
+    <string name="mdl_cancel_appointment_error">No se puede cancelar su cita, inténtelo de nuevo más tarde.</string>
+    <string name="mdl_share">Compartir</string>
+    <string name="mdl_share_success">Se compartió con éxito</string>
+    <string name="mdl_share_cancelled">No se compartió</string>
+    <string name="mdl_share_failed">Error al compartir</string>
+    <string name="mdl_loading">Se está realizando la carga</string>
+    <string name="mdl_primary">Primario</string>
+    <string name="mdl_gps_settings">Active el servicio de ubicación para permitir que \&quot;MDLIVE\&quot; determine su ubicación</string>
+    <string name="mdl_Cancel_apt_title">Cancelar la cita</string>
+    <string name="mdl_Cancel_apt_msg">¿Está seguro de que quiere cancelar esta cita?</string>
+    <string name="mdl_terms_consent">Certifico que he leído y acepto los términos del Consentimiento informado de MDLIVE Medical Group.</string>
+    <string name="mdl_privacy_policy">He leído la Política de privacidad de MDLIVE Medical Group y reconozco que tengo la posibilidad de imprimir una copia en papel de la Política de privacidad para mis registros.</string>
+    <string name="mdl_make_appt">Hacer una solicitud de cita</string>
+    <string name="mdl_see_doc_now">Ver a un médico ahora</string>
+    <string name="mdl_currently_unavail">En este momento no está disponible</string>
+    <string name="mdl_next_appt">Su próxima cita es  </string>
+    <string name="mdl_click_to_detail">Haga clic aquí para obtener los detalles.</string>
+    <string name="mdl_click_to_start">Haga clic aquí para comenzar la cita.</string>
+    <string name="mdl_appt_notification">Su próxima cita es en menos de %1$s minutos</string>
+    <string name="mdl_appt_error">Lamentablemente, el mensaje que está tratando de abrir no se encuentra en su lista de mensajes.</string>
+    <string name="mdl_gcm_msg_error">Lamentablemente, el mensaje que está tratando de abrir no se encuentra en su lista de mensajes.</string>
+
+    <string name="mdl_affliation_caps">AFILIACIÓN</string>
+    <string name="mdl_number_four">4</string>
+    <string name="mdl_number_five">5</string>
+    <string name="mdl_number_six">6</string>
+    <string name="mdl_number_seven">7</string>
+    <string name="mdl_number_eight">8</string>
+    <string name="mdl_number_nine">9</string>
+    <string name="mdl_number_zero">0</string>
+    <string name="mdl_not_now">Ahora no</string>
+    <string name="mdl_our_mission">Nuestra misión</string>
+    <string name="mdl_our_providers">Nuestros proveedores</string>
+    <string name="mdl_weak_caps">DÉBIL</string>
+    <string name="mdl_provider">Proveedor:</string>
+    <string name="mdl_date">Fecha:</string>
+    <string name="mdl_link">Enlaces</string>
+    <string name="mdl_time">Hora:</string>
+    <string name="mdl_request_future_appointment">Solicitar un cita futura</string>
+    <string name="mdl_sync_with_health">Sincronizar con Health</string>
+    <string name="mdl_sync_google_fit">Sincronizar a Google Fit</string>
+
+    <string name="mdl_insurance_eligibilty_service">Estamos verificando su información de elegibilidad con su proveedor de seguro.</string>
+    <string name="mdl_insurance_eligibilty_few_minutes">Esto podría tardar unos segundos.</string>
+    <string name="mdl_verification">VERIFICACIÓN</string>
+    <string name="mdl_security_questions_txt">Preguntas de seguridad</string>
+    <string name="mdl_talk_to_a_doctor">Hablar con un médico</string>
+    <string name="mdl_cigna_coach_popup_bottom_line">El equipo está listo para encontrar el mejor horario para usted</string>
+    <string name="mdl_user_profile_state">Estado</string>
+    <string name="mdl_user_address_state">Dirección en el estado</string>
+    <string name="mdl_password_aplhanumeric_condition">Debe contener 1 letra y 1 número.</string>
+
+    <string name="mdl_bad_url">Dirección de sitio web no válida</string>
+
+
+</resources>
