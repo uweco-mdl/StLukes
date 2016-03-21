@@ -87,8 +87,16 @@ public class SplashScreenActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
+        String language;
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String language = sharedPref.getString(PreferenceConstants.PREFERRED_LANGUAGE_CODE, null);
+
+        language = sharedPref.getString(PreferenceConstants.PREFERRED_LANGUAGE_CODE, null);
+
+        // first time user
+        if (language == null) {
+            language = "en";
+        }
+
         LocalizationSingleton.getInstance().setLanguageFromLoginScreen(this,language);
     }
 
