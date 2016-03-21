@@ -30,6 +30,7 @@ import com.mdlive.embedkit.global.MDLiveConfig.SIGNALS;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.mobile.gcm.MDLiveRegistrationIntentService;
 import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
+import com.mdlive.unifiedmiddleware.commonclasses.application.LocalizationSingleton;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.IntegerConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
@@ -44,6 +45,7 @@ import com.mdlive.unifiedmiddleware.services.login.UpgradeAlert;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Locale;
 
 /**
  * Created by dhiman_da on 7/7/2015.
@@ -85,6 +87,9 @@ public class SplashScreenActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        String language = sharedPref.getString(PreferenceConstants.PREFERRED_LANGUAGE_CODE, null);
+        LocalizationSingleton.getInstance().setLanguageFromLoginScreen(this,language);
     }
 
     @Override
@@ -474,6 +479,18 @@ public class SplashScreenActivity extends Activity {
         }
         return tracker;
     }
+
+//    private void updateLocale(String language)
+//    {
+//        LocalizationSingleton.PREFS_LANG = language;
+//
+//        // update Locale to ensure that correct strings.xml file is automatically selected.
+//        Locale myLocale = new Locale(language);
+//        Locale.setDefault(myLocale);
+//        android.content.res.Configuration config = new android.content.res.Configuration();
+//        config.locale = myLocale;
+//        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+//    }
 }
 
 
