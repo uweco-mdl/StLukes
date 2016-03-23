@@ -65,9 +65,8 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
     private Button mButton8;
     private Button mButton9;
     private Button mButton0;
-    private View mButtonCross;
 
-    private TextView mTitleTextView, healthSystemTv;
+    private TextView healthSystemTv;
     private StringBuffer mStringBuffer;
     private ImageView mWebView;
     private RelativeLayout healthSystemContainerRl;
@@ -140,7 +139,7 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
         mPassCode7.addTextChangedListener(this);
         mPassCode7.requestFocus();
 
-        mTitleTextView = (TextView) changePin.findViewById(R.id.fragment_change_pin_text_view);
+        TextView mTitleTextView = (TextView) changePin.findViewById(R.id.fragment_change_pin_text_view);
         mTitleTextView.setText(R.string.mdl_application_please_create_a_6_digit_pin);
 
         changePin.findViewById(R.id.dont_use_pin_text_view).setOnClickListener(new View.OnClickListener() {
@@ -262,7 +261,7 @@ public class CreatePinFragment extends MDLiveBaseFragment implements TextWatcher
             });
         }
 
-        mButtonCross = changePin.findViewById(R.id.num_pad_cross);
+        View mButtonCross = changePin.findViewById(R.id.num_pad_cross);
         if (mButtonCross != null) {
             mButtonCross.setOnClickListener(new View.OnClickListener() {
                 @Override

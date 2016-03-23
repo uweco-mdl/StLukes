@@ -67,9 +67,8 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
     private Button mButton8;
     private Button mButton9;
     private Button mButton0;
-    private View mButtonCross;
 
-    private TextView mTitleTextView = null, healthSystemTv;
+    private TextView healthSystemTv;
     private StringBuffer mStringBuffer;
     private ImageView mWebView;
     private RelativeLayout healthSystemContainerRl;
@@ -143,7 +142,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
 
         mPassCode7.addTextChangedListener(this);
 
-        mTitleTextView = (TextView) changePin.findViewById(R.id.fragment_change_pin_text_view);
+        TextView mTitleTextView = (TextView) changePin.findViewById(R.id.fragment_change_pin_text_view);
         mTitleTextView.setText(R.string.mdl_application_please_confirm_your_pin);
 
         changePin.findViewById(R.id.linear_layout).setVisibility(View.GONE);
@@ -258,7 +257,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
             });
         }
 
-        mButtonCross = changePin.findViewById(R.id.num_pad_cross);
+        View mButtonCross = changePin.findViewById(R.id.num_pad_cross);
         if (mButtonCross != null) {
             mButtonCross.setOnClickListener(new View.OnClickListener() {
                 @Override
