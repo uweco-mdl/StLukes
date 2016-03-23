@@ -95,7 +95,7 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);;
+                super.onPageStarted(view, url, favicon);
 
                 //List<NameValuePair> params = null;
                 //Replaced Deprecated classes with new class.
@@ -183,11 +183,7 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
     public boolean canGoBack() {
         if (mWebView != null) {
             Log.d("URL", mWebView.getUrl());
-            if(mWebView.getUrl().contains("get_eligibilty_details") || mWebView.getUrl().contains("get_non270_details")){
-                return false;
-            } else {
-                return mWebView.canGoBack();
-            }
+            return !(mWebView.getUrl().contains("get_eligibilty_details") || mWebView.getUrl().contains("get_non270_details")) && mWebView.canGoBack();
         }
 
         return false;
@@ -199,7 +195,7 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
         }
     }
 
-    public static interface OnSignupSuccess {
+    public interface OnSignupSuccess {
         void onSignUpSucess();
     }
 
