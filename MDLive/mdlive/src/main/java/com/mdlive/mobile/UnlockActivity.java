@@ -75,7 +75,6 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-            return;
         } else {
             if(isForgetPinCalled){
                 super.onBackPressed();
