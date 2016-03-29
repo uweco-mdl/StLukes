@@ -13,7 +13,7 @@
     <style name="MDLive_Dialog_Theme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorPrimary">@color/darker_gray</item>
         <item name="colorPrimaryDark">@color/darker_gray</item>
-        <item name="colorAccent">@color/white</item>
+        <item name="colorAccent">@color/dialog_accent_color</item>
     </style>
 
     <style name="MDLive_Red_Theme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
