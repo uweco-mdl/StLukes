@@ -39,11 +39,7 @@ public class NotificationHandler extends AppCompatActivity {
         final long lastTime = preferences.getLong(PreferenceConstants.TIME_KEY, System.currentTimeMillis());
 
         final long difference = System.currentTimeMillis() - lastTime;
-        if (difference > IntegerConstants.SESSION_TIMEOUT) {
-            return true;
-        } else {
-            return false;
-        }
+        return difference > IntegerConstants.SESSION_TIMEOUT;
     }
     private void handleNewPushMessage(String message){
         try{

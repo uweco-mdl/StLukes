@@ -49,11 +49,9 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
     private Button mButton8;
     private Button mButton9;
     private Button mButton0;
-    private View mButtonCross;
 
     private EditText mPassCode7 = null;
     private StringBuffer mStringBuffer;
-    private ImageView mHeaderIv;
 
     public static UnlockFragment newInstance() {
         final UnlockFragment fragment = new UnlockFragment();
@@ -103,7 +101,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
 
     public void init(View view) {
         mStringBuffer = new StringBuffer();
-        mHeaderIv = (ImageView)view.findViewById(R.id.headerLogoIv);
+        ImageView mHeaderIv = (ImageView) view.findViewById(R.id.headerLogoIv);
         mHeaderIv.setVisibility(View.GONE);
         final UserBasicInfo userBasicInfo = UserBasicInfo.readFromSharedPreference(getActivity());
         mPassCode1 = (ToggleButton) view.findViewById(R.id.passCode1);
@@ -273,7 +271,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             });
         }
 
-        mButtonCross = view.findViewById(R.id.num_pad_cross);
+        View mButtonCross = view.findViewById(R.id.num_pad_cross);
         if (mButtonCross != null) {
             mButtonCross.setOnClickListener(new View.OnClickListener() {
                 @Override
