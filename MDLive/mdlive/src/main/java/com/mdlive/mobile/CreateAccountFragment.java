@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.net.MailTo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
@@ -22,6 +26,7 @@ import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by dhiman_da on 8/12/2015.
@@ -80,7 +85,7 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
          * */
         if (DeepLinkUtils.DEEPLINK_DATA != null && !DeepLinkUtils.DEEPLINK_DATA.getRegistrationUrl().isEmpty()) {
             mWebView.loadUrl(DeepLinkUtils.DEEPLINK_DATA.getRegistrationUrl());
-        } else if(loadUrl !=null && !loadUrl.isEmpty()){
+        } else if (loadUrl != null && !loadUrl.isEmpty()) {
             mWebView.loadUrl(loadUrl);
             mWebView.getSettings().setLoadWithOverviewMode(true);
             mWebView.getSettings().setUseWideViewPort(true);
@@ -125,7 +130,7 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
                             //params = URLEncodedUtils.parse(new URI(url), "UTF-8");
                         }
                     }
-                }catch (IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
@@ -148,10 +153,10 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                    mWebView.evaluateJavascript("javascript:getUserCredential('"+ username + "', '"+password+"');",null);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    mWebView.evaluateJavascript("javascript:getUserCredential('" + username + "', '" + password + "');", null);
                 } else {
-                    mWebView.loadUrl("javascript:getUserCredential('"+ username + "', '"+password+"');",null);
+                    mWebView.loadUrl("javascript:getUserCredential('" + username + "', '" + password + "');", null);
                 }
             }
 
@@ -165,12 +170,37 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
                 if (url.startsWith(WebView.SCHEME_TEL)) {
                     // Otherwise allow the OS to handle things like tel, mailto, etc.
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity( intent );
+                    startActivity(intent);
+                    return true;
+                } else if (url.startsWith("mailto:")) {
+                    MailTo mt = MailTo.parse(url);
+                    Intent i = newEmailIntent(getActivity(), mt.getTo(), mt.getSubject(), mt.getBody(), mt.getCc());
+                    getActivity().startActivity(i);
+                    view.reload();
                     return true;
                 }
                 return super.shouldOverrideUrlLoading(view, url);
             }
         });
+    }
+
+    private Intent newEmailIntent(Context context, String address, String subject, String body, String cc) {
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{address});
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_CC, cc);
+        intent.setType("message/rfc822");
+
+        final PackageManager packageManager = context.getPackageManager();
+        List<ResolveInfo> list = packageManager.queryIntentActivities(intent, 0);
+
+        if (list.size() > 0) {
+            return intent;
+        } else {
+            return Intent.createChooser(intent, getActivity().getString(R.string.choose_mail_client));
+        }
     }
 
     @Override
