@@ -27,7 +27,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentLeft="true"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
             <ImageView
                 android:id="@+id/webView"
                 android:layout_width="match_parent"
