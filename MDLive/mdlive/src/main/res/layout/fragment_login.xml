@@ -22,7 +22,7 @@
             android:focusableInTouchMode="true"
             android:id="@+id/health_system_container_rl"
             >
-            <VideoView
+            <com.mdlive.mobile.CustomizedVideoView
                 android:id="@+id/welcomeVideo"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentLeft="true"
