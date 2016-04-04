@@ -70,7 +70,7 @@ public class LoginFragment extends MDLiveBaseFragment {
     private String footerImageURL;
     private ImageView mHeaderIv;
     //public ScrollView mContainer;
-    private CustomizedVideoView mVideo ;
+    private VideoView mVideo ;
 
     public static LoginFragment newInstance() {
         final LoginFragment loginFragment = new LoginFragment();
@@ -112,7 +112,7 @@ public class LoginFragment extends MDLiveBaseFragment {
         healthSystemIv = (ImageView) view.findViewById(R.id.health_system_niv);
         healthSystemTv = (TextView) view.findViewById(R.id.health_system_tv);
         loginContainerFl = (FrameLayout) view.findViewById(R.id.login_container_fl);
-        mVideo = (CustomizedVideoView) view.findViewById(R.id.welcomeVideo);
+        mVideo = (VideoView) view.findViewById(R.id.welcomeVideo);
         mPasswordEditText.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

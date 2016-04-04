@@ -45,7 +45,6 @@ import com.mdlive.unifiedmiddleware.services.login.UpgradeAlert;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Locale;
 
 /**
  * Created by dhiman_da on 7/7/2015.
