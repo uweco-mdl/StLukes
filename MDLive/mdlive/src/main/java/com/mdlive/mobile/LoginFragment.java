@@ -131,6 +131,9 @@ public class LoginFragment extends MDLiveBaseFragment {
         mHeaderIv = (ImageView) view.findViewById(R.id.headerLogoIv);
         mHeaderIv.setVisibility(View.GONE);
 
+        // MDLMO-2812 - This fixes video vertical rendering issues.
+        getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
         if(DeepLinkUtils.DEEPLINK_DATA!=null && DeepLinkUtils.DEEPLINK_DATA.getAffiliationLogoUrl()!=null) {
             final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
             ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
