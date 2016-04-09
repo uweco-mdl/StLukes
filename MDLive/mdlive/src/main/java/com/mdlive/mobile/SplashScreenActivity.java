@@ -30,7 +30,6 @@ import com.mdlive.embedkit.global.MDLiveConfig.SIGNALS;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.mobile.gcm.MDLiveRegistrationIntentService;
 import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
-import com.mdlive.unifiedmiddleware.commonclasses.application.LocalizationSingleton;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.IntegerConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
@@ -96,7 +95,7 @@ public class SplashScreenActivity extends Activity {
             language = "en";
         }
 
-        LocalizationSingleton.getInstance().setLanguageFromLoginScreen(this,language);
+//        LocalizationSingleton.getInstance().setLanguageFromLoginScreen(this,language);
     }
 
     @Override
@@ -274,7 +273,7 @@ public class SplashScreenActivity extends Activity {
      */
     private void registerGCMForMDLiveApplication() {
         SharedPreferences settings = getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, MODE_PRIVATE);
-        if (checkPlayServices() && (settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null) == null)) {
+        if (checkPlayServices() && (settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null) != null)) {
             final Intent intent = new Intent(this, MDLiveRegistrationIntentService.class);
             startService(intent);
         }
@@ -282,7 +281,7 @@ public class SplashScreenActivity extends Activity {
 
     /**
      * Checks if proper version of google play service is installed or not.
-     * If need to update the google play services, then promts the user with
+     * If need to update the google play services, then prompt the user with
      * Google Play services update dialog
      * <p/>
      * If Google play services is not installed then shuts down the application

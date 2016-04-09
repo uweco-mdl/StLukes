@@ -1,13 +1,14 @@
+
 {
   "project_info": {
-    "project_id": "mdlive-native-android-staging",
-    "project_number": "78401007330",
-    "name": "MDLIVE Native Android Staging"
+    "project_id": "api-project-1040210036264",
+    "project_number": "1040210036264",
+    "name": "MDLIVE Native - Android"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:78401007330:android:4d3d7761db5f1cc2",
+        "mobilesdk_app_id": "1:1040210036264:android:4d3d7761db5f1cc2",
         "client_id": "android:com.mdlive.mobile",
         "client_type": 1,
         "android_client_info": {
@@ -25,7 +26,7 @@
           }
         },
         "cloud_messaging_service": {
-          "status": 1,
+          "status": 2,
           "apns_config": []
         },
         "appinvite_service": {

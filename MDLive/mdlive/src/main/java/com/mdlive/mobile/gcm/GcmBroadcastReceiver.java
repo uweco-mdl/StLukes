@@ -1,34 +1,20 @@
 package com.mdlive.mobile.gcm;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.RingtoneManager;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.content.WakefulBroadcastReceiver;
-import android.util.Log;
-import android.view.View;
-import android.view.WindowManager;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mdlive.embedkit.uilayer.appointment.AppointmentActivity;
-import com.mdlive.embedkit.uilayer.messagecenter.MessageCenterActivity;
-import com.mdlive.embedkit.uilayer.messagecenter.MessageCenterInboxDetailsActivity;
 import com.mdlive.mobile.R;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
-import com.mdlive.unifiedmiddleware.parentclasses.bean.response.UserBasicInfo;
 
 public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 
@@ -61,6 +47,8 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 	}
 	private void sendAppNotification(String msg, final Context context) {
 		try {
+			if (context == null)
+				return;
 			NotificationManager mNotificationManager = (NotificationManager)
 					context.getSystemService(Context.NOTIFICATION_SERVICE);
 
