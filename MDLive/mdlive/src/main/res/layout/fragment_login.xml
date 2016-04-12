@@ -168,7 +168,8 @@
                             android:tag="forgot_username"
                             android:text="@string/mdl_forgot_username"
                             android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:id="@+id/forgot_username" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -208,7 +209,8 @@
                             android:tag="forgot_password"
                             android:text="@string/mdl_forgot_password"
                             android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:id="@+id/forgot_password" />
                     </LinearLayout>
 
                     <Button
@@ -225,7 +227,8 @@
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:layout_marginLeft="@dimen/dimen_8_dp"
-                        android:layout_marginRight="@dimen/dimen_8_dp"/>
+                        android:layout_marginRight="@dimen/dimen_8_dp"
+                        android:id="@+id/sign_in" />
 
                     <Button
                         android:layout_width="match_parent"
@@ -240,7 +243,8 @@
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:layout_marginLeft="@dimen/dimen_8_dp"
-                        android:layout_marginRight="@dimen/dimen_8_dp"/>
+                        android:layout_marginRight="@dimen/dimen_8_dp"
+                        android:id="@+id/create_free_account" />
                 </LinearLayout>
             </FrameLayout>
 
