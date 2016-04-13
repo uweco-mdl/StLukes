@@ -216,9 +216,6 @@ public class SplashScreenActivity extends Activity {
                     startActivity(intent);
                 }
             } else if (MdliveUtils.getPreferredLockType(getBaseContext()).equalsIgnoreCase("Password")) {
-                intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
-                startActivity(intent);
-            } else {
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
             }
