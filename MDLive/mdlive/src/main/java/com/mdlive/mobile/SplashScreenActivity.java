@@ -270,7 +270,7 @@ public class SplashScreenActivity extends Activity {
      */
     private void registerGCMForMDLiveApplication() {
         SharedPreferences settings = getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, MODE_PRIVATE);
-        if (checkPlayServices() && (settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null) != null)) {
+        if (checkPlayServices() && (settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null) == null)) {
             final Intent intent = new Intent(this, MDLiveRegistrationIntentService.class);
             startService(intent);
         }

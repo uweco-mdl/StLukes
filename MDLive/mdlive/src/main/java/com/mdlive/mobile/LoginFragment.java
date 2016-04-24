@@ -334,7 +334,7 @@ public class LoginFragment extends MDLiveBaseFragment {
 
                 editor.putString(PreferenceConstants.USER_UNIQUE_ID, response.getString("uniqueid"));
                 editor.putString(PreferenceConstants.SESSION_ID, response.getString("token"));
-                editor.commit();
+                editor.apply();
                 SharedPreferences settings = getActivity().getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, getActivity().MODE_PRIVATE);
                 String pushRegID = settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null);
                 if (pushRegID != null) {
@@ -367,7 +367,7 @@ public class LoginFragment extends MDLiveBaseFragment {
             final SharedPreferences preferences = getActivity().getSharedPreferences(PreferenceConstants.DEVICE_OS, Context.MODE_PRIVATE);
             final SharedPreferences.Editor editor = preferences.edit();
             editor.putString(PreferenceConstants.DEVICE_OS_KEY, "Android");
-            editor.commit();
+            editor.apply();
             final JSONObject jsonObject = new JSONObject();
             jsonObject.put("uuid", pushRegID);
             jsonObject.put("device_type", "Android");
@@ -376,7 +376,7 @@ public class LoginFragment extends MDLiveBaseFragment {
                 @Override
                 public void onResponse(JSONObject response) {
                     editor.clear().apply();
-                    editor.commit();
+                    editor.apply();
 
                     logD("GCM", response.optString("message"));
 
@@ -396,7 +396,7 @@ public class LoginFragment extends MDLiveBaseFragment {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     editor.clear().apply();
-                    editor.commit();
+                    editor.apply();
 
                     logD("GCM", "Not registered");
 
