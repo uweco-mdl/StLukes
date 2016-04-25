@@ -208,7 +208,7 @@ public class SplashScreenActivity extends Activity {
                 intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
                 startActivity(intent);
             } else if (MdliveUtils.getPreferredLockType(getBaseContext()).equalsIgnoreCase("Pin")) {
-                if (ShowPinScreen()) {
+                if (ShowPinScreen(IntegerConstants.SESSION_TIMEOUT_ONE_MINUTE)) {
                     intent = UnlockActivity.getUnlockToDashBoardIntent(getBaseContext(), true);
                     startActivity(intent);
                 } else {
@@ -216,8 +216,13 @@ public class SplashScreenActivity extends Activity {
                     startActivity(intent);
                 }
             } else if (MdliveUtils.getPreferredLockType(getBaseContext()).equalsIgnoreCase("Password")) {
-                intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
+                if (ShowPinScreen(IntegerConstants.SESSION_TIMEOUT)) {
+                    intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
+                    startActivity(intent);
+                } else {
+                    intent = new Intent(this, LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         } else {
             intent = new Intent(this, LoginActivity.class);
@@ -379,12 +384,12 @@ public class SplashScreenActivity extends Activity {
     /**
      * Should show Pin screen or Not
      */
-    private boolean ShowPinScreen() {
+    private boolean ShowPinScreen(int timeout) {
         final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
         final long lastTime = preferences.getLong(PreferenceConstants.TIME_KEY, System.currentTimeMillis());
 
         final long difference = System.currentTimeMillis() - lastTime;
-        return difference > IntegerConstants.SESSION_TIMEOUT;
+        return difference > timeout;
     }
 
     /**
