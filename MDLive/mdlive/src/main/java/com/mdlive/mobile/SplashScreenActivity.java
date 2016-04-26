@@ -217,10 +217,10 @@ public class SplashScreenActivity extends Activity {
                 }
             } else if (MdliveUtils.getPreferredLockType(getBaseContext()).equalsIgnoreCase("Password")) {
                 if (ShowPinScreen(IntegerConstants.SESSION_TIMEOUT)) {
-                    intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
+                    intent = new Intent(this, LoginActivity.class);
                     startActivity(intent);
                 } else {
-                    intent = new Intent(this, LoginActivity.class);
+                    intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
                     startActivity(intent);
                 }
             }
