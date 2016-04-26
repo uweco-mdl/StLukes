@@ -3,6 +3,7 @@ package com.mdlive.mobile;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
@@ -10,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.text.format.Formatter;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -71,6 +74,7 @@ public class LoginFragment extends MDLiveBaseFragment {
     private ImageView mHeaderIv;
     //public ScrollView mContainer;
     private VideoView mVideo ;
+    private CheckBox mRememberMe ;
 
     public static LoginFragment newInstance() {
         final LoginFragment loginFragment = new LoginFragment();
@@ -113,6 +117,7 @@ public class LoginFragment extends MDLiveBaseFragment {
         healthSystemTv = (TextView) view.findViewById(R.id.health_system_tv);
         loginContainerFl = (FrameLayout) view.findViewById(R.id.login_container_fl);
         mVideo = (VideoView) view.findViewById(R.id.welcomeVideo);
+        mRememberMe = (CheckBox) view.findViewById(R.id.remember_me);
         mPasswordEditText.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -208,6 +213,18 @@ public class LoginFragment extends MDLiveBaseFragment {
 
     public void onResume()
     {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String userName = sharedPref.getString(PreferenceConstants.REMEMBER_ME, null);
+        if(userName!=null&&!TextUtils.isEmpty(userName))
+        {
+            mUserNameEditText.setText(userName);
+            mRememberMe.setChecked(true);
+        }
+        else
+        {
+            mUserNameEditText.setText("");
+            mRememberMe.setChecked(false);
+        }
         super.onResume();
         startVideo();
     }
@@ -254,10 +271,24 @@ public class LoginFragment extends MDLiveBaseFragment {
     }
 
     public void loginService() {
+
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences.Editor editor = sharedPref.edit();
         final String userName = mUserNameEditText.getText().toString();
         final String password = mPasswordEditText.getText().toString();
         if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(password)) {
             try {
+                // For saving the user name
+                if(mRememberMe.isChecked())
+                {
+                    editor.putString(PreferenceConstants.REMEMBER_ME, userName);
+                }
+                else
+                {
+                    editor.putString(PreferenceConstants.REMEMBER_ME, "");
+                }
+                editor.commit();
                 JSONObject parent = new JSONObject();
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("email", userName);
