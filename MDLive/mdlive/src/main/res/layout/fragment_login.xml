@@ -235,6 +235,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/mdl_remember_me"
                         android:layout_marginBottom="@dimen/dimen_8_dp"
+                        android:visibility="gone"
                         android:textColor="@color/white"/>
 
                     <Button
