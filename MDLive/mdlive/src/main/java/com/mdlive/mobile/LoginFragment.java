@@ -3,13 +3,11 @@ package com.mdlive.mobile;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -21,19 +19,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.mdlive.embedkit.global.MDLiveConfig;
 import com.mdlive.unifiedmiddleware.commonclasses.application.ApplicationController;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
@@ -75,6 +75,8 @@ public class LoginFragment extends MDLiveBaseFragment {
     //public ScrollView mContainer;
     private VideoView mVideo ;
     private CheckBox mRememberMe ;
+    private Spinner mEnvironment = null;
+
 
     public static LoginFragment newInstance() {
         final LoginFragment loginFragment = new LoginFragment();
@@ -118,6 +120,13 @@ public class LoginFragment extends MDLiveBaseFragment {
         loginContainerFl = (FrameLayout) view.findViewById(R.id.login_container_fl);
         mVideo = (VideoView) view.findViewById(R.id.welcomeVideo);
         mRememberMe = (CheckBox) view.findViewById(R.id.remember_me);
+        mEnvironment = (Spinner) view.findViewById(R.id.environmentSpinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.environment_spinner, getResources().getStringArray(R.array.environments));
+
+        mEnvironment.setAdapter(adapter);
+
+
         mPasswordEditText.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -163,6 +172,32 @@ public class LoginFragment extends MDLiveBaseFragment {
         } else {
             mHeaderIv.setVisibility(View.VISIBLE);
         }
+
+        mEnvironment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String[] environmentList = getResources().getStringArray(R.array.environments);
+                String currentEnvironment = environmentList[i];
+
+                switch (currentEnvironment) {
+                    case "PRODUCTION":
+                        MDLiveConfig.setData(MDLiveConfig.ENVIRON.PROD);
+                        break;
+                    case "STAGE":
+                        MDLiveConfig.setData(MDLiveConfig.ENVIRON.STAGE);
+                        break;
+                    case "QA_PLUTO":
+                    default:
+                        MDLiveConfig.setData(MDLiveConfig.ENVIRON.QAPL);
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 //        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 //        if(imm.isAcceptingText()){
