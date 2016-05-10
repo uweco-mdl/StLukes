@@ -24,6 +24,7 @@ import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
+import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -120,6 +121,7 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
                                     editor.commit();
                                     Intent intent = new Intent(getActivity(), MDLiveDashboardActivity.class);
                                     startActivity(intent);
+                                    MdliveUtils.setLockType(getActivity(), "none");
                                     getActivity().finish();
 
 //                                    if (mOnSignupSuccess != null) {
