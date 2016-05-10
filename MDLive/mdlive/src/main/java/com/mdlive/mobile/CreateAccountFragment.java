@@ -20,6 +20,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
@@ -117,12 +118,15 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
                                     SharedPreferences.Editor editor = sharedPref.edit();
                                     editor.putString(PreferenceConstants.USER_UNIQUE_ID, desiredString);
                                     editor.commit();
+                                    Intent intent = new Intent(getActivity(), MDLiveDashboardActivity.class);
+                                    startActivity(intent);
+                                    getActivity().finish();
 
-                                    if (mOnSignupSuccess != null) {
-                                        // This change fixes issues reported in MM-2549.
-                                        UnlockActivity.onSignoutClicked(getActivity());
-                                        //mOnSignupSuccess.onSignUpSucess();
-                                    }
+//                                    if (mOnSignupSuccess != null) {
+//                                        // This change fixes issues reported in MM-2549.
+//                                        UnlockActivity.onSignoutClicked(getActivity());
+//                                        //mOnSignupSuccess.onSignUpSucess();
+//                                    }
 
                                 }
                                 break;
