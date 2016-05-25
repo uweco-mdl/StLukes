@@ -44,6 +44,7 @@ import com.mdlive.unifiedmiddleware.services.login.UpgradeAlert;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import com.testfairy.TestFairy;
 
 /**
  * Created by dhiman_da on 7/7/2015.
@@ -65,7 +66,9 @@ public class SplashScreenActivity extends Activity {
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, new IntentFilter(SIGNALS.EXIT_SIGNAL.name()));
 
         mProgressDialog = MdliveUtils.getFullScreenProgressDialog(this);
-
+        
+        TestFairy.begin(this, "ddbb17ddd7294f969b346e9d385427f9b09169e0");
+        
         /* Select the environment type here : */
         env = ENVIRON.STAGE;
         // ******************************************
