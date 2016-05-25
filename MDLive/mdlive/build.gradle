@@ -80,6 +80,8 @@ dependencies {
     compile 'com.google.android.gms:play-services-identity:8.4.0'
 
     compile 'com.google.code.gson:gson:2.3.1'
+    
+    compile 'testfairy:testfairy-android-sdk:1.+@aar'
 
     compile(name: 'embedkit', ext: 'aar') {
         exclude module: 'com.android.support'
