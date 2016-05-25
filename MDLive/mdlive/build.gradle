@@ -37,6 +37,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        mdlive {
+            applicationId "com.mdlive.mobile"
+            buildConfigField "boolean", "MDLIVE", "false"
+        }
+        stluke {
+            applicationId "com.stluke.mobile"
+            buildConfigField "boolean", "STLUKE", "false"
+        }
+
+    }
 }
 
 // VSee integration:
@@ -79,9 +90,6 @@ dependencies {
     compile('com.vsee:vsee-kit:0.5.23956@aar') {
         transitive = true
     }
-
-
-
 
     //this section ensures that the .AAR can be located
     repositories {

@@ -1,0 +1,47 @@
+
+{
+  "project_info": {
+    "project_id": "api-project-1040210036264",
+    "project_number": "1040210036264",
+    "name": "MDLIVE Native - Android"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040210036264:android:4d3d7761db5f1cc2",
+        "client_id": "android:com.stluke.mobile",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.stluke.mobile",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-78206000-1"
+          }
+        },
+        "cloud_messaging_service": {
+          "status": 2,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

@@ -9,9 +9,9 @@
 
 
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/mdlive_toolbar" />
+                        <include
+                            android:id="@+id/toolbar"
+                            layout="@layout/mdlive_toolbar" />
 
 
 
@@ -137,11 +137,11 @@
                     style="@style/myChangeProfileInfoLayoutStyle"
                     android:layout_marginTop="10dp"
                     android:id="@+id/PhoneToCallNumberLayout"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="4dp">
 
-                    <FrameLayout style="@style/common_style_W_Match_H_Wrap">
+                    <RelativeLayout style="@style/common_style_W_Match_H_Wrap">
 
                         <TextView
                             style="@style/appointment_text_style"
@@ -151,14 +151,27 @@
                             android:textColor="@color/confirmappmt_evisit_color"
                             android:text="@string/mdl_phone_to_call" />
 
-                        <TextView
-                            android:id="@+id/phoneNumber"
+                        <EditText
+                            android:id="@+id/editablePhoneNumber"
                             android:padding="5dp"
                             android:textColor="@color/mdl_confirm_btn_color"
                             style="@style/appointment_text_style"
-                            android:layout_gravity="right" />
+                            android:layout_toLeftOf="@+id/editPhoneNumber"
+                            android:background="@android:color/transparent"
+                            android:inputType="number"
+                            android:maxLength="14"
+                            />
+                        <ImageView
+                            android:id="@+id/editPhoneNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:paddingRight="@dimen/dimen_10_dp"
+                            android:src="@drawable/edit_icon"
+                            />
 
-                    </FrameLayout>
+                    </RelativeLayout>
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"

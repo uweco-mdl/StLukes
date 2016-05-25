@@ -1,8 +1,8 @@
 <resources>
     <style name="MDLive_Red_Theme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/red_theme_primary</item>
-        <item name="colorPrimaryDark">@color/red_theme_primary_dark</item>
-        <item name="colorAccent">@color/green</item>
+        <item name="colorPrimary">@color/darker_gray</item>
+        <item name="colorPrimaryDark">@color/darker_gray</item>
+        <item name="colorAccent">@color/darker_gray</item>
     </style>
 
     <style name="MDLive_FullScrDialogTheme" parent="Theme.AppCompat.Light.Dialog">
@@ -37,7 +37,7 @@
 
     <style name="MDLIVEactivityTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorAccent">@color/mdlivePrimaryBlueColor</item>
+        <item name="colorAccent">@color/darker_gray</item>
     </style>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
@@ -122,7 +122,7 @@
         <item name="android:layout_height">70dp</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:elevation">10dp</item>
-        <item name="android:background">@color/red_theme_primary</item>
+        <item name="android:background">@color/darker_gray</item>
     </style>
     <style name="wagHeaderLinearLayoutReasonStyle">
         <item name="android:layout_width">match_parent</item>

@@ -5,7 +5,7 @@
 
     <RelativeLayout
         style="@style/wagHeaderLinearLayoutStyle"
-        android:background="@color/red_theme_primary"
+        android:background="@color/darker_gray"
         android:elevation="@dimen/dimen_0_dp"
         android:orientation="horizontal">
 

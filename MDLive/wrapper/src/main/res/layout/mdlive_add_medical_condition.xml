@@ -10,7 +10,7 @@
     <include layout="@layout/header" />-->
     <LinearLayout
         style="@style/wagHeaderLinearLayoutStyle"
-        android:background="@color/red_theme_primary"
+        android:background="@color/darker_gray"
         android:orientation="horizontal"
         android:layout_height="@dimen/dimen_toolbar_height"
         >

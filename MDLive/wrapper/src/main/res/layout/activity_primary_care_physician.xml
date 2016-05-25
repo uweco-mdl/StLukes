@@ -292,7 +292,7 @@
                         android:background="@color/white"
                         android:cursorVisible="true"
                         android:maxLength="14"
-                        android:inputType="phone"/>
+                        android:inputType="number"/>
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>

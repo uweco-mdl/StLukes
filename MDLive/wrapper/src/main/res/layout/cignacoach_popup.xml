@@ -2,81 +2,93 @@
     android:id="@+id/popup_element"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="10sp"
     android:background="@drawable/round_rect_white2"
-    >
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10sp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="21sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="37dp"
+            android:layout_marginRight="33dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:textColor="#60A5FF"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/extra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="21sp" />
+
+        <TextView
+            android:id="@+id/extraInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@string/mdl_cigna_coach_popup_bottom_line"
+            android:textColor="@color/black"
+            android:textSize="21sp" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="37dp"
-        android:layout_marginRight="33dp"
-        android:textSize="19sp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/black"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/team"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        />
-
-    <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="#E5E5E5"/>
+        android:background="@color/grey_txt" />
 
     <TextView
-        android:id="@+id/phone"
-        android:layout_width="wrap_content"
+        android:id="@+id/ok_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textSize="21sp"
-        android:textColor="#60A5FF"
-        android:textStyle="bold"
-        android:clickable="true"
-        />
-    <TextView
-        android:id="@+id/extra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:textSize="21sp"
-        android:textColor="@color/black"
-        />
-    <TextView
-        android:id="@+id/extraInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:textSize="21sp"
+        android:layout_marginTop="@dimen/dimen_10_dp"
         android:gravity="center"
-        android:text="@string/mdl_cigna_coach_popup_bottom_line"
-        android:textColor="@color/black"
-        />
+        android:text="@string/mdl_ok_upper"
+        android:textColor="@color/blue_text"
+        android:textSize="22sp" />
 </LinearLayout>

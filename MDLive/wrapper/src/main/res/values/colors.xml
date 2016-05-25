@@ -83,7 +83,7 @@
     <color name="app_background">#f1f5f8</color>
     <color name="blue_text_color">#007aff</color>
     <color name="EditText_HintColor">#959595</color>
-    
+
     <color name="choose_pharmacy_background">#f1f5f8</color>
     <color name="pharmacy_search_hint_color">#acacac</color>
 
@@ -217,5 +217,6 @@
     <color name="dashboard_menu_color">#556370</color>
 
     <color name="doctor_on_call_background">#29abe2</color>
+    <color name="darker_gray">#162f68</color>
 
 </resources>

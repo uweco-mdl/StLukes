@@ -7,10 +7,13 @@ import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.design.*;
+import android.support.design.BuildConfig;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Log;
@@ -43,6 +46,7 @@ import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
 import com.mdlive.unifiedmiddleware.services.login.GCMRegisterService;
 import com.mdlive.unifiedmiddleware.services.login.HealthSystemServices;
 import com.mdlive.unifiedmiddleware.services.login.LoginService;
+import com.vsee.utilities.ApplicationHolder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,9 +77,11 @@ public class LoginFragment extends MDLiveBaseFragment {
     private String footerImageURL;
     private ImageView mHeaderIv;
     //public ScrollView mContainer;
-    private VideoView mVideo ;
-    private CheckBox mRememberMe ;
+    private VideoView mVideo;
+    private CheckBox mRememberMe;
     private Spinner mEnvironment = null;
+    private String applicationId;
+    private boolean isMDlive;
 
 
     public static LoginFragment newInstance() {
@@ -101,6 +107,10 @@ public class LoginFragment extends MDLiveBaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        applicationId = BuildConfig.APPLICATION_ID;
+        if (applicationId.equals("com.mdlive.mobile")) {
+            isMDlive = true;
+        }
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
@@ -118,7 +128,10 @@ public class LoginFragment extends MDLiveBaseFragment {
         healthSystemIv = (ImageView) view.findViewById(R.id.health_system_niv);
         healthSystemTv = (TextView) view.findViewById(R.id.health_system_tv);
         loginContainerFl = (FrameLayout) view.findViewById(R.id.login_container_fl);
-        mVideo = (VideoView) view.findViewById(R.id.welcomeVideo);
+        if (isMDlive) {
+            mVideo = (VideoView) view.findViewById(R.id.welcomeVideo);
+        }
+
         mRememberMe = (CheckBox) view.findViewById(R.id.remember_me);
         mEnvironment = (Spinner) view.findViewById(R.id.environmentSpinner);
 
@@ -148,7 +161,7 @@ public class LoginFragment extends MDLiveBaseFragment {
         // MDLMO-2812 - This fixes video vertical rendering issues.
         getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
-        if(DeepLinkUtils.DEEPLINK_DATA!=null && DeepLinkUtils.DEEPLINK_DATA.getAffiliationLogoUrl()!=null) {
+        if (DeepLinkUtils.DEEPLINK_DATA != null && DeepLinkUtils.DEEPLINK_DATA.getAffiliationLogoUrl() != null) {
             final ImageLoader imageLoader = ApplicationController.getInstance().getImageLoader(getActivity());
             ImageLoader.ImageListener iListener = new ImageLoader.ImageListener() {
 
@@ -243,33 +256,29 @@ public class LoginFragment extends MDLiveBaseFragment {
 //        });
 
 
-
     }
 
-    public void onResume()
-    {
+    public void onResume() {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String userName = sharedPref.getString(PreferenceConstants.REMEMBER_ME, null);
-        if(userName!=null&&!TextUtils.isEmpty(userName))
-        {
+        if (userName != null && !TextUtils.isEmpty(userName)) {
             mUserNameEditText.setText(userName);
             mRememberMe.setChecked(true);
-        }
-        else
-        {
+        } else {
             mUserNameEditText.setText("");
             mRememberMe.setChecked(false);
         }
         super.onResume();
-        startVideo();
+        if (isMDlive)
+            startVideo();
     }
-    public void startVideo()
-    {
+
+    public void startVideo() {
         //Creating MediaController
-        MediaController mediaController= new MediaController(getActivity());
+        MediaController mediaController = new MediaController(getActivity());
         mediaController.setAnchorView(mVideo);
         mediaController.setVisibility(View.GONE);
-        mVideo.setOnPreparedListener (new MediaPlayer.OnPreparedListener() {
+        mVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 mediaPlayer.setLooping(true);
@@ -278,8 +287,8 @@ public class LoginFragment extends MDLiveBaseFragment {
 
 
         //specify the location of media file
-        String uriPath = "android.resource://com.mdlive.mobile/"+R.raw.welcome;
-        Uri uri=Uri.parse(uriPath);
+        String uriPath = "android.resource://com.mdlive.mobile/" + R.raw.welcome;
+        Uri uri = Uri.parse(uriPath);
 
         //Setting MediaController and URI, then starting the videoView
         mVideo.setMediaController(mediaController);
@@ -287,15 +296,11 @@ public class LoginFragment extends MDLiveBaseFragment {
         mVideo.requestFocus();
         mVideo.start();
     }
-    public void clearFocus(){
+
+    public void clearFocus() {
         mPasswordEditText.clearFocus();
         mUserNameEditText.clearFocus();
     }
-
-
-
-
-
 
 
     @Override
@@ -315,12 +320,9 @@ public class LoginFragment extends MDLiveBaseFragment {
         if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(password)) {
             try {
                 // For saving the user name
-                if(mRememberMe.isChecked())
-                {
+                if (mRememberMe.isChecked()) {
                     editor.putString(PreferenceConstants.REMEMBER_ME, userName);
-                }
-                else
-                {
+                } else {
                     editor.putString(PreferenceConstants.REMEMBER_ME, "");
                 }
                 editor.commit();
@@ -367,12 +369,12 @@ public class LoginFragment extends MDLiveBaseFragment {
                     hideProgressDialog();
                     String responseBody = new String(error.networkResponse.data, "utf-8");
                     JSONObject errorObj = new JSONObject(responseBody);
-                    if(errorObj.has("activation_url") && getActivity() instanceof LoginActivity){
-                        ((LoginActivity)getActivity()).onActivateAccount(errorObj.getString("activation_url"),mUserNameEditText.getText().toString(),mPasswordEditText.getText().toString());
+                    if (errorObj.has("activation_url") && getActivity() instanceof LoginActivity) {
+                        ((LoginActivity) getActivity()).onActivateAccount(errorObj.getString("activation_url"), mUserNameEditText.getText().toString(), mPasswordEditText.getText().toString());
                     } else {
                         MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
                     }
-                }catch(Exception e){
+                } catch (Exception e) {
                     MdliveUtils.handelVolleyErrorResponse(getActivity(), error, getProgressDialog());
                 }
             }
@@ -480,10 +482,11 @@ public class LoginFragment extends MDLiveBaseFragment {
 
         }
     }
-//
-   public interface OnLoginResponse {
+
+    //
+    public interface OnLoginResponse {
         void onLoginSucess();
-   }
+    }
 
 
     /**

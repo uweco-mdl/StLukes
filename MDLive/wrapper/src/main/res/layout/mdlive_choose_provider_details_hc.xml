@@ -63,6 +63,7 @@
                                 android:text=""
                                 android:tag="@string/mdltag_general_practise"
                                 android:textSize="@dimen/providerdetails_designtxt"
+                                android:visibility="gone"
                                 android:textColor="@color/white" />
 
 
@@ -376,7 +377,6 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:visibility="gone"
                             android:id="@+id/languagesLl"
                             style="@style/LinearLayoutStyle"
                             android:layout_marginTop="@dimen/dimen_10_dp">
@@ -385,7 +385,6 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:visibility="gone"
                             android:id="@+id/boardCertificationsLl"
                             style="@style/LinearLayoutStyle"
                             android:layout_marginTop="@dimen/dimen_10_dp">
@@ -402,14 +401,6 @@
                             android:layout_marginTop="@dimen/dimen_10_dp">
 
                             <include layout="@layout/mdlive_provider_affilitations" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            style="@style/LinearLayoutStyle"
-                            android:layout_marginTop="@dimen/dimen_10_dp"
-                            android:visibility="gone">
-
-                            <include layout="@layout/mdlive_provider_languages" />
                         </LinearLayout>
 
                     </LinearLayout>

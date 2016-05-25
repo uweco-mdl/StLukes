@@ -124,6 +124,8 @@
                             style="@style/Get_Started_Text_Field_Style"
                             android:id="@+id/telephoneTxt"
                             android:inputType="number"
+                            android:cursorVisible="false"
+                            android:imeOptions="actionDone"
                             android:maxLength="14"/>
 
                     </LinearLayout>

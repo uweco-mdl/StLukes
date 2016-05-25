@@ -1,0 +1,22 @@
+<resources>
+
+    <style name="MDLive_Red_Theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/darker_gray</item>
+        <item name="colorPrimaryDark">@color/darker_gray</item>
+        <item name="colorAccent">@color/darker_gray</item>
+    </style>
+
+    <style name="ChatBackground" parent="MDLive_Red_Theme">
+        <item name="android:windowBackground">@drawable/login_bg</item>
+    </style>
+
+    <style name="MDLive_Dialog_Theme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/darker_gray</item>
+        <item name="colorPrimaryDark">@color/darker_gray</item>
+        <item name="colorAccent">@color/dialog_accent_color</item>
+    </style>
+
+    <style name="MDLive_Red_Theme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="MDLive_Red_Theme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

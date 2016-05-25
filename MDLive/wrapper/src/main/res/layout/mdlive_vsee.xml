@@ -5,7 +5,7 @@
 
     <LinearLayout
         style="@style/wagHeaderLinearLayoutStyle"
-        android:background="@color/red_theme_primary"
+        android:background="@color/darker_gray"
         android:orientation="horizontal">
 
         <ImageView

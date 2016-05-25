@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="mdl_app_name">MDLIVE</string>
-    <string name="mdl_application_splash_virtual_care">MDLIVE Virtual care, Anywhere.</string>
+    <string name="mdl_app_name">St. Luke\'s 24/7</string>
+    <string name="mdl_application_splash_virtual_care">St. Luke\'s 24/7 Virtual care, Anywhere.</string>
     <string name="mdl_doctor_list">DoctorList</string>
     <string name="mdl_settings">Settings</string>
     <string name="mdl_login">LOGIN</string>
@@ -17,7 +17,7 @@
     <string name="mdl_home">Home</string>
     <string name="mdl_welcome">Welcome</string>
     <string name="mdl_sav">Schedule a Visit</string>
-    <string name="mdl_mdlive_assist">MDLIVE Assist</string>
+    <string name="mdl_mdlive_assist">St. Luke\'s 24/7 Assist</string>
     <string name="mdl_my_health">My Health</string>
     <string name="mdl_message_center">Message Center</string>
     <string name="mdl_symptom_checker">Symptom Checker</string>
@@ -31,7 +31,7 @@
     <string name="mdl_please_wait">Please wait</string>
 
 
-    <!--MDLive Header-->
+    <!--St. Luke\'s 24/7 Header-->
     <string name="mdl_thankkyou_phone_appoint_txt">Thank you for requesting a visit with %1$s! The doctor will call you shortly.</string>
     <string name="mdl_ada_hamburger">Navigated </string>
     <string name="mdl_ada_bell">Notification</string>
@@ -60,7 +60,7 @@
     <string name="mdl_ada_delete"> Delete </string>
     <string name="mdl_ada_arrowup_photo_button">Double Tap to add a photo</string>
     <string name="mdl_ada_arrowdown_photo_button">Double Tap to collapse the add a photo option</string>
-    <!--MDLive summary-->
+    <!--St. Luke's 24/7 summary-->
     <string name="mdl_your_consultation">Your Consultation</string>
     <string name="mdl_summary">SUMMARY</string>
     <string name="mdl_test">Test</string>
@@ -201,7 +201,7 @@
     <string name="mdl_patientTxt">Patient</string>
     <string name="mdl_dateOfBirth">Date of Birth</string>
     <string name="mdl_dateformat">mm/dd/yyyy</string>
-    <string name="mdl_plscalAlert_txt">Please call %1$s to  add another child.</string>
+    <string name="mdl_plscalAlert_txt">Please call %1$s to add additional family members.</string>
     <string name="mdl_phonenumber">Phone Number</string>
     <string name="mdl_disclaimertxt">Your phone number will only be used if customer support is required.</string>
     <string name="mdl_nextBtn">Your phone number will only be used if customer support is required.</string>
@@ -690,7 +690,7 @@
     <string name="mdl_add_family_text">Add a family member</string>
     <string name="mdl_add_family_member_txt">Family Member</string>
 
-    <string name="mdl_summary_thankyou_txt">Thank you for choosing MDLIVE.</string>
+    <string name="mdl_summary_thankyou_txt">Thank you for choosing St. Luke\'s 24/7.</string>
     <string name="mdl_thankyou_string">Thank you</string>
 
     <string name="mdl_summary_string">Summary</string>
@@ -713,7 +713,7 @@
 
     <string name="mdl_email_confirmation_text">E-mail Confirmation Required</string>
     <string name="mdl_email_confirmation_detail_text">
-    MDLIVE requires that users confirm their E-mail address before they can use E-mail features.This helps to prevent problems with bad addresses or spam.\n<br></br>Please confirm you email in order to :\n<br></br><br></br>\n<li>Receive appoinment confirmations and reminders</li>\n<li>Use the Ask a Question tool</li>\n<li>Request a password reset</li>
+    St. Luke\'s 24/7 requires that users confirm their E-mail address before they can use E-mail features.This helps to prevent problems with bad addresses or spam.\n<br></br>Please confirm you email in order to :\n<br></br><br></br>\n<li>Receive appoinment confirmations and reminders</li>\n<li>Use the Ask a Question tool</li>\n<li>Request a password reset</li>
    </string>
     <string name="mdl_dismiss">Dismiss</string>
     <string name="mdl_email_unconfirmed">Your Email has not been confirmed yet</string>
@@ -727,7 +727,7 @@
     <string name="mdl_fragmentthree">This is fragment No.3</string>
 
     <string name="mdl_family_history_back">Back</string>
-    <string name="mdl_family_history_title">MDLIVE</string>
+    <string name="mdl_family_history_title">St. Luke\'s 24/7</string>
     <string name="mdl_family_history_save">Save</string>
     <string name="mdl_my_family_history">MY FAMILY HISTORY</string>
     <string name="mdl_my_family_history_question">Does anyone in your family have a history of the following? (Check all that apply)</string>
@@ -744,7 +744,7 @@
     <!-- TODO: Remove or change this placeholder text -->
 
     <string name="mdl_life_style_save">Save</string>
-    <string name="mdl_life_style_title">MDLIVE</string>
+    <string name="mdl_life_style_title">St. Luke\'s 24/7</string>
     <string name="mdl_mylifestyle">MY LIFESTYLE</string>
     <string name="mdl_life_style_height_text">Height</string>
     <string name="mdl_life_style_ft_text">ft</string>
@@ -755,7 +755,7 @@
     <string name="mdl_life_style_bmi_value_text">4</string>
     <string name="mdl_life_style_question_text">Do you get at least 7 hours of sleep daily?</string>
 
-    <string name="mdl_to_appint_call_txt">Your appointment is about to begin. The provider will call you soon. If you don’t receive any phone call, please call MDLIVE </string>
+    <string name="mdl_to_appint_call_txt">Your appointment is about to begin. The provider will call you soon. If you don’t receive any phone call, please call St. Luke\'s 24/7 </string>
 
 
     <string name="mdl_call_customer_service_small"> call customer service.</string>
@@ -799,7 +799,7 @@
         <item>Tools</item>
         <item>About Us</item>
     </string-array>
-    <string name="mdl_call_text">"Connect with an MDLIVE Health Service Specialist."</string>
+    <string name="mdl_call_text">"Connect with an St. Luke\'s 24/7 Health Service Specialist."</string>
     <string name="mdl_toolbar">Toolbar</string>
     <string name="mdl_toolbarback">Back</string>
     <string name="mdl_call">Call</string>
@@ -871,6 +871,7 @@
     <!-- Summary Screen -->
     <string name="mdl_summary_qus_txt">How do you rate your experience today?</string>
     <string name="mdl_summary_qus_improve"> How can we improve?</string>
+    <string name="mdl_summary_qus_love_abt">  What did you love about it?</string>
     <string name="mdl_summary_feedback_txt">Enter feedback</string>
     <string name="mdl_summary_need_assistance_txt"> Need assistance?</string>
     <string name="mdl_see_a_doctor_now">See a Doctor</string>
@@ -1031,7 +1032,7 @@
     <string name="mdl_visa_card_details">Visa ending in</string>
     <string name="mdl_discover_card_details">Discover card ending in</string>
     <string name="mdl_amex_card_details">AMEX card ending in</string>
-    <string name="mdl_card_usage_message">Your credit card will be charged by MDLIVE Medical Group PA.</string>
+    <string name="mdl_card_usage_message">Your credit card will be charged by St. Luke\'s 24/7 Medical Group PA.</string>
 
     <string name="mdl_appointment_details">Appointment Details</string>
     <string name="mdl_schedule_appoinment">Scheduled Appointment</string>
@@ -1105,7 +1106,7 @@
     <string name="mdl_male">Male</string>
     <string name="mdl_female">Female</string>
 
-    <string name="mdl_connection_timeout_error_message">Connection Time Out. Please check your network connection or try again later. If the problem persist, please call the MDLIVE Helpdesk at %1$s.</string>
+    <string name="mdl_connection_timeout_error_message">Connection Time Out. Please check your network connection or try again later. If the problem persist, please call the St. Luke\'s 24/7 Helpdesk at %1$s.</string>
 
     <!-- Waiting Room Texts -->
     <string name="mdl_did_you_know">Did you know?</string>
@@ -1149,7 +1150,7 @@
     <string name="mdl_no_compitable_app">No compatible app found to handle the feature.</string>
 
     <string name="mdl_share_using">Share Using</string>
-    <string name="mdl_share_details_text">The MDLive App lets you have a virtual doctor\'s appointment from your smart phone, 24/7/365. <href>mdlive.com/getapp</href></string>
+    <string name="mdl_share_details_text">The St. Luke\'s 24/7 App lets you have a virtual doctor\'s appointment from your smart phone, 24/7/365. <href>St. Luke\'s 24/7.com/getapp</href></string>
 
     <!-- Join now page -->
 
@@ -1169,7 +1170,7 @@
     <!-- Provider Affiliation page -->
     <string name="mdl_affiliations">Affiliations</string>
 
-    <string name="mdl_email_confirmation_first_text">MDLIVE requires that users confirm their E-mail address before they can use E-mail features.This helps to prevent problems with bad addresses or spam.</string>
+    <string name="mdl_email_confirmation_first_text">St. Luke\'s 24/7 requires that users confirm their E-mail address before they can use E-mail features.This helps to prevent problems with bad addresses or spam.</string>
     <string name="mdl_email_confirmation_second_text">Please confirm you email in order to :</string>
     <string name="mdl_email_confirmation_third_text">&#8226; Receive appoinment confirmations and reminders</string>
     <string name="mdl_email_confirmation_fourth_text">&#8226; Use the Ask a Question tool</string>
@@ -1183,7 +1184,7 @@
         <item>@string/mdl_pin</item>
         <item>@string/mdl_password</item>
     </string-array>
-    <string name="mdl_callnumber">18004006354</string>
+    <string name="mdl_callnumber">888-794-8037</string>
 
     <string name="mdl_large_text">Large Text</string>
     <string name="mdl_small_text">Small Text</string>
@@ -1219,7 +1220,7 @@
 
     <string name="mdli_ask_a_question_validation">You cannot send a blank message.</string>
     <string name="mdli_provider_since">Provider since : </string>
-    <string name="mdl_help_number_if_assist_not_present">18889952183</string>
+    <string name="mdl_help_number_if_assist_not_present">888-794-8037</string>
 
 
     <!--OnCallSummary Screen-->
@@ -1473,7 +1474,7 @@
         <item>Zimbabwe</item>
     </string-array>
 
-    <string name="mdl_loading_information_error_message">There seems to be an issue loading your information. Please try again in a moment or call the MDLIVE Helpdesk at %1$s.</string>
+    <string name="mdl_loading_information_error_message">There seems to be an issue loading your information. Please try again in a moment or call the St. Luke\'s 24/7 Helpdesk at %1$s.</string>
 
     <string-array name="mdl_timezone">
         <item>Set Automatically</item>
@@ -1490,12 +1491,12 @@
     </string-array>
 
     <string name="mdl_sync_btn_txt">Sync with Google Fit</string>
-    <string name="mdl_sync_with_fit_question_txt">Would you like to sync your Google Fit data with MDLIVE?</string>
+    <string name="mdl_sync_with_fit_question_txt">Would you like to sync your Google Fit data with St. Luke\'s 24/7?</string>
     <string name="mdl_sync_google_fit_txt">Sync to Google Fit</string>
     <string name="mdl_backto_healcare">Back to HealthSource</string>
-    <string name="mdl_baylor_session_expired">Session timeout. Please use the HealthSource app to sign in to MDLIVE.</string>
-    <string name="mdl_failed_baylor_login">Session not confirmed. Please retry from the HealthSource app to sign in to MDLIVE.</string>
-    <string name="mdl_failed_sso_baylor_login">Session not confirmed.\nPlease press OK to return to the HealthSource app to sign in to MDLIVE.</string>
+    <string name="mdl_baylor_session_expired">Session timeout. Please use the HealthSource app to sign in to St. Luke\'s 24/7.</string>
+    <string name="mdl_failed_baylor_login">Session not confirmed. Please retry from the HealthSource app to sign in to St. Luke\'s 24/7.</string>
+    <string name="mdl_failed_sso_baylor_login">Session not confirmed.\nPlease press OK to return to the HealthSource app to sign in to St. Luke\'s 24/7.</string>
     <string name="mdl_ad_alert_title">Alert</string>
     <string name="mdl_try_again">Try Again</string>
     <string name="mdl_reset">Reset</string>
@@ -1509,11 +1510,11 @@
     <string name="mdl_share_failed">Share Failed</string>
     <string name="mdl_loading">Loading</string>
     <string name="mdl_primary">Primary</string>
-    <string name="mdl_gps_settings">Turn On Location Service to Allow \"MDLIVE\" to Determine Your Location</string>
+    <string name="mdl_gps_settings">Turn On Location Service to Allow \"St. Luke\'s 24/7\" to Determine Your Location</string>
     <string name="mdl_Cancel_apt_title">Cancel Appointment</string>
     <string name="mdl_Cancel_apt_msg">Are you sure you want to cancel this appointment?</string>
-    <string name="mdl_terms_consent">I certify that I have read and accept the terms of MDLIVE Medical Group\'s Informed Consent.</string>
-    <string name="mdl_privacy_policy">I have read MDLIVE Medical Group\'s Privacy Policy and I acknowledge that I have the ability to print a hard copy of the Privacy Policy for my records.</string>
+    <string name="mdl_terms_consent">I certify that I have read and accept the terms of St. Luke\'s 24/7 Medical Group\'s Informed Consent.</string>
+    <string name="mdl_privacy_policy">I have read St. Luke\'s 24/7 Medical Group\'s Privacy Policy and I acknowledge that I have the ability to print a hard copy of the Privacy Policy for my records.</string>
     <string name="mdl_make_appt">Make an appointment request</string>
     <string name="mdl_see_doc_now">See this doctor now</string>
     <string name="mdl_currently_unavail">Currently not available</string>
@@ -1619,14 +1620,26 @@
     <string name="mdl_empty_text">Please add some text</string>
     <string name="mdl_method">Method</string>
     <string name="mdl_when">When</string>
+    <string name="mdl_procedure_already_exist">The procedure you entered is already in your Health History.</string>
+    <string name="choose_mail_client">Choose Email Client</string>
 
     <string-array name="mdl_languages">
         <item>English</item>
-        <item>Spanish</item>
+        <!--<item>Spanish</item>-->
     </string-array>
     <string-array name="mdl_language_codes">
         <item>en</item>
-        <item>es</item>
+        <!--<item>es</item>-->
     </string-array>
 
+    <string name="mdl_health_coach_detail">%1$s \nHealth Coach</string>
+
+    <string name="mdl_change_environment">Change Environment</string>
+    <string name="mdl_get_directions">Get Directions</string>
+    <string-array name="environments">
+        <item>PRODUCTION</item>
+        <item>STAGE</item> 
+        <item>QA_PLUTO</item>      
+    </string-array>
 </resources>
+

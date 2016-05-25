@@ -24,54 +24,93 @@
                 android:background="@drawable/round_rect_white"
                 android:orientation="vertical">
 
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingLeft="9.67dp"
-                    android:paddingTop="13.33dp">
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
-                    <TextView
-                        android:id="@+id/addressline1"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/medical_history_sub_text"
-                        android:textSize="16.80sp" />
+                        android:layout_weight="0.6"
+                        android:orientation="vertical"
+                        android:paddingLeft="9.67dp"
+                        android:paddingTop="13.33dp">
 
-                    <TextView
-                        android:id="@+id/addressline2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/medical_history_sub_text"
-                        android:textSize="14.40sp" />
+                        <TextView
+                            android:id="@+id/addressline1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/medical_history_sub_text"
+                            android:textSize="16.80sp" />
 
-                    <TextView
-                        android:id="@+id/addressline3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/medical_history_sub_text"
-                        android:textSize="14.40sp" />
+                        <TextView
+                            android:id="@+id/addressline2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/medical_history_sub_text"
+                            android:textSize="14.40sp" />
 
-                    <TextView
-                        android:id="@+id/txt_my_pharmacy_addressline_four"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:onClick="onPhoneNumberClicked"
-                        android:tag="@string/mdltag_my_pharmacy_addressline_four"
-                        android:textColor="@color/radio_button_color_highlighted"
-                        android:textSize="14.40sp" />
+                        <TextView
+                            android:id="@+id/addressline3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/medical_history_sub_text"
+                            android:textSize="14.40sp" />
 
-                    <TextView
-                        android:id="@+id/SavContinueBtn"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/txt_my_pharmacy_addressline_four"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:onClick="onPhoneNumberClicked"
+                            android:tag="@string/mdltag_my_pharmacy_addressline_four"
+                            android:textColor="@color/radio_button_color_highlighted"
+                            android:textSize="14.40sp" />
+
+                        <TextView
+                            android:id="@+id/SavContinueBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="12.67dp"
+                            android:tag="@string/mdltag_my_pharmacy_opening_time"
+                            android:text="@string/mdl_my_pharmacy_opening_time"
+                            android:textColor="@color/medical_history_sub_text"
+                            android:textSize="13.44sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:paddingTop="12.67dp"
-                        android:tag="@string/mdltag_my_pharmacy_opening_time"
-                        android:text="@string/mdl_my_pharmacy_opening_time"
-                        android:textColor="@color/medical_history_sub_text"
-                        android:textSize="13.44sp"
-                        android:visibility="gone" />
+                        android:layout_weight="0.4"
+                        android:orientation="vertical"
+                        android:paddingTop="15dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:scaleType="center"
+                            android:src="@drawable/location_icon_blue" />
+
+
+                        <TextView
+                            android:id="@+id/getDirection"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:text="@string/mdl_get_directions"
+                            android:textAllCaps="false"
+                            android:textColor="@color/summary_contact"
+                            android:textSize="16sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -117,21 +156,21 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/getDirection"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:tag="@string/mdltag_change_pharmacy"
-            android:text="Get Directions"
-            android:textAllCaps="false"
-            android:textColor="@color/summary_contact"
-            android:textSize="16sp"
-            android:textStyle="normal" />
+        <!--<Button-->
+        <!--android:id="@+id/getDirection"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:fontFamily="sans-serif"-->
+        <!--android:gravity="center"-->
+        <!--android:tag="@string/mdltag_change_pharmacy"-->
+        <!--android:text="@string/mdl_get_directions"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:textColor="@color/summary_contact"-->
+        <!--android:textSize="16sp"-->
+        <!--android:textStyle="normal" />-->
 
     </LinearLayout>
 </ScrollView>
