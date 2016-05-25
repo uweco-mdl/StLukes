@@ -36,7 +36,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/mdl_application_name"
         android:theme="@style/MDLive_Red_Theme"
-        tools:replace="android:theme">
+        tools:replace="android:theme,android:label">
 
         <!-- Google Api Key -->
         <meta-data
