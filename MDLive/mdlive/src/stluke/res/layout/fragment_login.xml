@@ -15,7 +15,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/dimen_20_dp">
+        android:layout_marginBottom="@dimen/dimen_20_dp"
+        android:layout_marginLeft="@dimen/dimen_10_dp"
+        android:layout_marginRight="@dimen/dimen_10_dp"
+        android:layout_marginTop="@dimen/dimen_20_dp">
 
         <RelativeLayout
             android:id="@+id/health_system_container_rl"
@@ -98,6 +101,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dimen_8_dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="@dimen/dimen_18_dp"
                 android:orientation="horizontal">
 
@@ -137,6 +142,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dimen_8_dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="@dimen/dimen_18_dp"
                 android:orientation="horizontal">
 
@@ -173,6 +180,16 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
+            <CheckBox
+                android:id="@+id/remember_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10_dp"
+                android:button="@drawable/checkbox_selector"
+                android:paddingLeft="@dimen/dimen_10_dp"
+                android:text="@string/mdl_remember_me"
+                android:textColor="@color/white"
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/sign_in"
@@ -189,14 +206,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
-            <CheckBox
-                android:id="@+id/remember_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dimen_8_dp"
-                android:text="@string/mdl_remember_me"
-                android:textColor="@color/white"
-                android:visibility="gone" />
+
         </LinearLayout>
 
         <LinearLayout
