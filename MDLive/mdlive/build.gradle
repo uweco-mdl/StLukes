@@ -29,7 +29,6 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
-
     }
     buildTypes {
         release {
@@ -38,12 +37,12 @@ android {
         }
     }
     productFlavors {
-        mdlive {
-            applicationId "com.mdlive.mobile"
+/*        mdlive {
+            applicationId "com.mdlive.ST_LUKES_mobile"
             buildConfigField "boolean", "MDLIVE", "false"
-        }
+        }*/
         stluke {
-            applicationId "com.stluke.mobile"
+            applicationId "com.mdlive.ST_LUKES_mobile"
             buildConfigField "boolean", "STLUKE", "false"
         }
 
