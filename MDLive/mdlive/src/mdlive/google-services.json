@@ -1,0 +1,48 @@
+
+{
+  "project_info": {
+    "project_number": "876620808497",
+    "project_id": "st-lukes-skin"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876620808497:android:d4a24332c4672a35",
+        "android_client_info": {
+          "package_name": "com.mdlive.ST_LUKES_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876620808497-cjujp2cph14p5lnnpk1ok47m5hrfr76v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mdlive.ST_LUKES_mobile",
+            "certificate_hash": "909F201C7B80F6976001545E72BF4976A24B6637"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBWG9v5KCEr0kpLoJ68YC3t9bXfgk6JHk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-78407133-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
