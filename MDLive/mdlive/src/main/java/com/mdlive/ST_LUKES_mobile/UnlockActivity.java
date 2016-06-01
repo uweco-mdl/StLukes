@@ -149,7 +149,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
     }
 
     private void showInitialToolbar() {
-        findViewById(R.id.toolbar).setBackgroundColor(getResources().getColor(R.color.window_background_color));
+        //findViewById(R.id.toolbar).setBackgroundColor(getResources().getColor(R.color.window_background_color));
         findViewById(R.id.toolbar_cross).setVisibility(View.GONE);
         findViewById(R.id.sign_up).setVisibility(View.VISIBLE);
         findViewById(R.id.forgot_pin).setVisibility(View.VISIBLE);
