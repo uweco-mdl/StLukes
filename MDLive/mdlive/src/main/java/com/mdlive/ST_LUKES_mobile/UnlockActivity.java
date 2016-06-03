@@ -154,6 +154,8 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
         findViewById(R.id.sign_up).setVisibility(View.VISIBLE);
         findViewById(R.id.forgot_pin).setVisibility(View.VISIBLE);
         findViewById(R.id.headerTxt).setVisibility(View.GONE);
+        findViewById(R.id.back_icon).setVisibility(View.GONE);
+
 
     }
 
@@ -164,6 +166,8 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
         findViewById(R.id.forgot_pin).setVisibility(View.GONE);
         findViewById(R.id.headerTxt).setVisibility(View.VISIBLE);
         ((TextView) findViewById(R.id.headerTxt)).setText(getString(R.string.mdl_application_forgot_pin).toUpperCase());
+        findViewById(R.id.linkLayout).setVisibility(View.GONE);
+        findViewById(R.id.back_icon).setVisibility(View.VISIBLE);
     }
 
     private void clearMinimizedTime() {
