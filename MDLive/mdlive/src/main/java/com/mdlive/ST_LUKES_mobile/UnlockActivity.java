@@ -100,6 +100,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
     public void onSignUpClicked(View view) {
         getSupportActionBar().hide();
+        findViewById(R.id.linkLayout).setVisibility(View.GONE);
         getSupportFragmentManager().
                 beginTransaction().
                 addToBackStack(TAG).
