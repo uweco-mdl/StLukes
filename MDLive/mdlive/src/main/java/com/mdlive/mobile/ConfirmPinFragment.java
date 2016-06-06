@@ -380,7 +380,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
                 final JSONObject jsonObject = new JSONObject();
                 jsonObject.put("device_token", MdliveUtils.getDeviceToken(getActivity()));
                 jsonObject.put("passcode", confirmPin);
-                fetachPinWebserviceCall(jsonObject.toString());
+                fetchPinWebserviceCall(jsonObject.toString());
             } catch (JSONException e) {
                 logE("Error", e.getMessage());
             }
@@ -389,7 +389,7 @@ public class ConfirmPinFragment extends MDLiveBaseFragment implements TextWatche
         }
     }
 
-    private void fetachPinWebserviceCall(String params) {
+    private void fetchPinWebserviceCall(String params) {
         MdliveUtils.hideKeyboard(getActivity(), (View) mPassCode7);
         showProgressDialog();
 

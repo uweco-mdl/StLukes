@@ -1,6 +1,8 @@
 package com.mdlive.mobile;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -14,8 +16,7 @@ import android.widget.ImageView;
 import android.widget.ToggleButton;
 
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
-import com.mdlive.unifiedmiddleware.commonclasses.application.ApplicationController;
+import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.parentclasses.bean.response.UserBasicInfo;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
@@ -378,13 +379,13 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
             final JSONObject jsonObject = new JSONObject();
             jsonObject.put("device_token", MdliveUtils.getDeviceToken(getActivity()));
             jsonObject.put("passcode", confirmPin);
-            fetachPinWebserviceCall(jsonObject.toString());
+            fetchPinWebserviceCall(jsonObject.toString());
         } catch (JSONException e) {
             logE("Error", e.getMessage());
         }
     }
 
-    private void fetachPinWebserviceCall(String params) {
+    private void fetchPinWebserviceCall(String params) {
         MdliveUtils.hideKeyboard(getActivity(), (View) mPassCode7);
         if (MdliveUtils.isNetworkAvailable(getActivity())) {
             showProgressDialog();
@@ -431,6 +432,12 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
 
             logD("Unlock screen response", "Unlock response : " + response.toString());
             if (response.getString("msg").equalsIgnoreCase("Success")) {
+                // For saving the device token ("Session Id").
+                SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(PreferenceConstants.SESSION_ID, response.getString("token"));
+                editor.apply();
+
                 if (mOnUnlockSucessful != null) {
                     mOnUnlockSucessful.onUnlockSuccesful();
                 }
