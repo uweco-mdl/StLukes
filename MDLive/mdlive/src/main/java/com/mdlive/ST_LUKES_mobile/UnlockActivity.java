@@ -77,6 +77,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
         } else {
             if(isForgetPinCalled){
+                findViewById(R.id.linkLayout).setVisibility(View.VISIBLE);
                 super.onBackPressed();
             }else{
                 onSignoutClicked(this);
