@@ -44,6 +44,8 @@ import com.mdlive.unifiedmiddleware.services.login.UpgradeAlert;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Map;
+
 import com.testfairy.TestFairy;
 
 /**
@@ -51,10 +53,29 @@ import com.testfairy.TestFairy;
  */
 
 public class SplashScreenActivity extends Activity {
+    private static final String UNDEFINED = "00000";
     private String upgradeOption = "", latestVersion = "";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private ProgressDialog mProgressDialog;
     ENVIRON env;
+
+    private static final Map<ENVIRON, String> ClientSecret = new HashMap<>();
+    static {
+        ClientSecret.put(ENVIRON.STAGE, "4f440024aacd00ab312");
+        ClientSecret.put(ENVIRON.PROD, "a6b64315391973f4e27");
+        ClientSecret.put(ENVIRON.DEV, UNDEFINED);
+        ClientSecret.put(ENVIRON.QA, UNDEFINED);
+        ClientSecret.put(ENVIRON.QAPL, UNDEFINED);
+    }
+
+    private static final Map<ENVIRON, String> ApiKey = new HashMap<>();
+    static {
+        ApiKey.put(ENVIRON.STAGE, "9f2520dfb99d6668abda");
+        ApiKey.put(ENVIRON.PROD, "60eb7c379d745e78e697");
+        ApiKey.put(ENVIRON.DEV, UNDEFINED);
+        ApiKey.put(ENVIRON.QA, UNDEFINED);
+        ApiKey.put(ENVIRON.QAPL, UNDEFINED);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,9 +90,12 @@ public class SplashScreenActivity extends Activity {
         
         TestFairy.begin(this, "ddbb17ddd7294f969b346e9d385427f9b09169e0");
         
-        /* Select the environment type here : */
+        // Set the environment type
         env = ENVIRON.STAGE;
-        // ******************************************
+
+        // Set the proper associated credentials for the selected environment type
+        MDLiveConfig.setCredentials(ApiKey.get(env), ClientSecret.get(env));
+
         MDLiveConfig.setData(env);
         getTracker();
         ClearBaylorCache();
