@@ -1,24 +1,19 @@
 package com.mdlive.mobile.gcm;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mdlive.embedkit.uilayer.appointment.AppointmentActivity;
-import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.embedkit.uilayer.messagecenter.MessageCenterInboxDetailsActivity;
 import com.mdlive.mobile.LoginActivity;
 import com.mdlive.mobile.R;
 import com.mdlive.mobile.UnlockActivity;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.IntegerConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
-import com.mdlive.unifiedmiddleware.commonclasses.utils.DeepLinkUtils;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.parentclasses.bean.response.UserBasicInfo;
 
@@ -32,15 +27,19 @@ public class NotificationHandler extends AppCompatActivity {
         handleNewPushMessage(getIntent().getStringExtra("message"));
     }
     /**
-     * Should show Pin screen or Not
+     * Should display Pin screen or Not
      * */
     private boolean ShowPinScreen() {
         final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
         final long lastTime = preferences.getLong(PreferenceConstants.TIME_KEY, System.currentTimeMillis());
 
         final long difference = System.currentTimeMillis() - lastTime;
-        return difference > IntegerConstants.SESSION_TIMEOUT;
+        if (difference > IntegerConstants.SESSION_TIMEOUT)
+            return true;
+        else
+            return false;
     }
+
     private void handleNewPushMessage(String message){
         try{
             if (MdliveUtils.getRemoteUserId(getBaseContext()).length() > 0) {
