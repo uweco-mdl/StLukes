@@ -40,12 +40,11 @@ import com.mdlive.unifiedmiddleware.plugins.NetworkSuccessListener;
 import com.mdlive.unifiedmiddleware.services.login.DeeplinkService;
 import com.mdlive.unifiedmiddleware.services.login.SSOBaylorService;
 import com.mdlive.unifiedmiddleware.services.login.UpgradeAlert;
+import com.testfairy.TestFairy;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
-
-import com.testfairy.TestFairy;
 
 /**
  * Created by dhiman_da on 7/7/2015.
@@ -55,6 +54,7 @@ public class SplashScreenActivity extends Activity {
     private String upgradeOption = "", latestVersion = "";
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private ProgressDialog mProgressDialog;
+    private static Boolean initialLaunch = false;
     ENVIRON env;
 
     @Override
@@ -62,12 +62,13 @@ public class SplashScreenActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mdlive_splashscreen);
         this.setTitle(getString(R.string.mdl_application_splash_virtual_care));
+        Intent intent = null;
 
         // listen for EmbedKit exit signal and respond accordingly
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, new IntentFilter(SIGNALS.EXIT_SIGNAL.name()));
 
         mProgressDialog = MdliveUtils.getFullScreenProgressDialog(this);
-        
+
         TestFairy.begin(this, "ddbb17ddd7294f969b346e9d385427f9b09169e0");
 
         /* Select the environment type here : */
@@ -78,7 +79,11 @@ public class SplashScreenActivity extends Activity {
         ClearBaylorCache();
         registerGCMForMDLiveApplication();
         makeUpdateAlertCall();
-        
+
+        if (MdliveUtils.getPreferredLockType(getBaseContext()).equalsIgnoreCase("Pin")) {
+            initialLaunch = true;
+        }
+
     }
 
     private void ClearBaylorCache() {
@@ -211,6 +216,10 @@ public class SplashScreenActivity extends Activity {
         if (MdliveUtils.getRemoteUserId(getBaseContext()).length() > 0) {
             if (DeepLinkUtils.DEEPLINK_DATA != null && DeepLinkUtils.DEEPLINK_DATA.getAffiliate().equalsIgnoreCase(DeepLinkUtils.DeeplinkAffiliate.BAYLOR.name())) {
                 intent = new Intent(getBaseContext(), MDLiveDashboardActivity.class);
+                startActivity(intent);
+            } else if (MdliveUtils.getPreferredLockType(getBaseContext()).equalsIgnoreCase("Pin") &&
+                    initialLaunch) {
+                intent = UnlockActivity.getUnlockToDashBoardIntent(getBaseContext(), true);
                 startActivity(intent);
             } else if (MdliveUtils.getPreferredLockType(getBaseContext()).equalsIgnoreCase("Pin")) {
                 if (ShowPinScreen(IntegerConstants.SESSION_TIMEOUT_ONE_MINUTE)) {
@@ -395,9 +404,11 @@ public class SplashScreenActivity extends Activity {
     private boolean ShowPinScreen(int timeout) {
         final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
         final long lastTime = preferences.getLong(PreferenceConstants.TIME_KEY, System.currentTimeMillis());
-
         final long difference = System.currentTimeMillis() - lastTime;
-        return difference > timeout;
+        if (difference > timeout)
+            return true;
+        else
+            return false;
     }
 
     /**
@@ -417,6 +428,9 @@ public class SplashScreenActivity extends Activity {
                         SharedPreferences sharedPref = getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPref.edit();
                         editor.putString(PreferenceConstants.USER_UNIQUE_ID, response.getString("uniqueid"));
+                        editor.putString(PreferenceConstants.SESSION_ID, response.getString("token"));
+                        //Log.v("SplashScreen", "###$### RemoteUserId = "+ response.getString("uniqueid"));
+                        //Log.v("SplashScreen", "###$### SessionToken = "+ response.getString("token"));
                         editor.commit();
                         IntegerConstants.SESSION_TIMEOUT = 30 * 60 * 1000; // 30 minutes timeout session for Baylor user
                     } catch (Exception e) {
