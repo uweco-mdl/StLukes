@@ -43,7 +43,8 @@ android {
         }*/
         stluke {
             applicationId "com.mdlive.ST_LUKES_mobile"
-            buildConfigField "boolean", "STLUKE", "false"
+            versionCode 1
+            versionName "1.0"
         }
 
     }
