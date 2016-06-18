@@ -2,9 +2,8 @@ package com.mdlive.ST_LUKES_mobile.gcm;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.support.v7.app.AppCompatActivity;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mdlive.embedkit.uilayer.appointment.AppointmentActivity;
@@ -27,15 +26,19 @@ public class NotificationHandler extends AppCompatActivity {
         handleNewPushMessage(getIntent().getStringExtra("message"));
     }
     /**
-     * Should show Pin screen or Not
+     * Should display Pin screen or Not
      * */
     private boolean ShowPinScreen() {
         final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.TIME_PREFERENCE, MODE_PRIVATE);
         final long lastTime = preferences.getLong(PreferenceConstants.TIME_KEY, System.currentTimeMillis());
 
         final long difference = System.currentTimeMillis() - lastTime;
-        return difference > IntegerConstants.SESSION_TIMEOUT;
+        if (difference > IntegerConstants.SESSION_TIMEOUT)
+            return true;
+        else
+            return false;
     }
+
     private void handleNewPushMessage(String message){
         try{
             if (MdliveUtils.getRemoteUserId(getBaseContext()).length() > 0) {

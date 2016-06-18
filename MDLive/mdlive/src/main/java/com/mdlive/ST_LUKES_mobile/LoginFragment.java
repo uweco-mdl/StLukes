@@ -400,6 +400,8 @@ public class LoginFragment extends MDLiveBaseFragment {
                 editor.putString(PreferenceConstants.USER_UNIQUE_ID, response.getString("uniqueid"));
                 editor.putString(PreferenceConstants.SESSION_ID, response.getString("token"));
                 editor.apply();
+                //Log.v("LoginFragment", "###$### RemoteUserId = "+ response.getString("uniqueid"));
+                //Log.v("LoginFragment", "###$### SessionToken = "+ response.getString("token"));
                 SharedPreferences settings = getActivity().getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, getActivity().MODE_PRIVATE);
                 String pushRegID = settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null);
                 if (pushRegID != null) {

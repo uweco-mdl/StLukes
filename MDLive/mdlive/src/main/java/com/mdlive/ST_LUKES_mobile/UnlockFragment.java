@@ -1,6 +1,8 @@
 package com.mdlive.ST_LUKES_mobile;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -14,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ToggleButton;
 
 import com.android.volley.VolleyError;
+import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.utils.MdliveUtils;
 import com.mdlive.unifiedmiddleware.parentclasses.bean.response.UserBasicInfo;
 import com.mdlive.unifiedmiddleware.plugins.NetworkErrorListener;
@@ -50,6 +53,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
 
     private EditText mPassCode7 = null;
     private StringBuffer mStringBuffer;
+    private Activity mActivity = null;
 
     public static UnlockFragment newInstance() {
         final UnlockFragment fragment = new UnlockFragment();
@@ -63,6 +67,7 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        mActivity = activity;
 
         try {
             mOnUnlockSucessful = (OnUnlockSucessful) activity;
@@ -371,18 +376,17 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
 
     public void loadConfirmPin(final String confirmPin) {
         try {
-            //final SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-
             final JSONObject jsonObject = new JSONObject();
             jsonObject.put("device_token", MdliveUtils.getDeviceToken(getActivity()));
             jsonObject.put("passcode", confirmPin);
-            fetachPinWebserviceCall(jsonObject.toString());
+            fetchPinWebserviceCall(jsonObject.toString());
         } catch (JSONException e) {
             logE("Error", e.getMessage());
         }
     }
 
-    private void fetachPinWebserviceCall(String params) {
+
+    private void fetchPinWebserviceCall(String params) {
         MdliveUtils.hideKeyboard(getActivity(), (View) mPassCode7);
         if (MdliveUtils.isNetworkAvailable(getActivity())) {
             showProgressDialog();
@@ -429,6 +433,16 @@ public class UnlockFragment extends MDLiveBaseFragment implements TextWatcher, V
 
             logD("Unlock screen response", "Unlock response : " + response.toString());
             if (response.getString("msg").equalsIgnoreCase("Success")) {
+
+                // For saving the device token ("Session Id").
+                SharedPreferences sharedPref = getActivity().getSharedPreferences(PreferenceConstants.USER_PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(PreferenceConstants.USER_UNIQUE_ID, response.getString("uniqueid"));
+                editor.putString(PreferenceConstants.SESSION_ID, response.getString("token"));
+                //Log.v("UnlockFragment", "###$### RemoteUserId = "+ response.getString("uniqueid"));
+                //Log.v("UnlockFragment", "###$### SessionToken = "+ response.getString("token"));
+                editor.apply();
+
                 if (mOnUnlockSucessful != null) {
                     mOnUnlockSucessful.onUnlockSuccesful();
                 }
