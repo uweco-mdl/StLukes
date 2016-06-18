@@ -21,8 +21,8 @@ android {
         applicationId "com.mdlive.ST_LUKES_mobile"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 13002
-        versionName "3.02"
+        versionCode 1
+        versionName "1.0"
         multiDexEnabled true
 
         // force 32-bit emulation for 64-bit devices
