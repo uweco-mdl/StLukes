@@ -106,6 +106,11 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
                 //List<NameValuePair> params = null;
                 //Replaced Deprecated classes with new class.
                 try {
+                    if (url.startsWith("market")) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    }
+                    else
+                    {
                     URL activationUrl = new URL(url);
                     String query = activationUrl.getQuery();
                     if (null != query) {
@@ -135,6 +140,7 @@ public class CreateAccountFragment extends MDLiveBaseFragment {
                             //params = URLEncodedUtils.parse(new URI(url), "UTF-8");
                         }
                     }
+                }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
