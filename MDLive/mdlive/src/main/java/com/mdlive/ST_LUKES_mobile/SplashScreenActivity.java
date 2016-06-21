@@ -62,6 +62,7 @@ public class SplashScreenActivity extends Activity {
     ENVIRON env;
 
     private static final Map<ENVIRON, String> ClientSecret = new HashMap<>();
+
     static {
         ClientSecret.put(ENVIRON.STAGE, "4f440024aacd00ab312");
         ClientSecret.put(ENVIRON.PROD, "a6b64315391973f4e27");
@@ -71,6 +72,7 @@ public class SplashScreenActivity extends Activity {
     }
 
     private static final Map<ENVIRON, String> ApiKey = new HashMap<>();
+
     static {
         ApiKey.put(ENVIRON.STAGE, "9f2520dfb99d6668abda");
         ApiKey.put(ENVIRON.PROD, "60eb7c379d745e78e697");
@@ -83,6 +85,7 @@ public class SplashScreenActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mdlive_splashscreen);
+        MDLiveConfig.IS_ST_LUKES = getString(R.string.mdl_app_name).equalsIgnoreCase("St. Luke's 24/7");
         this.setTitle(getString(R.string.mdl_application_splash_virtual_care));
         Intent intent = null;
 
