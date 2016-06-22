@@ -322,7 +322,7 @@ public class LoginFragment extends MDLiveBaseFragment {
                 } else {
                     editor.putString(PreferenceConstants.REMEMBER_ME, "");
                 }
-                editor.commit();
+                editor.apply();
                 JSONObject parent = new JSONObject();
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("email", userName);
@@ -362,6 +362,10 @@ public class LoginFragment extends MDLiveBaseFragment {
 
             @Override
             public void onErrorResponse(VolleyError error) {
+                mRememberMe.setChecked(false);
+                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
+                editor.putString(PreferenceConstants.REMEMBER_ME, "");
+                editor.apply();
                 try {
                     hideProgressDialog();
                     String responseBody = new String(error.networkResponse.data, "utf-8");
