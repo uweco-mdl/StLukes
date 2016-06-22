@@ -77,7 +77,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
         } else {
             if(isForgetPinCalled){
-                findViewById(R.id.linkLayout).setVisibility(View.VISIBLE);
+                //findViewById(R.id.linkLayout).setVisibility(View.VISIBLE);
                 super.onBackPressed();
             }else{
                 onSignoutClicked(this);
@@ -101,7 +101,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
 
     public void onSignUpClicked(View view) {
         getSupportActionBar().hide();
-        findViewById(R.id.linkLayout).setVisibility(View.GONE);
+        //findViewById(R.id.linkLayout).setVisibility(View.GONE);
         getSupportFragmentManager().
                 beginTransaction().
                 addToBackStack(TAG).
@@ -168,7 +168,7 @@ public class UnlockActivity extends AppCompatActivity implements OnSignupSuccess
         findViewById(R.id.forgot_pin).setVisibility(View.GONE);
         findViewById(R.id.headerTxt).setVisibility(View.VISIBLE);
         ((TextView) findViewById(R.id.headerTxt)).setText(getString(R.string.mdl_application_forgot_pin).toUpperCase());
-        findViewById(R.id.linkLayout).setVisibility(View.GONE);
+        //findViewById(R.id.linkLayout).setVisibility(View.GONE);
         findViewById(R.id.back_icon).setVisibility(View.VISIBLE);
     }
 
