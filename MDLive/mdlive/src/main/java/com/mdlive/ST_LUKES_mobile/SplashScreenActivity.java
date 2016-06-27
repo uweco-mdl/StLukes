@@ -83,7 +83,7 @@ public class SplashScreenActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mdlive_splashscreen);
-        MDLiveConfig.IS_ST_LUKES = getString(R.string.mdl_app_name).equalsIgnoreCase("St. Luke's 24/7");
+        MDLiveConfig.IS_ST_LUKES = getString(R.string.mdl_app_name).equalsIgnoreCase("Saint Luke's 24/7");
         this.setTitle(getString(R.string.mdl_application_splash_virtual_care));
         Intent intent = null;
 
