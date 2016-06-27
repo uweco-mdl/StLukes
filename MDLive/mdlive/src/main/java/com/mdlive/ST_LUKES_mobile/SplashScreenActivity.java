@@ -24,11 +24,11 @@ import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.gson.Gson;
+import com.mdlive.ST_LUKES_mobile.gcm.MDLiveRegistrationIntentService;
 import com.mdlive.embedkit.global.MDLiveConfig;
 import com.mdlive.embedkit.global.MDLiveConfig.ENVIRON;
 import com.mdlive.embedkit.global.MDLiveConfig.SIGNALS;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
-import com.mdlive.ST_LUKES_mobile.gcm.MDLiveRegistrationIntentService;
 import com.mdlive.unifiedmiddleware.commonclasses.application.AppSpecificConfig;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.IntegerConstants;
 import com.mdlive.unifiedmiddleware.commonclasses.constants.PreferenceConstants;
@@ -46,8 +46,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import com.testfairy.TestFairy;
 
 /**
  * Created by dhiman_da on 7/7/2015.
@@ -374,7 +372,7 @@ public class SplashScreenActivity extends Activity {
         final SharedPreferences preferences = getSharedPreferences(PreferenceConstants.DEVICE_ID, Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = preferences.edit();
         editor.putString(PreferenceConstants.DEVICE_ID_KEY, deeplinkId);
-        editor.commit();
+        editor.apply();
 
         NetworkSuccessListener<JSONObject> successCallBackListener = new NetworkSuccessListener<JSONObject>() {
             @Override
@@ -384,7 +382,7 @@ public class SplashScreenActivity extends Activity {
                  * And saves the deep link data
                  * */
                 editor.clear().apply();
-                editor.commit();
+                editor.apply();
                 if (!response.has("error")) {
                     final Gson gson = new Gson();
                     DeepLink deepLink = gson.fromJson(response.toString(), DeepLink.class);
@@ -406,7 +404,7 @@ public class SplashScreenActivity extends Activity {
                 } else {
                     startNextActivity();
                 }
-                editor.commit();
+                editor.apply();
             }
         };
         NetworkErrorListener errorListener = new NetworkErrorListener() {
@@ -415,9 +413,9 @@ public class SplashScreenActivity extends Activity {
                 /**
                  * Clears the deeplink id from shared preference, as this header is not required anymore.
                  * And strats the next activity
-                 * */
+                * */
                 editor.clear().apply();
-                editor.commit();
+                editor.apply();
                 startNextActivity();
             }
         };

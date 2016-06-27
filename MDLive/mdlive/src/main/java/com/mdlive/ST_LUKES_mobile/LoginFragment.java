@@ -406,6 +406,12 @@ public class LoginFragment extends MDLiveBaseFragment {
                 editor.apply();
                 //Log.v("LoginFragment", "###$### RemoteUserId = "+ response.getString("uniqueid"));
                 //Log.v("LoginFragment", "###$### SessionToken = "+ response.getString("token"));
+
+                final SharedPreferences preferences = getActivity().getSharedPreferences(PreferenceConstants.DEVICE_OS, Context.MODE_PRIVATE);
+                final SharedPreferences.Editor editor2 = preferences.edit();
+                editor2.putString(PreferenceConstants.DEVICE_OS_KEY, "Android");
+                editor2.apply();
+
                 SharedPreferences settings = getActivity().getSharedPreferences(PreferenceConstants.MDLIVE_USER_PREFERENCES, getActivity().MODE_PRIVATE);
                 String pushRegID = settings.getString(PreferenceConstants.SAVED_PUSH_NOTIFICATION_ID, null);
                 if (pushRegID != null) {
@@ -534,7 +540,7 @@ public class LoginFragment extends MDLiveBaseFragment {
                                         loginContainerFl.setVisibility(View.GONE);
                                         healthSystemContainerRl.setVisibility(View.VISIBLE);
                                         healthSystemContainerRl.setBackgroundColor(Color.WHITE);
-                                        healthSystemContainerRl.setAlpha(255);
+                                        healthSystemContainerRl.setAlpha(1f);
                                         mWebView.setVisibility(View.VISIBLE);
                                         healthSystemIv.setVisibility(View.VISIBLE);
                                         healthSystemTv.setVisibility(View.VISIBLE);
@@ -562,7 +568,7 @@ public class LoginFragment extends MDLiveBaseFragment {
                                 loginContainerFl.setVisibility(View.GONE);
                                 healthSystemContainerRl.setVisibility(View.VISIBLE);
                                 healthSystemContainerRl.setBackgroundColor(Color.WHITE);
-                                healthSystemContainerRl.setAlpha(255);
+                                healthSystemContainerRl.setAlpha(1f);
                                 mWebView.setVisibility(View.VISIBLE);
                                 healthSystemIv.setVisibility(View.VISIBLE);
                                 healthSystemTv.setVisibility(View.VISIBLE);
