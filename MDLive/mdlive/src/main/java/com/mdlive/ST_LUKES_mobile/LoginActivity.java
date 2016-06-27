@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mdlive.embedkit.global.MDLiveConfig;
 import com.mdlive.embedkit.uilayer.login.MDLiveDashboardActivity;
 import com.mdlive.embedkit.uilayer.sav.LocationCooridnates;
 import com.mdlive.ST_LUKES_mobile.CreateAccountFragment.OnSignupSuccess;
@@ -84,9 +85,21 @@ public class LoginActivity extends AppCompatActivity implements OnLoginResponse,
                 dialog.cancel();
             }
         });
-        alertDialog.setCancelable(true);
+        final AlertDialog alert = alertDialog.create();
+        if(MDLiveConfig.IS_ST_LUKES) {
+            alert.setOnShowListener(new DialogInterface.OnShowListener() {
+                @Override
+                public void onShow(DialogInterface arg0) {
+                    alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(com.mdlive.embedkit.R.color.doctor_on_call_background));
+                    alert.getButton(AlertDialog.BUTTON_POSITIVE).setAllCaps(false);
+                    alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(com.mdlive.embedkit.R.color.doctor_on_call_background));
+                    alert.getButton(AlertDialog.BUTTON_NEGATIVE).setAllCaps(false);
+                }
+            });
+        }
+        alert.setCancelable(true);
         // Showing Alert Message
-        alertDialog.show();
+        alert.show();
     }
     @Override
     public void onBackPressed() {
