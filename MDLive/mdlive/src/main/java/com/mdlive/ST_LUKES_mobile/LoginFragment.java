@@ -327,6 +327,10 @@ public class LoginFragment extends MDLiveBaseFragment {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("email", userName);
                 jsonObject.put("password", password);
+                if(MDLiveConfig.IS_ST_LUKES)
+                {
+                    jsonObject.put("affiliation", "saintlukeskc");
+                }
                 parent.put("login", jsonObject);
                 loadLoginService(parent.toString());
             } catch (JSONException e) {
