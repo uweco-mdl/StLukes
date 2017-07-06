@@ -11,18 +11,21 @@ repositories {
     maven {
         url "https://repo.commonsware.com.s3.amazonaws.com"
     }
+    maven {
+        url "https://s3.amazonaws.com/repo.commonsware.com"
+    }
     jcenter()
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "com.mdlive.ST_LUKES_mobile"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.01"
         multiDexEnabled true
 
         // force 32-bit emulation for 64-bit devices
@@ -43,8 +46,8 @@ android {
         }*/
         stluke {
             applicationId "com.mdlive.ST_LUKES_mobile"
-            versionCode 1
-            versionName "1.0"
+            versionCode 4
+            versionName "1.01"
         }
 
     }

@@ -95,7 +95,7 @@ public class SplashScreenActivity extends Activity {
         TestFairy.begin(this, "ddbb17ddd7294f969b346e9d385427f9b09169e0");
 
         /* Select the environment type here : */
-        env = ENVIRON.STAGE;
+        env = ENVIRON.PROD;
 
         // Set the proper associated credentials for the selected environment type
         MDLiveConfig.setCredentials(ApiKey.get(env), ClientSecret.get(env));
